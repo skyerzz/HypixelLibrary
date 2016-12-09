@@ -1,7 +1,6 @@
 package com.skyerzz.hypixellib.util.hypixelapi;
 
 import com.skyerzz.hypixellib.util.hypixelapi.exception.RequestTypeException;
-import org.apache.http.client.methods.RequestBuilder;
 
 import java.util.HashMap;
 
