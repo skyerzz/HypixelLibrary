@@ -1,21 +1,11 @@
 package com.skyerzz.hypixellib.util.hypixelapi;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.realmsclient.client.Request;
-import com.skyerzz.hypixellib.util.hypixelapi.exception.APIException;
 import com.skyerzz.hypixellib.util.hypixelapi.exception.MalformedAPIKeyException;
 import com.skyerzz.hypixellib.util.hypixelapi.exception.PlayerNonExistentException;
 import com.skyerzz.hypixellib.util.hypixelapi.exception.RequestTypeException;
-import net.minecraft.client.util.JsonException;
+import com.skyerzz.hypixellib.util.mojangapi.MojangAPI;
 
-import javax.net.ssl.HttpsURLConnection;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.UUID;
 
 /**
  * Created by sky on 7-7-2016.
@@ -27,7 +17,7 @@ public class HypixelAPI{
 
     public HypixelAPI() {}
 
-    public AbstractAPIReply getAPIReply(APIRequest request, String APIkey) throws MalformedAPIKeyException, IOException, PlayerNonExistentException {
+    private AbstractAPIReply getAPIReply(APIRequest request, String APIkey) throws MalformedAPIKeyException, IOException, PlayerNonExistentException {
         this.APIkey = APIkey;
         switch(request.getRequestType()){
             case PLAYER:
@@ -36,6 +26,40 @@ public class HypixelAPI{
             default:
                 return null;
         }
+    }
+
+    public PlayerAPI getPlayerAPI(String player, String APIkey) throws RequestTypeException, MalformedAPIKeyException, IOException, PlayerNonExistentException {
+        String uuid;
+        if(isUuid(player)){
+            uuid = player;
+        }else{
+            uuid = getUuid(player);
+        }
+        return (PlayerAPI) getAPIReply(new APIRequestBuilder(APIRequest.RequestType.PLAYER).addParam(APIRequest.RequestParam.PLAYER_BY_UUID, uuid).build(), APIkey);
+    }
+
+    private boolean isUuid(String input){
+        if(input.length() == 32){
+            return true;
+        }
+        return false;
+    }
+
+    private String getUuid(String name){
+        if(name.replace("-", "").length() == 32){
+            return name.replace("-", "");
+        }
+        MojangAPI moj = new MojangAPI();
+        try {
+            return moj.getJSON(moj.getURL(name)).get("id").getAsString();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (MalformedAPIKeyException e) {
+            e.printStackTrace();
+        } catch (PlayerNonExistentException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }
