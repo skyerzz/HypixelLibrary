@@ -1,5 +1,6 @@
 package com.skyerzz.hypixellib.util.games.quake;
 
+import com.skyerzz.hypixellib.OutDated;
 import com.skyerzz.hypixellib.util.CURRENCY;
 import com.skyerzz.hypixellib.util.RANKTYPE;
 
@@ -9,6 +10,11 @@ import java.util.ArrayList;
  * Created by sky on 7-7-2016.
  */
 public enum KIT {
+    @OutDated
+            RICHKIT("OUTDATED - Rich Kit", -1, RANKTYPE.DEFAULT),
+    @OutDated
+            FASHIONKIT("OUTDATED - Fashion Kit", -1, RANKTYPE.DEFAULT),
+
     SOLDIER("Soldier Kit", 650, RANKTYPE.DEFAULT),
     ELITE("Elite Kit", 2250, RANKTYPE.DEFAULT),
     MAJESTIC("Majestic Kit", 2250, RANKTYPE.VIP),

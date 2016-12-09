@@ -11,21 +11,33 @@ import java.util.ArrayList;
  */
 public enum BLITZ_POWERUP {
     @OutDated
-    WOBBUFFET("REMOVED- Wobbuffet", -1), //todo check if this really was a powerup
+    RAPID_FIRE("DOESNT EXIST ANYMORE- RapidFire", -1),
+    @OutDated
+    LIGHTNING("DOESNT EXIST ANYMORE - Lightning", -1),
+    @OutDated
+    EXPLOSIONS("DOESNT EXIST ANYMORE - Explosions", -1),
+
+
+    APOCALYPSE("Apocalpyse", 0),
+    VAMPIRE("Vampire", 0),
+    JEDI_KNIGHT("Jedi Knight", 0),
+    NOCTURNE("Nocturne", 0),
+
+
     ASSASSIN("Assassin", 20000),
-    STATIS("Statis", 40000),
-    VAULT_HUNTER("Vault Hunter", 30000),
-    WITHER_WARRIOR("Wither Warrior", 20000),
+    IMPRISON("Statis", 40000),
+    VAULTHUNTER("Vault Hunter", 30000),
+    WITHERWARRIOR("Wither Warrior", 20000),
     GREMLIN("Gremlin", 20000),
     ROULETTE("Roulette", 40000),
     INVOKER("Invoker", 20000),
-    IRONMAN("Ironman", 20000),
+    WOBBUFFET("Ironman", 20000),
     NUKE("Nuke", 30000),
     NINJA("Ninja", 20000),
     ROBINHOOD("Robinhood", 20000),
     SUPPLIES("Supplies", 20000),
-    NO_COUNTRY_FOR_OLD_MEN("No country for old men", 30000),
-    SWEG_MOVE("Sweg Move", 40000);
+    SHOTGUN("No country for old men", 30000),
+    KOOLMOVE("Sweg Move", 40000); //todo: check if this is right
 
     private String displayName;
     private int cost;

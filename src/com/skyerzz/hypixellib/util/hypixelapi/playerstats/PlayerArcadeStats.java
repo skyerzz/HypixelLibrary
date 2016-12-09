@@ -39,6 +39,7 @@ public class PlayerArcadeStats extends PlayerGameStats{
 
     //Build Battle solo|team
     private int buildBattleWins, buildBattleTeamWins;
+    private String language;
 
     private ArrayList<ItemStack> buildBattleLoadOut = new ArrayList<>();
 
@@ -87,6 +88,7 @@ public class PlayerArcadeStats extends PlayerGameStats{
 
     //ThrowOut
     private int throwOutDeaths, throwOutKills, throwOutWins;
+    private COSMETIC throwOutDisguise;
 
     //grinchSim
     private int grinchWins;
@@ -217,6 +219,12 @@ public class PlayerArcadeStats extends PlayerGameStats{
             case "WINS_BUILDBATTLE_TEAMS":
                 this.buildBattleTeamWins = value.getAsInt();
                 break;
+            case "LANGUAGE":
+            case "BUILDBATTLE_LANGUAGE":
+            case "BB_LANGUAGE":
+                //unsure which one is currently used.
+                this.language = value.getAsString();
+                return true;
             //</editor-fold>
 
             //<editor-fold desc="[Creeper Attack]">
@@ -402,6 +410,13 @@ public class PlayerArcadeStats extends PlayerGameStats{
             case "WINS_THROW_OUT":
                 this.throwOutWins = value.getAsInt();
                 break;
+            case "THROWOUT_DISGUISE":
+                if(COSMETIC.mapping.contains(value.getAsString().toUpperCase() + "_DISGUISE")){
+                    this.throwOutDisguise = COSMETIC.valueOf(value.getAsString().toUpperCase() + "_DISGUISE");
+                }else{
+                    Logger.logWarn("[PlayerAPI.Arcade.Throwout.Disguise] Couldnt find value: " + value.getAsString());
+                }
+                return true;
             //</editor-fold>
 
             //<editor-fold desc="[GRINCH SIM]">
@@ -410,6 +425,19 @@ public class PlayerArcadeStats extends PlayerGameStats{
                 return true;
             //</editor-fold>
 
+            //<editor-fold desc="[UNUSED]">
+            case "DEATHS_GRIND":
+            case "DEATHS_VOLLEYBALL":
+            case "KILLS_GRIND":
+            case "KILLS_SPACERAIDERS":
+            case "KILLS_VOLLEYBALL":
+            case "WINS_GRIND":
+            case "WINS_PSPLEEF":
+            case "WINS_SPACERAIDERS":
+            case "WINS_VOLLEYBALL":
+                //these games never existed, therefore not using @Outdated.
+                return true;
+            //</editor-fold>
             default:
                 return false;
         }

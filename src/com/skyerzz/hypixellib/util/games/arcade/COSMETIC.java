@@ -2,6 +2,7 @@ package com.skyerzz.hypixellib.util.games.arcade;
 
 import com.skyerzz.hypixellib.util.RANKTYPE;
 
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.ArrayList;
 
 /**
@@ -29,7 +30,10 @@ public enum COSMETIC {
     GREEN_TRAIL(                "Ender Spleef: Green Projectile Trail",     2000, RANKTYPE.VIP,      GAMETYPE.ENDER_SPLEEF),
     BLUE_TRAIL(                 "Ender Spleef: Blue Projectile Trail",      2000, RANKTYPE.VIP_PLUS, GAMETYPE.ENDER_SPLEEF),
     RED_TRAIL(                  "Ender Spleef: Red Projectile Trail",       2000, RANKTYPE.VIP_PLUS, GAMETYPE.ENDER_SPLEEF),
-    RAINBOW_TRAIL(              "Ender Spleef: Rainbow Projectile Trail",   4000, RANKTYPE.MVP,      GAMETYPE.ENDER_SPLEEF);
+    RAINBOW_TRAIL(              "Ender Spleef: Rainbow Projectile Trail",   4000, RANKTYPE.MVP,      GAMETYPE.ENDER_SPLEEF),
+
+    SNOWMAN_DISGUISE("OUTDATED: Snowman Disguise", -1, RANKTYPE.DEFAULT, GAMETYPE.THROW_OUT),
+    ZOMBIE_DISGUISE("OUTDATED: Zombie Disguise", -1, RANKTYPE.DEFAULT, GAMETYPE.THROW_OUT);
 
 
     private String displayName;

@@ -40,7 +40,7 @@ public enum HELMET {
     HELMET_10_1("Bubblegum Futurehelm", 1000,   RANKTYPE.MVP),
     HELMET_10_2("Gobstopper Futurehelm",25000,  RANKTYPE.MVP),
     HELMET_10_3("Bonbon Futurehelm",    5000,   RANKTYPE.MVP),
-    HELMET_11_1("D. Goggles",           25000,  RANKTYPE.MVP);
+    HELMET_11("D. Goggles",           25000,  RANKTYPE.MVP);
 
 
     private String displayName;

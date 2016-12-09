@@ -19,7 +19,7 @@ import java.util.Map;
 public class PlayerPaintballStats extends PlayerGameStats {
 
     //NOTE: TODO: headstart is at 10 if player is pre-eula donor. If not, its in the API.
-    //<editor-fold desc="[Global Variables]>
+    //<editor-fold desc="[Global Variables]">
     private int coins;
     private int kills;
     private int deaths;
@@ -52,7 +52,10 @@ public class PlayerPaintballStats extends PlayerGameStats {
     private HashMap<String, PERK> unlockedPerks = new HashMap<String, PERK>();
 
     @OutDated
-    private int votes_Juice, votes_Babyland, votes_Victorian, votes_Courtyard, votes_Outback, votes_Herobrine, votes_Octagon;
+    private int votes_Juice, votes_Babyland, votes_Victorian, votes_Courtyard, votes_Outback, votes_Herobrine, votes_Octagon, votes_OhCanada, votes_Egypt, votes_Market;
+
+    @OutDated
+    private boolean achievement_flag_1;
 
     //</editor-fold>
 
@@ -136,6 +139,10 @@ public class PlayerPaintballStats extends PlayerGameStats {
             case "FORCEFIELDTIME":
                 this.forcefieldTime = value.getAsInt();
                 break;
+
+            case "SHOTS":
+                //outdated
+                break;
             //</editor-fold>
 
             //<editor-fold desc="[Misc stuff]">
@@ -170,6 +177,15 @@ public class PlayerPaintballStats extends PlayerGameStats {
             case "VOTES_OCTAGON":
                 this.votes_Octagon = value.getAsInt();
                 return true;
+            case "VOTES_OH CANADA!":
+                this.votes_OhCanada = value.getAsInt();
+                return true;
+            case "VOTES_EGYPT":
+                this.votes_Egypt = value.getAsInt();
+                return true;
+            case "VOTES_MARKET":
+                this.votes_Market = value.getAsInt();
+                return true;
             //</editor-fold>
             default:
                 return false;
@@ -203,6 +219,9 @@ public class PlayerPaintballStats extends PlayerGameStats {
                 KILLSTREAK item = KILLSTREAK.valueOf(value);
                 this.unlockedKillstreaks.put(value, item);
                 return;
+            }else if(value.equals("ACHIEVEMENT_FLAG_1")){
+                this.achievement_flag_1 = true;
+                return;
             }else {
                 //guess it wasnt any of those. Print out the value it was trying to use?
                 HypixelLib.logger.logWarn("[PlayerAPI.Paintball.package] Unknown value: " + value);
@@ -210,8 +229,7 @@ public class PlayerPaintballStats extends PlayerGameStats {
         }
     }
 
-
-
+    //<editor-fold desc="[GETTERS]">
     public int getCoins() {
         return coins;
     }
@@ -353,6 +371,23 @@ public class PlayerPaintballStats extends PlayerGameStats {
     public int getVotes_Octagon() {
         return votes_Octagon;
     }
+    @OutDated
+    public int getVotes_Market() {
+        return votes_Market;
+    }
+    @OutDated
+    public int getVotes_Egypt() {
+        return votes_Egypt;
+    }
+    @OutDated
+    public int getVotes_OhCanada() {
+        return votes_OhCanada;
+    }
+
+    @OutDated
+    public boolean isAchievement_Flag_1() { return achievement_flag_1; }
+
+    //</editor-fold>
 
 
 }

@@ -43,13 +43,13 @@ public class PlayerBlitzStats extends PlayerGameStats {
     private BASIC_KIT selectedBasicKit;
     private ADVANCED_KIT selectedAdvancedKit;
 
-    private boolean blood, fancyMode /* killcounter */, tauntAbility, toggled /*killcounter*/, autoArmor, combatTracker /*/trackcombat?*/;
+    private boolean blood, fancyMode /* killcounter */, tauntAbility, toggled /*killcounter*/, autoArmor, combatTracker /*/trackcombat?*/, aura;
 
     private int kills, deaths, wins, teamWins, coins;
 
     @OutDated
     private int monthly_kills_b, monthly_kills_a, weekly_kills_a, weekly_kills_b;
-    private int votes_Caelum_v2, votes_Winter, votes_Cattle_Drive, votes_Valley, votes_Stoneguard, votes_Peaks, votes_Citadel, votes_Aelin_Tower, votes_Pixelville;
+    private int votes_Caelum_v2, votes_Winter, votes_Cattle_Drive, votes_Valley, votes_Stoneguard, votes_Peaks, votes_Citadel, votes_Aelin_Tower, votes_Pixelville, votes_MiradorBasin;
     //</editor-fold>
 
     private void initialize() {
@@ -67,11 +67,11 @@ public class PlayerBlitzStats extends PlayerGameStats {
     }
 
     private boolean setValue(String key, JsonElement element){
-        switch(key.toUpperCase()){
+        switch(key.toUpperCase().trim()){
             //<editor-fold desc="[Selected Items]">
             case "AURA":
-                if(AURA.mapping.contains(element.getAsString().toUpperCase())){
-                    this.selectedAura = AURA.valueOf(element.getAsString().toUpperCase());
+                if(AURA.mapping.contains(element.getAsString().toUpperCase().replace("_PARTICLE", ""))){
+                    this.selectedAura = AURA.valueOf(element.getAsString().toUpperCase().replace("_PARTICLE", ""));
                 }else{
                     Logger.logError("[PlayerAPI.Blitz.AURA] Unknown aura: " + element.getAsString().toUpperCase());
                 }
@@ -129,6 +129,7 @@ public class PlayerBlitzStats extends PlayerGameStats {
                 this.fancyMode = element.getAsBoolean();
                 return true;
             case "TOGGLED":
+            case "TOGGLEKILLCOUNTER":
                 this.toggled = element.getAsBoolean();
                 return true;
             case "AUTOARMOR":
@@ -136,6 +137,9 @@ public class PlayerBlitzStats extends PlayerGameStats {
                 return true;
             case "COMBATTRACKER":
                 this.combatTracker = element.getAsBoolean();
+                return true;
+            case "AURATOGGLE":
+                this.aura = element.getAsBoolean();
                 return true;
             //</editor-fold>
 
@@ -155,7 +159,6 @@ public class PlayerBlitzStats extends PlayerGameStats {
             case "VOTES_CAELUM V2":
                 this.votes_Caelum_v2 = element.getAsInt();
                 return true;
-            case "VOTES_WINTER ":
             case "VOTES_WINTER":
                 this.votes_Winter = element.getAsInt();
                 return true;
@@ -180,12 +183,16 @@ public class PlayerBlitzStats extends PlayerGameStats {
             case "VOTES_CITADEL":
                 this.votes_Citadel = element.getAsInt();
                 return true;
+            case "VOTES_MIRADOR BASIN":
+                this.votes_MiradorBasin = element.getAsInt();
+                return true;
             //</editor-fold>
         }
         return false;
     }
 
     private boolean setSpecialValue(String key, JsonElement element){
+        key = key.replace(" ", "_");
         if(BASIC_KIT.mapping.contains(key.toUpperCase())){
             basicKits.put(BASIC_KIT.valueOf(key.toUpperCase()), element.getAsInt());
             return true;
@@ -235,11 +242,9 @@ public class PlayerBlitzStats extends PlayerGameStats {
         return false;
     }
 
-
-
     private void setPackageValues(JsonArray array){
         for(JsonElement element: array) {
-            String name = element.getAsString().toUpperCase().replace("FINISHER_", "");
+            String name = element.getAsString().toUpperCase().replace("FINISHER_", "").replace("_FINISHER", "");
             if (BLITZ_POWERUP.mapping.contains(name)) {
                 this.unlockedPowerups.add(BLITZ_POWERUP.valueOf(name));
             } else if(KILL_EFFECT.mapping.contains(name)){
@@ -256,6 +261,7 @@ public class PlayerBlitzStats extends PlayerGameStats {
         }
     }
 
+    //<editor-fold desc="[GETTERS]">
     public HashMap<BASIC_KIT, Integer> getBasicKits() {
         return basicKits;
     }
@@ -340,6 +346,8 @@ public class PlayerBlitzStats extends PlayerGameStats {
         return combatTracker;
     }
 
+    public boolean isAura() { return aura; }
+
     public int getKills() {
         return kills;
     }
@@ -411,4 +419,8 @@ public class PlayerBlitzStats extends PlayerGameStats {
     public int getVotes_Pixelville() {
         return votes_Pixelville;
     }
+    @OutDated
+    public int getVotes_MiradorBasin() { return votes_MiradorBasin; }
+
+    //</editor-fold>
 }

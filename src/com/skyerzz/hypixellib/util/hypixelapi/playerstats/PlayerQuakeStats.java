@@ -127,6 +127,13 @@ public class PlayerQuakeStats extends PlayerGameStats {
                 this.instantRespawn = value.getAsBoolean();
                 return true;
 
+            //outdated
+            case "TEAM_WINS":
+            case "WINS_TEAM":
+            case "WINS_DM":
+            case "WINS_TIMEATTACK":
+            case "WINS_DM_TEAM":
+                return true;
 
             //</editor-fold>
 
@@ -180,7 +187,7 @@ public class PlayerQuakeStats extends PlayerGameStats {
                     Logger.logWarn("[PlayerAPI.Quake.Hat] Unknown Value: " + value.getAsString().toUpperCase());
                 }
                 break;
-            case "KIT":
+            case "ARMOR":
                 if(KIT.mapping.contains(value.getAsString().toUpperCase())){
                     this.selectedKit = KIT.valueOf(value.getAsString().toUpperCase());
                 }else{
@@ -214,7 +221,7 @@ public class PlayerQuakeStats extends PlayerGameStats {
             name = name.replaceAll("[A-Z]+\\.", "");
             if(name.equals("INSTANT_RESPAWN")){
                 this.instantRespawn = true;
-            }else if(name.equals("ACHIEVEMENT_FLAG_1")){
+            }else if(name.equals("ACHIEVEMENT_FLAG_1") || name.equals("FLAG_1")){
                 this.achievement_flag_1 = true;
             }else if(KILLSOUND.mapping.contains(name)){
                 this.unlockedKillSounds.add(KILLSOUND.valueOf(name));
@@ -240,6 +247,7 @@ public class PlayerQuakeStats extends PlayerGameStats {
         }
     }
 
+    //<editor-fold desc="[GETTERS]">
     public int getCoins() {
         return coins;
     }
@@ -375,4 +383,5 @@ public class PlayerQuakeStats extends PlayerGameStats {
     public boolean isAchievement_flag_1() {
         return achievement_flag_1;
     }
+    //</editor-fold>
 }

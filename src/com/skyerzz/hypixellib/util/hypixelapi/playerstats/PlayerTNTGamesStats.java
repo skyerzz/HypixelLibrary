@@ -17,6 +17,7 @@ import java.util.Map;
  * Created by sky on 21-7-2016.
  */
 public class PlayerTNTGamesStats extends PlayerGameStats {
+    //<editor-fold desc="[GLOBALS]">
     //stats
     private int coins;
 
@@ -70,7 +71,8 @@ public class PlayerTNTGamesStats extends PlayerGameStats {
     private ArrayList<HAT> unlockedHats = new ArrayList<>();
 
     @OutDated
-    private int votes_Quadral, votes_ForgottenPlanet, votes_Atior, votes_Node, votes_TallGate, votes_GreenBelt, votes_TwinSpire, votes_TheVale, votes_Totum, votes_FireFall, votes_Blossom, votes_Gladius, votes_Crucible;
+    private int votes_Quadral, votes_ForgottenPlanet, votes_Atior, votes_Node, votes_TallGate, votes_GreenBelt, votes_TwinSpire, votes_TheVale, votes_Totum, votes_FireFall, votes_Blossom, votes_Gladius, votes_Crucible, votes_Heather, votes_Downvault, votes_DreadPit, votes_IceFortress, votes_Tombed;
+    //</editor-fold>
 
     public PlayerTNTGamesStats(JsonObject json) {
         super(json);
@@ -236,7 +238,24 @@ public class PlayerTNTGamesStats extends PlayerGameStats {
             case "VOTES_GLADIUS":
                 this.votes_Gladius = element.getAsInt();
                 return true;
-
+            case "VOTES_HEATHER":
+                this.votes_Heather = element.getAsInt();
+                return true;
+            case "VOTES_DOWNVAULT":
+                this.votes_Downvault = element.getAsInt();
+                return true;
+            case "VOTES_DREAD PIT":
+                this.votes_DreadPit = element.getAsInt();
+                return true;
+            case "VOTES_ICE FORTRESS":
+                this.votes_IceFortress = element.getAsInt();
+                return true;
+            case "VOTES_TOMBED":
+                this.votes_Tombed = element.getAsInt();
+                return true;
+            case "WITHER":
+                //todo unknown stuff
+                return true;
             //</editor-fold>
         }
         return false;
@@ -292,6 +311,9 @@ public class PlayerTNTGamesStats extends PlayerGameStats {
             }else if(value.equals("SLOW_POTION")){
                 this.slow_potion = true;
                 return;
+            }else if(value.equals("ENDER")){
+                //todo find out what this is
+                return;
             }else if(HAT.mapping.contains(value)){
                 this.unlockedHats.add(HAT.valueOf(value));
                 return;
@@ -302,6 +324,7 @@ public class PlayerTNTGamesStats extends PlayerGameStats {
         }
     }
 
+    //<editor-fold desc="[GETTERS]">
     public int getCoins() {
         return coins;
     }
@@ -501,4 +524,21 @@ public class PlayerTNTGamesStats extends PlayerGameStats {
     public int getVotes_Crucible() {
         return votes_Crucible;
     }
+    @OutDated
+    public int getVotes_Heather() {
+        return votes_Heather;
+    }
+    @OutDated
+    public int getVotes_Downvault() {
+        return votes_Downvault;
+    }
+    @OutDated
+    public int getVotes_DreadPit() {
+        return votes_DreadPit;
+    }
+    @OutDated
+    public int getVotes_IceFortress() {
+        return votes_IceFortress;
+    }
+    //</editor-fold>
 }

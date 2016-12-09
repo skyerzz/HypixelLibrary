@@ -45,21 +45,12 @@ public class HypixelAPI{
         return false;
     }
 
-    private String getUuid(String name){
+    private String getUuid(String name) throws MalformedAPIKeyException, IOException, PlayerNonExistentException {
         if(name.replace("-", "").length() == 32){
             return name.replace("-", "");
         }
         MojangAPI moj = new MojangAPI();
-        try {
-            return moj.getJSON(moj.getURL(name)).get("id").getAsString();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (MalformedAPIKeyException e) {
-            e.printStackTrace();
-        } catch (PlayerNonExistentException e) {
-            e.printStackTrace();
-        }
-        return null;
+        return moj.getJSON(moj.getURL(name)).get("id").getAsString();
     }
 
 }

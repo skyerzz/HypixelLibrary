@@ -23,56 +23,56 @@ public class PlayerAPI extends AbstractAPIReply{
     }
 
     public PlayerQuakeStats getQuakeStats(){
-        if(quakeStats==null){
+        if(quakeStats==null && apiGameJson.get("Quake")!=null){
             this.quakeStats = new PlayerQuakeStats(apiGameJson.get("Quake").getAsJsonObject());
         }
         return quakeStats;
     }
 
     public PlayerPaintballStats getPaintballStats() {
-        if(paintballStats==null){
+        if(paintballStats==null && apiGameJson.get("Paintball")!=null){
             this.paintballStats = new PlayerPaintballStats(apiGameJson.get("Paintball").getAsJsonObject());
         }
         return paintballStats;
     }
 
     public PlayerTNTGamesStats getTntGamesStats() {
-        if(tntGamesStats == null){
+        if(tntGamesStats == null && apiGameJson.get("TNTGames")!=null){
             this.tntGamesStats = new PlayerTNTGamesStats(apiGameJson.get("TNTGames").getAsJsonObject());
         }
         return tntGamesStats;
     }
 
     public PlayerVampireZStats getVampireZStats() {
-        if(vampireZStats == null){
+        if(vampireZStats == null && apiGameJson.get("VampireZ")!=null){
             this.vampireZStats = new PlayerVampireZStats(apiGameJson.get("VampireZ").getAsJsonObject());
         }
         return vampireZStats;
     }
 
     public PlayerTurboKartRacersStats getTurboKartRacersStats() {
-        if(turboKartRacersStats==null){
+        if(turboKartRacersStats==null && apiGameJson.get("GingerBread")!=null){
             this.turboKartRacersStats = new PlayerTurboKartRacersStats(apiGameJson.get("GingerBread").getAsJsonObject());
         }
         return turboKartRacersStats;
     }
 
     public PlayerArcadeStats getArcadeStats() {
-        if(arcadeStats==null) {
+        if(arcadeStats==null && apiGameJson.get("Arcade")!=null) {
             this.arcadeStats = new PlayerArcadeStats(apiGameJson.get("Arcade").getAsJsonObject());
         }
         return arcadeStats;
     }
 
     public PlayerCopsAndCrimsStats getCopsAndCrimsStats() {
-        if(copsAndCrimsStats == null){
+        if(copsAndCrimsStats == null && apiGameJson.get("MCGO")!=null){
             this.copsAndCrimsStats = new PlayerCopsAndCrimsStats(apiGameJson.get("MCGO").getAsJsonObject());
         }
         return copsAndCrimsStats;
     }
 
     public PlayerBlitzStats getBlitzStats(){
-        if(blitzStats == null){
+        if(blitzStats == null && apiGameJson.get("HungerGames")!=null){
             this.blitzStats = new PlayerBlitzStats(apiGameJson.get("HungerGames").getAsJsonObject());
         }
         return blitzStats;

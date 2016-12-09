@@ -290,7 +290,7 @@ public class PlayerTurboKartRacersStats extends PlayerGameStats {
             case "JACKET_ACTIVE":
             case "PANTS_ACTIVE":
             case "SHOES_ACTIVE":
-                setActiveSuitPart(key, value.getAsString());
+                setActiveSuitPart(key, value.getAsString().replaceAll(":[A-Z]+", ""));
                 return true;
             case "PACKAGES":
                 initPackages(value.getAsJsonArray());

@@ -15,7 +15,7 @@ public enum AURA{
     RAINBOW("Rainbow Particle Aura", 0, RANKTYPE.VIP_PLUS),
     SLIME("Slime Particle Aura", 0, RANKTYPE.VIP_PLUS),
     PORTAL("Portal Particle Aura", 0, RANKTYPE.MVP_PLUS),
-    RAINBOW_DUST("Rainbow Dust Particle Aura", 0, RANKTYPE.VIP_PLUS),
+    DUST("Rainbow Dust Particle Aura", 0, RANKTYPE.VIP_PLUS),
     ENCHANTING("Enchanting Particle Aura", 0, RANKTYPE.MVP_PLUS),
     LAVA("Lava Particle Aura", 0, RANKTYPE.VIP_PLUS),
     SNOW("Snow Particle Aura", 0, RANKTYPE.VIP),

@@ -19,6 +19,7 @@ public enum KILLSOUND {
     CREEPER_DEATH("Creeper Death", 4000, RANKTYPE.VIP),
     GHAST_DEATH("Ghas Death", 5000, RANKTYPE.VIP_PLUS),
     DRAGON_GROWL("Dragon Growl", 5000, RANKTYPE.VIP_PLUS),
+    DRAGON_DEATH("Dragon Growl", 5000, RANKTYPE.VIP_PLUS),
     VILLAGER_MHM("Villager MHM", 5000, RANKTYPE.MVP);
 
     private String displayName;

@@ -18,7 +18,7 @@ import java.util.Map;
 public class PlayerVampireZStats extends PlayerGameStats {
 
 
-    //<editor-fold desc="[Variables]>
+    //<editor-fold desc="[Variables]">
     private boolean combatTracker, blood;
 
     private int coins;
@@ -42,7 +42,7 @@ public class PlayerVampireZStats extends PlayerGameStats {
     private int monthly_human_wins_b, weekly_human_wins_b, monthly_human_wins_a, weekly_human_wins_a, monthly_vampire_wins_b, weekly_vampire_wins_b, monthly_vampire_wins_a, weekly_vampire_wins_a;
 
     @OutDated
-    private int votes_Plundered, votes_Church, votes_DarkValley, votes_Pyramids;
+    private int votes_Plundered, votes_Church, votes_DarkValley, votes_Pyramids, votes_Overhill, votes_Erias;
 
     private HashMap<HUMANPERK, Integer> humanPerk = new HashMap<HUMANPERK, Integer>();
     private HashMap<VAMPIREPERK, Integer> vampirePerk = new HashMap<VAMPIREPERK, Integer>();
@@ -177,6 +177,12 @@ public class PlayerVampireZStats extends PlayerGameStats {
                 return true;
             case "votes_pyramids":
                 this.votes_Pyramids = value.getAsInt();
+                return true;
+            case "votes_overhill":
+                this.votes_Overhill = value.getAsInt();
+                return true;
+            case "votes_erias":
+                this.votes_Erias = value.getAsInt();
                 return true;
             //</editor-fold>
             
@@ -327,6 +333,14 @@ public class PlayerVampireZStats extends PlayerGameStats {
     @OutDated
     public int getVotes_Pyramids() {
         return votes_Pyramids;
+    }
+    @OutDated
+    public int getVotes_Overhill() {
+        return votes_Overhill;
+    }
+    @OutDated
+    public int getVotes_Erias() {
+        return votes_Erias;
     }
 
     public HashMap<HUMANPERK, Integer> getHumanPerk() {
