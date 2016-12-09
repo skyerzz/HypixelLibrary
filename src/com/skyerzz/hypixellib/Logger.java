@@ -1,27 +1,28 @@
 package com.skyerzz.hypixellib;
 
-import org.apache.logging.log4j.LogManager;
+
+import java.util.ArrayList;
 
 /**
  * Created by sky on 7-7-2016.
  */
 public class Logger {
 
-    public static org.apache.logging.log4j.Logger logManager;
+    private static final String prefix = "[HypixelAPI] ";
 
     public Logger(){
-        this.logManager = LogManager.getLogger("HypixelLib");
+
     }
 
     public static void logInfo(String s) {
-        logManager.info(s);
+        System.out.println(prefix + "[INFO] " + s);
     }
 
     public static void logWarn(String s) {
-        logManager.warn(s);
+        System.out.println(prefix + "[WARNING] " + s);
     }
 
     public static void logError(String s) {
-        logManager.error(s);
+        System.out.println(prefix + "[ERROR] " + s);
     }
 }
