@@ -27,6 +27,9 @@ public class PlayerPaintballStats extends PlayerGameStats {
     private int shots;
     private int killstreaks;
 
+    @OutDated
+    private int teamDeaths;
+
     private int fortuneLevel;
     private int enduranceLevel;
     private int godfatherLevel;
@@ -53,7 +56,7 @@ public class PlayerPaintballStats extends PlayerGameStats {
 
     //</editor-fold>
 
-    protected PlayerPaintballStats(JsonObject json) {
+    public PlayerPaintballStats(JsonObject json) {
         super(json);
         initialize();
     }
@@ -81,6 +84,9 @@ public class PlayerPaintballStats extends PlayerGameStats {
                 break;
             case "DEATHS":
                 this.deaths = value.getAsInt();
+                break;
+            case "DEATHS_TEAMS":
+                this.teamDeaths = value.getAsInt();
                 break;
             case "ENDURANCE":
                 this.enduranceLevel = value.getAsInt();
@@ -118,7 +124,7 @@ public class PlayerPaintballStats extends PlayerGameStats {
             case "WEEKLY_KILLS_B":
                 this.weekly_kills_b = value.getAsInt();
                 break;
-            case "WEEKLY_KILS_A":
+            case "WEEKLY_KILLS_A":
                 this.weekly_kills_a = value.getAsInt();
                 break;
             case "MONTHLY_KILLS_A":
@@ -142,6 +148,7 @@ public class PlayerPaintballStats extends PlayerGameStats {
                 }else{
                     Logger.logWarn("[HypixelAPI.Paintball.Hat] Unsupported Value: " + value.getAsString().toUpperCase());
                 }
+                break;
             //</editor-fold>
             default:
                 return false;

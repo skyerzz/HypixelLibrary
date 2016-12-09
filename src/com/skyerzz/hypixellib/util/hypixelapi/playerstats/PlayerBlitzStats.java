@@ -16,7 +16,7 @@ import java.util.Map;
  */
 public class PlayerBlitzStats extends PlayerGameStats {
 
-    protected PlayerBlitzStats(JsonObject json) {
+    public PlayerBlitzStats(JsonObject json) {
         super(json);
         initialize();
     }
@@ -24,6 +24,8 @@ public class PlayerBlitzStats extends PlayerGameStats {
     //<editor-fold desc="[PRIVATES INDEX]"
     private HashMap<BASIC_KIT, Integer> basicKits = new HashMap<>();
     private HashMap<ADVANCED_KIT, Integer> advancedKits = new HashMap<>();
+
+    @OutDated /*Permutations are the old kit inventories*/
     private HashMap<BASIC_KIT, Integer> basicKitPermutations = new HashMap<>();
     private HashMap<ADVANCED_KIT, Integer> advancedKitPermutations = new HashMap<>();
 
@@ -39,9 +41,9 @@ public class PlayerBlitzStats extends PlayerGameStats {
     private BASIC_KIT selectedBasicKit;
     private ADVANCED_KIT selectedAdvancedKit;
 
-    private boolean blood, fancyMode /* killcounter */, tauntAbility, toggled /*killcounter*/;
+    private boolean blood, fancyMode /* killcounter */, tauntAbility, toggled /*killcounter*/, autoArmor;
 
-    private int kills, deaths, wins, teamWins;
+    private int kills, deaths, wins, teamWins, coins;
 
     @OutDated
     public int monthly_kills_b, monthly_kills_a, weekly_kills_a, weekly_kills_b;
@@ -103,6 +105,9 @@ public class PlayerBlitzStats extends PlayerGameStats {
             //</editor-fold>
 
             //<editor-fold desc="[Standards]">
+            case "COINS":
+                this.coins = element.getAsInt();
+                return true;
             case "WINS":
                 this.wins = element.getAsInt();
                 return true;
@@ -124,19 +129,22 @@ public class PlayerBlitzStats extends PlayerGameStats {
             case "TOGGLED":
                 this.toggled = element.getAsBoolean();
                 return true;
+            case "AUTOARMOR":
+                this.autoArmor = element.getAsBoolean();
+                return true;
             //</editor-fold>
 
             //<editor-fold desc="[Outdated]">
             case "WEEKLY_KILLS_A":
                 this.weekly_kills_a = element.getAsInt();
                 return true;
-            case "WEEKLY_KILLS_b":
+            case "WEEKLY_KILLS_B":
                 this.weekly_kills_b = element.getAsInt();
                 return true;
             case "MONTHLY_KILLS_A":
                 this.monthly_kills_a = element.getAsInt();
                 return true;
-            case "MONTHLY_KILLS_b":
+            case "MONTHLY_KILLS_B":
                 this.monthly_kills_b = element.getAsInt();
                 return true;
             case "VOTES_CAELUM V2":
@@ -163,6 +171,9 @@ public class PlayerBlitzStats extends PlayerGameStats {
             case "VOTES_PIXELVILLE":
                 this.votes_Pixelville = element.getAsInt();
                 return true;
+            case "VOTES_CITADEL":
+                this.votes_Citadel = element.getAsInt();
+                return true;
             //</editor-fold>
         }
         return false;
@@ -177,29 +188,30 @@ public class PlayerBlitzStats extends PlayerGameStats {
             advancedKits.put(ADVANCED_KIT.valueOf(key.toUpperCase()), element.getAsInt());
             return true;
         }
-        if(key.contains("Inventory")){
+        if(key.contains("INVENTORY")){
             Logger.logInfo("[Blitz.kitInventory] Kit inventories not (yet) supported, skipping " + key);
             return true;
         }
-        if(key.contains("permutation")){
-            String kit = key.replace("kit_permutations_", "").toUpperCase();
+        if(key.contains("PERMUTATION")){
+            String kit = key.replace("KIT_PERMUTATIONS_", "").toUpperCase();
             if(BASIC_KIT.mapping.contains(kit)){
-                basicKitPermutations.put(BASIC_KIT.valueOf(key.toUpperCase()), element.getAsInt());
+                basicKitPermutations.put(BASIC_KIT.valueOf(kit), element.getAsInt());
             }
             else if(ADVANCED_KIT.mapping.contains(kit)){
-                advancedKitPermutations.put(ADVANCED_KIT.valueOf(key.toUpperCase()), element.getAsInt());
+                advancedKitPermutations.put(ADVANCED_KIT.valueOf(kit), element.getAsInt());
             }else{
                 Logger.logError("[PlayerAPI.Blitz.kitPermutations] Could not find kit " + kit);
             }
             return true;
         }
         if(key.contains("kit_item_rename")){
-            String kit = key.replace("kit_item_rename_", "");
+            String kit = key.replace("KIT_ITEM_RENAME_", "");
             this.renamedItems.put(kit.toUpperCase(), element.getAsString());
             return true;
         }
-        if(key.equals("packages")){
+        if(key.equals("PACKAGES")){
             setPackageValues(element.getAsJsonArray());
+            return true;
         }
         return false;
     }
@@ -207,11 +219,15 @@ public class PlayerBlitzStats extends PlayerGameStats {
 
 
     private void setPackageValues(JsonArray array){
-        for(JsonElement element: array){
+        for(JsonElement element: array) {
             String name = element.getAsString().toUpperCase();
-            if(BLITZ_POWERUP.mapping.contains(name)){
+            if (BLITZ_POWERUP.mapping.contains(name)) {
                 this.unlockedPowerups.add(BLITZ_POWERUP.valueOf(name));
-            }else{
+            } else if (name.equals("PACKAGE_TAUNT")) {
+                this.tauntAbility = true;
+            } else if(name.equals("DEFAULT_TAUNT")){
+                    //todo find out which this is
+            } else{
                 Logger.logWarn("[PlayerAPI.Blitz.Packages] Unknown Value: " + name);
             }
         }

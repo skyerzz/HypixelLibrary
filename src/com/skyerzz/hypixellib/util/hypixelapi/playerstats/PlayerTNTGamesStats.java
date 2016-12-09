@@ -1,12 +1,17 @@
 package com.skyerzz.hypixellib.util.hypixelapi.playerstats;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.skyerzz.hypixellib.Logger;
+import com.skyerzz.hypixellib.OutDated;
 import com.skyerzz.hypixellib.util.games.tntgames.DEATHEFFECT;
 import com.skyerzz.hypixellib.util.games.tntgames.HAT;
 import com.skyerzz.hypixellib.util.games.tntgames.PARTICLEEFFECT;
 import com.skyerzz.hypixellib.util.games.tntgames.WIZARD;
+
+import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * Created by sky on 21-7-2016.
@@ -62,111 +67,215 @@ public class PlayerTNTGamesStats extends PlayerGameStats {
     private HAT selectedHat;
     private WIZARD selectedWizard;
 
+    private ArrayList<HAT> unlockedHats = new ArrayList<>();
 
-    protected PlayerTNTGamesStats(JsonObject json) {
+    @OutDated
+    private int votes_Quadral, votes_ForgottenPlanet, votes_Atior, votes_Node, votes_TallGate, votes_GreenBelt;
+
+    public PlayerTNTGamesStats(JsonObject json) {
         super(json);
         initialize();
     }
 
-    private void initialize(){
-        initWizards();
-        initTag();
-        initRuns();
-        initSpleef();
-        initSelectedItems();
-        initOthers();
-    }
+    private void initialize() {
+        for (Map.Entry<String, JsonElement> e : json.entrySet()) {
 
-    private void initWizards(){
-        this.wizards_fire_explode = getJsonInt("firewizard_explode")+1;
-        this.wizards_fire_regen = getJsonInt("firewizard_regen")+1;
+            String key = e.getKey().toUpperCase();
+            if (setValue(key, e.getValue())) {
+                continue;
+            } else if (setSpecialValue(key, e.getValue())) {
+                continue;
+            }
 
-        this.wizards_kinetic_explode = getJsonInt("kineticwizard_explode")+1;
-        this.wizards_kinetic_regen = getJsonInt("kineticwizard_regen")+1;
-
-        this.wizards_ice_explode = getJsonInt("icewizard_explode")+1;
-        this.wizards_ice_regen = getJsonInt("icewizard_regen")+1;
-
-        this.wizards_wither_explode = getJsonInt("witherwizard_explode")+1;
-        this.wizards_wither_regen = getJsonInt("witherwizard_regen")+1;
-
-        this.wizards_blood_explode = getJsonInt("bloodwizard_explode")+1;
-        this.wizards_blood_regen = getJsonInt("bloodwizard_regen")+1;
-
-        this.wizards_assists = getJsonInt("assists_capture");
-        this.wizards_wins = getJsonInt("wins_capture");
-        this.wizards_deaths = getJsonInt("deaths_capture");
-        this.wizards_kills = getJsonInt("kills_capture");
-    }
-
-    private void initTag(){
-        this.tag_speedy = getJsonInt("tag_speed")+1;
-        this.tag_kills = getJsonInt("kills_tntag");
-        this.tag_wins = getJsonInt("wins_tntag");
-    }
-
-    private void initRuns(){
-        this.run_wins = getJsonInt("wins_tntrun");
-        this.run_record = getJsonInt("record_tntrun");
-        this.run_doubleJump = getJsonInt("doublejump_tntrun")+2;    //+2 cause you get 1 for free
-
-        this.pvprun_kills = getJsonInt("kills_pvprun");
-        this.pvprun_wins = getJsonInt("wins_pvprun");
-        this.pvprun_record = getJsonInt("record_pvprun");
-    }
-
-    private void initSpleef(){
-        this.bowspleef_deaths = getJsonInt("deaths_bowspleef");
-        //+2 cause you get one for free
-        this.bowspleef_doubleJump = getJsonInt("spleef_doublejump")+2;
-        this.bowspleef_repulsor = getJsonInt("spleef_repulse")+2;
-        this.bowspleef_tripleShot = getJsonInt("spleef_triple")+2;
-
-        this.bowspleef_shots = getJsonInt("tags_bowspleef");
-        this.bowspleef_wins = getJsonInt("wins_bowspleef");
-    }
-
-    private void initSelectedItems(){
-        String temp = getJsonString("selected_class").toUpperCase();
-        if(WIZARD.mapping.contains(temp)){
-            this.selectedWizard = WIZARD.valueOf(temp);
-        }else if(!temp.equals("NULL")){
-            Logger.logWarn("[PlayerAPI.TNTGames.SelectedClass] Value not found: " + temp);
+            Logger.logWarn("[PlayerAPI.TNTGames.initialize] Unknown value: " + key);
         }
-
-        temp = getJsonString("active_particle_effect");
-        if(PARTICLEEFFECT.mapping.contains(temp)){
-            this.selectedParticleEffect = PARTICLEEFFECT.valueOf(temp);
-        }else if(!temp.equals("NULL")){
-            Logger.logWarn("[PlayerAPI.TNTGames.ParticleEffect] Value not found: " + temp);
-        }
-
-        temp = getJsonString("selected_hat");
-        if(HAT.mapping.contains(temp)){
-            this.selectedHat = HAT.valueOf(temp);
-        }else if(!temp.equals("NULL")){
-            Logger.logWarn("[PlayerAPI.TNTGames.Hat] Value not found: " + temp);
-        }
-
-        temp = getJsonString("active_death_effect");
-        if(DEATHEFFECT.mapping.contains(temp)){
-            this.selectedDeathEffect = DEATHEFFECT.valueOf(temp);
-        }else if(!temp.equals("NULL")){
-            Logger.logWarn("[PlayerAPI.TNTGames.DeathEffect] Value not found: " + temp);
-        }
-
     }
 
-    private void initOthers(){
-        this.coins = getJsonInt("coins");
+    private boolean setValue(String key, JsonElement element){
+        switch(key){
+            //<editor-fold desc="[Wizards]">
+            case "FIREWIZARD_EXPLODE":
+                this.wizards_fire_explode = element.getAsInt();
+                return true;
+            case "FIREWIZARD_REGEN":
+                this.wizards_fire_regen = element.getAsInt();
+                return true;
+            case "KINETICWIZARD_EXPLODE":
+                this.wizards_kinetic_explode = element.getAsInt();
+                return true;
+            case "KINETICWIZARD_REGEN":
+                this.wizards_kinetic_regen = element.getAsInt();
+                return true;
+            case "ICEWIZARD_EXPLODE":
+                this.wizards_ice_explode = element.getAsInt();
+                return true;
+            case "ICEWIZARD_REGEN":
+                this.wizards_ice_regen = element.getAsInt();
+                return true;
+            case "WITHERWIZARD_EXPLODE":
+                this.wizards_wither_explode = element.getAsInt();
+                return true;
+            case "WITHERWIZARD_REGEN":
+                this.wizards_wither_regen = element.getAsInt();
+                return true;
+            case "BLOODWIZARD_EXPLODE":
+                this.wizards_blood_explode = element.getAsInt();
+                return true;
+            case "BLOODWIZARD_REGEN":
+                this.wizards_blood_regen = element.getAsInt();
+                return true;
+            case "ASSISTS_CAPTURE":
+                this.wizards_assists = element.getAsInt();
+                return true;
+            case "WINS_CAPTURE":
+                this.wizards_wins = element.getAsInt();
+                return true;
+            case "DEATHS_CAPTURE":
+                this.wizards_deaths = element.getAsInt();
+                return true;
+            case "KILLS_CAPTURE":
+                this.wizards_kills = element.getAsInt();
+                return true;
+            //</editor-fold>
 
-        for(JsonElement s: getJsonArray("packages")){
-            if(s.getAsString().equalsIgnoreCase("speed_potion")){
+            //<editor-fold desc="[TAG]">
+            case "TAG_SPEED":
+                this.tag_speedy = element.getAsInt();
+                return true;
+            case "KILLS_TNTAG":
+                this.tag_kills = element.getAsInt();
+                return true;
+            case "WINS_TNTAG":
+                this.tag_wins = element.getAsInt();
+                return true;
+            //</editor-fold>
+
+            //<editor-fold desc="[RUN]">
+            case "WINS_TNTRUN":
+                this.run_wins = element.getAsInt();
+                return true;
+            case "RECORD_TNTRUN":
+                this.run_record = element.getAsInt();
+                return true;
+            case "DOUBLEJUMP_TNTRUN":
+                this.run_doubleJump = element.getAsInt();
+                return true;
+            case "KILLS_PVPRUN":
+                this.pvprun_kills = element.getAsInt();
+                return true;
+            case "WINS_PVPRUN":
+                this.pvprun_wins = element.getAsInt();
+                return true;
+            case "RECORD_PVPRUN":
+                this.pvprun_record = element.getAsInt();
+                return true;
+            //</editor-fold>
+
+            //<editor-fold desc="[SPLEEF]">
+            case "DEATHS_BOWSPLEEF":
+                this.bowspleef_deaths = element.getAsInt();
+                return true;
+            case "SPLEEF_DOUBLEJUMP":
+                this.bowspleef_doubleJump = element.getAsInt();
+                return true;
+            case "SPLEEF_REPULSE":
+                this.bowspleef_repulsor = element.getAsInt();
+                return true;
+            case "SPLEEF_TRIPLE":
+                this.bowspleef_tripleShot = element.getAsInt();
+                return true;
+            case "TAGS_BOWSPLEEF":
+                this.bowspleef_shots = element.getAsInt();
+                return true;
+            case "WINS_BOWSPLEEF":
+                this.bowspleef_wins = element.getAsInt();
+                return true;
+            //</editor-fold>
+
+            case "COINS":
+                this.coins = element.getAsInt();
+                return true;
+
+            //<editor-fold desc="[Outdated]">
+            case "VOTES_QUADRAL":
+                this.votes_Quadral = element.getAsInt();
+                return true;
+            case "VOTES_FORGOTTEN PLANET":
+                this.votes_ForgottenPlanet = element.getAsInt();
+                return true;
+            case "VOTES_ATIOR":
+                this.votes_Atior = element.getAsInt();
+                return true;
+            case "VOTES_NODE":
+                this.votes_Node = element.getAsInt();
+                return true;
+            case "VOTES_TALLGATE":
+                this.votes_TallGate = element.getAsInt();
+                return true;
+            case "VOTES_GREENBELT":
+                this.votes_GreenBelt = element.getAsInt();
+                return true;
+            //</editor-fold>
+        }
+        return false;
+    }
+
+    private boolean setSpecialValue(String key, JsonElement element){
+        switch(key){
+            case "CAPTURE_CLASS":
+                String value = element.getAsString().toUpperCase().replace(" WIZARD", "");
+                if(WIZARD.mapping.contains(value)){
+                    this.selectedWizard = WIZARD.valueOf(value);
+                }else{
+                    Logger.logWarn("[PlayerAPI.TNTGames.CaptureClass] Value not found: " + value);
+                }
+                return true;
+            case "ACTIVE_PARTICLE_EFFECT":
+                value = element.getAsString().toUpperCase();
+                if(PARTICLEEFFECT.mapping.contains(value)){
+                    this.selectedParticleEffect = PARTICLEEFFECT.valueOf(value);
+                }else{
+                    Logger.logWarn("[PlayerAPI.TNTGames.ParticleEffect] Value not found: " + value);
+                }
+                return true;
+            case "SELECTED_HAT":
+                value = element.getAsString().toUpperCase();
+                if(HAT.mapping.contains(value)){
+                    this.selectedHat = HAT.valueOf(value);
+                }else{
+                    Logger.logWarn("[PlayerAPI.TNTGames.Hat] Value not found: " + value);
+                }
+                return true;
+            case "ACTIVE_DEATH_EFFECT":
+                value = element.getAsString().toUpperCase();
+                if(DEATHEFFECT.mapping.contains(value)){
+                    this.selectedDeathEffect = DEATHEFFECT.valueOf(value);
+                }else{
+                    Logger.logWarn("[PlayerAPI.TNTGames.DeathEffect] Value not found: " + value);
+                }
+                return true;
+            case "PACKAGES":
+                setPackageValues(element.getAsJsonArray());
+                return true;
+        }
+        return false;
+    }
+
+    private void setPackageValues(JsonArray array){
+        for(JsonElement element: array){
+            String value = element.getAsString().toUpperCase();
+            if(value.equals("SPEED_POTION")){
                 this.speed_potion = true;
-            }else if(s.getAsString().equalsIgnoreCase("slow_potion")){
+                return;
+            }else if(value.equals("SLOW_POTION")){
                 this.slow_potion = true;
-            }else{
-                Logger.logWarn("[PlayerAPI.TNTGames.package] Value not found: " + s.getAsString());
+                return;
+            }else if(HAT.mapping.contains(value)){
+                this.unlockedHats.add(HAT.valueOf(value));
+                return;
+            }else {
+                //guess it wasnt any of those. Print out the value it was trying to use?
+                Logger.logWarn("[PlayerAPI.TNTGames.package] Unknown value: " + value);
             }
         }
     }
@@ -232,63 +341,63 @@ public class PlayerTNTGamesStats extends PlayerGameStats {
     }
 
     public int getRun_doubleJump() {
-        return run_doubleJump;
+        return run_doubleJump+2;
     }
 
     public int getBowspleef_doubleJump() {
-        return bowspleef_doubleJump;
+        return bowspleef_doubleJump+2;
     }
 
     public int getBowspleef_tripleShot() {
-        return bowspleef_tripleShot;
+        return bowspleef_tripleShot+2;
     }
 
     public int getBowspleef_repulsor() {
-        return bowspleef_repulsor;
+        return bowspleef_repulsor+2;
     }
 
     public int getWizards_fire_explode() {
-        return wizards_fire_explode;
+        return wizards_fire_explode+1;
     }
 
     public int getWizards_fire_regen() {
-        return wizards_fire_regen;
+        return wizards_fire_regen+1;
     }
 
     public int getWizards_kinetic_explode() {
-        return wizards_kinetic_explode;
+        return wizards_kinetic_explode+1;
     }
 
     public int getWizards_kinetic_regen() {
-        return wizards_kinetic_regen;
+        return wizards_kinetic_regen+1;
     }
 
     public int getWizards_ice_explode() {
-        return wizards_ice_explode;
+        return wizards_ice_explode+1;
     }
 
     public int getWizards_ice_regen() {
-        return wizards_ice_regen;
+        return wizards_ice_regen+1;
     }
 
     public int getWizards_wither_explode() {
-        return wizards_wither_explode;
+        return wizards_wither_explode+1;
     }
 
     public int getWizards_wither_regen() {
-        return wizards_wither_regen;
+        return wizards_wither_regen+1;
     }
 
     public int getWizards_blood_explode() {
-        return wizards_blood_explode;
+        return wizards_blood_explode+1;
     }
 
     public int getWizards_blood_regen() {
-        return wizards_blood_regen;
+        return wizards_blood_regen+1;
     }
 
     public int getTag_speedy() {
-        return tag_speedy;
+        return tag_speedy+1;
     }
 
     public DEATHEFFECT getSelectedDeathEffect() {

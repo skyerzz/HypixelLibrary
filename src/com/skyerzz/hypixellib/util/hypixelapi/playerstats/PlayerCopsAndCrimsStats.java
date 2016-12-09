@@ -63,7 +63,7 @@ public class PlayerCopsAndCrimsStats extends PlayerGameStats {
 
     //</editor-fold>
 
-    protected PlayerCopsAndCrimsStats(JsonObject json) {
+    public PlayerCopsAndCrimsStats(JsonObject json) {
         super(json);
     }
 

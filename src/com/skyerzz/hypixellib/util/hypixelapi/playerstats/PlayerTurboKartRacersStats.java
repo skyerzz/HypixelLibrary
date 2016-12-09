@@ -68,7 +68,7 @@ public class PlayerTurboKartRacersStats extends PlayerGameStats {
     private boolean canyonMuted,endgameMuted,lobbyMuted,hypixelGPMuted,jungleRushMuted,retroMuted,olympusMuted;
     //</editor-fold>
 
-    protected PlayerTurboKartRacersStats(JsonObject json) {
+    public PlayerTurboKartRacersStats(JsonObject json) {
         super(json);
         initialize();
     }

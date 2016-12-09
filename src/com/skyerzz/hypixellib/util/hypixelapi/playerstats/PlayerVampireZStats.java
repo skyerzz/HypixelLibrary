@@ -30,6 +30,7 @@ public class PlayerVampireZStats extends PlayerGameStats {
     private int zombie_kills;
     private int loot_drops;
 
+    private int vampire_wins;
     private int vampire_deaths;
     private int vampire_kills; //how many VAMPIRES you have killed AS HUMAN.
 
@@ -40,6 +41,10 @@ public class PlayerVampireZStats extends PlayerGameStats {
     private int weekly_human_wins_b;
     private int monthly_human_wins_a;
     private int weekly_human_wins_a;
+    private int monthly_vampire_wins_b;
+    private int weekly_vampire_wins_b;
+    private int monthly_vampire_wins_a;
+    private int weekly_vampire_wins_a;
 
 
     private HashMap<HUMANPERK, Integer> humanPerk = new HashMap<HUMANPERK, Integer>();
@@ -49,7 +54,7 @@ public class PlayerVampireZStats extends PlayerGameStats {
     private DISGUISE selectedDisguise;
     //</editor-fold>
 
-    protected PlayerVampireZStats(JsonObject json) {
+    public PlayerVampireZStats(JsonObject json) {
         super(json);
         initialize();
     }
@@ -133,6 +138,9 @@ public class PlayerVampireZStats extends PlayerGameStats {
             case "vampire_kills":
                 this.vampire_kills = v;
                 return true;
+            case "vampire_wins":
+                this.vampire_wins = v;
+                return true;
 
             case "loot_drops":
                 this.loot_drops = v;
@@ -149,6 +157,18 @@ public class PlayerVampireZStats extends PlayerGameStats {
                 return true;
             case "weekly_human_wins_a":
                 this.weekly_human_wins_a = v;
+                return true;
+            case "monthly_vampire_wins_b":
+                this.monthly_vampire_wins_b = v;
+                return true;
+            case "monthly_vampire_wins_a":
+                this.monthly_vampire_wins_a = v;
+                return true;
+            case "weekly_vampire_wins_b":
+                this.weekly_vampire_wins_b = v;
+                return true;
+            case "weekly_vampire_wins_a":
+                this.weekly_vampire_wins_a = v;
                 return true;
 
             default:
@@ -182,5 +202,101 @@ public class PlayerVampireZStats extends PlayerGameStats {
             default:
                 return false;
         }
+    }
+
+    public boolean hasCombatTracker() {
+        return combatTracker;
+    }
+
+    public int getCoins() {
+        return coins;
+    }
+
+    public int getGold_bought() {
+        return gold_bought;
+    }
+
+    public int getHuman_wins() {
+        return human_wins;
+    }
+
+    public int getHuman_kills() {
+        return human_kills;
+    }
+
+    public int getHuman_deaths() {
+        return human_deaths;
+    }
+
+    public int getZombie_kills() {
+        return zombie_kills;
+    }
+
+    public int getLoot_drops() {
+        return loot_drops;
+    }
+
+    public int getVampire_wins() {
+        return vampire_wins;
+    }
+
+    public int getVampire_deaths() {
+        return vampire_deaths;
+    }
+
+    public int getVampire_kills() {
+        return vampire_kills;
+    }
+
+    public int getMost_vampire_kills() {
+        return most_vampire_kills;
+    }
+
+    public int getMonthly_human_wins_b() {
+        return monthly_human_wins_b;
+    }
+
+    public int getWeekly_human_wins_b() {
+        return weekly_human_wins_b;
+    }
+
+    public int getMonthly_human_wins_a() {
+        return monthly_human_wins_a;
+    }
+
+    public int getWeekly_human_wins_a() {
+        return weekly_human_wins_a;
+    }
+
+    public int getMonthly_vampire_wins_b() {
+        return monthly_vampire_wins_b;
+    }
+
+    public int getWeekly_vampire_wins_b() {
+        return weekly_vampire_wins_b;
+    }
+
+    public int getMonthly_vampire_wins_a() {
+        return monthly_vampire_wins_a;
+    }
+
+    public int getWeekly_vampire_wins_a() {
+        return weekly_vampire_wins_a;
+    }
+
+    public HashMap<HUMANPERK, Integer> getHumanPerks() {
+        return humanPerk;
+    }
+
+    public HashMap<VAMPIREPERK, Integer> getVampirePerks() {
+        return vampirePerk;
+    }
+
+    public ArrayList<DISGUISE> getUnlockedDisguises() {
+        return unlockedDisguises;
+    }
+
+    public DISGUISE getSelectedDisguise() {
+        return selectedDisguise;
     }
 }

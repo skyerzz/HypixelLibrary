@@ -5,6 +5,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.skyerzz.hypixellib.HypixelLib;
 import com.skyerzz.hypixellib.Logger;
+import com.skyerzz.hypixellib.OutDated;
 import com.skyerzz.hypixellib.util.games.quake.*;
 
 import java.util.ArrayList;
@@ -57,9 +58,11 @@ public class PlayerQuakeStats extends PlayerGameStats {
     private ArrayList<HAT> unlockedHats = new ArrayList<>();
     private ArrayList<TRINKET> unlockedTrinkets = new ArrayList<>();
 
+    @OutDated
+    private boolean achievement_flag_1;
     //</editor-fold>
 
-    protected PlayerQuakeStats(JsonObject json) {
+    public PlayerQuakeStats(JsonObject json) {
         super(json);
         initialize();
     }
@@ -74,7 +77,7 @@ public class PlayerQuakeStats extends PlayerGameStats {
                 continue;
             }
 
-            Logger.logWarn("[PlayerAPI.Paintball.initialize] Unknown value: " + key);
+            Logger.logWarn("[PlayerAPI.Quake.initialize] Unknown value: " + key);
         }
     }
 
@@ -99,7 +102,7 @@ public class PlayerQuakeStats extends PlayerGameStats {
             case "KILLS_TEAMS":
                 this.teamKills = value.getAsInt();
                 break;
-            case "DEATHS_TEAMs":
+            case "DEATHS_TEAMS":
                 this.teamDeaths = value.getAsInt();
                 break;
             case "WINS_TEAMS":
@@ -191,9 +194,12 @@ public class PlayerQuakeStats extends PlayerGameStats {
     private void setPackageValues(JsonArray array){
         for(JsonElement value: array){
             String name = value.getAsString().toUpperCase();
-            //todo make a nice regex of this, replace Case. , Barrel. Muzzle. etc
-
-            if(KILLSOUND.mapping.contains(name)){
+            name = name.replaceAll("[A-Z]+\\.", "");
+            if(name.equals("INSTANT_RESPAWN")){
+                this.instantRespawn = true;
+            }else if(name.equals("ACHIEVEMENT_FLAG_1")){
+                this.achievement_flag_1 = true;
+            }else if(KILLSOUND.mapping.contains(name)){
                 this.unlockedKillSounds.add(KILLSOUND.valueOf(name));
             }else if(KIT.mapping.contains(name)){
                 this.unlockedKits.add(KIT.valueOf(name));
@@ -326,5 +332,30 @@ public class PlayerQuakeStats extends PlayerGameStats {
 
     public ArrayList<TRINKET> getUnlockedTrinkets() {
         return unlockedTrinkets;
+    }
+
+    public BARREL getSelectedBarrel() {
+        return selectedBarrel;
+    }
+
+    public CASE getSelectedCase() {
+        return selectedCase;
+    }
+
+    public MUZZLE getSelectedMuzzle() {
+        return selectedMuzzle;
+    }
+
+    public SIGHT getSelectedSight() {
+        return selectedSight;
+    }
+
+    public TRIGGER getSelectedTrigger() {
+        return selectedTrigger;
+    }
+
+    @OutDated
+    public boolean isAchievement_flag_1() {
+        return achievement_flag_1;
     }
 }
