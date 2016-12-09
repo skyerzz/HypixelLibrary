@@ -84,6 +84,9 @@ public class PlayerArcadeStats extends PlayerGameStats{
 
     //ThrowOut
     private int throwOutDeaths, throwOutKills, throwOutWins;
+
+    //grinchSim
+    private int grinchWins;
     //</editor-fold>
 
 
@@ -386,6 +389,12 @@ public class PlayerArcadeStats extends PlayerGameStats{
                 break;
             //</editor-fold>
 
+            //<editor-fold desc="[GRINCH SIM]">
+            case "WINS_GRINCH":
+                this.grinchWins = value.getAsInt();
+                return true;
+            //</editor-fold>
+
             default:
                 return false;
         }
@@ -400,6 +409,10 @@ public class PlayerArcadeStats extends PlayerGameStats{
             case "BUILDBATTLE_LOADOUT":
                 setBuildBattleLoadOut(value.getAsJsonArray());
                 return true;
+        }
+        if(key.contains("WITCH_HUNT")){
+            //you did not see this.
+            return true;
         }
         return false;
     }
