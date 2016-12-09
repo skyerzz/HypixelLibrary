@@ -4,6 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.skyerzz.hypixellib.OutDated;
 import com.skyerzz.hypixellib.util.games.turbokartracers.*;
 import com.skyerzz.hypixellib.Logger;
 
@@ -30,20 +31,24 @@ public class PlayerTurboKartRacersStats extends PlayerGameStats {
     private int goldTrophies;
     private int silverTrophies;
     private int bronzeTrophies;
-
+    @OutDated
     private int goldTrophiesWeekly_b, goldTrophiesWeekly_a;
+    @OutDated
     private int goldTrophiesMonthly_b, goldTrophiesMonthly_a;
     private int goldTrophiesOlympus, goldTrophiesJungleRush, goldTrophiesHypixelGP, goldTrophiesRetro, goldTrophiesCanyon;
-
+    @OutDated
     private int silverTrophiesWeekly_b, silverTrophiesWeekly_a;
+    @OutDated
     private int silverTrophiesMonthly_b, silverTrophiesMonthly_a;
     private int silverTrophiesOlympus, silverTrophiesJungleRush, silverTrophiesHypixelGP, silverTrophiesRetro, silverTrophiesCanyon;
-
+    @OutDated
     private int bronzeTrophiesWeekly_b, bronzeTrophiesWeekly_a;
+    @OutDated
     private int bronzeTrophiesMonthly_b, bronzeTrophiesMonthly_a;
     private int bronzeTrophiesOlympus, bronzeTrophiesJungleRush, bronzeTrophiesHypixelGP, bronzeTrophiesRetro, bronzeTrophiesCanyon;
-    
+    @OutDated
     private int boxPickupsWeekly_b, boxPickupsWeekly_a;
+    @OutDated
     private int boxPickupsMonthly_b, boxPickupsMonthly_a;
     private int boxPickupsOlympus, boxPickupsJungleRush, boxPickupsHypixelGP, boxPickupsRetro, boxPickupsCanyon;
 
@@ -447,19 +452,19 @@ public class PlayerTurboKartRacersStats extends PlayerGameStats {
     public int getBronzeTrophies() {
         return bronzeTrophies;
     }
-
+    @OutDated
     public int getGoldTrophiesWeekly_b() {
         return goldTrophiesWeekly_b;
     }
-
+    @OutDated
     public int getGoldTrophiesWeekly_a() {
         return goldTrophiesWeekly_a;
     }
-
+    @OutDated
     public int getGoldTrophiesMonthly_b() {
         return goldTrophiesMonthly_b;
     }
-
+    @OutDated
     public int getGoldTrophiesMonthly_a() {
         return goldTrophiesMonthly_a;
     }
@@ -483,19 +488,19 @@ public class PlayerTurboKartRacersStats extends PlayerGameStats {
     public int getGoldTrophiesCanyon() {
         return goldTrophiesCanyon;
     }
-
+    @OutDated
     public int getSilverTrophiesWeekly_b() {
         return silverTrophiesWeekly_b;
     }
-
+    @OutDated
     public int getSilverTrophiesWeekly_a() {
         return silverTrophiesWeekly_a;
     }
-
+    @OutDated
     public int getSilverTrophiesMonthly_b() {
         return silverTrophiesMonthly_b;
     }
-
+    @OutDated
     public int getSilverTrophiesMonthly_a() {
         return silverTrophiesMonthly_a;
     }
@@ -519,19 +524,19 @@ public class PlayerTurboKartRacersStats extends PlayerGameStats {
     public int getSilverTrophiesCanyon() {
         return silverTrophiesCanyon;
     }
-
+    @OutDated
     public int getBronzeTrophiesWeekly_b() {
         return bronzeTrophiesWeekly_b;
     }
-
+    @OutDated
     public int getBronzeTrophiesWeekly_a() {
         return bronzeTrophiesWeekly_a;
     }
-
+    @OutDated
     public int getBronzeTrophiesMonthly_b() {
         return bronzeTrophiesMonthly_b;
     }
-
+    @OutDated
     public int getBronzeTrophiesMonthly_a() {
         return bronzeTrophiesMonthly_a;
     }
@@ -555,19 +560,19 @@ public class PlayerTurboKartRacersStats extends PlayerGameStats {
     public int getBronzeTrophiesCanyon() {
         return bronzeTrophiesCanyon;
     }
-
+    @OutDated
     public int getBoxPickupsWeekly_b() {
         return boxPickupsWeekly_b;
     }
-
+    @OutDated
     public int getBoxPickupsWeekly_a() {
         return boxPickupsWeekly_a;
     }
-
+    @OutDated
     public int getBoxPickupsMonthly_b() {
         return boxPickupsMonthly_b;
     }
-
+    @OutDated
     public int getBoxPickupsMonthly_a() {
         return boxPickupsMonthly_a;
     }

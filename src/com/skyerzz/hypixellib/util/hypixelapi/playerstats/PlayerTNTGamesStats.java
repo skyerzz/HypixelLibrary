@@ -70,7 +70,7 @@ public class PlayerTNTGamesStats extends PlayerGameStats {
     private ArrayList<HAT> unlockedHats = new ArrayList<>();
 
     @OutDated
-    private int votes_Quadral, votes_ForgottenPlanet, votes_Atior, votes_Node, votes_TallGate, votes_GreenBelt;
+    private int votes_Quadral, votes_ForgottenPlanet, votes_Atior, votes_Node, votes_TallGate, votes_GreenBelt, votes_TwinSpire, votes_TheVale, votes_Totum, votes_FireFall, votes_Blossom, votes_Gladius, votes_Crucible;
 
     public PlayerTNTGamesStats(JsonObject json) {
         super(json);
@@ -215,6 +215,28 @@ public class PlayerTNTGamesStats extends PlayerGameStats {
             case "VOTES_GREENBELT":
                 this.votes_GreenBelt = element.getAsInt();
                 return true;
+            case "VOTES_TWINSPIRE":
+                this.votes_TwinSpire = element.getAsInt();
+                return true;
+            case "VOTES_THE VALE":
+                this.votes_TheVale = element.getAsInt();
+                return true;
+            case "VOTES_TOTUM":
+                this.votes_Totum = element.getAsInt();
+                return true;
+            case "VOTES_FIREFALL":
+                this.votes_FireFall = element.getAsInt();
+                return true;
+            case "VOTES_BLOSSOM":
+                this.votes_Blossom = element.getAsInt();
+                return true;
+            case "VOTES_CRUCIBLE":
+                this.votes_Crucible = element.getAsInt();
+                return true;
+            case "VOTES_GLADIUS":
+                this.votes_Gladius = element.getAsInt();
+                return true;
+
             //</editor-fold>
         }
         return false;
@@ -414,5 +436,69 @@ public class PlayerTNTGamesStats extends PlayerGameStats {
 
     public WIZARD getSelectedWizard() {
         return selectedWizard;
+    }
+
+    public boolean isSpeed_potion() {
+        return speed_potion;
+    }
+
+    public boolean isSlow_potion() {
+        return slow_potion;
+    }
+
+    public ArrayList<HAT> getUnlockedHats() {
+        return unlockedHats;
+    }
+    @OutDated
+    public int getVotes_Quadral() {
+        return votes_Quadral;
+    }
+    @OutDated
+    public int getVotes_ForgottenPlanet() {
+        return votes_ForgottenPlanet;
+    }
+    @OutDated
+    public int getVotes_Atior() {
+        return votes_Atior;
+    }
+    @OutDated
+    public int getVotes_Node() {
+        return votes_Node;
+    }
+    @OutDated
+    public int getVotes_TallGate() {
+        return votes_TallGate;
+    }
+    @OutDated
+    public int getVotes_GreenBelt() {
+        return votes_GreenBelt;
+    }
+    @OutDated
+    public int getVotes_TwinSpire() {
+        return votes_TwinSpire;
+    }
+    @OutDated
+    public int getVotes_TheVale() {
+        return votes_TheVale;
+    }
+    @OutDated
+    public int getVotes_Totum() {
+        return votes_Totum;
+    }
+    @OutDated
+    public int getVotes_FireFall() {
+        return votes_FireFall;
+    }
+    @OutDated
+    public int getVotes_Blossom() {
+        return votes_Blossom;
+    }
+    @OutDated
+    public int getVotes_Gladius() {
+        return votes_Gladius;
+    }
+    @OutDated
+    public int getVotes_Crucible() {
+        return votes_Crucible;
     }
 }

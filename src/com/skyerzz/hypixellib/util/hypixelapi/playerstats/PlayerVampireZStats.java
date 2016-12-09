@@ -3,6 +3,7 @@ package com.skyerzz.hypixellib.util.hypixelapi.playerstats;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.skyerzz.hypixellib.Logger;
+import com.skyerzz.hypixellib.OutDated;
 import com.skyerzz.hypixellib.util.games.vampirez.DISGUISE;
 import com.skyerzz.hypixellib.util.games.vampirez.HUMANPERK;
 import com.skyerzz.hypixellib.util.games.vampirez.VAMPIREPERK;
@@ -18,7 +19,7 @@ public class PlayerVampireZStats extends PlayerGameStats {
 
 
     //<editor-fold desc="[Variables]>
-    private boolean combatTracker;
+    private boolean combatTracker, blood;
 
     private int coins;
     private int gold_bought;
@@ -37,15 +38,11 @@ public class PlayerVampireZStats extends PlayerGameStats {
     private int most_vampire_kills; //most vampire kills as human
 
     //weekly&monthly wins no longer used
-    private int monthly_human_wins_b;
-    private int weekly_human_wins_b;
-    private int monthly_human_wins_a;
-    private int weekly_human_wins_a;
-    private int monthly_vampire_wins_b;
-    private int weekly_vampire_wins_b;
-    private int monthly_vampire_wins_a;
-    private int weekly_vampire_wins_a;
+    @OutDated
+    private int monthly_human_wins_b, weekly_human_wins_b, monthly_human_wins_a, weekly_human_wins_a, monthly_vampire_wins_b, weekly_vampire_wins_b, monthly_vampire_wins_a, weekly_vampire_wins_a;
 
+    @OutDated
+    private int votes_Plundered, votes_Church, votes_DarkValley, votes_Pyramids;
 
     private HashMap<HUMANPERK, Integer> humanPerk = new HashMap<HUMANPERK, Integer>();
     private HashMap<VAMPIREPERK, Integer> vampirePerk = new HashMap<VAMPIREPERK, Integer>();
@@ -91,6 +88,9 @@ public class PlayerVampireZStats extends PlayerGameStats {
             case "COMBATTRACKER":
                 this.combatTracker = value.getAsBoolean();
                 return true;
+            case "BLOOD":
+                this.blood = value.getAsBoolean();
+                return true;
             default:
                 return setStatValue(JSONkey, value);
         }
@@ -98,79 +98,88 @@ public class PlayerVampireZStats extends PlayerGameStats {
     }
 
     private boolean setStatValue(String key, JsonElement value){
-        int v;
-        try{
-            v = value.getAsInt();
-        }catch(UnsupportedOperationException | NumberFormatException e){
-            //should never trigger, still catching as a future safe-guard.
-            Logger.logWarn("[PlayerAPI.VampireZ.setStatValue] No Integer!  " + key + " : " + value.toString());
-            return false;
-        }
 
         switch(key.toLowerCase()){
+            //<editor-fold desc="[General]">
             case "coins":
-                this.coins = v;
+                this.coins = value.getAsInt();
                 return true;
             case "gold_bought":
-                this.gold_bought = v;
+                this.gold_bought = value.getAsInt();
                 return true;
 
             case "human_deaths":
-                this.human_deaths = v;
+                this.human_deaths = value.getAsInt();
                 return true;
             case "human_kills":
-                this.human_kills = v;
+                this.human_kills = value.getAsInt();
                 return true;
             case "human_wins":
-                this.human_wins = v;
+                this.human_wins = value.getAsInt();
                 return true;
             case "zombie_kills":
-                this.zombie_kills = v;
+                this.zombie_kills = value.getAsInt();
                 return true;
 
             case "most_vampire_kills":
-                this.most_vampire_kills = v;
+                this.most_vampire_kills = value.getAsInt();
                 return true;
 
             case "vampire_deaths":
-                this.vampire_deaths = v;
+                this.vampire_deaths = value.getAsInt();
                 return true;
             case "vampire_kills":
-                this.vampire_kills = v;
+                this.vampire_kills = value.getAsInt();
                 return true;
             case "vampire_wins":
-                this.vampire_wins = v;
+                this.vampire_wins = value.getAsInt();
                 return true;
 
             case "loot_drops":
-                this.loot_drops = v;
+                this.loot_drops = value.getAsInt();
                 return true;
+            //</editor-fold>
 
+            //<editor-fold desc="[Outdated]">
             case "monthly_human_wins_b":
-                this.monthly_human_wins_b = v;
+                this.monthly_human_wins_b = value.getAsInt();
                 return true;
             case "monthly_human_wins_a":
-                this.monthly_human_wins_a = v;
+                this.monthly_human_wins_a = value.getAsInt();
                 return true;
             case "weekly_human_wins_b":
-                this.weekly_human_wins_b = v;
+                this.weekly_human_wins_b = value.getAsInt();
                 return true;
             case "weekly_human_wins_a":
-                this.weekly_human_wins_a = v;
+                this.weekly_human_wins_a = value.getAsInt();
                 return true;
             case "monthly_vampire_wins_b":
-                this.monthly_vampire_wins_b = v;
+                this.monthly_vampire_wins_b = value.getAsInt();
                 return true;
             case "monthly_vampire_wins_a":
-                this.monthly_vampire_wins_a = v;
+                this.monthly_vampire_wins_a = value.getAsInt();
                 return true;
             case "weekly_vampire_wins_b":
-                this.weekly_vampire_wins_b = v;
+                this.weekly_vampire_wins_b = value.getAsInt();
                 return true;
             case "weekly_vampire_wins_a":
-                this.weekly_vampire_wins_a = v;
+                this.weekly_vampire_wins_a = value.getAsInt();
                 return true;
 
+            case "votes_plundered":
+                this.votes_Plundered = value.getAsInt();
+                return true;
+            case "votes_church":
+                this.votes_Church = value.getAsInt();
+                return true;
+            case "votes_dark valley":
+                this.votes_DarkValley = value.getAsInt();
+                return true;
+            case "votes_pyramids":
+                this.votes_Pyramids = value.getAsInt();
+                return true;
+            //</editor-fold>
+            
             default:
                 return false;
         }
@@ -204,7 +213,7 @@ public class PlayerVampireZStats extends PlayerGameStats {
         }
     }
 
-    public boolean hasCombatTracker() {
+    public boolean isCombatTracker() {
         return combatTracker;
     }
 
@@ -251,35 +260,35 @@ public class PlayerVampireZStats extends PlayerGameStats {
     public int getMost_vampire_kills() {
         return most_vampire_kills;
     }
-
+    @OutDated
     public int getMonthly_human_wins_b() {
         return monthly_human_wins_b;
     }
-
+    @OutDated
     public int getWeekly_human_wins_b() {
         return weekly_human_wins_b;
     }
-
+    @OutDated
     public int getMonthly_human_wins_a() {
         return monthly_human_wins_a;
     }
-
+    @OutDated
     public int getWeekly_human_wins_a() {
         return weekly_human_wins_a;
     }
-
+    @OutDated
     public int getMonthly_vampire_wins_b() {
         return monthly_vampire_wins_b;
     }
-
+    @OutDated
     public int getWeekly_vampire_wins_b() {
         return weekly_vampire_wins_b;
     }
-
+    @OutDated
     public int getMonthly_vampire_wins_a() {
         return monthly_vampire_wins_a;
     }
-
+    @OutDated
     public int getWeekly_vampire_wins_a() {
         return weekly_vampire_wins_a;
     }
@@ -298,5 +307,33 @@ public class PlayerVampireZStats extends PlayerGameStats {
 
     public DISGUISE getSelectedDisguise() {
         return selectedDisguise;
+    }
+
+    public boolean isBlood() {
+        return blood;
+    }
+    @OutDated
+    public int getVotes_Plundered() {
+        return votes_Plundered;
+    }
+    @OutDated
+    public int getVotes_Church() {
+        return votes_Church;
+    }
+    @OutDated
+    public int getVotes_DarkValley() {
+        return votes_DarkValley;
+    }
+    @OutDated
+    public int getVotes_Pyramids() {
+        return votes_Pyramids;
+    }
+
+    public HashMap<HUMANPERK, Integer> getHumanPerk() {
+        return humanPerk;
+    }
+
+    public HashMap<VAMPIREPERK, Integer> getVampirePerk() {
+        return vampirePerk;
     }
 }

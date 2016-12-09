@@ -4,6 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.skyerzz.hypixellib.Logger;
+import com.skyerzz.hypixellib.OutDated;
 import com.skyerzz.hypixellib.util.games.copsandcrims.*;
 
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ public class PlayerCopsAndCrimsStats extends PlayerGameStats {
     private int coins, copKills, crimKills, deaths, wins, headshotKills, kills;
     private int pocketChange, roundWins;
     private int shotsFired, deathmatchDeaths, deathmatchKills;
+    @OutDated
     private int weekly_kills_b, weekly_kills_a, monthly_kills_b, monthly_kills_a;
     private int gameWinsCarrier, gameWinsOvergrown, gameWinsAlleyway, deathmatchWins, gameWinsTemple, gameWinsSandstorm, gameWinsAtomic;
     private int crimKillsDeathmatch, copKillsDeathmatch;
@@ -57,6 +59,7 @@ public class PlayerCopsAndCrimsStats extends PlayerGameStats {
 
     //todo find out these
     private int bodyArmorCost, bountyHunter, strengthTraining;
+    @OutDated
     private int killsNew, killsNew_10_2014, killsNew_11_2014, killsNew_1_11_2014, killsNew_2_11_2014, killsNew_3_11_2014, killsNew_4_10_2014, killsNew_5_10_2014, kills_10_2014, kills_11_2014, kills_1_11_2014, kills_2_11_2014, kills_3_11_2014, kills_4_10_2014, kills_5_10_2014;
     //mcgo.getAsJsonOpject (points:0) ???
 
@@ -478,19 +481,19 @@ public class PlayerCopsAndCrimsStats extends PlayerGameStats {
     public int getDeathmatchKills() {
         return deathmatchKills;
     }
-
+    @OutDated
     public int getWeekly_kills_b() {
         return weekly_kills_b;
     }
-
+    @OutDated
     public int getWeekly_kills_a() {
         return weekly_kills_a;
     }
-
+    @OutDated
     public int getMonthly_kills_b() {
         return monthly_kills_b;
     }
-
+    @OutDated
     public int getMonthly_kills_a() {
         return monthly_kills_a;
     }
@@ -658,59 +661,59 @@ public class PlayerCopsAndCrimsStats extends PlayerGameStats {
     public int getKillsNew() {
         return killsNew;
     }
-
+    @OutDated
     public int getKillsNew_10_2014() {
         return killsNew_10_2014;
     }
-
+    @OutDated
     public int getKillsNew_11_2014() {
         return killsNew_11_2014;
     }
-
+    @OutDated
     public int getKillsNew_1_11_2014() {
         return killsNew_1_11_2014;
     }
-
+    @OutDated
     public int getKillsNew_2_11_2014() {
         return killsNew_2_11_2014;
     }
-
+    @OutDated
     public int getKillsNew_3_11_2014() {
         return killsNew_3_11_2014;
     }
-
+    @OutDated
     public int getKillsNew_4_10_2014() {
         return killsNew_4_10_2014;
     }
-
+    @OutDated
     public int getKillsNew_5_10_2014() {
         return killsNew_5_10_2014;
     }
-
+    @OutDated
     public int getKills_10_2014() {
         return kills_10_2014;
     }
-
+    @OutDated
     public int getKills_11_2014() {
         return kills_11_2014;
     }
-
+    @OutDated
     public int getKills_1_11_2014() {
         return kills_1_11_2014;
     }
-
+    @OutDated
     public int getKills_2_11_2014() {
         return kills_2_11_2014;
     }
-
+    @OutDated
     public int getKills_3_11_2014() {
         return kills_3_11_2014;
     }
-
+    @OutDated
     public int getKills_4_10_2014() {
         return kills_4_10_2014;
     }
-
+    @OutDated
     public int getKills_5_10_2014() {
         return kills_5_10_2014;
     }

@@ -32,6 +32,8 @@ public class PlayerBlitzStats extends PlayerGameStats {
     private HashMap<String, String> renamedItems = new HashMap<>();
 
     private ArrayList<BLITZ_POWERUP> unlockedPowerups = new ArrayList<>();
+    private ArrayList<KILL_EFFECT> unlockedKillEffects = new ArrayList<>();
+    private ArrayList<FINISHER> unlockedFinishers = new ArrayList<>();
 
     private AURA selectedAura;
     private TAUNT selectedTaunt;
@@ -41,13 +43,13 @@ public class PlayerBlitzStats extends PlayerGameStats {
     private BASIC_KIT selectedBasicKit;
     private ADVANCED_KIT selectedAdvancedKit;
 
-    private boolean blood, fancyMode /* killcounter */, tauntAbility, toggled /*killcounter*/, autoArmor;
+    private boolean blood, fancyMode /* killcounter */, tauntAbility, toggled /*killcounter*/, autoArmor, combatTracker /*/trackcombat?*/;
 
     private int kills, deaths, wins, teamWins, coins;
 
     @OutDated
-    public int monthly_kills_b, monthly_kills_a, weekly_kills_a, weekly_kills_b;
-    public int votes_Caelum_v2, votes_Winter, votes_Cattle_Drive, votes_Valley, votes_Stoneguard, votes_Peaks, votes_Citadel, votes_Aelin_Tower, votes_Pixelville;
+    private int monthly_kills_b, monthly_kills_a, weekly_kills_a, weekly_kills_b;
+    private int votes_Caelum_v2, votes_Winter, votes_Cattle_Drive, votes_Valley, votes_Stoneguard, votes_Peaks, votes_Citadel, votes_Aelin_Tower, votes_Pixelville;
     //</editor-fold>
 
     private void initialize() {
@@ -132,6 +134,9 @@ public class PlayerBlitzStats extends PlayerGameStats {
             case "AUTOARMOR":
                 this.autoArmor = element.getAsBoolean();
                 return true;
+            case "COMBATTRACKER":
+                this.combatTracker = element.getAsBoolean();
+                return true;
             //</editor-fold>
 
             //<editor-fold desc="[Outdated]">
@@ -150,13 +155,14 @@ public class PlayerBlitzStats extends PlayerGameStats {
             case "VOTES_CAELUM V2":
                 this.votes_Caelum_v2 = element.getAsInt();
                 return true;
+            case "VOTES_WINTER ":
             case "VOTES_WINTER":
                 this.votes_Winter = element.getAsInt();
                 return true;
             case "VOTES_VALLEY":
                 this.votes_Valley = element.getAsInt();
                 return true;
-            case "VOTES_CATTLE_DRIVE":
+            case "VOTES_CATTLE DRIVE":
                 this.votes_Cattle_Drive = element.getAsInt();
                 return true;
             case "VOTES_STONEGUARD":
@@ -165,7 +171,7 @@ public class PlayerBlitzStats extends PlayerGameStats {
             case "VOTES_PEAKS":
                 this.votes_Peaks = element.getAsInt();
                 return true;
-            case "VOTES_AELIN\\U0027S TOWER":
+            case "VOTES_AELIN'S TOWER":
                 this.votes_Aelin_Tower = element.getAsInt();
                 return true;
             case "VOTES_PIXELVILLE":
@@ -188,8 +194,21 @@ public class PlayerBlitzStats extends PlayerGameStats {
             advancedKits.put(ADVANCED_KIT.valueOf(key.toUpperCase()), element.getAsInt());
             return true;
         }
+        if(key.equals("DEFAULTKIT")){
+            String kit = element.getAsString().toUpperCase();
+            if(BASIC_KIT.mapping.contains(kit)){
+                selectedBasicKit = BASIC_KIT.valueOf(kit);
+                return true;
+            }
+            if(ADVANCED_KIT.mapping.contains(kit)){
+                selectedAdvancedKit = ADVANCED_KIT.valueOf(kit);
+                return true;
+            }
+            Logger.logInfo("[PlayerAPI.Blitz.DefaultKit] Could not find kit: " + key);
+            return true;
+        }
         if(key.contains("INVENTORY")){
-            Logger.logInfo("[Blitz.kitInventory] Kit inventories not (yet) supported, skipping " + key);
+            Logger.logInfo("[PlayerAPI.Blitz.kitInventory] Kit inventories not (yet) supported, skipping " + key);
             return true;
         }
         if(key.contains("PERMUTATION")){
@@ -200,11 +219,11 @@ public class PlayerBlitzStats extends PlayerGameStats {
             else if(ADVANCED_KIT.mapping.contains(kit)){
                 advancedKitPermutations.put(ADVANCED_KIT.valueOf(kit), element.getAsInt());
             }else{
-                Logger.logError("[PlayerAPI.Blitz.kitPermutations] Could not find kit " + kit);
+                Logger.logError("[PlayerAPI.Blitz.kitPermutations] Could not find kit: " + kit);
             }
             return true;
         }
-        if(key.contains("kit_item_rename")){
+        if(key.contains("KIT_ITEM_RENAME")){
             String kit = key.replace("KIT_ITEM_RENAME_", "");
             this.renamedItems.put(kit.toUpperCase(), element.getAsString());
             return true;
@@ -220,10 +239,14 @@ public class PlayerBlitzStats extends PlayerGameStats {
 
     private void setPackageValues(JsonArray array){
         for(JsonElement element: array) {
-            String name = element.getAsString().toUpperCase();
+            String name = element.getAsString().toUpperCase().replace("FINISHER_", "");
             if (BLITZ_POWERUP.mapping.contains(name)) {
                 this.unlockedPowerups.add(BLITZ_POWERUP.valueOf(name));
-            } else if (name.equals("PACKAGE_TAUNT")) {
+            } else if(KILL_EFFECT.mapping.contains(name)){
+                this.unlockedKillEffects.add(KILL_EFFECT.valueOf(name));
+            }else if(FINISHER.mapping.contains(name)){
+                this.unlockedFinishers.add(FINISHER.valueOf(name));
+            }else if (name.equals("PACKAGE_TAUNT")) {
                 this.tauntAbility = true;
             } else if(name.equals("DEFAULT_TAUNT")){
                     //todo find out which this is
@@ -233,8 +256,159 @@ public class PlayerBlitzStats extends PlayerGameStats {
         }
     }
 
+    public HashMap<BASIC_KIT, Integer> getBasicKits() {
+        return basicKits;
+    }
 
+    public HashMap<ADVANCED_KIT, Integer> getAdvancedKits() {
+        return advancedKits;
+    }
 
+    public HashMap<BASIC_KIT, Integer> getBasicKitPermutations() {
+        return basicKitPermutations;
+    }
 
+    public HashMap<ADVANCED_KIT, Integer> getAdvancedKitPermutations() {
+        return advancedKitPermutations;
+    }
 
+    public HashMap<String, String> getRenamedItems() {
+        return renamedItems;
+    }
+
+    public ArrayList<BLITZ_POWERUP> getUnlockedPowerups() {
+        return unlockedPowerups;
+    }
+
+    public ArrayList<KILL_EFFECT> getUnlockedKillEffects() {
+        return unlockedKillEffects;
+    }
+
+    public ArrayList<FINISHER> getUnlockedFinishers() {
+        return unlockedFinishers;
+    }
+
+    public AURA getSelectedAura() {
+        return selectedAura;
+    }
+
+    public TAUNT getSelectedTaunt() {
+        return selectedTaunt;
+    }
+
+    public VICTORY_DANCE getSelectedVictoryDance() {
+        return selectedVictoryDance;
+    }
+
+    public FINISHER getSelectedFinisher() {
+        return selectedFinisher;
+    }
+
+    public KILL_EFFECT getSelectedKillEffect() {
+        return selectedKillEffect;
+    }
+
+    public BASIC_KIT getSelectedBasicKit() {
+        return selectedBasicKit;
+    }
+
+    public ADVANCED_KIT getSelectedAdvancedKit() {
+        return selectedAdvancedKit;
+    }
+
+    public boolean isBlood() {
+        return blood;
+    }
+
+    public boolean isFancyMode() {
+        return fancyMode;
+    }
+
+    public boolean isTauntAbility() {
+        return tauntAbility;
+    }
+
+    public boolean isToggled() {
+        return toggled;
+    }
+
+    public boolean isAutoArmor() {
+        return autoArmor;
+    }
+
+    public boolean isCombatTracker() {
+        return combatTracker;
+    }
+
+    public int getKills() {
+        return kills;
+    }
+
+    public int getDeaths() {
+        return deaths;
+    }
+
+    public int getWins() {
+        return wins;
+    }
+
+    public int getTeamWins() {
+        return teamWins;
+    }
+
+    public int getCoins() {
+        return coins;
+    }
+    @OutDated
+    public int getMonthly_kills_b() {
+        return monthly_kills_b;
+    }
+    @OutDated
+    public int getMonthly_kills_a() {
+        return monthly_kills_a;
+    }
+    @OutDated
+    public int getWeekly_kills_a() {
+        return weekly_kills_a;
+    }
+    @OutDated
+    public int getWeekly_kills_b() {
+        return weekly_kills_b;
+    }
+    @OutDated
+    public int getVotes_Caelum_v2() {
+        return votes_Caelum_v2;
+    }
+    @OutDated
+    public int getVotes_Winter() {
+        return votes_Winter;
+    }
+    @OutDated
+    public int getVotes_Cattle_Drive() {
+        return votes_Cattle_Drive;
+    }
+    @OutDated
+    public int getVotes_Valley() {
+        return votes_Valley;
+    }
+    @OutDated
+    public int getVotes_Stoneguard() {
+        return votes_Stoneguard;
+    }
+    @OutDated
+    public int getVotes_Peaks() {
+        return votes_Peaks;
+    }
+    @OutDated
+    public int getVotes_Citadel() {
+        return votes_Citadel;
+    }
+    @OutDated
+    public int getVotes_Aelin_Tower() {
+        return votes_Aelin_Tower;
+    }
+    @OutDated
+    public int getVotes_Pixelville() {
+        return votes_Pixelville;
+    }
 }

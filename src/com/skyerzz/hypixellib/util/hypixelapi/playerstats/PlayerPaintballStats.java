@@ -52,7 +52,7 @@ public class PlayerPaintballStats extends PlayerGameStats {
     private HashMap<String, PERK> unlockedPerks = new HashMap<String, PERK>();
 
     @OutDated
-    private int votesJuice;
+    private int votes_Juice, votes_Babyland, votes_Victorian, votes_Courtyard, votes_Outback, votes_Herobrine, votes_Octagon;
 
     //</editor-fold>
 
@@ -136,9 +136,6 @@ public class PlayerPaintballStats extends PlayerGameStats {
             case "FORCEFIELDTIME":
                 this.forcefieldTime = value.getAsInt();
                 break;
-            case "VOTES_JUICE":
-                this.votesJuice = value.getAsInt();
-                break;
             //</editor-fold>
 
             //<editor-fold desc="[Misc stuff]">
@@ -149,6 +146,30 @@ public class PlayerPaintballStats extends PlayerGameStats {
                     Logger.logWarn("[HypixelAPI.Paintball.Hat] Unsupported Value: " + value.getAsString().toUpperCase());
                 }
                 break;
+            //</editor-fold>
+
+            //<editor-fold desc="[Outdated]">
+            case "VOTES_JUICE":
+                this.votes_Juice = value.getAsInt();
+                break;
+            case "VOTES_BABYLAND":
+                this.votes_Babyland = value.getAsInt();
+                return true;
+            case "VOTES_VICTORIAN":
+                this.votes_Victorian = value.getAsInt();
+                return true;
+            case "VOTES_COURTYARD":
+                this.votes_Courtyard = value.getAsInt();
+                return true;
+            case "VOTES_OUTBACK":
+                this.votes_Outback = value.getAsInt();
+                return true;
+            case "VOTES_HEROBRINE":
+                this.votes_Herobrine = value.getAsInt();
+                return true;
+            case "VOTES_OCTAGON":
+                this.votes_Octagon = value.getAsInt();
+                return true;
             //</editor-fold>
             default:
                 return false;
@@ -264,22 +285,26 @@ public class PlayerPaintballStats extends PlayerGameStats {
         return headstartLevel;
     }
 
+    public int getTeamDeaths() {
+        return teamDeaths;
+    }
+
     public int getForcefieldTime() {
         return forcefieldTime;
     }
-
+    @OutDated
     public int getWeekly_kills_b() {
         return weekly_kills_b;
     }
-
+    @OutDated
     public int getWeekly_kills_a() {
         return weekly_kills_a;
     }
-
+    @OutDated
     public int getMonthly_kills_b() {
         return monthly_kills_b;
     }
-
+    @OutDated
     public int getMonthly_kills_a() {
         return monthly_kills_a;
     }
@@ -301,7 +326,33 @@ public class PlayerPaintballStats extends PlayerGameStats {
     }
 
     @OutDated
-    public int getVotesJuice() {
-        return votesJuice;
+    public int getVotes_Juice() {
+        return votes_Juice;
     }
+    @OutDated
+    public int getVotes_Babyland() {
+        return votes_Babyland;
+    }
+    @OutDated
+    public int getVotes_Victorian() {
+        return votes_Victorian;
+    }
+    @OutDated
+    public int getVotes_Courtyard() {
+        return votes_Courtyard;
+    }
+    @OutDated
+    public int getVotes_Outback() {
+        return votes_Outback;
+    }
+    @OutDated
+    public int getVotes_Herobrine() {
+        return votes_Herobrine;
+    }
+    @OutDated
+    public int getVotes_Octagon() {
+        return votes_Octagon;
+    }
+
+
 }

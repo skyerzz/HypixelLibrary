@@ -23,6 +23,7 @@ public class PlayerArcadeStats extends PlayerGameStats{
     //all
     private boolean blood, hints, music, dtt_music;
     private int coins;
+    @OutDated
     private int monthly_coins_a, monthly_coins_b, weekly_coins_a, weekly_coins_b;
 
     private ArrayList<COSMETIC> unlockedCosmetics = new ArrayList<>();
@@ -30,13 +31,14 @@ public class PlayerArcadeStats extends PlayerGameStats{
     //BlockingDead
     private COSMETIC blockingDeadWeaponSkin;
     private int blockingDeadHeadShots, blockingDeadKills, blockingDeadWins;
+    private boolean flash /* lightning flashes */;
 
     //Bounty Hunters
     private COSMETIC bountyHuntersTrail;
-    private int bountyHunterBountyKills, bountyHunterDeaths, bountyHunterKills;
+    private int bountyHunterBountyKills, bountyHunterDeaths, bountyHunterKills, bountyHunterWins;
 
     //Build Battle solo|team
-    private int buildBattleWins;
+    private int buildBattleWins, buildBattleTeamWins;
 
     private ArrayList<ItemStack> buildBattleLoadOut = new ArrayList<>();
 
@@ -80,6 +82,7 @@ public class PlayerArcadeStats extends PlayerGameStats{
 
     //Star Wars
     private int starWarsShotsFired, starWarsDeaths, starWarsKills, starWarsRebelKills, starWarsEmpireKills, starWarsWins;
+    @OutDated
     private int starWarsWeeklyKills_a, starWarsMonthlyKills_a, starWarsWeeklyKills_b, starWarsMonthlyKills_b;
 
     //ThrowOut
@@ -92,6 +95,7 @@ public class PlayerArcadeStats extends PlayerGameStats{
 
     //UNKNOWN TODO FIND OUT
     private int stamp_level, time_stamp;
+
     /* stamp_level = Amount of conversions done on that day.
      * time_stamp = time when arcade shop was last opened
      * on arcade shop open both get reset.
@@ -148,6 +152,8 @@ public class PlayerArcadeStats extends PlayerGameStats{
             case "WEEKLY_COINS_B":
                 this.weekly_coins_b = value.getAsInt();
                 break;
+
+            //unknown
             case "STAMP_LEVEL":
                 this.stamp_level = value.getAsInt();
                 break;
@@ -165,6 +171,9 @@ public class PlayerArcadeStats extends PlayerGameStats{
                 break;
             case "WINS_DAYONE":
                 this.blockingDeadWins = value.getAsInt();
+                break;
+            case "FLASH":
+                this.flash = value.getAsBoolean();
                 break;
             case "MELEE_WEAPON":
                 if(COSMETIC.mapping.contains(value.getAsString().toUpperCase() + "_MELEE")){
@@ -185,6 +194,9 @@ public class PlayerArcadeStats extends PlayerGameStats{
             case "KILLS_ONEINTHEQUIVER":
                 this.bountyHunterKills = value.getAsInt();
                 break;
+            case "WINS_ONEINTHEQUIVER":
+                this.bountyHunterWins = value.getAsInt();
+                break;
             case "BOUNTY_HEAD":
                 if(value.getAsString().toUpperCase().equals("DEFAULT")){
                     this.bountyHuntersTrail = COSMETIC.BOUNTY_HUNTERS_DEFAULT_TRAIL;
@@ -201,6 +213,9 @@ public class PlayerArcadeStats extends PlayerGameStats{
             //<editor-fold desc="[Build Battle]">
             case "WINS_BUILDBATTLE":
                 this.buildBattleWins = value.getAsInt();
+                break;
+            case "WINS_BUILDBATTLE_TEAMS":
+                this.buildBattleTeamWins = value.getAsInt();
                 break;
             //</editor-fold>
 
@@ -428,6 +443,7 @@ public class PlayerArcadeStats extends PlayerGameStats{
     }
 
     private void setBuildBattleLoadOut(JsonArray array){
+        //todo make inventory object + this
         for(JsonElement element: array){
             String name = element.getAsString().split(":")[0].toUpperCase();
             int durability = 0;
@@ -442,5 +458,286 @@ public class PlayerArcadeStats extends PlayerGameStats{
                 Logger.logWarn("[PlayerAPI.Arcade.buildBattle.loadout] Unknown ItemValue: " + element.getAsString().toUpperCase());
             }
         }
+    }
+
+    public boolean isBlood() {
+        return blood;
+    }
+
+    public boolean isHints() {
+        return hints;
+    }
+
+    public boolean isMusic() {
+        return music;
+    }
+
+    public boolean isDtt_music() {
+        return dtt_music;
+    }
+
+    public int getCoins() {
+        return coins;
+    }
+
+    @OutDated
+    public int getMonthly_coins_a() {
+        return monthly_coins_a;
+    }
+    @OutDated
+    public int getMonthly_coins_b() {
+        return monthly_coins_b;
+    }
+    @OutDated
+    public int getWeekly_coins_a() {
+        return weekly_coins_a;
+    }
+    @OutDated
+    public int getWeekly_coins_b() {
+        return weekly_coins_b;
+    }
+
+    public ArrayList<COSMETIC> getUnlockedCosmetics() {
+        return unlockedCosmetics;
+    }
+
+    public COSMETIC getBlockingDeadWeaponSkin() {
+        return blockingDeadWeaponSkin;
+    }
+
+    public int getBlockingDeadHeadShots() {
+        return blockingDeadHeadShots;
+    }
+
+    public int getBlockingDeadKills() {
+        return blockingDeadKills;
+    }
+
+    public int getBlockingDeadWins() {
+        return blockingDeadWins;
+    }
+
+    public boolean isFlash() {
+        return flash;
+    }
+
+    public COSMETIC getBountyHuntersTrail() {
+        return bountyHuntersTrail;
+    }
+
+    public int getBountyHunterBountyKills() {
+        return bountyHunterBountyKills;
+    }
+
+    public int getBountyHunterDeaths() {
+        return bountyHunterDeaths;
+    }
+
+    public int getBountyHunterKills() {
+        return bountyHunterKills;
+    }
+
+    public int getBountyHunterWins() {
+        return bountyHunterWins;
+    }
+
+    public int getBuildBattleWins() {
+        return buildBattleWins;
+    }
+
+    public int getBuildBattleTeamWins() {
+        return buildBattleTeamWins;
+    }
+
+    public ArrayList<ItemStack> getBuildBattleLoadOut() {
+        return buildBattleLoadOut;
+    }
+
+    public int getCreeperAttackMaxWave() {
+        return creeperAttackMaxWave;
+    }
+
+    public int getDragonWarsKills() {
+        return dragonWarsKills;
+    }
+
+    public int getDragonWarsWins() {
+        return dragonWarsWins;
+    }
+
+    public COSMETIC getEnderSpleefTrail() {
+        return enderSpleefTrail;
+    }
+
+    public int getEnderSpleefWins() {
+        return enderSpleefWins;
+    }
+
+    public int getFarmHuntPoopCollected() {
+        return farmHuntPoopCollected;
+    }
+
+    public int getFarmHuntWins() {
+        return farmHuntWins;
+    }
+
+    public int getHoleInTheWallWins() {
+        return holeInTheWallWins;
+    }
+
+    public int getHoleInTheWallRounds() {
+        return holeInTheWallRounds;
+    }
+
+    public int getHoleInTheWallMaxQualifierScore() {
+        return holeInTheWallMaxQualifierScore;
+    }
+
+    public int getHoleInTheWallMaxFinaleScore() {
+        return holeInTheWallMaxFinaleScore;
+    }
+
+    public int getHypixelSaysRounds() {
+        return hypixelSaysRounds;
+    }
+
+    public int getHypixelSaysWins() {
+        return hypixelSaysWins;
+    }
+
+    public KIT getMiniWallsActiveKit() {
+        return miniWallsActiveKit;
+    }
+
+    public int getMiniWallsKills() {
+        return miniWallsKills;
+    }
+
+    public int getMiniWallsDeaths() {
+        return miniWallsDeaths;
+    }
+
+    public int getMiniWallsWins() {
+        return miniWallsWins;
+    }
+
+    public int getMiniWallsFinalKills() {
+        return miniWallsFinalKills;
+    }
+
+    public int getMiniWallsWitherKills() {
+        return miniWallsWitherKills;
+    }
+
+    public int getMiniWallsArrowsShot() {
+        return miniWallsArrowsShot;
+    }
+
+    public int getMiniWallsArrowsHit() {
+        return miniWallsArrowsHit;
+    }
+
+    public int getMiniWallsWitherDamage() {
+        return miniWallsWitherDamage;
+    }
+
+    public int getPartyGamesOneWins() {
+        return partyGamesOneWins;
+    }
+
+    public int getPartyGamesTwoWins() {
+        return partyGamesTwoWins;
+    }
+
+    public int getPartyGamesThreeWins() {
+        return partyGamesThreeWins;
+    }
+
+    public int getPixelPainterWins() {
+        return pixelPainterWins;
+    }
+    @OutDated
+    public int getSantaSaysRounds() {
+        return santaSaysRounds;
+    }
+    @OutDated
+    public int getSantaSaysWins() {
+        return santaSaysWins;
+    }
+
+    public int getSoccerPowerKicks() {
+        return soccerPowerKicks;
+    }
+
+    public int getSoccerGoals() {
+        return soccerGoals;
+    }
+
+    public int getSoccerWins() {
+        return soccerWins;
+    }
+
+    public int getStarWarsShotsFired() {
+        return starWarsShotsFired;
+    }
+
+    public int getStarWarsDeaths() {
+        return starWarsDeaths;
+    }
+
+    public int getStarWarsKills() {
+        return starWarsKills;
+    }
+
+    public int getStarWarsRebelKills() {
+        return starWarsRebelKills;
+    }
+
+    public int getStarWarsEmpireKills() {
+        return starWarsEmpireKills;
+    }
+
+    public int getStarWarsWins() {
+        return starWarsWins;
+    }
+    @OutDated
+    public int getStarWarsWeeklyKills_a() {
+        return starWarsWeeklyKills_a;
+    }
+    @OutDated
+    public int getStarWarsMonthlyKills_a() {
+        return starWarsMonthlyKills_a;
+    }
+    @OutDated
+    public int getStarWarsWeeklyKills_b() {
+        return starWarsWeeklyKills_b;
+    }
+    @OutDated
+    public int getStarWarsMonthlyKills_b() {
+        return starWarsMonthlyKills_b;
+    }
+
+    public int getThrowOutDeaths() {
+        return throwOutDeaths;
+    }
+
+    public int getThrowOutKills() {
+        return throwOutKills;
+    }
+
+    public int getThrowOutWins() {
+        return throwOutWins;
+    }
+
+    public int getGrinchWins() {
+        return grinchWins;
+    }
+
+    public int getStamp_level() {
+        return stamp_level;
+    }
+
+    public int getTime_stamp() {
+        return time_stamp;
     }
 }

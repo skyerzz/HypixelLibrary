@@ -123,6 +123,9 @@ public class PlayerQuakeStats extends PlayerGameStats {
             case "WEEKLY_KILLS_B":
                 this.weekly_kills_b = value.getAsInt();
                 break;
+            case "INSTANTRESPAWN":
+                this.instantRespawn = value.getAsBoolean();
+                return true;
 
 
             //</editor-fold>
@@ -168,6 +171,20 @@ public class PlayerQuakeStats extends PlayerGameStats {
                     this.selectedTrigger = TRIGGER.valueOf(value.getAsString().toUpperCase());
                 }else{
                     Logger.logWarn("[PlayerAPI.Quake.Trigger] Unknown Value: " + value.getAsString().toUpperCase());
+                }
+                break;
+            case "HAT":
+                if(HAT.mapping.contains(value.getAsString().toUpperCase())){
+                    this.selectedHat = HAT.valueOf(value.getAsString().toUpperCase());
+                }else{
+                    Logger.logWarn("[PlayerAPI.Quake.Hat] Unknown Value: " + value.getAsString().toUpperCase());
+                }
+                break;
+            case "KIT":
+                if(KIT.mapping.contains(value.getAsString().toUpperCase())){
+                    this.selectedKit = KIT.valueOf(value.getAsString().toUpperCase());
+                }else{
+                    Logger.logWarn("[PlayerAPI.Quake.Kit] Unknown Value: " + value.getAsString().toUpperCase());
                 }
                 break;
             case "NULL":
@@ -258,19 +275,19 @@ public class PlayerQuakeStats extends PlayerGameStats {
     public int getTeamWins() {
         return teamWins;
     }
-
+    @OutDated
     public int getWeekly_kills_a() {
         return weekly_kills_a;
     }
-
+    @OutDated
     public int getMonthly_kills_a() {
         return monthly_kills_a;
     }
-
+    @OutDated
     public int getWeekly_kills_b() {
         return weekly_kills_b;
     }
-
+    @OutDated
     public int getMonthly_kills_b() {
         return monthly_kills_b;
     }
