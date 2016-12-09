@@ -27,7 +27,7 @@ public enum WIZARD {
 
     private static ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(HAT item: HAT.values()){
+        for(WIZARD item: WIZARD.values()){
             list.add(item.name());
         }
         return list;
