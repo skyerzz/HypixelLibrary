@@ -9,13 +9,13 @@ import java.util.ArrayList;
  * Created by sky on 19-11-2016.
  */
 public enum FINISHER {
-    FINISHER_BOOM("Boom", 20),
-    FINISHER_LIGHTNING_STRIKES("Lightning strikes", 20),
-    FINISHER_CREEPER_FIREWORK("Creeper firework", 20),
-    FINISHER_INFESTATION("Infestation", 40),
-    FINISHER_GRAVESTONE("Gravestone", 40),
-    FINISHER_SQUID_MISSILE("Squid missile", 40),
-    FINISHER_REKT_HOLOGRAM("#rekt hologram", 1000);
+    BOOM("Boom", 20),
+    LIGHTNING_STRIKES("Lightning strikes", 20),
+    CREEPER_FIREWORK("Creeper firework", 20),
+    INFESTATION("Infestation", 40),
+    GRAVESTONE("Gravestone", 40),
+    SQUID_MISSILE("Squid missile", 40),
+    REKT_HOLOGRAM("#rekt hologram", 1000);
 
     private String displayName;
     private int cost;
