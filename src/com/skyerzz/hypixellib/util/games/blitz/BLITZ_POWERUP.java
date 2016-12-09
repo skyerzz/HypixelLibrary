@@ -1,5 +1,6 @@
 package com.skyerzz.hypixellib.util.games.blitz;
 
+import com.skyerzz.hypixellib.OutDated;
 import com.skyerzz.hypixellib.util.CURRENCY;
 import com.skyerzz.hypixellib.util.RANKTYPE;
 
@@ -9,7 +10,9 @@ import java.util.ArrayList;
  * Created by sky on 19-11-2016.
  */
 public enum BLITZ_POWERUP {
-    ASSASIN("Assassin", 20000),
+    @OutDated
+    WOBBUFFET("REMOVED- Wobbuffet", -1), //todo check if this really was a powerup
+    ASSASSIN("Assassin", 20000),
     STATIS("Statis", 40000),
     VAULT_HUNTER("Vault Hunter", 30000),
     WITHER_WARRIOR("Wither Warrior", 20000),
