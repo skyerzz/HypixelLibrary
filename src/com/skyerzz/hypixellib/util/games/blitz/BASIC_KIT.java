@@ -887,6 +887,7 @@ public enum BASIC_KIT {
                 }
             //</editor-fold>
             default:
+                Logger.logError("[Games.Blitz.Basic_kit] Kit or level not found! " + this.toString() + " Level: " + level);
                 return null;
         }
 
