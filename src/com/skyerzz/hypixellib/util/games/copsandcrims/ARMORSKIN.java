@@ -38,7 +38,7 @@ public enum ARMORSKIN {
 
     private static ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(GUNSKIN item: GUNSKIN.values()){
+        for(ARMORSKIN item: ARMORSKIN.values()){
             list.add(item.name());
         }
         return list;

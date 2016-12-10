@@ -28,7 +28,7 @@ public class Gun {
         return barrel;
     }
 
-    public CASE getaCase() {
+    public CASE getCase() {
         return aCase;
     }
 
