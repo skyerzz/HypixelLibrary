@@ -17,6 +17,7 @@ public class PlayerAPI extends AbstractAPIReply{
     private PlayerTurboKartRacersStats turboKartRacersStats;
     private PlayerArcadeStats arcadeStats;
     private PlayerCopsAndCrimsStats copsAndCrimsStats;
+    private PlayerWallsStats wallsStats;
 
     protected PlayerAPI(JsonObject apiJson){
         this.apiGameJson = apiJson.get("player").getAsJsonObject().get("stats").getAsJsonObject();
@@ -76,5 +77,12 @@ public class PlayerAPI extends AbstractAPIReply{
             this.blitzStats = new PlayerBlitzStats(apiGameJson.get("HungerGames").getAsJsonObject());
         }
         return blitzStats;
+    }
+
+    public PlayerWallsStats getWallsStats(){
+        if(wallsStats == null && apiGameJson.get("Walls")!=null){
+            this.wallsStats = new PlayerWallsStats(apiGameJson.get("Walls").getAsJsonObject());
+        }
+        return wallsStats;
     }
 }
