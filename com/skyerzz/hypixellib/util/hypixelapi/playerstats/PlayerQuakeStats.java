@@ -3,7 +3,6 @@ package com.skyerzz.hypixellib.util.hypixelapi.playerstats;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.skyerzz.hypixellib.HypixelLib;
 import com.skyerzz.hypixellib.Logger;
 import com.skyerzz.hypixellib.OutDated;
 import com.skyerzz.hypixellib.util.games.quake.*;

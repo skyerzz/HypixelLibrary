@@ -3,7 +3,6 @@ package com.skyerzz.hypixellib.util.hypixelapi.playerstats;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.skyerzz.hypixellib.HypixelLib;
 import com.skyerzz.hypixellib.Logger;
 import com.skyerzz.hypixellib.OutDated;
 import com.skyerzz.hypixellib.util.games.paintball.HAT;
@@ -224,7 +223,7 @@ public class PlayerPaintballStats extends PlayerGameStats {
                 return;
             }else {
                 //guess it wasnt any of those. Print out the value it was trying to use?
-                HypixelLib.logger.logWarn("[PlayerAPI.Paintball.package] Unknown value: " + value);
+                Logger.logWarn("[PlayerAPI.Paintball.package] Unknown value: " + value);
             }
         }
     }
