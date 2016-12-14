@@ -69,6 +69,7 @@ public class PlayerTNTGamesStats extends PlayerGameStats {
     private WIZARD selectedWizard;
 
     private ArrayList<HAT> unlockedHats = new ArrayList<>();
+    private ArrayList<DEATHEFFECT> unlockedDeathEffects = new ArrayList<>();
 
     @OutDated
     private int votes_Quadral, votes_ForgottenPlanet, votes_Atior, votes_Node, votes_TallGate, votes_GreenBelt, votes_TwinSpire, votes_TheVale, votes_Totum, votes_FireFall, votes_Blossom, votes_Gladius, votes_Crucible, votes_Heather, votes_Downvault, votes_DreadPit, votes_IceFortress, votes_Tombed;
@@ -307,17 +308,15 @@ public class PlayerTNTGamesStats extends PlayerGameStats {
             String value = element.getAsString().toUpperCase();
             if(value.equals("SPEED_POTION")){
                 this.speed_potion = true;
-                return;
             }else if(value.equals("SLOW_POTION")){
                 this.slow_potion = true;
-                return;
             }else if(value.equals("ENDER")){
                 //todo find out what this is
-                return;
             }else if(HAT.mapping.contains(value)){
                 this.unlockedHats.add(HAT.valueOf(value));
-                return;
-            }else {
+            }else if(DEATHEFFECT.mapping.contains(value)){
+                this.unlockedDeathEffects.add(DEATHEFFECT.valueOf(value));
+            }else{
                 //guess it wasnt any of those. Print out the value it was trying to use?
                 Logger.logWarn("[PlayerAPI.TNTGames.package] Unknown value: " + value);
             }
@@ -472,6 +471,8 @@ public class PlayerTNTGamesStats extends PlayerGameStats {
     public ArrayList<HAT> getUnlockedHats() {
         return unlockedHats;
     }
+
+    public ArrayList<DEATHEFFECT> getUnlockedDeathEffects() { return unlockedDeathEffects; }
     @OutDated
     public int getVotes_Quadral() {
         return votes_Quadral;
