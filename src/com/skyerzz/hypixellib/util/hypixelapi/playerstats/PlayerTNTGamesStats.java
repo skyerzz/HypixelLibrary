@@ -70,6 +70,7 @@ public class PlayerTNTGamesStats extends PlayerGameStats {
 
     private ArrayList<HAT> unlockedHats = new ArrayList<>();
     private ArrayList<DEATHEFFECT> unlockedDeathEffects = new ArrayList<>();
+    private ArrayList<PARTICLEEFFECT> unlockedParticleEffects = new ArrayList<>();
 
     @OutDated
     private int votes_Quadral, votes_ForgottenPlanet, votes_Atior, votes_Node, votes_TallGate, votes_GreenBelt, votes_TwinSpire, votes_TheVale, votes_Totum, votes_FireFall, votes_Blossom, votes_Gladius, votes_Crucible, votes_Heather, votes_Downvault, votes_DreadPit, votes_IceFortress, votes_Tombed, votes_BowSpleefC, votes_Biosphere, votes_Crystalline, votes_bloom;
@@ -319,8 +320,8 @@ public class PlayerTNTGamesStats extends PlayerGameStats {
                 this.speed_potion = true;
             }else if(value.equals("SLOW_POTION")){
                 this.slow_potion = true;
-            }else if(value.equals("ENDER")){
-                //todo find out what this is
+            }else if(PARTICLEEFFECT.mapping.contains(value)){
+                this.unlockedParticleEffects.add(PARTICLEEFFECT.valueOf(value));
             }else if(HAT.mapping.contains(value)){
                 this.unlockedHats.add(HAT.valueOf(value));
             }else if(DEATHEFFECT.mapping.contains(value)){
