@@ -45,11 +45,11 @@ public class PlayerBlitzStats extends PlayerGameStats {
 
     private boolean blood, fancyMode /* killcounter */, tauntAbility, toggled /*killcounter*/, autoArmor, combatTracker /*/trackcombat?*/, aura;
 
-    private int kills, deaths, wins, teamWins, coins;
+    private int kills, deaths, wins, teamWins, coins, ramboWins;
 
     @OutDated
     private int monthly_kills_b, monthly_kills_a, weekly_kills_a, weekly_kills_b;
-    private int votes_Caelum_v2, votes_Winter, votes_Cattle_Drive, votes_Valley, votes_Stoneguard, votes_Peaks, votes_Citadel, votes_Aelin_Tower, votes_Pixelville, votes_MiradorBasin, votes_Egypt, votes_MithrilRevived;
+    private int votes_Caelum_v2, votes_Winter, votes_Cattle_Drive, votes_Valley, votes_Stoneguard, votes_Peaks, votes_Citadel, votes_Aelin_Tower, votes_Pixelville, votes_MiradorBasin, votes_Egypt, votes_MithrilRevived, votes_Thorin;
     //</editor-fold>
 
     private void initialize() {
@@ -141,6 +141,9 @@ public class PlayerBlitzStats extends PlayerGameStats {
             case "AURATOGGLE":
                 this.aura = element.getAsBoolean();
                 return true;
+            case "RAMBO_WINS":
+                this.ramboWins = element.getAsInt();
+                return true;
             //</editor-fold>
 
             //<editor-fold desc="[Outdated]">
@@ -191,6 +194,9 @@ public class PlayerBlitzStats extends PlayerGameStats {
                 return true;
             case "VOTES_MITHRIL REVIVED":
                 this.votes_MithrilRevived = element.getAsInt();
+                return true;
+            case "VOTES_THORIN":
+                this.votes_Thorin = element.getAsInt();
                 return true;
             //</editor-fold>
         }

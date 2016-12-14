@@ -10,6 +10,7 @@ import java.util.ArrayList;
  */
 public enum JACKET {
     //TODO: check
+    NO_JACKET(       "No jacket", 0, RANKTYPE.DEFAULT),
     GOLD_JACKET(     "Slothdinger Pants",    0,      RANKTYPE.DEFAULT), //checked
     CHAIN_JACKET(    "Blushell Inc Pants",   2000,   RANKTYPE.VIP),      //checked
     IRON_JACKET(     "Sphax-corp Pants",     3000,   RANKTYPE.VIP_PLUS),

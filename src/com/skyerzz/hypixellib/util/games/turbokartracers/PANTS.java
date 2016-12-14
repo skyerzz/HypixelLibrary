@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * Created by sky on 2-8-2016.
  */
 public enum PANTS {
-    //TODO: check
+    NO_PANTS(       "No Pants", 0, RANKTYPE.DEFAULT),
     GOLD_PANTS(     "Slothdinger Pants",    0,      RANKTYPE.DEFAULT), //checked
     CHAIN_PANTS(    "Blushell Inc Pants",   2000,   RANKTYPE.VIP),      //checked
     IRON_PANTS(     "Sphax-corp Pants",     3000,   RANKTYPE.VIP_PLUS),

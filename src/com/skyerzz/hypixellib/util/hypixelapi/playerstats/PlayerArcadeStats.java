@@ -21,7 +21,7 @@ public class PlayerArcadeStats extends PlayerGameStats{
 
     //<editor-fold desc="[PRIVATES INDEX]"
     //all
-    private boolean blood, hints, music, dtt_music;
+    private boolean blood, hints, music, dtt_music, dtt_dropdown, xmas_music;
     private int coins;
     @OutDated
     private int monthly_coins_a, monthly_coins_b, weekly_coins_a, weekly_coins_b;
@@ -81,10 +81,20 @@ public class PlayerArcadeStats extends PlayerGameStats{
     //Soccer
     private int soccerPowerKicks, soccerGoals, soccerWins;
 
+    //Splatoon
+    @OutDated
+    private int splatoonWins, splatoonKills, splatoonDeaths;
+    @OutDated
+    private boolean splatoonTutorial;
+
     //Star Wars
     private int starWarsShotsFired, starWarsDeaths, starWarsKills, starWarsRebelKills, starWarsEmpireKills, starWarsWins;
     @OutDated
     private int starWarsWeeklyKills_a, starWarsMonthlyKills_a, starWarsWeeklyKills_b, starWarsMonthlyKills_b;
+
+    //Sumo
+    @OutDated
+    private int sumoWins;
 
     //ThrowOut
     private int throwOutDeaths, throwOutKills, throwOutWins;
@@ -95,7 +105,7 @@ public class PlayerArcadeStats extends PlayerGameStats{
     //</editor-fold>
 
 
-    //UNKNOWN TODO FIND OUT
+    //UNKNOWN TODO IMPLEMENT/Find out!
     private int stamp_level, time_stamp;
 
     /* stamp_level = Amount of conversions done on that day.
@@ -103,6 +113,7 @@ public class PlayerArcadeStats extends PlayerGameStats{
      * on arcade shop open both get reset.
      * time_stamp + 24h is when you can convert again, unless stamp_level < 3 , then instant.
      */
+    private int paintedBlocks;
 
 
     public PlayerArcadeStats(JsonObject json) {
@@ -141,6 +152,12 @@ public class PlayerArcadeStats extends PlayerGameStats{
                 break;
             case "DTT_MUSIC":
                 this.dtt_music = value.getAsBoolean(); //todo what music?
+                break;
+            case "DTT_DROPDOWN":
+                this.dtt_dropdown = value.getAsBoolean(); //todo what is dtt
+                break;
+            case "XMAS_MUSIC":
+                this.xmas_music = value.getAsBoolean();
                 break;
             case "MONTHLY_COINS_A":
                 this.monthly_coins_a = value.getAsInt();
@@ -425,7 +442,13 @@ public class PlayerArcadeStats extends PlayerGameStats{
                 return true;
             //</editor-fold>
 
-            //<editor-fold desc="[UNUSED]">
+            //<editor-fold desc="[UNKNOWN]">
+            case "PAINTEDBLOCKS":
+                this.paintedBlocks = value.getAsInt();
+                return true;
+            //</editor-fold>
+
+            //<editor-fold desc="[UNUSED - NEVER EXISTED]">
             case "DEATHS_GRIND":
             case "DEATHS_VOLLEYBALL":
             case "KILLS_GRIND":
@@ -435,7 +458,19 @@ public class PlayerArcadeStats extends PlayerGameStats{
             case "WINS_PSPLEEF":
             case "WINS_SPACERAIDERS":
             case "WINS_VOLLEYBALL":
-                //these games never existed, therefore not using @Outdated.
+                //these games never existed
+                return true;
+            case "WINS_SPLATOON":
+                this.splatoonWins = value.getAsInt();
+                return true;
+            case "KILLS_SPLATOON":
+                this.splatoonKills = value.getAsInt();
+                return true;
+            case "DEATHS_SPLATOON":
+                this.splatoonDeaths = value.getAsInt();
+                return true;
+            case "WINS_SUMO":
+                this.sumoWins = value.getAsInt();
                 return true;
             //</editor-fold>
             default:
@@ -462,8 +497,11 @@ public class PlayerArcadeStats extends PlayerGameStats{
 
     private void setPackages(JsonArray array){
         for(JsonElement element: array){
-            if(COSMETIC.mapping.contains(element.getAsString().toUpperCase())){
-                this.unlockedCosmetics.add(COSMETIC.valueOf(element.getAsString().toUpperCase()));
+            String value = element.getAsString().toUpperCase().trim();
+            if(COSMETIC.mapping.contains(value)){
+                this.unlockedCosmetics.add(COSMETIC.valueOf(value));
+            }else if(value.equals("TUTORIAL_SPLATOON")){
+                this.splatoonTutorial = true;
             }else{
                 Logger.logWarn("[PlayerAPI.Arcade.packages] Unknown Value: " + element.getAsString().toUpperCase());
             }

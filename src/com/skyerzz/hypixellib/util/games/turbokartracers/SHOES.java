@@ -3,13 +3,14 @@ package com.skyerzz.hypixellib.util.games.turbokartracers;
 import com.skyerzz.hypixellib.util.CURRENCY;
 import com.skyerzz.hypixellib.util.RANKTYPE;
 
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.ArrayList;
 
 /**
  * Created by sky on 2-8-2016.
  */
 public enum SHOES {
-    //TODO: check
+    NO_SHOES(       "No shoes", 0, RANKTYPE.DEFAULT),
     GOLD_SHOES(     "Slothdinger Pants",    0,      RANKTYPE.DEFAULT), //checked
     CHAIN_SHOES(    "Blushell Inc Pants",   2000,   RANKTYPE.VIP),      //checked
     IRON_SHOES(     "Sphax-corp Pants",     3000,   RANKTYPE.VIP_PLUS),

@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * Created by sky on 2-8-2016.
  */
 public enum HELMET {
-    //TODO: check
+    NO_HELMET(       "No helmet", 0, RANKTYPE.DEFAULT),
     HELMET_1_1( "Race Red Headline",    0,      RANKTYPE.DEFAULT),  //checked
     HELMET_1_2( "Sunset Headline",      1000,   RANKTYPE.DEFAULT),
     HELMET_1_3( "Ocean Headline",       5000,   RANKTYPE.DEFAULT),
