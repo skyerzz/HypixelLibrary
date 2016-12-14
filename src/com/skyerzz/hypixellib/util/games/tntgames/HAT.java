@@ -27,7 +27,7 @@ public enum HAT {
     LUMBERJACK_HAT(     "Lumberjack Hat",       1500,   RANKTYPE.VIP),                      
     OVER_THE_RAINBOW(   "Over The Rainbow Hat", 2000,   RANKTYPE.VIP_PLUS),                 
     FRYING_PAN(         "Frying Pan Hat",       2000,   RANKTYPE.VIP_PLUS),                 
-    GOLDDIGGER(         "Golddigger Hat",       1500,   RANKTYPE.VIP_PLUS),                 
+    GOLDIGGER(         "Golddigger Hat",       1500,   RANKTYPE.VIP_PLUS),
     BANKERS_DRAUGHT(    "Banker's Draught Hat", 1500,   RANKTYPE.VIP_PLUS),                 
     BAKERS_HAT(         "Baker's Hat",          1200,   RANKTYPE.VIP_PLUS),                 
     SPACEMAN_HELMET(    "Spaceman Helmet",      2000,   RANKTYPE.VIP_PLUS),                 
