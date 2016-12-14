@@ -72,7 +72,7 @@ public class PlayerTNTGamesStats extends PlayerGameStats {
     private ArrayList<DEATHEFFECT> unlockedDeathEffects = new ArrayList<>();
 
     @OutDated
-    private int votes_Quadral, votes_ForgottenPlanet, votes_Atior, votes_Node, votes_TallGate, votes_GreenBelt, votes_TwinSpire, votes_TheVale, votes_Totum, votes_FireFall, votes_Blossom, votes_Gladius, votes_Crucible, votes_Heather, votes_Downvault, votes_DreadPit, votes_IceFortress, votes_Tombed;
+    private int votes_Quadral, votes_ForgottenPlanet, votes_Atior, votes_Node, votes_TallGate, votes_GreenBelt, votes_TwinSpire, votes_TheVale, votes_Totum, votes_FireFall, votes_Blossom, votes_Gladius, votes_Crucible, votes_Heather, votes_Downvault, votes_DreadPit, votes_IceFortress, votes_Tombed, votes_BowSpleefC, votes_Biosphere, votes_Crystalline, votes_bloom;
     //</editor-fold>
 
     public PlayerTNTGamesStats(JsonObject json) {
@@ -254,8 +254,17 @@ public class PlayerTNTGamesStats extends PlayerGameStats {
             case "VOTES_TOMBED":
                 this.votes_Tombed = element.getAsInt();
                 return true;
-            case "WITHER":
-                //todo unknown stuff
+            case "VOTES_BOW SPLEEF (C)":
+                this.votes_BowSpleefC = element.getAsInt();
+                return true;
+            case "VOTES_BIOSPHERE":
+                this.votes_Biosphere = element.getAsInt();
+                return true;
+            case "VOTES_CRYSTALLINE":
+                this.votes_Crystalline = element.getAsInt();
+                return true;
+            case "VOTES_BLOOM":
+                this.votes_bloom = element.getAsInt();
                 return true;
             //</editor-fold>
         }

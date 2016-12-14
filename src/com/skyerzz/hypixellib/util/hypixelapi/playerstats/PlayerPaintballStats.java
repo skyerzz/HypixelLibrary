@@ -54,7 +54,7 @@ public class PlayerPaintballStats extends PlayerGameStats {
     private int votes_Juice, votes_Babyland, votes_Victorian, votes_Courtyard, votes_Outback, votes_Herobrine, votes_Octagon, votes_OhCanada, votes_Egypt, votes_Market;
 
     @OutDated
-    private boolean achievement_flag_1;
+    private boolean achievement_flag_1, instantRespawn;
 
     //</editor-fold>
 
@@ -155,6 +155,9 @@ public class PlayerPaintballStats extends PlayerGameStats {
             //</editor-fold>
 
             //<editor-fold desc="[Outdated]">
+            case "INSTANT_RESPAWN":
+                this.instantRespawn = value.getAsBoolean();
+                return true;
             case "VOTES_JUICE":
                 this.votes_Juice = value.getAsInt();
                 break;
