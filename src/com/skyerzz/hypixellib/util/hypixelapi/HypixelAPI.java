@@ -1,6 +1,7 @@
 package com.skyerzz.hypixellib.util.hypixelapi;
 
 import com.skyerzz.hypixellib.util.hypixelapi.exception.MalformedAPIKeyException;
+import com.skyerzz.hypixellib.util.hypixelapi.exception.NoPlayerStatsException;
 import com.skyerzz.hypixellib.util.hypixelapi.exception.PlayerNonExistentException;
 import com.skyerzz.hypixellib.util.hypixelapi.exception.RequestTypeException;
 import com.skyerzz.hypixellib.util.mojangapi.MojangAPI;
@@ -17,7 +18,7 @@ public class HypixelAPI{
 
     public HypixelAPI() {}
 
-    private AbstractAPIReply getAPIReply(APIRequest request, String APIkey) throws MalformedAPIKeyException, IOException, PlayerNonExistentException {
+    private AbstractAPIReply getAPIReply(APIRequest request, String APIkey) throws MalformedAPIKeyException, IOException, PlayerNonExistentException, NoPlayerStatsException {
         this.APIkey = APIkey;
         switch(request.getRequestType()){
             case PLAYER:
@@ -28,7 +29,7 @@ public class HypixelAPI{
         }
     }
 
-    public PlayerAPI getPlayerAPI(String player, String APIkey) throws RequestTypeException, MalformedAPIKeyException, IOException, PlayerNonExistentException {
+    public PlayerAPI getPlayerAPI(String player, String APIkey) throws RequestTypeException, MalformedAPIKeyException, IOException, PlayerNonExistentException, NoPlayerStatsException {
         String uuid;
         if(isUuid(player)){
             uuid = player;

@@ -1,6 +1,7 @@
 package com.skyerzz.hypixellib.util.hypixelapi;
 
 import com.google.gson.JsonObject;
+import com.skyerzz.hypixellib.util.hypixelapi.exception.NoPlayerStatsException;
 import com.skyerzz.hypixellib.util.hypixelapi.playerstats.*;
 
 /**
@@ -19,8 +20,12 @@ public class PlayerAPI extends AbstractAPIReply{
     private PlayerCopsAndCrimsStats copsAndCrimsStats;
     private PlayerWallsStats wallsStats;
 
-    protected PlayerAPI(JsonObject apiJson){
-        this.apiGameJson = apiJson.get("player").getAsJsonObject().get("stats").getAsJsonObject();
+    protected PlayerAPI(JsonObject apiJson) throws NoPlayerStatsException {
+        try {
+            this.apiGameJson = apiJson.get("player").getAsJsonObject().get("stats").getAsJsonObject();
+        }catch(IllegalStateException e){
+                throw new NoPlayerStatsException();
+        }
     }
 
     public PlayerQuakeStats getQuakeStats(){
