@@ -30,10 +30,6 @@ public class PlayerQuakeStats extends PlayerGameStats {
     private int teamKillstreaks;
     private int teamWins;
 
-    private int weekly_kills_a;
-    private int monthly_kills_a;
-    private int weekly_kills_b;
-    private int monthly_kills_b;
 
     private boolean instantRespawn;
 
@@ -59,6 +55,8 @@ public class PlayerQuakeStats extends PlayerGameStats {
 
     @OutDated
     private boolean achievement_flag_1;
+    @OutDated
+    private int dailyKills, weeklyKills, weekly_kills_a, monthly_kills_a, weekly_kills_b, monthly_kills_b, wins_DM, wins_timeAttack, wins_dmTeam, wins_team, team_wins;
     //</editor-fold>
 
     public PlayerQuakeStats(JsonObject json) {
@@ -128,10 +126,25 @@ public class PlayerQuakeStats extends PlayerGameStats {
 
             //outdated
             case "TEAM_WINS":
+                this.team_wins = value.getAsInt();
+                return true;
             case "WINS_TEAM":
+                this.wins_team = value.getAsInt();
+                return true;
             case "WINS_DM":
+                this.wins_DM = value.getAsInt();
+                return true;
             case "WINS_TIMEATTACK":
+                this.wins_timeAttack = value.getAsInt();
+                return true;
             case "WINS_DM_TEAM":
+                this.wins_dmTeam = value.getAsInt();
+                return true;
+            case "DAILY_KILLS":
+                this.dailyKills = value.getAsInt();
+                return true;
+            case "WEEKLY_KILLS":
+                this.weeklyKills = value.getAsInt();
                 return true;
 
             //</editor-fold>

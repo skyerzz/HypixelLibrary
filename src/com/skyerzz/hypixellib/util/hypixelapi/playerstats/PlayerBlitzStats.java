@@ -214,7 +214,7 @@ public class PlayerBlitzStats extends PlayerGameStats {
             return true;
         }
         if(key.equals("DEFAULTKIT")){
-            String kit = element.getAsString().toUpperCase();
+            String kit = element.getAsString().toUpperCase().replace(" ", "_");
             if(BASIC_KIT.mapping.contains(kit)){
                 selectedBasicKit = BASIC_KIT.valueOf(kit);
                 return true;
@@ -223,7 +223,7 @@ public class PlayerBlitzStats extends PlayerGameStats {
                 selectedAdvancedKit = ADVANCED_KIT.valueOf(kit);
                 return true;
             }
-            Logger.logInfo("[PlayerAPI.Blitz.DefaultKit] Could not find kit: " + key);
+            Logger.logInfo("[PlayerAPI.Blitz.DefaultKit] Could not find kit: " + element.getAsString());
             return true;
         }
         if(key.contains("INVENTORY")){
