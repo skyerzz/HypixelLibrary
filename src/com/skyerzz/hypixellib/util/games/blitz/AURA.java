@@ -20,7 +20,7 @@ public enum AURA{
     LAVA("Lava Particle Aura", 0, RANKTYPE.VIP_PLUS),
     SNOW("Snow Particle Aura", 0, RANKTYPE.VIP),
     WATER("Water Particle Aura", 0, RANKTYPE.VIP),
-    DAYLIGHT_SENSOR("Daylight Sensor Particle Aura", 0, RANKTYPE.VIP),
+    DAYLIGHT("Daylight Sensor Particle Aura", 0, RANKTYPE.VIP),
     MYCELIUM_TRAIL("Mycelium Trail", 0, RANKTYPE.VIP_PLUS),
     NETHERRACK_TRAIL("Netherrack Trail", 0, RANKTYPE.VIP_PLUS),
     TRON_RAINBOW_TRAIL("Rainbow Tron Trail", 0, RANKTYPE.MVP_PLUS),
