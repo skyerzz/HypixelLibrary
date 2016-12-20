@@ -385,11 +385,15 @@ public class PlayerPaintballStats extends PlayerGameStats {
     public int getVotes_OhCanada() {
         return votes_OhCanada;
     }
-
     @OutDated
-    public boolean isAchievement_Flag_1() { return achievement_flag_1; }
-
-    //</editor-fold>
+    public boolean isAchievement_flag_1() {
+        return achievement_flag_1;
+    }
+    @OutDated
+    public boolean isInstantRespawn() {
+        return instantRespawn;
+    }
+//</editor-fold>
 
 
 }

@@ -395,5 +395,33 @@ public class PlayerQuakeStats extends PlayerGameStats {
     public boolean isAchievement_flag_1() {
         return achievement_flag_1;
     }
+    @OutDated
+    public int getDailyKills() {
+        return dailyKills;
+    }
+    @OutDated
+    public int getWeeklyKills() {
+        return weeklyKills;
+    }
+    @OutDated
+    public int getWins_DM() {
+        return wins_DM;
+    }
+    @OutDated
+    public int getWins_timeAttack() {
+        return wins_timeAttack;
+    }
+    @OutDated
+    public int getWins_dmTeam() {
+        return wins_dmTeam;
+    }
+    @OutDated
+    public int getWins_team() {
+        return wins_team;
+    }
+    @OutDated
+    public int getTeam_wins() {
+        return team_wins;
+    }
     //</editor-fold>
 }

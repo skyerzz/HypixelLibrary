@@ -121,4 +121,72 @@ public class PlayerWallsStats extends PlayerGameStats {
     private void setPackageValues(JsonArray array){
 
     }
+
+    public boolean isBlood() {
+        return blood;
+    }
+
+    public int getCoins() {
+        return coins;
+    }
+
+    public int getWins() {
+        return wins;
+    }
+
+    public int getDeaths() {
+        return deaths;
+    }
+
+    public int getKills() {
+        return kills;
+    }
+
+    public int getLosses() {
+        return losses;
+    }
+
+    public HashMap<ADVCANCEDSTARTER, Integer> getAdvancedStarters() {
+        return advancedStarters;
+    }
+
+    public HashMap<PERK, Integer> getPerks() {
+        return perks;
+    }
+
+    public HashMap<BASICSTARTER, Integer> getBasicStarters() {
+        return basicStarters;
+    }
+    @OutDated
+    public int getMonthly_wins_a() {
+        return monthly_wins_a;
+    }
+    @OutDated
+    public int getMonthly_wins_b() {
+        return monthly_wins_b;
+    }
+    @OutDated
+    public int getWeekly_wins_a() {
+        return weekly_wins_a;
+    }
+    @OutDated
+    public int getWeekly_wins_b() {
+        return weekly_wins_b;
+    }
+    @OutDated
+    public int getMonthly_kills_a() {
+        return monthly_kills_a;
+    }
+    @OutDated
+    public int getMonthly_kills_b() {
+        return monthly_kills_b;
+    }
+    @OutDated
+    public int getWeekly_kills_a() {
+        return weekly_kills_a;
+    }
+    @OutDated
+    public int getWeekly_kills_b() {
+        return weekly_kills_b;
+    }
 }

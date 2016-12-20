@@ -806,4 +806,44 @@ public class PlayerArcadeStats extends PlayerGameStats{
     public int getTime_stamp() {
         return time_stamp;
     }
+
+    public boolean isDtt_dropdown() {
+        return dtt_dropdown;
+    }
+
+    public boolean isXmas_music() {
+        return xmas_music;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+    @OutDated
+    public int getSplatoonWins() {
+        return splatoonWins;
+    }
+    @OutDated
+    public int getSplatoonKills() {
+        return splatoonKills;
+    }
+    @OutDated
+    public int getSplatoonDeaths() {
+        return splatoonDeaths;
+    }
+    @OutDated
+    public boolean isSplatoonTutorial() {
+        return splatoonTutorial;
+    }
+    @OutDated
+    public int getSumoWins() {
+        return sumoWins;
+    }
+
+    public COSMETIC getThrowOutDisguise() {
+        return throwOutDisguise;
+    }
+
+    public int getPaintedBlocks() {
+        return paintedBlocks;
+    }
 }

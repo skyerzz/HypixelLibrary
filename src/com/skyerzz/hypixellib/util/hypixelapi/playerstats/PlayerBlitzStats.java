@@ -9,6 +9,7 @@ import com.skyerzz.hypixellib.util.games.blitz.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -49,7 +50,7 @@ public class PlayerBlitzStats extends PlayerGameStats {
 
     @OutDated
     private int monthly_kills_b, monthly_kills_a, weekly_kills_a, weekly_kills_b;
-    private int votes_Caelum_v2, votes_Winter, votes_Cattle_Drive, votes_Valley, votes_Stoneguard, votes_Peaks, votes_Citadel, votes_Aelin_Tower, votes_Pixelville, votes_MiradorBasin, votes_Egypt, votes_MithrilRevived, votes_Thorin;
+    private int votes_Caelum_v2, votes_Winter, votes_Cattle_Drive, votes_Valley, votes_Stoneguard, votes_Peaks, votes_Citadel, votes_Aelin_Tower, votes_Pixelville, votes_MiradorBasin, votes_Egypt, votes_MithrilRevived, votes_Thorin, votes_Despairv1;
     //</editor-fold>
 
     private void initialize() {
@@ -197,6 +198,9 @@ public class PlayerBlitzStats extends PlayerGameStats {
                 return true;
             case "VOTES_THORIN":
                 this.votes_Thorin = element.getAsInt();
+                return true;
+            case "VOTES_DESPAIR V1":
+                this.votes_Despairv1 = element.getAsInt();
                 return true;
             //</editor-fold>
         }
@@ -376,6 +380,10 @@ public class PlayerBlitzStats extends PlayerGameStats {
         return teamWins;
     }
 
+    public int getRamboWins() {
+        return ramboWins;
+    }
+
     public int getCoins() {
         return coins;
     }
@@ -433,6 +441,21 @@ public class PlayerBlitzStats extends PlayerGameStats {
     }
     @OutDated
     public int getVotes_MiradorBasin() { return votes_MiradorBasin; }
-
-    //</editor-fold>
+    @OutDated
+    public int getVotes_Egypt() {
+        return votes_Egypt;
+    }
+    @OutDated
+    public int getVotes_MithrilRevived() {
+        return votes_MithrilRevived;
+    }
+    @OutDated
+    public int getVotes_Thorin() {
+        return votes_Thorin;
+    }
+    @OutDated
+    public int getVotes_Despairv1() {
+        return votes_Despairv1;
+    }
+//</editor-fold>
 }

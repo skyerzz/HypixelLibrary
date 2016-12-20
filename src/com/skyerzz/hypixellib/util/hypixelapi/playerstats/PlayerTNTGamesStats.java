@@ -76,6 +76,8 @@ public class PlayerTNTGamesStats extends PlayerGameStats {
     private int votes_Quadral, votes_ForgottenPlanet, votes_Atior, votes_Node, votes_TallGate, votes_GreenBelt, votes_TwinSpire, votes_TheVale, votes_Totum, votes_FireFall, votes_Blossom, votes_Gladius, votes_Crucible, votes_Heather, votes_Downvault, votes_DreadPit, votes_IceFortress, votes_Tombed, votes_BowSpleefC, votes_Biosphere, votes_Crystalline, votes_bloom;
     @OutDated
     private int deaths, kills;
+    @OutDated
+    private int bombermanKills, bombermanDeaths;
     //</editor-fold>
 
     public PlayerTNTGamesStats(JsonObject json) {
@@ -209,6 +211,13 @@ public class PlayerTNTGamesStats extends PlayerGameStats {
             case "KILLS":
                 this.kills = element.getAsInt();
                 return true;
+            case "DEATHS_BOMBERMAN":
+                this.bombermanDeaths = element.getAsInt();
+                return true;
+            case "KILLS_BOMBERMAN":
+                this.bombermanKills = element.getAsInt();
+                return true;
+
             case "VOTES_QUADRAL":
                 this.votes_Quadral = element.getAsInt();
                 return true;
