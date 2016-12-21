@@ -27,6 +27,7 @@ public class Enchantment {
     public static Enchantment lure3 = new Enchantment(EnchantmentType.LURE, 3);
     public static Enchantment loot3 = new Enchantment(EnchantmentType.LOOTING, 3);
     public static Enchantment power1 = new Enchantment(EnchantmentType.POWER, 1);
+    public static Enchantment power2 = new Enchantment(EnchantmentType.POWER, 2);
     public static Enchantment power3 = new Enchantment(EnchantmentType.POWER, 3);
     public static Enchantment kb1 = new Enchantment(EnchantmentType.KNOCKBACK, 1);
     public static Enchantment kb2 = new Enchantment(EnchantmentType.KNOCKBACK, 2);

@@ -18,5 +18,6 @@ public enum EffectType {
     FIRE_RESISTANCE,
     WEAKNESS,
     POISON,
+    STRENGTH,
     RESISTANCE;
 }

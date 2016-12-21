@@ -124,6 +124,7 @@ public class Item {
 
     //diamond
     public static ItemStack diamondHelmet = new ItemStack(new Item(Material.DIAMOND_HELMET), 1);
+    public static ItemStack diamondChest = new ItemStack(new Item(Material.DIAMOND_CHESTPLATE), 1);
     public static ItemStack diamondLeggings = new ItemStack(new Item(Material.DIAMOND_LEGGINGS), 1);
     public static ItemStack diamondBoots = new ItemStack(new Item(Material.DIAMOND_BOOTS), 1);
     //</editor-fold>
@@ -150,6 +151,7 @@ public class Item {
     public static ItemStack diamondAxe = new ItemStack(new Item(Material.DIAMOND_AXE), 1);
     public static ItemStack diamondShovel = new ItemStack(new Item(Material.DIAMOND_SPADE), 1);
     public static ItemStack diamondHoe = new ItemStack(new Item(Material.DIAMOND_HOE), 1);
+    public static ItemStack diamondSword = new ItemStack(new Item(Material.DIAMOND_SWORD), 1);
 
     public static ItemStack bow = new ItemStack(new Item(Material.BOW), 1);
     public static ItemStack fishingRod = new ItemStack(new Item(Material.FISHING_ROD), 1);
@@ -213,6 +215,7 @@ public class Item {
     public static Item snow = new Item(Material.SNOW_BLOCK);
     public static Item pumpkin = new Item(Material.PUMPKIN);
     public static Item stone = new Item(Material.STONE);
+    public static Item obsidian = new Item(Material.OBSIDIAN);
     public static ItemStack flintNSteel = new ItemStack(new Item(Material.FLINT_AND_STEEL), 1);
     public static ItemStack carrotOnAStick = new ItemStack(new Item(Material.CARROT_STICK), 1);
     public static ItemStack anvil = new ItemStack(new Item(Material.ANVIL), 1);
@@ -256,6 +259,8 @@ public class Item {
     public static Item speedPotion2_20 = new Item(Material.POTION).addEffect(new Effect(EffectType.SPEED, 2, 20));
     public static Item speedPotion2_25 = new Item(Material.POTION).addEffect(new Effect(EffectType.SPEED, 2, 25));
     public static Item speedPotion2_27 = new Item(Material.POTION).addEffect(new Effect(EffectType.SPEED, 2, 27));
+    public static Item speedPotion2_90 = new Item(Material.POTION).addEffect(new Effect(EffectType.SPEED, 2, 90));
+    public static Item speedSplashPotion3_4 = new Item(Material.POTION).addEffect(new Effect(EffectType.SPEED, 3, 4));
 
     public static Item slowSlpashPotion2_12 = new Item(Material.SPLASH_POTION).addEffect(new Effect(EffectType.SLOW, 2, 12));
     public static Item slowSlpashPotion3_8 = new Item(Material.SPLASH_POTION).addEffect(new Effect(EffectType.SLOW, 3, 8));
@@ -271,6 +276,7 @@ public class Item {
     public static Item regenPotion3_6 = new Item(Material.POTION).addEffect(new Effect(EffectType.REGENERATION, 3, 6));
 
     public static Item resistanceSplashPotion2_11 = new Item(Material.SPLASH_POTION).addEffect(new Effect(EffectType.RESISTANCE, 2, 11));
+    public static Item resistancePotion1_10 = new Item(Material.POTION).addEffect(new Effect(EffectType.RESISTANCE, 1, 10));
     public static Item resistancePotion1_12 = new Item(Material.POTION).addEffect(new Effect(EffectType.RESISTANCE, 1, 12));
     public static Item resistancePotion1_13 = new Item(Material.POTION).addEffect(new Effect(EffectType.RESISTANCE, 1, 13));
     public static Item resistancePotion1_14 = new Item(Material.POTION).addEffect(new Effect(EffectType.RESISTANCE, 1, 14));
@@ -302,13 +308,19 @@ public class Item {
     public static Item posionSplashPotion2_3 = new Item(Material.SPLASH_POTION).addEffect(new Effect(EffectType.POISON, 2, 3));
 
     public static Item nightVisionSplashPotion1_300 = new Item(Material.SPLASH_POTION).addEffect(new Effect(EffectType.NIGHT_VISION, 1, 300));
+
+    public static Item strengthPotionCustom20PC_45 = new Item("20% Increase in damage", Material.POTION).addEffect(new Effect(EffectType.STRENGTH, 0, 45));
+    public static Item strengthPotionCustom20PC_60 = new Item("20% Increase in damage", Material.POTION).addEffect(new Effect(EffectType.STRENGTH, 0, 60));
+    public static Item strengthPotionCustom20PC_90 = new Item("20% Increase in damage", Material.POTION).addEffect(new Effect(EffectType.STRENGTH, 0, 90));
     //</editor-fold>
 
     //<editor-fold desc="[Enchanted Items]">
 
     //<editor-fold desc="[Bows]">
     public static ItemStack bowUnbreak1 = new ItemStack(new Item(Material.BOW).addEnchantment(new Enchantment(EnchantmentType.UNBREAKING, 1)), 1);
-    public static ItemStack bowPow1 = new ItemStack(new Item(Material.BOW).addEnchantment(new Enchantment(EnchantmentType.POWER, 1)), 1);
+    public static ItemStack bowPow1 = new ItemStack(new Item(Material.BOW).addEnchantment(Enchantment.power1), 1);
+    public static ItemStack bowPow2 = new ItemStack(new Item(Material.BOW).addEnchantment(Enchantment.power2), 1);
+    public static ItemStack bowPow3 = new ItemStack(new Item(Material.BOW).addEnchantment(Enchantment.power3), 1);
     public static ItemStack bowPunch1 = new ItemStack(new Item(Material.BOW).addEnchantment(Enchantment.punch1), 1);
     public static ItemStack bowPunch1Pow1 = new ItemStack(new Item(Material.BOW).addEnchantment(Enchantment.punch1).addEnchantment(Enchantment.power1), 1);
     public static ItemStack bowPunch2Pow1 = new ItemStack(new Item(Material.BOW).addEnchantment(Enchantment.punch2).addEnchantment(Enchantment.power1), 1);
@@ -455,6 +467,8 @@ public class Item {
     public static ItemStack ironHelmetFProt3 = new ItemStack(new Item(Material.IRON_HELMET).addEnchantment(Enchantment.fprot3), 1);
     public static ItemStack ironHelmetFProt10 = new ItemStack(new Item(Material.IRON_HELMET).addEnchantment(Enchantment.fprot10), 1);
 
+    public static ItemStack ironChestProt1 = new ItemStack(new Item(Material.IRON_CHESTPLATE).addEnchantment(Enchantment.prot1), 1);
+    public static ItemStack ironChestProt2 = new ItemStack(new Item(Material.IRON_CHESTPLATE).addEnchantment(Enchantment.prot2), 1);
     public static ItemStack ironChestfProt10 = new ItemStack(new Item(Material.IRON_CHESTPLATE).addEnchantment(Enchantment.fprot10), 1);
     public static ItemStack ironChestBProt3 = new ItemStack(new Item(Material.IRON_CHESTPLATE).addEnchantment(Enchantment.bprot3), 1);
     public static ItemStack ironChestBProt4Prot1 = new ItemStack(new Item(Material.IRON_CHESTPLATE).addEnchantment(Enchantment.bprot4).addEnchantment(Enchantment.prot1), 1);
@@ -482,6 +496,7 @@ public class Item {
     public static ItemStack diamondHelmetProt2 = new ItemStack(new Item(Material.DIAMOND_HELMET).addEnchantment(new Enchantment(EnchantmentType.PROTECTION, 2)), 1);
     public static ItemStack diamondHelmetProt3 = new ItemStack(new Item(Material.DIAMOND_HELMET).addEnchantment(new Enchantment(EnchantmentType.PROTECTION, 3)), 1);
 
+    public static ItemStack diamondChestProt1 = new ItemStack(new Item(Material.DIAMOND_CHESTPLATE).addEnchantment(Enchantment.prot1), 1);
     public static ItemStack diamondChestBProt10 = new ItemStack(new Item(Material.DIAMOND_CHESTPLATE).addEnchantment(Enchantment.bprot10),1);
 
     public static ItemStack diamondBootsProt1 = new ItemStack(new Item(Material.DIAMOND_BOOTS).addEnchantment(Enchantment.prot1), 1);
@@ -501,6 +516,7 @@ public class Item {
     public static ItemStack woodSwordKnockback5Use0 = new ItemStack(new Item(Material.WOOD_SWORD , 0).addEnchantment(Enchantment.kb5), 1);
     public static ItemStack woodSwordKnockback10Use0 = new ItemStack(new Item(Material.WOOD_SWORD , 0).addEnchantment(Enchantment.kb10), 1);
     public static ItemStack woodSwordKnockback1 = new ItemStack(new Item(Material.WOOD_SWORD).addEnchantment(Enchantment.kb1), 1);
+    public static ItemStack woodSwordKnockback2 = new ItemStack(new Item(Material.WOOD_SWORD).addEnchantment(Enchantment.kb2), 1);
 
     public static ItemStack stoneSwordSmite10Bane10 = new ItemStack(new Item(Material.STONE_SWORD).addEnchantment(Enchantment.smite10).addEnchantment(Enchantment.bane10), 1);
     public static ItemStack stoneSwordKnockback1 = new ItemStack(new Item(Material.STONE_SWORD).addEnchantment(Enchantment.kb1), 1);
