@@ -170,7 +170,7 @@ public enum RANKED_KIT {
                     case 5:
                         kit.add(new ItemStack(Item.goldenApple, 1));
                         kit.add(new ItemStack(Item.speedSplashPotion3_4, 2));
-                        kit.add(new ItemStack(Item.strengthPotionCustom20PC_60, 1));
+                        kit.add(new ItemStack(Item.strengthPotionCustom20PC_90, 1));
                         kit.add(Item.waterBucket);
                         kit.add(Item.diamondSword);
                         kit.add(Item.fishingRod);
@@ -285,6 +285,43 @@ public enum RANKED_KIT {
 
             //<editor-fold desc="[Champion]">
             case CHAMPION:
+                kit.add(Item.ironPick);
+                kit.add(Item.ironAxe);
+                kit.add(Item.ironChest);
+                kit.add(Item.ironHelmet);
+                kit.add(Item.ironLeggings);
+                kit.add(Item.ironBoots);
+                switch(level){
+                    case 1:
+                        kit.add(Item.diamondSword);
+                        kit.add(new ItemStack(Item.enchantedBookSharp1, 1));
+                        kit.add(Item.anvil);
+                        return kit;
+                    case 2:
+                        kit.add(Item.diamondSwordSharp1);
+                        kit.add(new ItemStack(Item.enchantedBookSharp1, 1));
+                        kit.add(Item.anvil);
+                        return kit;
+                    case 3:
+                        kit.add(Item.diamondSwordSharp1);
+                        kit.add(new ItemStack(Item.enchantedBookSharp1, 2));
+                        kit.add(Item.anvil);
+                        return kit;
+                    case 4:
+                        kit.add(Item.diamondSwordSharp1);
+                        kit.add(new ItemStack(Item.enchantedBookSharp1, 3));
+                        kit.add(Item.anvil);
+                        return kit;
+                    case 5:
+                        kit.add(Item.diamondSwordSharp2);
+                        kit.add(new ItemStack(Item.enchantedBookSharp1, 3));
+                        kit.add(Item.anvil);
+                        return kit;
+                }
+            //</editor-fold>
+
+            //<editor-fold desc="[Healer]">
+            case HEALER:
                 kit.add(Item.ironSword);
                 kit.add(Item.ironPick);
                 kit.add(Item.ironAxe);
@@ -292,6 +329,132 @@ public enum RANKED_KIT {
                 kit.add(Item.ironHelmet);
                 kit.add(Item.ironLeggings);
                 kit.add(Item.ironBoots);
+                switch(level){
+                    case 1:
+                        kit.add(new ItemStack(Item.regenPotion2_6, 1));
+                        return kit;
+                    case 2:
+                        kit.add(new ItemStack(Item.regenPotion2_6, 1));
+                        kit.add(new ItemStack(Item.instantHealthSplashPotion1, 1));
+                        return kit;
+                    case 3:
+                        kit.add(new ItemStack(Item.regenPotion2_12, 1));
+                        kit.add(new ItemStack(Item.instantHealthSplashPotion1, 1));
+                        return kit;
+                    case 4:
+                        kit.add(new ItemStack(Item.regenPotion2_12, 1));
+                        kit.add(new ItemStack(Item.instantHealthSplashPotion1, 2));
+                        return kit;
+                    case 5:
+                        kit.add(new ItemStack(Item.regenPotion2_12, 2));
+                        kit.add(new ItemStack(Item.instantHealthSplashPotion1, 2));
+                        return kit;
+                }
+            //</editor-fold>
+
+            //<editor-fold desc="[Magician]">
+            case MAGICIAN:
+                kit.add(Item.ironSword);
+                kit.add(Item.ironPick);
+                kit.add(Item.ironAxe);
+                kit.add(Item.ironChest);
+                kit.add(Item.ironHelmet);
+                kit.add(Item.ironLeggings);
+                kit.add(Item.ironBoots);
+                kit.add(Item.anvil);
+                kit.add(Item.enchantmentTable);
+                switch(level){
+                    case 1:
+                        kit.add(new ItemStack(Item.expBottle, 12));
+                        kit.add(new ItemStack(Item.bookCase, 2));
+                        return kit;
+                    case 2:
+                        kit.add(new ItemStack(Item.expBottle, 16));
+                        kit.add(new ItemStack(Item.bookCase, 3));
+                        return kit;
+                    case 3:
+                        kit.add(new ItemStack(Item.expBottle, 24));
+                        kit.add(new ItemStack(Item.bookCase, 4));
+                        return kit;
+                    case 4:
+                        kit.add(new ItemStack(Item.expBottle, 32));
+                        kit.add(new ItemStack(Item.bookCase, 5));
+                        return kit;
+                    case 5:
+                        kit.add(new ItemStack(Item.expBottle, 48));
+                        kit.add(new ItemStack(Item.bookCase, 6));
+                        return kit;
+                }
+            //</editor-fold>
+
+            //<editor-fold desc="[Pyromancer]">
+            case PYROMANCER:
+                kit.add(Item.ironPick);
+                kit.add(Item.ironAxe);
+                kit.add(Item.ironChest);
+                kit.add(Item.ironHelmet);
+                kit.add(Item.ironLeggings);
+                kit.add(Item.ironBoots);
+                switch(level){
+                    case 1:
+                        kit.add(Item.ironSwordFireAsp1);
+                        kit.add(new ItemStack(Item.fireResistancePotion1_30, 1));
+                        return kit;
+                    case 2:
+                        kit.add(Item.ironSwordFireAsp1);
+                        kit.add(new ItemStack(Item.fireResistancePotion1_45, 1));
+                        kit.add(Item.lavaBucket);
+                        return kit;
+                    case 3:
+                        kit.add(Item.ironSwordFireAsp1);
+                        kit.add(new ItemStack(Item.fireResistancePotion1_60, 1));
+                        kit.add(Item.lavaBucket);
+                        return kit;
+                    case 4:
+                        kit.add(Item.ironSwordFireAsp2);
+                        kit.add(new ItemStack(Item.fireResistancePotion1_75, 1));
+                        kit.add(Item.lavaBucket);
+                        return kit;
+                    case 5:
+                        kit.add(Item.ironSwordFireAsp2);
+                        kit.add(new ItemStack(Item.fireResistancePotion1_90, 1));
+                        kit.add(Item.lavaBucket);
+                        kit.add(Item.lavaBucket);
+                        return kit;
+                }
+            //</editor-fold>
+
+            //<editor-fold desc="[Scout]">
+            case SCOUT:
+                kit.add(Item.ironAxe);
+                kit.add(Item.ironChest);
+                kit.add(Item.ironHelmet);
+                kit.add(Item.ironLeggings);
+                kit.add(Item.ironBoots);
+                switch(level){
+                    case 1:
+                        kit.add(Item.diamondPickEff1);
+                        kit.add(new ItemStack(Item.speedSplashPotion2_40, 1));
+                        kit.add(Item.diamondAxeEff1);
+                        return kit;
+                    case 2:
+                        kit.add(Item.diamondPickEff1);
+                        kit.add(new ItemStack(Item.speedSplashPotion2_40, 1));
+                        kit.add(Item.diamondAxeEff1Sharp1);
+                        return kit;
+                    case 3:
+                        kit.add(Item.diamondPickSharp1Fortune1);
+                        kit.add(new ItemStack(Item.speedSplashPotion2_40, 2));
+                        return kit;
+                    case 4:
+                        kit.add(Item.diamondPickSharp1Fortune2);
+                        kit.add(new ItemStack(Item.speedSplashPotion2_40, 3));
+                        return kit;
+                    case 5:
+                        kit.add(Item.diamondPickSharp2Fortune2);
+                        kit.add(new ItemStack(Item.speedSplashPotion2_40, 3));
+                        return kit;
+                }
             //</editor-fold>
         }
         return kit;

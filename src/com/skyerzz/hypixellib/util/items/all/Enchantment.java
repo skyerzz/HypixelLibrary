@@ -23,6 +23,7 @@ public class Enchantment {
 
     //<editor-fold desc="[Predefined Enchantments]">
     public static Enchantment fortune1 = new Enchantment(EnchantmentType.FORTUNE, 1);
+    public static Enchantment fortune2 = new Enchantment(EnchantmentType.FORTUNE, 2);
     public static Enchantment fortune3 = new Enchantment(EnchantmentType.FORTUNE, 3);
     public static Enchantment lure3 = new Enchantment(EnchantmentType.LURE, 3);
     public static Enchantment loot3 = new Enchantment(EnchantmentType.LOOTING, 3);
@@ -39,6 +40,7 @@ public class Enchantment {
     public static Enchantment punch2 = new Enchantment(EnchantmentType.PUNCH, 2);
     public static Enchantment punch3 = new Enchantment(EnchantmentType.PUNCH, 3);
     public static Enchantment fireAsp1 = new Enchantment(EnchantmentType.FIRE_ASPECT, 1);
+    public static Enchantment fireAsp2 = new Enchantment(EnchantmentType.FIRE_ASPECT, 2);
     public static Enchantment bane10 = new Enchantment(EnchantmentType.BANE_OF_ARHTROPONDS, 10);
     public static Enchantment smite10 = new Enchantment(EnchantmentType.SMITE, 10);
     public static Enchantment sharp1 = new Enchantment(EnchantmentType.SHARPNESS, 1);
