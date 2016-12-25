@@ -78,7 +78,7 @@ public enum TEAM_KIT {
                 return kit;
             case ARMORSMITH:
                 kit.add(Item.anvil);
-                kit.add(Item.enchantedBookProt3Sharp1);
+                kit.add(new ItemStack(Item.enchantedBookProt3Sharp1, 1));
                 kit.add(Item.diamondHelmet);
                 kit.add(new ItemStack(Item.expBottle, 32));
                 return kit;
