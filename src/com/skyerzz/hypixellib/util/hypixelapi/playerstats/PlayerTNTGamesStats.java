@@ -73,7 +73,7 @@ public class PlayerTNTGamesStats extends PlayerGameStats {
     private ArrayList<PARTICLEEFFECT> unlockedParticleEffects = new ArrayList<>();
 
     @OutDated
-    private int votes_Quadral, votes_ForgottenPlanet, votes_Atior, votes_Node, votes_TallGate, votes_GreenBelt, votes_TwinSpire, votes_TheVale, votes_Totum, votes_FireFall, votes_Blossom, votes_Gladius, votes_Crucible, votes_Heather, votes_Downvault, votes_DreadPit, votes_IceFortress, votes_Tombed, votes_BowSpleefC, votes_Biosphere, votes_Crystalline, votes_bloom;
+    private int votes_Quadral, votes_ForgottenPlanet, votes_Atior, votes_Node, votes_TallGate, votes_GreenBelt, votes_TwinSpire, votes_TheVale, votes_Totum, votes_FireFall, votes_Blossom, votes_Gladius, votes_Crucible, votes_Heather, votes_Downvault, votes_DreadPit, votes_IceFortress, votes_Tombed, votes_BowSpleefC, votes_Biosphere, votes_Crystalline, votes_bloom, votes_Mars, votes_Hypogeal;
     @OutDated
     private int deaths, kills;
     @OutDated
@@ -283,6 +283,12 @@ public class PlayerTNTGamesStats extends PlayerGameStats {
                 return true;
             case "VOTES_BLOOM":
                 this.votes_bloom = element.getAsInt();
+                return true;
+            case "VOTES_MARS":
+                this.votes_Mars = element.getAsInt();
+                return true;
+            case "VOTES_HYPOGEAL":
+                this.votes_Hypogeal = element.getAsInt();
                 return true;
             //</editor-fold>
         }
@@ -567,6 +573,54 @@ public class PlayerTNTGamesStats extends PlayerGameStats {
     @OutDated
     public int getVotes_IceFortress() {
         return votes_IceFortress;
+    }
+
+    public ArrayList<PARTICLEEFFECT> getUnlockedParticleEffects() {
+        return unlockedParticleEffects;
+    }
+    @OutDated
+    public int getVotes_Tombed() {
+        return votes_Tombed;
+    }
+    @OutDated
+    public int getVotes_BowSpleefC() {
+        return votes_BowSpleefC;
+    }
+    @OutDated
+    public int getVotes_Biosphere() {
+        return votes_Biosphere;
+    }
+    @OutDated
+    public int getVotes_Crystalline() {
+        return votes_Crystalline;
+    }
+    @OutDated
+    public int getVotes_bloom() {
+        return votes_bloom;
+    }
+    @OutDated
+    public int getVotes_Mars() {
+        return votes_Mars;
+    }
+    @OutDated
+    public int getVotes_Hypogeal() {
+        return votes_Hypogeal;
+    }
+    @OutDated
+    public int getDeaths() {
+        return deaths;
+    }
+    @OutDated
+    public int getKills() {
+        return kills;
+    }
+    @OutDated
+    public int getBombermanKills() {
+        return bombermanKills;
+    }
+    @OutDated
+    public int getBombermanDeaths() {
+        return bombermanDeaths;
     }
     //</editor-fold>
 }

@@ -79,6 +79,10 @@ public class PlayerQuakeStats extends PlayerGameStats {
     }
 
     private boolean setValue(String key, JsonElement value) {
+        if(value.isJsonNull()){
+            Logger.logWarn("[PlayerAPI.Quake.initialize] Found JsonNull for key:" + key);
+            return true;
+        }
         switch (key) {
             //<editor-fold desc="[Values]">
             case "COINS":
