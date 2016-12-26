@@ -7,7 +7,8 @@ import java.util.ArrayList;
  */
 public enum KILL_EFFECT {
     NONE("NONE"),
-    EXPLOSION("Blood Explosion Kill Effect");
+    EXPLOSION("Blood Explosion Kill Effect"), //double values idk why
+    BLOOD_EXPLOSION("Blood Explosion Kill Effect");
 
     private String displayName;
 

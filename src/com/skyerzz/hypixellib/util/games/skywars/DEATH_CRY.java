@@ -6,7 +6,9 @@ import java.util.ArrayList;
  * Created by sky on 25-12-2016.
  */
 public enum DEATH_CRY {
-    NONE("NONE");
+    NONE("NONE"),
+    SAD_PUPPY("UNUSED - Sad Puppy"),
+    QUAKECRAFT("UNUSED - Quakecraft");
 
     private String displayName;
 
