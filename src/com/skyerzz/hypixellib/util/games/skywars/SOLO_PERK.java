@@ -21,7 +21,12 @@ public enum SOLO_PERK {
     MARKSMANSHIP("Marksmanship", RARITY.LEGENDARY, 1),
     MINING_EXPERTISE("Mining Expertise", RARITY.COMMON, 5),
     SPEED_BOOST("Speed Boost", RARITY.RARE, 5),
-    RESISTANCE("Resistance Boost", RARITY.COMMON, 3);
+    RESISTANCE_BOOST("Resistance Boost", RARITY.COMMON, 3),
+    KNOWLEDGE("Knowledge", RARITY.COMMON, 3),
+    ANNOY_O_MITE("Annoy-o-mite", RARITY.RARE, 5),
+    NOURISHMENT("Nourishment", RARITY.COMMON, 1),
+    REVENGE("Revenge", RARITY.LEGENDARY, 5),
+    FAT("Fat", RARITY.RARE, 5);
 
 
     private String displayName;
@@ -65,7 +70,7 @@ public enum SOLO_PERK {
             case 2:
                 return 5000;
             case 3:
-                if(this == RESISTANCE){
+                if(this == RESISTANCE_BOOST){
                     return 25000; //exception
                 }
                 return 15000;
@@ -101,7 +106,7 @@ public enum SOLO_PERK {
             case ENDER_MASTERY:
                 return level*20+"% less damage taken from Ender Pearls.";
             case ENVIRONMENTAL_EXPERT:
-                return "Reduces environmental damage by UNKNOWN%";
+                return "Reduces environmental damage by " + 5*level + "%";
             case INSTANT_SMELTING:
                 return "Increases the smelt speed to make it instant.";
             case JUGGERNAUT:
@@ -115,8 +120,18 @@ public enum SOLO_PERK {
             case SPEED_BOOST:
                 int extra = (level!=5) ? (level*level)-1 : 5; //this algorithm should work for correct seconds
                 return "Get haste I for " + level*5+extra + "s when the game starts.";
-            case RESISTANCE:
+            case RESISTANCE_BOOST:
                 return "Gain " + level*5 + "s of resistance II when the game starts.";
+            case KNOWLEDGE:
+                return (level==1) ? "Every kill you gain " + level + " EXP level." : "Every kill you gain " + level + " EXP levels.";
+            case ANNOY_O_MITE:
+                return "Chance to spawn a Silverfish next to enemies when you hit them with a bow. (" + level*5 + "%).";
+            case NOURISHMENT:
+                return "Every kill gives you full hunger and saturation.";
+            case REVENGE:
+                return level*5+"% chance to spawn a zombie when you die.";
+            case FAT:
+                return "Gain" + (3+level) + "s of absorption I when the game starts.";
         }
         return null;
     }

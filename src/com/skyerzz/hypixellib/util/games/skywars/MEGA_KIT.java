@@ -11,6 +11,7 @@ import java.util.ArrayList;
  * Created by sky on 25-12-2016.
  */
 public enum MEGA_KIT {
+    DEFAULT("Default"),
     ARMORER("Armorer"),
     ARMORSMITH("Armorsmith"),
     BASEBALL_PLAYER("Baseball Player"),

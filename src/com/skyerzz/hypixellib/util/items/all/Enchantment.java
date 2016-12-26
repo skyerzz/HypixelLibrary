@@ -92,8 +92,10 @@ public class Enchantment {
     public static Enchantment fprot10 = new Enchantment(EnchantmentType.FIRE_PROTECTION, 10);
     public static Enchantment thorns1 = new Enchantment(EnchantmentType.THORNS, 1);
     public static Enchantment thorns2 = new Enchantment(EnchantmentType.THORNS, 2);
+    public static Enchantment thorns3 = new Enchantment(EnchantmentType.THORNS, 3);
     public static Enchantment efficiency1 = new Enchantment(EnchantmentType.EFFICIENCY, 1);
     public static Enchantment efficiency3 = new Enchantment(EnchantmentType.EFFICIENCY, 3);
     public static Enchantment efficiency5 = new Enchantment(EnchantmentType.EFFICIENCY, 5);
+    public static Enchantment flame1 = new Enchantment(EnchantmentType.FLAME, 1);
     //</editor-fold>
 }

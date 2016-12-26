@@ -26,6 +26,7 @@ public enum EnchantmentType {
     FEATHER_FALLING,
     FIRE_ASPECT,
     THORNS,
+    FLAME,
     FIRE_PROTECTION;
 
 }

@@ -18,7 +18,10 @@ public enum MEGA_PERK {
     NOTORIETY("Notoriety", RARITY.LEGENDARY, 5),
     NOURISHMENT("Nourishment", RARITY.COMMON, 1),
     INSTANT_SMELTING("Instant Smelting", RARITY.COMMON, 1),
-    MARKSMANSHIP("Marksmanship", RARITY.LEGENDARY, 1);
+    MARKSMANSHIP("Marksmanship", RARITY.LEGENDARY, 1),
+    BRIDGER("Bridger", RARITY.COMMON, 5),
+    ENVIRONMENTAL_EXPERT("Environmental Expert", RARITY.RARE, 5),
+    LUCKY_CHARM("Lucky Charm", RARITY.COMMON, 5); //todo unknown max level: find out
 
     private String displayName;
     private RARITY rarity;
@@ -105,6 +108,12 @@ public enum MEGA_PERK {
                 return "Automatically smelt mined ores into ingots!";
             case MARKSMANSHIP:
                 return "After getting 3 kills with a bow, all your bows get enchanted with power I.";
+            case LUCKY_CHARM:
+                return level*2+"% Chance to get a Golden Apple on enemy kills.";
+            case BRIDGER:
+                return level+"% Chance for placeable blocks to not be consumed upon use.";
+            case ENVIRONMENTAL_EXPERT:
+                return "Reduces environmental damage by " + 5*level + "%";
         }
         return null;
     }

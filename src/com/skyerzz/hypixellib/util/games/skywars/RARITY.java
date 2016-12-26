@@ -6,5 +6,6 @@ package com.skyerzz.hypixellib.util.games.skywars;
 public enum RARITY {
     COMMON,
     RARE,
-    LEGENDARY;
+    LEGENDARY,
+    RANKED_REWARD;
 }

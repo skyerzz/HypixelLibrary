@@ -217,6 +217,8 @@ public class Item {
     public static Item pumpkin = new Item(Material.PUMPKIN);
     public static Item stone = new Item(Material.STONE);
     public static Item obsidian = new Item(Material.OBSIDIAN);
+    public static Item jukebox = new Item(Material.JUKEBOX);
+    public static Item noteBlock = new Item(Material.NOTE_BLOCK);
     public static ItemStack flintNSteel = new ItemStack(new Item(Material.FLINT_AND_STEEL), 1);
     public static ItemStack carrotOnAStick = new ItemStack(new Item(Material.CARROT_STICK), 1);
     public static ItemStack anvil = new ItemStack(new Item(Material.ANVIL), 1);
@@ -249,6 +251,7 @@ public class Item {
     public static Item skeletonEgg = new Item("Skeleton Spawn Egg", Material.MONSTER_EGG, 51);
     public static Item zombiePigmanEgg = new Item("Zombie Pigman Spawn Egg", Material.MONSTER_EGG, 57);
     public static Item magmaCubeEgg = new Item("Magma Cube Spawn Egg", Material.MONSTER_EGG, 62);
+    public static Item batEgg = new Item("Bat Spawn Egg", Material.MONSTER_EGG, 65);
     //</editor-fold>
 
     //</editor-fold>
@@ -345,6 +348,7 @@ public class Item {
     public static ItemStack bowPunch1Pow1 = new ItemStack(new Item(Material.BOW).addEnchantment(Enchantment.punch1).addEnchantment(Enchantment.power1), 1);
     public static ItemStack bowPunch2Pow1 = new ItemStack(new Item(Material.BOW).addEnchantment(Enchantment.punch2).addEnchantment(Enchantment.power1), 1);
     public static ItemStack bowPunch3Pow3Use2 = new ItemStack(new Item(Material.BOW, 2).addEnchantment(Enchantment.punch3).addEnchantment(Enchantment.power3),1 );
+    public static ItemStack bowFlame1= new ItemStack(new Item(Material.BOW).addEnchantment(Enchantment.flame1),1 );
     //</editor-fold>
 
     //<editor-fold desc="[Leather armor]">
@@ -378,6 +382,7 @@ public class Item {
     public static ItemStack leatherChestUnbreaking1 = new ItemStack(new Item(Material.LEATHER_CHESTPLATE).addEnchantment(Enchantment.unbreaking1), 1);
     public static ItemStack leatherChestUnbreaking3 = new ItemStack(new Item(Material.LEATHER_CHESTPLATE).addEnchantment(Enchantment.unbreaking3), 1);
     public static ItemStack leatherChestUnbreaking3Prot1 = new ItemStack(new Item(Material.LEATHER_CHESTPLATE).addEnchantment(Enchantment.unbreaking3).addEnchantment(Enchantment.prot1), 1);
+    public static ItemStack leatherChestProt2Thorns3 = new ItemStack(new Item(Material.LEATHER_CHESTPLATE).addEnchantment(Enchantment.prot2).addEnchantment(Enchantment.thorns3), 1);
 
     public static ItemStack leatherLeggingsProt1BProt1 = new ItemStack(new Item(Material.LEATHER_LEGGINGS).addEnchantment(Enchantment.prot1).addEnchantment(Enchantment.bprot1), 1);
     public static ItemStack leatherLeggingsProt1fProt3 = new ItemStack(new Item(Material.LEATHER_LEGGINGS).addEnchantment(Enchantment.prot1).addEnchantment(Enchantment.fprot3), 1);
@@ -400,6 +405,7 @@ public class Item {
     public static ItemStack leatherBootsThorns1Unbreaking5 = new ItemStack(new Item(Material.LEATHER_BOOTS).addEnchantment(Enchantment.thorns1).addEnchantment(Enchantment.unbreaking5), 1);
     public static ItemStack leatherBootsUnbreaking3 = new ItemStack(new Item(Material.LEATHER_BOOTS).addEnchantment(Enchantment.unbreaking3), 1);
     public static ItemStack leatherBootsUnbreaking3Prot1 = new ItemStack(new Item(Material.LEATHER_BOOTS).addEnchantment(Enchantment.unbreaking3).addEnchantment(Enchantment.prot1), 1);
+    public static ItemStack leatherBootsFf10 = new ItemStack(new Item(Material.LEATHER_BOOTS).addEnchantment(Enchantment.ff10), 1);
 
     public static ItemStack orangeLeatherBootsfProt1 = new ItemStack(new Item(Material.LEATHER_BOOTS).setColor("d0d0d0").addEnchantment(Enchantment.fprot1), 1);
     public static ItemStack orangeLeatherBootsfProt2 = new ItemStack(new Item(Material.LEATHER_BOOTS).setColor("d0d0d0").addEnchantment(Enchantment.fprot2), 1);
@@ -466,6 +472,7 @@ public class Item {
     public static ItemStack goldHelmetProt1Unbreaking1 = new ItemStack(new Item(Material.GOLD_HELMET).addEnchantment(Enchantment.prot1).addEnchantment(Enchantment.unbreaking1), 1);
     public static ItemStack goldHelmetProt2Unbreaking1 = new ItemStack(new Item(Material.GOLD_HELMET).addEnchantment(Enchantment.prot2).addEnchantment(Enchantment.unbreaking1), 1);
     public static ItemStack goldHelmetProt3Unbreaking1 = new ItemStack(new Item(Material.GOLD_HELMET).addEnchantment(Enchantment.prot3).addEnchantment(Enchantment.unbreaking1), 1);
+    public static ItemStack goldHelmetProjProt4 = new ItemStack(new Item(Material.GOLD_HELMET).addEnchantment(Enchantment.projprot4), 1);
 
     public static ItemStack goldChestfProt5 = new ItemStack(new Item(Material.GOLD_CHESTPLATE).addEnchantment(Enchantment.fprot5), 1);
     public static ItemStack goldChestProt1 = new ItemStack(new Item(Material.GOLD_CHESTPLATE).addEnchantment(Enchantment.prot1), 1);

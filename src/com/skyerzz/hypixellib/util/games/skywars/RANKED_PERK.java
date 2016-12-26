@@ -1,5 +1,6 @@
 package com.skyerzz.hypixellib.util.games.skywars;
 
+import com.skyerzz.hypixellib.OutDated;
 import com.skyerzz.hypixellib.util.CURRENCY;
 
 import java.util.ArrayList;
@@ -8,7 +9,6 @@ import java.util.ArrayList;
  * Created by sky on 25-12-2016.
  */
 public enum RANKED_PERK {
-    //todo finish this
     ARROW_RECOVERY("Arrow Recovery", RARITY.RARE, 5),
     BLAZING_ARROWS("Blazing Arrows", RARITY.RARE, 5),
     BRIDGER("Bridger", RARITY.COMMON, 5),
@@ -30,8 +30,10 @@ public enum RANKED_PERK {
     ATHLETE("Athlete Perk", RARITY.LEGENDARY, 1),
     BLACKSMITH("Blacksmith Perk", RARITY.LEGENDARY, 1),
     HEALER("Healer Perk", RARITY.LEGENDARY, 1),
-    PYROMANCER("Pyromancer Perk", RARITY.LEGENDARY, 1);
+    PYROMANCER("Pyromancer Perk", RARITY.LEGENDARY, 1),
 
+    @OutDated
+    INSTANT_SMELTING("OUTDATED - Instant Smelting", null, -1);
 
     private String displayName;
     private RARITY rarity;

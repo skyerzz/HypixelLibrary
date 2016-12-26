@@ -12,6 +12,7 @@ import java.util.ArrayList;
  * Created by Skyerzz-LAPOTOP on 20/12/2016.
  */
 public enum SOLO_KIT {
+    DEFAULT("Default", null),
     ARMORER("Armorer", RARITY.RARE),
     ARMORSMITH("Armorsmith", RARITY.COMMON),
     CANNONEER("Cannoneer", RARITY.LEGENDARY),
@@ -28,7 +29,15 @@ public enum SOLO_KIT {
     ROOKIE("Rookie", RARITY.COMMON),
     SNOWMAN("Snowman", RARITY.RARE),
     SPELEOLOGIST("Speleologist", RARITY.RARE),
-    TROLL("Troll", RARITY.LEGENDARY);
+    TROLL("Troll", RARITY.LEGENDARY),
+    BATGUY("Batguy", RARITY.COMMON),
+    DISCO("Disco", RARITY.COMMON),
+    ENERGIX("Energix", RARITY.COMMON),
+    FROG("Frog", RARITY.COMMON),
+    GRENADE("Grenade", RARITY.COMMON),
+    SCOUT("Scout", RARITY.COMMON),
+    PRINCESS("Princess", RARITY.RARE),
+    BASEBALL_PLAYER("Baseball Player", RARITY.RARE);
 
 
     private String displayName;
@@ -102,6 +111,7 @@ public enum SOLO_KIT {
                 return kit;
             case ENDERCHEST:
                 kit.add(new ItemStack(Item.goldenApple));
+                kit.add(new ItemStack(new Item("Spawns a 4th chest with spawm loot below the cage", Material.CHEST)));
                 return kit;
             case ENDERMAN:
                 kit.add(new ItemStack(new Item("Corrupted Pearl (60s cooldown)", Material.ENDER_PEARL), 1));
@@ -164,6 +174,49 @@ public enum SOLO_KIT {
                 kit.add(Item.pinkLeatherChest);
                 kit.add(Item.pinkLeatherLeggings);
                 kit.add(Item.pinkLeatherBoots);
+                return kit;
+            case BATGUY:
+                kit.add(Item.leatherHelmet);
+                kit.add(Item.leatherChest);
+                kit.add(Item.leatherLeggings);
+                kit.add(Item.leatherBoots);
+                kit.add(new ItemStack(Item.batEgg, 5));
+                //todo find out what Batguy's potion is
+                return kit;
+            case DISCO:
+                kit.add(Item.goldHelmetProjProt4);
+                kit.add(Item.leatherChestProt2Thorns3);
+                kit.add(Item.leatherLeggings);
+                kit.add(Item.leatherBootsFf10);
+                kit.add(new ItemStack(Item.jukebox, 1));
+                kit.add(new ItemStack(Item.noteBlock, 12));
+                kit.add(new ItemStack(new Item("Random Music Disc", Material.RECORD_3)));
+                return kit;
+            case ENERGIX:
+                //todo find out potion of strength length + type
+                return kit;
+            case FROG:
+                kit.add(Item.leatherChest);
+                kit.add(Item.leatherLeggings);
+                kit.add(Item.leatherBoots);
+                //todo find frogs potion durations and effects
+                //todo make a frog head (JUST DO IT)
+                return kit;
+            case GRENADE:
+                kit.add(new ItemStack(Item.creeperEgg, 1));//todo find if powered creeper or not
+                return kit;
+            case SCOUT:
+                //todo find out level and duration of speed potions
+                return kit;
+            case PRINCESS:
+                kit.add(Item.goldHelmetProt1);
+                kit.add(Item.bowFlame1);
+                kit.add(new ItemStack(Item.arrow, 1));
+                kit.add(new ItemStack(new Item("Spawns with a chest filled with the latest fashion clothes", Material.CHEST)));
+                return kit;
+            case BASEBALL_PLAYER:
+                kit.add(Item.ironHelmetProt1);
+                kit.add(Item.woodSwordKnockback1);
                 return kit;
             //</editor-fold>
         }

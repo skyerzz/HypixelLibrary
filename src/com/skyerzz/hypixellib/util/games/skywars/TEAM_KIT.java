@@ -11,9 +11,10 @@ import java.util.ArrayList;
  * Created by Skyerzz-LAPOTOP on 21/12/2016.
  */
 public enum TEAM_KIT {
+    DEFAULT("Default", null),
     ARMORER("Armorer", RARITY.COMMON),
     ARMORSMITH("ArmorSmith", RARITY.COMMON),
-    BASEBALL("Baseball Player", RARITY.RARE),
+    BASEBALL_PLAYER("Baseball Player", RARITY.RARE),
     CANNONEER("Cannoneer", RARITY.LEGENDARY),
     ECOLOGIST("Ecologist", RARITY.COMMON),
     ENDERMAN("Enderman", RARITY.LEGENDARY),
@@ -26,7 +27,12 @@ public enum TEAM_KIT {
     ROOKIE("Rookie", RARITY.COMMON),
     SCOUT("Scout", RARITY.COMMON),
     SNOWMAN("Snowman", RARITY.RARE),
-    SPELEOLOGIST("Speleologist", RARITY.RARE);
+    SPELEOLOGIST("Speleologist", RARITY.RARE),
+    BATGUY("Batguy", RARITY.COMMON),
+    DISCO("Disco", RARITY.COMMON),
+    ENERGIX("Energix", RARITY.COMMON),
+    FROG("Frog", RARITY.COMMON),
+    GRENADE("Grenade", RARITY.COMMON);
 
     private String displayName;
     private RARITY rarity;
@@ -82,7 +88,7 @@ public enum TEAM_KIT {
                 kit.add(Item.diamondHelmet);
                 kit.add(new ItemStack(Item.expBottle, 32));
                 return kit;
-            case BASEBALL:
+            case BASEBALL_PLAYER:
                 kit.add(Item.woodSwordKnockback2);
                 return kit;
             case CANNONEER:
@@ -150,6 +156,36 @@ public enum TEAM_KIT {
             case SPELEOLOGIST:
                 kit.add(Item.ironPickEff3Sharp1Unbreaking3);
                 kit.add(new ItemStack(Item.stone, 16));
+                return kit;
+            case BATGUY:
+                kit.add(Item.leatherHelmet);
+                kit.add(Item.leatherChest);
+                kit.add(Item.leatherLeggings);
+                kit.add(Item.leatherBoots);
+                kit.add(new ItemStack(Item.batEgg, 5));
+                //todo find out what Batguy's potion is
+                return kit;
+            case DISCO:
+                kit.add(Item.goldHelmetProjProt4);
+                kit.add(Item.leatherChestProt2Thorns3);
+                kit.add(Item.leatherLeggings);
+                kit.add(Item.leatherBootsFf10);
+                kit.add(new ItemStack(Item.jukebox, 1));
+                kit.add(new ItemStack(Item.noteBlock, 12));
+                kit.add(new ItemStack(new Item("Random Music Disc", Material.RECORD_3)));
+                return kit;
+            case ENERGIX:
+                //todo find out potion of strength length + type
+                return kit;
+            case FROG:
+                kit.add(Item.leatherChest);
+                kit.add(Item.leatherLeggings);
+                kit.add(Item.leatherBoots);
+                //todo find frogs potion durations and effects
+                //todo make a frog head (JUST DO IT)
+                return kit;
+            case GRENADE:
+                kit.add(new ItemStack(Item.creeperEgg, 1));//todo find if powered creeper or not
                 return kit;
         }
         return kit;

@@ -11,6 +11,7 @@ import java.util.ArrayList;
  * Created by Skyerzz-LAPOTOP on 21/12/2016.
  */
 public enum RANKED_KIT {
+    DEFAULT("Default"),
     ARMORER("Armorer"),
     ATHLETE("Athlete"),
     BLACKSMITH("Blacksmith"),
