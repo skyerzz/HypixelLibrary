@@ -19,6 +19,7 @@ public class PlayerAPI extends AbstractAPIReply{
     private PlayerArcadeStats arcadeStats;
     private PlayerCopsAndCrimsStats copsAndCrimsStats;
     private PlayerWallsStats wallsStats;
+    private PlayerSkywarsStats skywarsStats;
 
     protected PlayerAPI(JsonObject apiJson) throws NoPlayerStatsException {
         try {
@@ -89,5 +90,12 @@ public class PlayerAPI extends AbstractAPIReply{
             this.wallsStats = new PlayerWallsStats(apiGameJson.get("Walls").getAsJsonObject());
         }
         return wallsStats;
+    }
+
+    public PlayerSkywarsStats getSkywarsStats(){
+        if(skywarsStats == null && apiGameJson.get("SkyWars")!=null){
+            this.skywarsStats = new PlayerSkywarsStats(apiGameJson.get("SkyWars").getAsJsonObject());
+        }
+        return skywarsStats;
     }
 }
