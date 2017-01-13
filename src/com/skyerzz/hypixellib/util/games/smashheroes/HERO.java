@@ -156,7 +156,161 @@ public enum HERO {
                 "OVERLOAD",
                 "Overload",
                 "Pressing [Sneak] will discharge lightning around you, dealing damage to nearby enemies and sending you upwards into the air. Costs 65 energy.",
+                "Your energy is represented by the yellow experience bar above your hotbar."
+        )
+    ),
+    //</editor-fold>
+    //<editor-fold desc="[MARAUDER]">
+    MARAUDER("Marauder", "His real name is a mystery. Rumor says that he used to be a valiant knight known by everyone in the galaxy. All we know is that he utilizes Dark Energy to do his evil deeds", CLASSTYPE.MELEE, 2, 0, 10000,
+        new SmashAbility(
+                "FORCE_LIGHTNING",
+                "Lightning",
+                "Right Click to instantly strike all enemies in front of you with lightning. Costs 40 Dark Energy.",
+                "Make sure you are close enough to your target or else your Lightning will not reach them.",
+                "Lightning is powerful, but it costs a lot of Dark Energy. Make sure you won't need to use your High Jump ability right after using Lightning or you won't be able to!"
+        ),
+        new SmashAbility(
+                "FORCE_PULL",
+                "Grip",
+                "Press [2] to grip all enemies in front of you, dealing damage to them before sending them towards you. Costs 80 Dark Energy",
+                "Use Grip to temporarily immobilize enemy heroes before using Lightning on them. It'll be much easier to hit them."
+        ),
+        new SmashAbility(
+                "UNLEASHED_ENERGY", //todo api value unknown
+                "Unleashed Energy",
+                "Press [3] to unleash your darkest energy, causing your abilities to consume half the amount of Dark Energy and reducing the amount of damage you take by half for 15 seconds",
+                "As a MELEE hero, hitting an enemy with your melee attacks will instantly reduce your Smash Ability's cooldown by 3 seconds.",
+                "Picking up the Smash Crystal that occasionally appears during a match will instantly reset your Smash Ability's cooldown."
+        ),
+        new SmashAbility(
+                "DARK_ENERGY", //todo api value unknown
+                "Dark Energy",
+                "Marauder' s Lightning and High Jump abilities have no cooldown but require Dark Energy to use. Dark Energy regenerates at a rate of 20 per second and hitting an enemy with a melee attack will generate 10 Dark Energy",
                 "Your energy is represented by the yellow experience bar above your hotbar.",
+                "While fighting an enemy, try to never let your Dark Energy bar full up completely for too long or that means you're wasting some potential damage or mobility."
+        )
+    ),
+    //</editor-fold>
+    //<editor-fold desc="[SPOODERMAN]">
+    SPODERMAN("Spooderman", "Due 2 n unfortunate accidnet, spooderman became who he iz aftur gettin bit by a spooder. dis caused him 2 gain incredible abilities at teh cost of brain funcshun. with graet powr comes graet reshponsibility", CLASSTYPE.HYBRID, 4, 0, 25000,
+        new SmashAbility(
+                "SPIDER_KICK",
+                "Spooder Kick",
+                "Right Click to perform a kick that will send you forward slightly and deal damage to anyone in your path.",
+                "Spooder Kick will knock enemies it hits downwards instead of upwards. Try and kick players who are coming back to the map after being knocked off of it.",
+                "If you're falling off the map, you can use Spooder Kick while looking upwards to gain some altitude for a chance at getting back to safety."
+        ),
+        new SmashAbility(
+                "WEB_SHOT",
+                "Web Shot",
+                "Press [2] to instantly fire a string of web where you're aiming. If it hits a block, it will pull you in that direction. If it hits a player, it will deal damage and pull them towards you. Hitting an enemy player alsog reatly reduces the cooldown.",
+                "Web Shot has a greater effect if your target is lower than you. Try jumping before shooting Web Shot.",
+                "Use Web Shot to bring an enemy in range of your Spooder Kick."
+        ),
+        new SmashAbility(//todo check if changed from melee > hybrid
+                "SPOODER_BUDDIES",
+                "Spooder Buddies",
+                "Press [3] to call in your buddies. After they've landed on the ground, they will chase enemy players and who them who's the boss.",
+                "As a MELEE hero, hitting an enemy with your melee attacks will instantly reduce your Smash Ability's cooldown by 3 seconds.",
+                "Picking up the Smash Crystal that occasionally appears during a match will instantly reset your Smash Ability's cooldown."
+        ),
+        new SmashAbility(
+                "SPOODER_MASTERY", //todo api value unknown
+                "Spooder Mastery",
+                "Your Spooder Mastery allows you to climb walls by holding [Sneak] at the cost of energy, and every 5th melee hit will summon a spooder to aid you in combat for 10 seconds.",
+                "Your energy is represented by the yellow experience bar above your hotbar.",
+                "If you are really far down the map and are desperately trying to hang on to a wall but you're running out of energy, alternate between Spooder Mastery and Web Shot for a higher chance at making it back to safety."
+        )
+    ),
+    //</editor-fold>
+    //<editor-fold desc="[PUG]">
+    PUG("Pug", "Don't get fooled by this puppy's cuteness! The last thing Pug wants is a bely rub!", CLASSTYPE.MELEE, 2, 0, 25000,
+        new SmashAbility(
+                "BITE",
+                "Bite",
+                "Right Click to Bite, sending you slightly forwards and damaging all enemies in your path. Deals extra damage if used shortly after Pounce.",
+                "If you're falling off the map, you can use Spooder Kick while looking upwards to gain some altitude for a chance at getting back to safety."
+        ),
+        new SmashAbility(
+                "SONIC_BARK",
+                "Sonic Bark",
+                "Press [2] to let out a sonic bark, dealing damage to all enemies in front of you. Cooldown is greatly reduced while Intruders! is active.",
+                "The sound waves of Sonic Bark need some time to travel. If the enemy you're aiming at is moving, try and aim ahead of them."
+        ),
+        new SmashAbility(
+                "INTRUDERS",
+                "Intruders!",
+                "Press [3] to sound the alarm, releasing two very dangerous companions to chase down the intruders! Your Sonic Bark has a reduced cooldown for the duration.",
+                "As a MELEE hero, hitting an enemy with your melee attacks will instantly reduce your Smash Ability's cooldown by 3 seconds.",
+                "Picking up the Smash Crystal that occasionally appears during a match will instantly reset your Smash Ability's cooldown."
+        ),
+        new SmashAbility(
+                "POUNCE",
+                "Pounce",
+                "Pressing [Sneak] causes you to Pounce forwards, launching you in that direction and increase the damage of your next Bite used within 3 seconds. Costs a minimum of 30 energy.",
+                "Your energy is represented by the yellow experience bar above your hotbar.",
+                "The longer you hold, the further you will jump and the stronger your next Bite will be."
+        )
+    ),
+    //</editor-fold>
+    //<editor-fold desc="[CRYOMANCER]">
+    FROSTY("Cryomancer", "As a Mage who specialized in the power of Ice, he is pretty cool. Hehe heh hehehe heh... heheheheh...hehe...ehehe......heh...", CLASSTYPE.HYBRID, 3, 0, 25000,
+        new SmashAbility(
+                "FROSTBOLT",
+                "Frostbolt",
+                "Right Click to shoot a frostbolt that will shatter on impact, dealing damage and slowing nearby enemies temporarily.",
+                "If the enemies you are shooting at are far away, shoot ahead of them if they are moving as Frostbolt travels slowly."
+        ),
+        new SmashAbility(
+                "FREEZING_BREATH",
+                "Freezing Breath",
+                "Press [2] to breathe cold air in a cone in front of you, dealing damage to all enemies hit and slowing them temporarily.",
+                "If two or more enemies are fighting close to each other, try to position yourself in a way that will make Freezing Breath hit all of them the next time you use it."
+        ),
+        new SmashAbility(
+                "ICE_BARRIER",
+                "Ice Barrier",
+                "Press [3] to surround yourself with a layer of freezing air, reducing any damage you take nd shortens the cooldown of both your Frostbolt and Freezing Breath abilities for the duration.",
+                "As a HYBRID hero, hitting an enemy with your melee attacks or with an ability will isntantly reduce your Smash Ability's cooldown by 1 second.",
+                "Picking up the Smash Crystal that occasionally appears during a match will instantly reset your Smash Ability's cooldown."
+        ),
+        new SmashAbility(
+                "ARCTIC_AURA",
+                "Arctic Aura",
+                "Enemies standing in the snow that constantly surrounds you take more damage from your Frostbolt and Freezing Breath abilities.",
+                "If your abilities are ready to use and you tihnk you can catch up to a fleeing enemy soon, delaying their usage by a second or two in order tu use Arctic Aura's effect might be worth the wait."
+        )
+    ),
+    //</editor-fold>
+    //<editor-fold desc="[SGT SHIELD]">
+    SGT_SHIELD("Sgt. Shield", "After experimenting with a dangerous Irish super serum and tons of aerobics, Sergeant Shield became the pinnacle of human physical perfection. He throws his shield at his foes and can block with it. A fantastic melee fighter, some might call him the One-man army", CLASSTYPE.HYBRID, 3, 0, 25000,
+        new SmashAbility(
+                "SHIELD",
+                "Shield",
+                "Right Click to dash forward, hitting enemy heroes with your shield.",
+                "No tips for this one!"
+        ),
+        new SmashAbility(
+                "RICOCHET",
+                "Ricochet",
+                "Press [2] to throw Sergeant Shield's shield a short distance at an enemy, potentially bouncing off and hitting multiple targets before returning.",
+                "While your sheidl is in your hand you take 15% less damage",
+                "eep in mind you're more vulnerable while the shield is away!"
+        ),
+        new SmashAbility(
+                "JUSTICE_SHIELD",
+                "Justice Shield",
+                "Press [3] to throw your shield into the sky. The shield will plummet into the ground, throwing enemy heroes far off the map",
+                "You will lose your 15% damage reduction while your shield is away, so be careful!",
+                "A good use of this skill is to knock enemy heroes off the map in order to edge guard and guarantee an enemy hero kill."
+        ),
+        new SmashAbility(
+                "REFLECT",
+                "Reflect",
+                "[Sneak] to use your shield to its maximum potential, reflecting any projectiles launcher at you back to their original senders!",
+                "Reflection can deflect most projectiles, but not all of them!",
+                "A good rule of thumb is to block precision projectiles, as opposed to very large ones or skills which affect an area",
+                "Be wary, ultimates are more powerful than normal skills and some can't be deflected"
         )
     ),
     //</editor-fold>
