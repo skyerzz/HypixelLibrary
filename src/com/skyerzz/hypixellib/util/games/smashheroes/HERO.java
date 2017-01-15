@@ -1,5 +1,7 @@
 package com.skyerzz.hypixellib.util.games.smashheroes;
 
+import com.skyerzz.hypixellib.OutDated;
+
 import java.util.ArrayList;
 
 /**
@@ -19,13 +21,13 @@ public enum HERO {
                 "BULK CHARGE!",
                 "Press [2] to charge in the direction you're facing. Anyone caught in your path will be damaged.",
                 "You can charge upwards while falling to go up. This could save you the next time you fall off of the map.",
-                "You can charge downwards after double-jumping to combo BULK CHARGE! with your passive ability, BULK SLAM!.",
+                "You can charge downwards after double-jumping to combo BULK CHARGE! with your passive ability, BULK SLAM!.", //fixonline there is a "." after combo
                 "The cooldown of BULK CHARGE! is reduced during BULK SMASH!."
         ),
         new SmashAbility(
                 "MONSTER_MASH",
                 "BULK SMASH!",
-                "Press [3] to begin repeatedly jumping up and down, dealing damage to players you hit. The cooldown of Bulk Smash is reduced during use.",
+                "Press [3] to begin repeatedly jumping up and down, dealing damage to players you hit. The cooldown of Bulk Charge is reduced during use.", //fixonline cooldown of bulk charge is reduced, not smash.
                 "As a MELEE hero, hitting an enemy with your melee attacks will instantly reduce your Smash Ability's cooldown by 3 seconds.",
                 "Picking up the Smash Crystal that occasionally appears during a match will instantly reset your Smash Ability's cooldown."
         ),
@@ -34,7 +36,7 @@ public enum HERO {
                 "BULK SLAM!",
                 "After performing a double-jump, you will execute a ground slam the next time you touch the ground, dealing damage to nearby enemy heroes. Requires 70 energy.",
                 "Your energy is represented by the yellow experience bar above your hotbar.",
-                "If you execute it correctly, you can use other abilities in conjunction with BULK SLAM! to deliver a triple or even a quad hit combo on an unsuspecting enemy."
+                "If you execute it correctly, you can use other abilities in conjunction with BULK SLAM! to deliver a triple or even a quad hit combo on an unsuspecting enemy." //fixonline conjonction > conjunction
         )
     ),
     //</editor-fold>
@@ -62,7 +64,7 @@ public enum HERO {
                 "Picking up the Smash Crystal that occasionally appears during a match will instantly reset your Smash Ability's cooldown."
         ),
         new SmashAbility(
-                "FLAP", //todo: unknown API value for this ability
+                "FLAP",
                 "Flap",
                 "Instead of double-jumping, you can flap your wings several times to glide longer distances. Each wing flap costs energy.",
                 "Your energy is represented by the yellow experience bar above your hotbar.",
@@ -81,7 +83,7 @@ public enum HERO {
         new SmashAbility(
                 "THROW_CAKE",
                 "Regurgicake",
-                "Press [2] to spew cakes in front of you, dealing damage to enemies. For each cake that hits an enemy, you will take 5% less damage, up to a maximum of 30% for 3 seconds.",
+                "Press [2] to spew cakes in front of you, dealing damage to enemies. For each cake that hits an enemy, you will take 5% less damage, up to a maximum of 30% for 3 seconds.", //fixonline "take 5% less damage damage" > remove 1x damage
                 "Use Swing Pin right before using Regurgicake in order to reset its cooldown immediately, allowing you to use it twice in rapid succession."
         ),
         new SmashAbility(
@@ -108,7 +110,7 @@ public enum HERO {
                 "If the enemies you are shooting at are far away, aim ahead of them if they are moving as the Botarangs require some traveling time."
         ),
         new SmashAbility(
-                "BOTCLAW", //todo unknown api value
+                "GRAPPLING_HOOK",
                 "Botclaw",
                 "Press [2] to attatch your Botclaw to the block you're aiming at, allowing you to quickly travel to it. Botbombs will be automatically thrown as you travel towards the end of the Botclaw.",
                 "No tips for this one!"
@@ -121,7 +123,7 @@ public enum HERO {
                 "Picking up the Smash Crystal that occasionally appears during a match will instantly reset your Smash Ability's cooldown."
         ),
         new SmashAbility(
-                "BAT_GLIDE", //todo unknown api value
+                "BAT_GLIDE",
                 "Bat Glide",
                 "Double-Jumping will cause you to glide forward in a cloud of abts, pushing enemy players and preventing you from being knocked back. Requires 80 energy. If you don't have enough energy you will double-jump normally.",
                 "Your energy is represented by the yellow experience bar above your hotbar.",
@@ -176,14 +178,14 @@ public enum HERO {
                 "Use Grip to temporarily immobilize enemy heroes before using Lightning on them. It'll be much easier to hit them."
         ),
         new SmashAbility(
-                "UNLEASHED_ENERGY", //todo api value unknown
+                "UNLEASHED_ENERGY",
                 "Unleashed Energy",
                 "Press [3] to unleash your darkest energy, causing your abilities to consume half the amount of Dark Energy and reducing the amount of damage you take by half for 15 seconds",
                 "As a MELEE hero, hitting an enemy with your melee attacks will instantly reduce your Smash Ability's cooldown by 3 seconds.",
                 "Picking up the Smash Crystal that occasionally appears during a match will instantly reset your Smash Ability's cooldown."
         ),
         new SmashAbility(
-                "DARK_ENERGY", //todo api value unknown
+                "DARK_ENERGY",
                 "Dark Energy",
                 "Marauder' s Lightning and High Jump abilities have no cooldown but require Dark Energy to use. Dark Energy regenerates at a rate of 20 per second and hitting an enemy with a melee attack will generate 10 Dark Energy",
                 "Your energy is represented by the yellow experience bar above your hotbar.",
@@ -197,7 +199,7 @@ public enum HERO {
                 "SPIDER_KICK",
                 "Spooder Kick",
                 "Right Click to perform a kick that will send you forward slightly and deal damage to anyone in your path.",
-                "Spooder Kick will knock enemies it hits downwards instead of upwards. Try and kick players who are coming back to the map after being knocked off of it.",
+                "Spooder Kick will knock enemies it hits downwards instead of upwards. Try and kick players who are coming back to the map after being knocked off of it.", //fixonline player > players
                 "If you're falling off the map, you can use Spooder Kick while looking upwards to gain some altitude for a chance at getting back to safety."
         ),
         new SmashAbility(
@@ -207,15 +209,15 @@ public enum HERO {
                 "Web Shot has a greater effect if your target is lower than you. Try jumping before shooting Web Shot.",
                 "Use Web Shot to bring an enemy in range of your Spooder Kick."
         ),
-        new SmashAbility(//todo check if changed from melee > hybrid
+        new SmashAbility(
                 "SPOODER_BUDDIES",
                 "Spooder Buddies",
-                "Press [3] to call in your buddies. After they've landed on the ground, they will chase enemy players and who them who's the boss.",
-                "As a MELEE hero, hitting an enemy with your melee attacks will instantly reduce your Smash Ability's cooldown by 3 seconds.",
+                "Press [3] to call in your buddies. After they've landed on the ground they will chase enemy players and show them who's the boss.", //fixonline remove ","  after ground
+                "As a MELEE hero, hitting an enemy with your melee attacks will instantly reduce your Smash Ability's cooldown by 3 seconds.", //fixonline melee > hybrid
                 "Picking up the Smash Crystal that occasionally appears during a match will instantly reset your Smash Ability's cooldown."
         ),
         new SmashAbility(
-                "SPOODER_MASTERY", //todo api value unknown
+                "WALL_CLIMBER",
                 "Spooder Mastery",
                 "Your Spooder Mastery allows you to climb walls by holding [Sneak] at the cost of energy, and every 5th melee hit will summon a spooder to aid you in combat for 10 seconds.",
                 "Your energy is represented by the yellow experience bar above your hotbar.",
@@ -232,13 +234,13 @@ public enum HERO {
                 "If you're falling off the map, you can use Spooder Kick while looking upwards to gain some altitude for a chance at getting back to safety."
         ),
         new SmashAbility(
-                "SONIC_BARK",
+                "SUPERSONIC_BARK",
                 "Sonic Bark",
                 "Press [2] to let out a sonic bark, dealing damage to all enemies in front of you. Cooldown is greatly reduced while Intruders! is active.",
                 "The sound waves of Sonic Bark need some time to travel. If the enemy you're aiming at is moving, try and aim ahead of them."
         ),
         new SmashAbility(
-                "INTRUDERS",
+                "WEREPUG",
                 "Intruders!",
                 "Press [3] to sound the alarm, releasing two very dangerous companions to chase down the intruders! Your Sonic Bark has a reduced cooldown for the duration.",
                 "As a MELEE hero, hitting an enemy with your melee attacks will instantly reduce your Smash Ability's cooldown by 3 seconds.",
@@ -283,9 +285,9 @@ public enum HERO {
     ),
     //</editor-fold>
     //<editor-fold desc="[SGT SHIELD]">
-    SGT_SHIELD("Sgt. Shield", "After experimenting with a dangerous Irish super serum and tons of aerobics, Sergeant Shield became the pinnacle of human physical perfection. He throws his shield at his foes and can block with it. A fantastic melee fighter, some might call him the One-man army", CLASSTYPE.HYBRID, 3, 0, 25000,
+    SERGEANT_SHIELD("Sgt. Shield", "After experimenting with a dangerous Irish super serum and tons of aerobics, Sergeant Shield became the pinnacle of human physical perfection. He throws his shield at his foes and can block with it. A fantastic melee fighter, some might call him the One-man army", CLASSTYPE.HYBRID, 3, 0, 25000,
         new SmashAbility(
-                "SHIELD",
+                "SHIELD_BASH",
                 "Shield",
                 "Right Click to dash forward, hitting enemy heroes with your shield.",
                 "No tips for this one!"
@@ -294,14 +296,14 @@ public enum HERO {
                 "RICOCHET",
                 "Ricochet",
                 "Press [2] to throw Sergeant Shield's shield a short distance at an enemy, potentially bouncing off and hitting multiple targets before returning.",
-                "While your sheidl is in your hand you take 15% less damage",
-                "eep in mind you're more vulnerable while the shield is away!"
+                "While your shield is in your hand you take 15% less damage",
+                "Keep in mind you're more vulnerable while the shield is away!"
         ),
         new SmashAbility(
-                "JUSTICE_SHIELD",
+                "SHIELD_QUAKE",
                 "Justice Shield",
                 "Press [3] to throw your shield into the sky. The shield will plummet into the ground, throwing enemy heroes far off the map",
-                "You will lose your 15% damage reduction while your shield is away, so be careful!",
+                "You will lose your 15% damage reduction while your shield is away, so be careful!", //fixonline 15 > 15%
                 "A good use of this skill is to knock enemy heroes off the map in order to edge guard and guarantee an enemy hero kill."
         ),
         new SmashAbility(
@@ -311,6 +313,221 @@ public enum HERO {
                 "Reflection can deflect most projectiles, but not all of them!",
                 "A good rule of thumb is to block precision projectiles, as opposed to very large ones or skills which affect an area",
                 "Be wary, ultimates are more powerful than normal skills and some can't be deflected"
+        )
+    ),
+    //</editor-fold>
+    //<editor-fold desc="[KARAKOT]">
+    GOKU("Karakot", "One of Earth's greatest fighters, Karakot does his best to use his strength and amazing skills to uphold peace", CLASSTYPE.HYBRID, 3, 0, 50000,
+        new SmashAbility(
+                "KI_BLAST",
+                "Ki Blast",
+                "Right Click to fire blasts of ki energy. Allows the use of Kame Do after 3 successful hits.",
+                "Ki Blast isn't very accurate, so try and get closer to your enemy in order to be able to hit them."
+        ),
+        new SmashAbility(
+                "KAME_BEAM",
+                "Kame Do",
+                "Press [2] to launch an accurate beam of energy forward. Requires 3 successful hits of Ki Blast to become available.",
+                "While True Power is active, Kame Do can be used a lot more frequently due to the amount of Ki Blasts you can fire."
+        ),
+        new SmashAbility(
+                "TRUE_POWER",
+                "True Power",
+                "Press [3] to activate True Power mode for 15 seconds. During that time, your Ki Blast will fire twice the amount of projectiles, your Teleport will cost half the amount of energy, and the damage you take will be reduced by half.",
+                "As a HYBRID hero, hitting an enemy with your melee attacks or with an ability will isntantly reduce your Smash Ability's cooldown by 1 second.",
+                "Picking up the Smash Crystal that occasionally appears during a match will instantly reset your Smash Ability's cooldown.",
+                "Hold down Right Click while True Power is active to fire Ki Blast as fast as possible."
+        ),
+        new SmashAbility(
+                "TELEPORT",
+                "Teleport",
+                "Instead of double-jumping, you will teleport in the direction you are facing. Costs 40 energy. If you don't have enough energy, you will double-jump normally. Costs half the regular amount of energy while True Power is active.",
+                "Your energy is represented by the yellow experience bar above your hotbar.",
+                "While fighting face-to-face with another player, using Teleport to appear behind their back might confuse them for a moment.",
+                "If you are quick enough, you can teleport through an enemy's projectile attack to dodge it."
+        )
+    ),
+    //</editor-fold>
+    //<editor-fold desc="[Skullfire]">
+    SKULLFIRE("Skullfire", "As a professional Cops and Crims player, Skullfire causes terror and chaos using his favourite weapon; The Deagle", CLASSTYPE.RANGED, 3, 0, 50000,
+        new SmashAbility(
+                "DESERT_EAGLE",
+                "Deagle",
+                "Right Click to fire the Desert Eagle and deal damage instantly to players from a distance. Hold [Sneak] to fire a triple-shot. Damage is reduced at longer range.",
+                "Try aiming slightly ahead of your enemy when they are moving to ahve a better chance of hitting them.",
+                "You can't manually reload your Deagle. It will reload automatically after you have shot all 7 bullets.", //todo is this right? cant remember.
+                "You will have to take gun recoil into consideration if you shoot too quickly."
+        ),
+        new SmashAbility(
+                "GRENADE",
+                "Grenade",
+                "Press [2] to throw a grenade that will explode instantly upon impact with a player or a block.",
+                "The grenade is affected by gravity. If your target is far away, make sure you aim above their head before you throw it."
+        ),
+        new SmashAbility(
+                "FLAMING_DESERT_EAGLE",
+                "Flaming Deagle",
+                "Press [3] to transform your Deagle into a Flaming Deagle for 10 seconds, or until it runs out of ammo. Bullets will deal double damage, explode on contact, and the clip size is increased.",
+                "As a RANGED hero, hitting an enemy with your Right Click ability will instantly reduce your Smash Ability's cooldown by 2 seconds.",
+                "Picking up the Smash Crystal that occasionally appears during a match will instantly reset your Smash Ability's cooldown."
+        ),
+        new SmashAbility(
+                "BULLSEYE",
+                "Bullseye",
+                "Successfully landing 3 consecutive hits in a row with your Shoot ability without missing will instantly reset your Grenade's cooldown and shooting an enemy while in midair will refund a double-jump charge.", //fixonline "consecutive hits in a row" is double
+                "Keep an eye on your experience bar to see how many consecutive shots you've landed in a row.", //fixonline "consecutive hits in a row" is double
+                "If your Grenade is ready to be thrown and you have already shot twice without missing, throw your Grenade before landing the third hit as the next shot will reset the cooldown, allowing you to throw another one immediately."
+        )
+    ),
+    //</editor-fold>
+    //<editor-fold desc="[SANIC]">
+    SANIC("Sanic", "Gotta go fast", CLASSTYPE.MELEE, 2, 0, 75000,
+        new SmashAbility(
+                "DASH",
+                "Spin Dash",
+                "Right Click to dash upwards and boost yourself forward, knocking back any enemy heroes in your way",
+                "If you're falling off the map, you can use Dash while looking upwards for a chance at getting back to safety."
+        ),
+        new SmashAbility(
+                "BOOM",
+                "Sanic Boom",
+                "Press [2] to gain a burst of speed, emitting explosions in your wake as you run around the map",
+                "Your Boom skill only works while on the ground."
+        ),
+        new SmashAbility(
+                "ONION_CANNON",
+                "Supersanic Ring Cannon",
+                "Press [3] to power up and eject rings for 8 seconds. The more rings you have, the more damage you deal!",
+                "Be wary that your rings have a lot of horizontal impact, but very little vertical impact",
+                "A good way to hit heroes jumping oer you is to jump up with them!"
+        ),
+        new SmashAbility(
+                "ONION_RINGS",
+                "Onion Rings",
+                "Enemy heroes drop onion rings when you punch them. Gather as many as you can to make your smash ability more powerful!" //fixonline no tips exist, not even the "no tips for this one!" message
+        )
+    ),
+    //</editor-fold>
+    //<editor-fold desc="[Void CRAWLER]">
+    DUSK_CRAWLER("Void Crawler", "A few years ago, reports were filed claiming he appeared out of thin air to steal an artifact weapon from the ruins of an ancient location called Warlords Armory, and then disappeared again. His origins are unknown", CLASSTYPE.MELEE, 2, 100, 100000,
+        new SmashAbility(
+                "VOID_SLASH",
+                "Void Slash",
+                "Right Click to perform a sword slash that will send you forward slightly and deal damage to anyone in your path.",
+                "If you're falling off the map, you can use Void Slash while looking upwards to gain some altitude for a chance at getting back to safety."
+        ),
+        new SmashAbility(
+                "TELEBOOM",
+                "Teleboom",
+                "Press [2] to teleport a short distance in the direction you are aiming. On arrival, you will deal damage to anyone around you.",
+                "If you see more than one enemy fighting, Teleboom between them to hit them both at the same time.",
+                "If you are quick enough, you can teleport through an enemy's projectile attack to dodge it."
+        ),
+        new SmashAbility(
+                "TELEPUNCH",
+                "Shadow Fury",
+                "Press [3] to activate Shadow Fury for 12 seconds. During that time, your Teleboom will deal twice the amount of damage and its cooldown will be reduced by half.", //fixonline shadow fury not listed in orange
+                "As a MELEE hero, hitting an enemy with your melee attacks will instantly reduce your Smash Ability's cooldown by 3 seconds.", //fixonline currently tells HYBRID tips, is a MELEE hero
+                "Picking up the Smash Crystal that occasionally appears during a match will instantly reset your Smash Ability's cooldown."
+        ),
+        new SmashAbility(
+                "VOID_ENERGY",
+                "Void Energy",
+                "Hitting enemies with your melee attacks will grant you Void Energy. The damage of your abilities is increased based on how much Void Energy you currently have.",
+                "Your Void Energy is represented by the yellow experience bar above your hotbar.",
+                "Void Energy depletes quickly, so make sure you try and melee hit enemies a lot.",
+                "Try and fill up your Void Energy bar before using your main damage abilities for a bigger damage burst."
+        )
+    ),
+    //</editor-fold>
+    //<editor-fold desc="[Shoop]">
+    SHOOP_DA_WHOOP("Shoop", "Shoop is capable of emitting light from his oral cavity through a process of optical amplification based on the stimulated emission of electromagnetic radiation. In other words... HE CAN SHOOT LASERS OUT OF HIS MOUTH!", CLASSTYPE.RANGED, 3, 150, 150000,
+        new SmashAbility(
+                "STATIC_LASER",
+                "Lightning Bolt",
+                "Right Click to throw a bolt of lightning towards the targeted location, dealing damage to anyone it passes through. Grants 1 charge of Charged Lazor per enemy hit. A mazimum of 5 charges can be stored.",
+                "Lightning Bolt pierces through enemies, allowing you to hit more than one per activation. Try and use that to your advantage to gain charges for Charged Lazor faster."
+        ),
+        new SmashAbility(
+                "CHARGED_BEAM",
+                "Charged Lazor",
+                "Press [2] to consume all charges you have and fire a long-range beam, dealing damage to enemies it hits. The more charges you have, the higher the damage will be.",
+                "Charged Lazor can hit multiple enemies if they're lined up in front of you. Try and position yourself accordingly",
+                "The amount of charges you have is displayed on the ability's icon on your hotbar."
+        ),
+        new SmashAbility(
+                "FIR_MA_LAZER",
+                "FIRIN' MAH LAZOR",
+                "Press [3] to unleash a devastating lazor.",
+                "As a RANGED hero, hitting an enemy with your Right Click ability will instantly reduce your Smash Ability's cooldown by 2 seconds.",
+                "Picking up the Smash Crystal that occasionally appears during a match will instantly reset your Smash Ability's cooldown."
+        ),
+        new SmashAbility(
+                "RIDE_THE_LIGHTNING",
+                "Ride The Lightning",
+                "Pressing [Sneak] to hop onto a Lightning Bolt in order to travel up to 50 bloicks. Costs 80 energy.", //fixonline "pressing" > "press"
+                "Your energy is represented by the yellow experience bar above your hotbar.",
+                "Flying through enemies while using Ride the Lightning will damage them and grant you a charge for Charged Lazor."
+        )
+    ),
+    //</editor-fold>
+    //<editor-fold desc="[GreenHood]">
+    GREEN_HOOD("Green Hood", "By day, a waiter in a French restaurant; by night a vigilante archer. The Green Hood uses his martial arts and bow skills to destroy his enemies", CLASSTYPE.RANGED, 4, 200, 200000,
+        new SmashAbility(
+                "NOTCHED_BOW",
+                "Enhanced Bow",
+                "Right Click to charge your bow, releasing a variety of special arrows at Green Hood's disposal.",
+                "The bow can be charged further after you have pulled it all the way, which powers up some arrow types."
+        ),
+        new SmashAbility(
+                "SWITCH_ARROW",
+                "Switch Arrow",
+                "Press [2] to switch ebtween different arrow types.",
+                "Charging your bow (by holding right click) will make your arrows have a more powerful effect in most cases",
+                "MultiShot Arrow will fire multiple arrows at once, depending on your bow charge",
+                "A Scatter Arrow will eject numerous arrows at the point of contact",
+                "A Tripmine Arrow will wait whereever you shoot it at, and explode when enemy heroes get close!",
+                "Tripmine arrows can be stuck to enemy heroes and explode"
+        ),
+        new SmashAbility(
+                "GRAVITY_ARROW",
+                "Gravity Arrow",
+                "Press [3] to equip a Gravity Arrow. Your next fired arrow will create a spherical gravity field after landing which pulls in nearby enemy heroes, leaving them vulnerable",
+                "Enemy heroes can easily be hit while trapped in this skill, but watch out for ones who aren't trapped!",
+                "If you shoot this on the side of a ledge just right, you can pull enemy heroes off the edge and hold them there"
+        ),
+        new SmashAbility(
+                "FLYING_PUNCH",
+                "Flying Punch",
+                "After a double-jump, performing a melee hit while in the air will cause you to do a flying punch in the direction you are looking at. If you hit an enemy hero, they will take damage and be knocked back.",
+                "You can only use a single flying punch while mid-air, before having to return to the ground",
+                "Flying punch can only be used after you've exhausted all of your double-jumps." //fixonline no - inbetween double-jumps
+        )
+    ),
+    //</editor-fold>
+
+    @OutDated
+    //<editor-fold desc="[Shaun]">
+    SHAUN_SHEEP("OUTDATED", "OUTDATED", null, -1, -1, -1,
+        new SmashAbility(
+                "OUTDATED",
+                "OUTDATED",
+                "OUTDATED"
+        ),
+        new SmashAbility(
+                "OUTDATED",
+                "OUTDATED",
+                "OUTDATED"
+        ),
+        new SmashAbility(
+                "OUTDATED",
+                "OUTDATED",
+                "OUTDATED"
+        ),
+        new SmashAbility(
+                "OUTDATED",
+                "OUTDATED",
+                "OUTDATED"
         )
     ),
     //</editor-fold>
