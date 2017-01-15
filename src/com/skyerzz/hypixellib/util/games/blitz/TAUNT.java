@@ -9,6 +9,7 @@ import java.util.ArrayList;
  * Created by sky on 19-11-2016.
  */
 public enum TAUNT{
+    FIREWORK("UNSURE- Launch a firework?", -1, RANKTYPE.DEFAULT),
     FIREWORK_EXPLOSION("Firework Explosion Taunt", 0, RANKTYPE.VIP),
     I_REFUSE("I Refuse! Taunt", 0, RANKTYPE.VIP),
     CHICKEN_DANCE("Chicken Dance Taunt", 0, RANKTYPE.VIP_PLUS),

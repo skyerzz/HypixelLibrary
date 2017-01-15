@@ -13,7 +13,7 @@ public enum HORN {
     DEFAULT("Default Horn", 0, RANKTYPE.DEFAULT),   //checked
     SHY("Shy Horn", 10000, RANKTYPE.DEFAULT),
     ALIEN("Alien Horn", 20000, RANKTYPE.VIP),
-    BUSY_TAXY("Busy Taxy Horn", 20000, RANKTYPE.VIP),   //checked
+    BUSY_TAXI("Busy Taxi Horn", 20000, RANKTYPE.VIP),   //checked
     KLAXON("Klaxon Horn", 20000, RANKTYPE.VIP),
     TRICYCLE("Tricucle Horn", 25000, RANKTYPE.VIP_PLUS),
     ROAD_DRIVER("Road Driver Horn", 30000, RANKTYPE.VIP_PLUS),

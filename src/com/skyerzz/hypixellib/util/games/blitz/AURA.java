@@ -28,7 +28,7 @@ public enum AURA{
     TRON_BLUE_TRAIL("Blue Tron Trail", 0, RANKTYPE.VIP_PLUS),
     TRON_GREEN_TRAIL("Green Tron Trail", 0, RANKTYPE.VIP_PLUS),
     FLOWER_TRAIL("Flower Trail", 0, RANKTYPE.MVP),
-    WHEAT_CROPS_TRAIL("Wheat Crops Trail", 0, RANKTYPE.MVP);
+    WHEAT_TRAIL("Wheat Crops Trail", 0, RANKTYPE.MVP);
 
     private String displayName;
     private int cost;
