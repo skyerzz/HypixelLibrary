@@ -25,6 +25,8 @@ public class PlayerArcadeStats extends PlayerGameStats{
     private int coins;
     @OutDated
     private int monthly_coins_a, monthly_coins_b, weekly_coins_a, weekly_coins_b;
+    @OutDated
+    private boolean dec2016_achievements, dec2016_achievements2;
 
     private ArrayList<COSMETIC> unlockedCosmetics = new ArrayList<>();
 
@@ -170,6 +172,12 @@ public class PlayerArcadeStats extends PlayerGameStats{
                 break;
             case "WEEKLY_COINS_B":
                 this.weekly_coins_b = value.getAsInt();
+                break;
+            case "DEC2016_ACHIEVEMENTS":
+                this.dec2016_achievements = value.getAsBoolean();
+                break;
+            case "DEC2016_ACHIEVEMENTS2":
+                this.dec2016_achievements2 = value.getAsBoolean();
                 break;
 
             //unknown

@@ -50,7 +50,7 @@ public class PlayerBlitzStats extends PlayerGameStats {
 
     @OutDated
     private int monthly_kills_b, monthly_kills_a, weekly_kills_a, weekly_kills_b;
-    private int votes_Caelum_v2, votes_Winter, votes_Cattle_Drive, votes_Valley, votes_Stoneguard, votes_Peaks, votes_Citadel, votes_Aelin_Tower, votes_Pixelville, votes_MiradorBasin, votes_Egypt, votes_MithrilRevived, votes_Thorin, votes_Despairv1;
+    private int votes_Caelum_v2, votes_Winter, votes_Cattle_Drive, votes_Valley, votes_Stoneguard, votes_Peaks, votes_Citadel, votes_Aelin_Tower, votes_Pixelville, votes_MiradorBasin, votes_Egypt, votes_MithrilRevived, votes_Thorin, votes_Despairv1, votes_Greece, votes_City;
     //</editor-fold>
 
     private void initialize() {
@@ -201,6 +201,12 @@ public class PlayerBlitzStats extends PlayerGameStats {
                 return true;
             case "VOTES_DESPAIR V1":
                 this.votes_Despairv1 = element.getAsInt();
+                return true;
+            case "VOTES_GREECE":
+                this.votes_Greece = element.getAsInt();
+                return true;
+            case "VOTES_CITY":
+                this.votes_City = element.getAsInt();
                 return true;
             //</editor-fold>
         }
