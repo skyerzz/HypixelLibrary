@@ -20,6 +20,7 @@ public class PlayerAPI extends AbstractAPIReply{
     private PlayerCopsAndCrimsStats copsAndCrimsStats;
     private PlayerWallsStats wallsStats;
     private PlayerSkywarsStats skywarsStats;
+    private PlayerSmashStats smashStats;
 
     protected PlayerAPI(JsonObject apiJson) throws NoPlayerStatsException {
         try {
@@ -97,5 +98,12 @@ public class PlayerAPI extends AbstractAPIReply{
             this.skywarsStats = new PlayerSkywarsStats(apiGameJson.get("SkyWars").getAsJsonObject());
         }
         return skywarsStats;
+    }
+
+    public PlayerSmashStats getSmashStats(){
+        if(smashStats == null && apiGameJson.get("SuperSmash")!=null){
+            this.smashStats = new PlayerSmashStats(apiGameJson.get("SuperSmash").getAsJsonObject());
+        }
+        return smashStats;
     }
 }
