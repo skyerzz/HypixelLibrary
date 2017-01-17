@@ -78,7 +78,7 @@ public class APIRequest{
                 throw new MalformedAPIKeyException();
             }
 
-        }else{
+        }else if(json.get("player") != null){
             if(json.get("player").equals("null")){
                 throw new PlayerNonExistentException();
             }
