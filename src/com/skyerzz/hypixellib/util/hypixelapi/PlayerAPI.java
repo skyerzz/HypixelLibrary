@@ -10,6 +10,7 @@ import com.skyerzz.hypixellib.util.hypixelapi.playerstats.*;
 public class PlayerAPI extends AbstractAPIReply{
 
     private JsonObject apiGameJson;
+    private JsonObject totalApiJson;
     private PlayerQuakeStats quakeStats;
     private PlayerPaintballStats paintballStats;
     private PlayerBlitzStats blitzStats;
@@ -23,6 +24,7 @@ public class PlayerAPI extends AbstractAPIReply{
     private PlayerSmashStats smashStats;
 
     protected PlayerAPI(JsonObject apiJson) throws NoPlayerStatsException {
+        this.totalApiJson = apiJson;
         try {
             this.apiGameJson = apiJson.get("player").getAsJsonObject().get("stats").getAsJsonObject();
         }catch(IllegalStateException e){
