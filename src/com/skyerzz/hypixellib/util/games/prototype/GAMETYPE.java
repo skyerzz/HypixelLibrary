@@ -1,5 +1,9 @@
 package com.skyerzz.hypixellib.util.games.prototype;
 
+import com.skyerzz.hypixellib.util.games.quake.BARREL;
+
+import java.util.ArrayList;
+
 /**
  * Created by Skyerzz-LAPOTOP on 27/02/2017.
  */
@@ -20,4 +24,14 @@ public enum GAMETYPE {
     private boolean isAvailable(){ return available;}
 
     private String getName(){ return name; }
+
+    public static final ArrayList<String> mapping = initializeMapping();
+
+    private static ArrayList<String> initializeMapping(){
+        ArrayList<String> list = new ArrayList<String>();
+        for(GAMETYPE item: GAMETYPE.values()){
+            list.add(item.name());
+        }
+        return list;
+    }
 }
