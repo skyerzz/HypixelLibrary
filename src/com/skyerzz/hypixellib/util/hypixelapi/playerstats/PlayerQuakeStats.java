@@ -54,7 +54,7 @@ public class PlayerQuakeStats extends PlayerGameStats {
     private ArrayList<TRINKET> unlockedTrinkets = new ArrayList<>();
 
     @OutDated
-    private boolean achievement_flag_1;
+    private boolean achievement_flag_1, achievement_flag_3;
     @OutDated
     private int dailyKills, weeklyKills, weekly_kills_a, monthly_kills_a, weekly_kills_b, monthly_kills_b, wins_DM, wins_timeAttack, wins_dmTeam, wins_team, team_wins;
     //</editor-fold>
@@ -239,6 +239,8 @@ public class PlayerQuakeStats extends PlayerGameStats {
                 this.instantRespawn = true;
             }else if(name.equals("ACHIEVEMENT_FLAG_1") || name.equals("FLAG_1")){
                 this.achievement_flag_1 = true;
+            }else if(name.equals("ACHIEVEMENT_FLAG_3")){
+                this.achievement_flag_3 = true;
             }else if(KILLSOUND.mapping.contains(name)){
                 this.unlockedKillSounds.add(KILLSOUND.valueOf(name));
             }else if(KIT.mapping.contains(name)){

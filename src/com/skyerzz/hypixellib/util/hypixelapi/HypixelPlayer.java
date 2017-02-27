@@ -16,6 +16,8 @@ public class HypixelPlayer {
 
     private String uuid, apiKey;
     private HypixelAPI api;
+    private PlayerAPI playerStats;
+    private ArrayList<HypixelFriend> playerFriends;
 
     public HypixelPlayer(String uuid, String APIKey){
         this.api = new HypixelAPI();
@@ -24,10 +26,21 @@ public class HypixelPlayer {
     }
 
     public PlayerAPI getPlayerStats() throws RequestTypeException, PlayerNonExistentException, NoPlayerStatsException, MalformedAPIKeyException, IOException {
-        return api.getPlayerAPI(uuid, apiKey);
+        if(this.playerStats==null){
+            this.playerStats = api.getPlayerAPI(uuid, apiKey);
+        }
+        return playerStats;
     }
 
     public ArrayList<HypixelFriend> getPlayerFriends() throws PlayerNonExistentException, RequestTypeException, NoPlayerStatsException, MalformedAPIKeyException, IOException {
-        return api.getPlayerFriends(uuid, apiKey);
+        if(playerFriends==null){
+            playerFriends = api.getPlayerFriends(uuid, apiKey);
+        }
+        return playerFriends;
+    }
+
+    public void reset(){
+        this.playerFriends = null;
+        this.playerFriends = null;
     }
 }
