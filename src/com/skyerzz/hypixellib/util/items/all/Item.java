@@ -558,17 +558,20 @@ public class Item {
     public static ItemStack woodSwordKnockback10Use0 = new ItemStack(new Item(Material.WOOD_SWORD , 0).addEnchantment(Enchantment.kb10), 1);
     public static ItemStack woodSwordKnockback1 = new ItemStack(new Item(Material.WOOD_SWORD).addEnchantment(Enchantment.kb1), 1);
     public static ItemStack woodSwordKnockback2 = new ItemStack(new Item(Material.WOOD_SWORD).addEnchantment(Enchantment.kb2), 1);
+    public static ItemStack woodSwordProt1 = new ItemStack(new Item(Material.WOOD_SWORD).addEnchantment(Enchantment.prot1), 1);
 
     public static ItemStack stoneSwordSmite10Bane10 = new ItemStack(new Item(Material.STONE_SWORD).addEnchantment(Enchantment.smite10).addEnchantment(Enchantment.bane10), 1);
     public static ItemStack stoneSwordKnockback1 = new ItemStack(new Item(Material.STONE_SWORD).addEnchantment(Enchantment.kb1), 1);
     public static ItemStack stoneSwordLoot2 = new ItemStack(new Item(Material.STONE_SWORD).addEnchantment(Enchantment.loot2), 1);
     public static ItemStack stoneSwordLoot3 = new ItemStack(new Item(Material.STONE_SWORD).addEnchantment(Enchantment.loot3), 1);
     public static ItemStack stoneSwordUnbreaking1 = new ItemStack(new Item(Material.STONE_SWORD).addEnchantment(Enchantment.unbreaking1), 1);
+    public static ItemStack stoneSwordProt1 = new ItemStack(new Item(Material.STONE_SWORD).addEnchantment(Enchantment.prot1), 1);
 
     public static ItemStack goldSwordUnbreaking10 = new ItemStack(new Item(Material.GOLD_SWORD).addEnchantment(Enchantment.unbreaking10), 1);
     public static ItemStack goldSwordUnbreaking10Sharp1 = new ItemStack(new Item(Material.GOLD_SWORD).addEnchantment(Enchantment.unbreaking10).addEnchantment(Enchantment.sharp1), 1);
     public static ItemStack goldSwordUnbreaking10Sharp2 = new ItemStack(new Item(Material.GOLD_SWORD).addEnchantment(Enchantment.unbreaking10).addEnchantment(Enchantment.sharp2), 1);
     public static ItemStack goldSwordUnbreaking5Sharp2 = new ItemStack(new Item(Material.GOLD_SWORD).addEnchantment(Enchantment.unbreaking5).addEnchantment(Enchantment.sharp2), 1);
+    public static ItemStack goldSwordProt1 = new ItemStack(new Item(Material.GOLD_SWORD).addEnchantment(Enchantment.prot1), 1);
 
     public static ItemStack ironSwordLoot3 = new ItemStack(new Item(Material.IRON_SWORD).addEnchantment(Enchantment.loot3), 1);
     public static ItemStack ironSwordUnbreaking1 = new ItemStack(new Item(Material.IRON_SWORD).addEnchantment(Enchantment.unbreaking1), 1);
@@ -576,9 +579,12 @@ public class Item {
     public static ItemStack ironSwordKnockback2 = new ItemStack(new Item(Material.IRON_SWORD).addEnchantment(Enchantment.kb2), 1);
     public static ItemStack ironSwordFireAsp1 = new ItemStack(new Item(Material.IRON_SWORD).addEnchantment(Enchantment.fireAsp1), 1);
     public static ItemStack ironSwordFireAsp2 = new ItemStack(new Item(Material.IRON_SWORD).addEnchantment(Enchantment.fireAsp2), 1);
+    public static ItemStack ironSwordProt1 = new ItemStack(new Item(Material.IRON_SWORD).addEnchantment(Enchantment.prot1), 1);
 
     public static ItemStack diamondSwordSharp1 = new ItemStack(new Item(Material.DIAMOND_SWORD).addEnchantment(Enchantment.sharp1), 1);
     public static ItemStack diamondSwordSharp2 = new ItemStack(new Item(Material.DIAMOND_SWORD).addEnchantment(Enchantment.sharp2), 1);
+    public static ItemStack diamondSwordProt1 = new ItemStack(new Item(Material.DIAMOND_SWORD).addEnchantment(Enchantment.prot1), 1);
+
     //</editor-fold>
 
     //<editor-fold desc="[Tools]">
