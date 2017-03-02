@@ -102,6 +102,8 @@ public class Item {
     public static ItemStack whiteLeatherHelmet = new ItemStack(new Item(Material.LEATHER_HELMET).setColor("d0d0d0"), 1);
     public static ItemStack whiteLeatherChest = new ItemStack(new Item(Material.LEATHER_CHESTPLATE).setColor("d0d0d0"), 1);
     public static ItemStack whiteLeatherLeggings = new ItemStack(new Item(Material.LEATHER_LEGGINGS).setColor("d0d0d0"), 1);
+    public static ItemStack purpleLeatherHelmet = new ItemStack(new Item(Material.LEATHER_HELMET).setColor("d0d0d0"), 1);
+    public static ItemStack redLeatherHelmet = new ItemStack(new Item(Material.LEATHER_HELMET).setColor("d0d0d0"), 1);
     //</editor-fold>
 
     //chain
@@ -178,6 +180,17 @@ public class Item {
     public static Item goldenAppleRegen3Slow2 = new Item(Material.GOLDEN_APPLE).addEffect(new Effect(EffectType.REGENERATION, 3, 0)).addEffect(new Effect(EffectType.SLOW, 2, 0)); //todo find these values
     //</editor-fold>
 
+    //<editor-fold desc="[Wool / clay / glass]">
+    public static Item orangeWool = new Item(Material.WOOL, 1);//todo check all colors
+    public static Item greenClay = new Item(Material.STAINED_CLAY, 13);
+    public static Item redGlass = new Item(Material.STAINED_GLASS, 4);
+    public static Item yellowGlass = new Item(Material.STAINED_GLASS, 5);
+    //</editor-fold>
+
+    //<editor-fold desc="[SKULLS]">
+    public static Item skull = new Item(Material.SKULL);
+    //</editor-fold>
+
     //<editor-fold desc="[Others]">
     public static Item TNT = new Item(Material.TNT);
     public static Item bowl = new Item(Material.BOWL);
@@ -217,8 +230,21 @@ public class Item {
     public static Item pumpkin = new Item(Material.PUMPKIN);
     public static Item stone = new Item(Material.STONE);
     public static Item obsidian = new Item(Material.OBSIDIAN);
+    public static Item bedrock = new Item(Material.BEDROCK);
+    public static Item commandBlock = new Item(Material.COMMAND);
     public static Item jukebox = new Item(Material.JUKEBOX);
     public static Item noteBlock = new Item(Material.NOTE_BLOCK);
+    public static Item coalOre = new Item(Material.COAL_ORE);
+    public static Item lapisBlock = new Item(Material.LAPIS_BLOCK);
+    public static Item dirt = new Item(Material.DIRT);
+    public static Item goldBlock = new Item(Material.GOLD_BLOCK);
+    public static Item grass = new Item(Material.GRASS);
+    public static Item redstoneOre = new Item(Material.REDSTONE_ORE);
+    public static Item cactus = new Item(Material.CACTUS);
+    public static Item ironBlock = new Item(Material.IRON_BLOCK);
+    public static Item ice = new Item(Material.ICE);
+    public static Item netherBrick = new Item(Material.NETHER_BRICK);
+    public static Item slimeBlock = new Item(Material.SLIME_BLOCK);
     public static ItemStack flintNSteel = new ItemStack(new Item(Material.FLINT_AND_STEEL), 1);
     public static ItemStack carrotOnAStick = new ItemStack(new Item(Material.CARROT_STICK), 1);
     public static ItemStack anvil = new ItemStack(new Item(Material.ANVIL), 1);
