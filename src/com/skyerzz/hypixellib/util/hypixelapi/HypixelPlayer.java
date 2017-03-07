@@ -40,7 +40,7 @@ public class HypixelPlayer {
     }
 
     public void reset(){
-        this.playerFriends = null;
+        this.playerStats = null;
         this.playerFriends = null;
     }
 }
