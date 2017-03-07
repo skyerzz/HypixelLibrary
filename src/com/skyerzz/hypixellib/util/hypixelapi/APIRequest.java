@@ -80,7 +80,7 @@ public class APIRequest{
 
         }else if(json.get("player") != null){
             if(json.get("player").equals("null")){
-                throw new PlayerNonExistentException();
+                throw new PlayerNonExistentException(webLink.toString());
             }
         }
 

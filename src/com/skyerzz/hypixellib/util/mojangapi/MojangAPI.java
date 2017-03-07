@@ -44,7 +44,7 @@ public class MojangAPI {
         BufferedReader rd = new BufferedReader(new InputStreamReader(con.getInputStream()));
         String jsonText = readURL(rd);
         if(jsonText.isEmpty()){
-            throw new PlayerNonExistentException();
+            throw new PlayerNonExistentException(webLink.toString());
         }
         JsonObject json = new JsonParser().parse(jsonText).getAsJsonObject();
         rd.close();

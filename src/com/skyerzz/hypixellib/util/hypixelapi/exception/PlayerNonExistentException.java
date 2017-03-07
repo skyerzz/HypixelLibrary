@@ -7,15 +7,19 @@ import java.util.UUID;
  */
 public class PlayerNonExistentException extends Exception {
 
-    UUID playerUUID;
+    private UUID playerUUID;
+    private String weblink;
 
-    public PlayerNonExistentException(){};
+    public PlayerNonExistentException(String weblink){ this.weblink = weblink; };
 
-    public PlayerNonExistentException(UUID playerUUID){
+    public PlayerNonExistentException(UUID playerUUID, String weblink){
         this.playerUUID = playerUUID;
+        this.weblink = weblink;
     }
 
     public UUID getPlayerUUID(){
         return playerUUID;
     }
+
+    public String getWeblink(){ return weblink; }
 }
