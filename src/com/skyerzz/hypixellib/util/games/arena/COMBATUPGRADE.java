@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Created by sky on 27-2-2017.
  */
 public enum COMBATUPGRADE {
-    MELEE("Melee Upgrade", "Melee Damage: %%VALUE%%"),
+    DAMAGE("Melee Upgrade", "Melee Damage: %%VALUE%%"),
     HEALTH("Helath Upgrade", "Maximum Health: %%VALUE%%"),
     ENERGY("Energy Upgrade", "Maximum Energy: %%VALUE%%"),
     COOLDOWN("Cooldown Upgrade", "Cooldown Reduction: %%VALUE%%%");
@@ -28,6 +28,10 @@ public enum COMBATUPGRADE {
         return list;
     }
 
+    public String getName(){
+        return name;
+    }
+
     /**
      * returns Damage per hit for MELEE, Max Health for HEALTH, max Energy for ENERGY, cooldown reduction for COOLDOWN
      * @return value
@@ -37,7 +41,7 @@ public enum COMBATUPGRADE {
             return -1;
         }
         switch(this){
-            case MELEE:
+            case DAMAGE:
                 if(level < 5){
                     return 10.00 + 0.22*level;
                 }else if(level < 9){

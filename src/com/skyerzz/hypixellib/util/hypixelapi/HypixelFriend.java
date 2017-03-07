@@ -9,11 +9,13 @@ public class HypixelFriend extends HypixelPlayer {
 
     private String acceptedByUUID, sentByUUID, id;
     private Date dateAccepted;
+    private boolean acceptedByOwnUUID;
 
     public HypixelFriend(String uuid, String APIKey, String id, long epochDate, String friendUUID, boolean acceptedByOwnUUID) {
         super(uuid, APIKey);
         dateAccepted = new Date(epochDate);
         this.id = id;
+        this.acceptedByOwnUUID = acceptedByOwnUUID;
         if(acceptedByOwnUUID){
             this.acceptedByUUID = uuid;
             this.sentByUUID = friendUUID;
@@ -37,5 +39,12 @@ public class HypixelFriend extends HypixelPlayer {
 
     public Date getDateAccepted() {
         return dateAccepted;
+    }
+
+    public HypixelPlayer getAsHypixelPlayer(String apiKey){
+        if(acceptedByOwnUUID) {
+            return new HypixelPlayer(sentByUUID, apiKey);
+        }
+        return new HypixelPlayer(acceptedByUUID, apiKey);
     }
 }

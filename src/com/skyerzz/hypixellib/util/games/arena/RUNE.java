@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Created by sky on 27-2-2017.
  */
 public enum RUNE {
-    SLOW("Rune of Slowing", "Your melee attacks have a %%AMOUNT%%% chance to slow your enemy for 3 seconds."),
+    SLOWING("Rune of Slowing", "Your melee attacks have a %%AMOUNT%%% chance to slow your enemy for 3 seconds."),
     SPEED("Rune of Speed", "Your melee attacks have a %%AMOUNT%%% chance increase your movement speed by 40% for 3 seconds."), //fixonline chance increase > chance to increase
     ENERGY("Rune of Energy", "Your melee attacks have a %%AMOUNT%%% chance to restore 8 energy."),
     DAMAGE("Rune of Damage", "Your melee attacks have a %%AMOUNT%%% chance to deal 50% extra damage."); //fixonline extra spaces between "50% extra"

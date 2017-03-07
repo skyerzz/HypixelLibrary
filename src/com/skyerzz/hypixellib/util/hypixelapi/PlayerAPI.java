@@ -11,17 +11,19 @@ public class PlayerAPI extends AbstractAPIReply{
 
     private JsonObject apiGameJson;
     private JsonObject totalApiJson;
-    private PlayerQuakeStats quakeStats;
-    private PlayerPaintballStats paintballStats;
-    private PlayerBlitzStats blitzStats;
-    private PlayerTNTGamesStats tntGamesStats;
-    private PlayerVampireZStats vampireZStats;
-    private PlayerTurboKartRacersStats turboKartRacersStats;
+
     private PlayerArcadeStats arcadeStats;
+    private PlayerArenaStats arenaStats;
+    private PlayerBlitzStats blitzStats;
     private PlayerCopsAndCrimsStats copsAndCrimsStats;
-    private PlayerWallsStats wallsStats;
+    private PlayerPaintballStats paintballStats;
+    private PlayerQuakeStats quakeStats;
     private PlayerSkywarsStats skywarsStats;
     private PlayerSmashStats smashStats;
+    private PlayerTNTGamesStats tntGamesStats;
+    private PlayerTurboKartRacersStats turboKartRacersStats;
+    private PlayerVampireZStats vampireZStats;
+    private PlayerWallsStats wallsStats;
 
     protected PlayerAPI(JsonObject apiJson) throws NoPlayerStatsException {
         this.totalApiJson = apiJson;
@@ -107,5 +109,12 @@ public class PlayerAPI extends AbstractAPIReply{
             this.smashStats = new PlayerSmashStats(apiGameJson.get("SuperSmash").getAsJsonObject());
         }
         return smashStats;
+    }
+
+    public PlayerArenaStats getArenaStats(){
+        if(arenaStats == null && apiGameJson.get("Arena")!=null){
+            this.arenaStats = new PlayerArenaStats(apiGameJson.get("Arena").getAsJsonObject());
+        }
+        return arenaStats;
     }
 }

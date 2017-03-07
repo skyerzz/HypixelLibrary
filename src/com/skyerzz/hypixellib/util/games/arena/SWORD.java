@@ -9,16 +9,16 @@ import java.util.ArrayList;
  * Created by sky on 27-2-2017.
  */
 public enum SWORD {
-    WOOD_SWORD("Wood Sword", Item.woodenSword),
-    STONE_SWORD("Stone Sword", Item.stoneSword),
-    IRON_SWORD("Iron Sword - DEFAULT", Item.ironSword),
-    GOLD_SWORD("Gold Sword", Item.goldSword),
-    DIAMOND_SWORD("Diamond Sword", Item.diamondSword),
-    ENCHANTED_WOOD_SWORD("Enchanted Wood Sword", Item.woodSwordProt1),
-    ENCHANTED_STONE_SWORD("Enchanted Stone Sword", Item.stoneSwordProt1),
-    ENCHANTED_IRON_SWORD("Enchanted Iron Sword", Item.ironSwordProt1),
-    ENCHANTED_GOLD_SWORD("Enchanted Gold Sword", Item.goldSwordProt1),
-    ENCHANTED_DIAMOND_SWORD("Enchanted Diamond Sword", Item.diamondSwordProt1);
+    WOOD("Wood Sword", Item.woodenSword),
+    STONE("Stone Sword", Item.stoneSword),
+    IRON("Iron Sword - DEFAULT", Item.ironSword),
+    GOLD("Gold Sword", Item.goldSword),
+    DIAMOND("Diamond Sword", Item.diamondSword),
+    ENCHANTED_WOOD("Enchanted Wood Sword", Item.woodSwordProt1),
+    ENCHANTED_STONE("Enchanted Stone Sword", Item.stoneSwordProt1),
+    ENCHANTED_IRON("Enchanted Iron Sword", Item.ironSwordProt1),
+    ENCHANTED_GOLD("Enchanted Gold Sword", Item.goldSwordProt1),
+    ENCHANTED_DIAMOND("Enchanted Diamond Sword", Item.diamondSwordProt1);
 
     private String name;
     private ItemStack swordItem;

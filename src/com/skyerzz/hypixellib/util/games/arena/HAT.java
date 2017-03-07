@@ -24,37 +24,37 @@ public enum HAT {
     WIZARD("Wizard hat", HATRARITY.COMMON, Item.blackLeatherHelmet, "Hypixellamus!", "Alohypixel!", "Crucio!"),
     CANADA("Canada hat", HATRARITY.COMMON, Item.redLeatherHelmet, "I'M SO SORRY", "Syrup?", "Whats that eh?"),
     SCOTLAND("Scotland hat", HATRARITY.COMMON, new ItemStack(Item.lapisBlock, 1), "Haggis!", "Kilts!", "Whiskey!"),
-    POTTY_MOUTH("Potty mouth hat", HATRARITY.COMMON, new ItemStack(Item.dirt, 1), "#&^$@(!", "!*#&#(!&*", "@*#!?#@*!"),
-    KIM("Kim Jung-II hat", HATRARITY.COMMON, Item.yellowLeatherHelmet, "Why harro there", "I’m so ronernee", "Cake? Cake!"),
+    POTTY_MOUTH("Potty mouth hat", HATRARITY.COMMON, new ItemStack(Item.dirt, 1), "#&^$@(!", "!*#&#(!&*", "@*#!?#@*!"), //unsure, guessing this is ANGRY api value
+    KIM_JONG_II("Kim Jung-II hat", HATRARITY.COMMON, Item.yellowLeatherHelmet, "Why harro there", "I’m so ronernee", "Cake? Cake!"),
     GOLD_RUSH("Gold rush hat", HATRARITY.COMMON, new ItemStack(Item.goldBlock, 1), "Budder", "Budder", "Mushroom"),
     SPARTAN("Spartan Hat", HATRARITY.COMMON, Item.chainHelmet, "Madness?" , "This is... Arena!", "Prepare for glory!"),
     HIPSTER("Hipster hat", HATRARITY.COMMON, new ItemStack(Item.grass, 1), "The underground!", "Starbucks!", "Before it was cool!"),
-    TRYHARD("Tryhard hat", HATRARITY.COMMON, Item.ironHelmet, "FITE ME", "UWOTM8", "UDED"),
+    TRY_HARD("Tryhard hat", HATRARITY.COMMON, Item.ironHelmet, "FITE ME", "UWOTM8", "UDED"),
     LIBRARIAN("Librarian hat", HATRARITY.COMMON, new ItemStack(Item.bookCase, 1), "Shhh!", "Knowledge is power!", "Go read a book!"),
 
     DOGE("Doge hat", HATRARITY.RARE, new ItemStack(Item.skull, 1 /*todo find head value*/), "Ouch ouch", "Very damage", "Much pain"),
     LEET("L33t hat", HATRARITY.RARE, new ItemStack(Item.redstoneOre, 1), "GET ON MY LEVEL", "UR WEAK SON", "DO U EVEN LIFT"),
     NUKEM("Nukem Hat", HATRARITY.RARE, new ItemStack(Item.TNT, 1), "Out of gum.", " Time to kick butt!", "Not quite!"),
-    CODENAME_B("Codename_b Hat", HATRARITY.RARE, new ItemStack(Item.skull, 1 /*todo find head value*/), "CODE!", "MORE CODE!", "Dragons?!"),
+    BANANA("Codename_b Hat", HATRARITY.RARE, new ItemStack(Item.skull, 1 /*todo find head value*/), "CODE!", "MORE CODE!", "Dragons?!"), //why is this hat called banana. EXPLAIN YOURSELF CODENAME!
     AGENTK("AgentK hat", HATRARITY.RARE, new ItemStack(Item.skull, 1 /*todo find head value*/), "*grumbles*", "It works!", " Ship it!"),
     CRYPTKEEPER("Cryptkeeper hat", HATRARITY.RARE, new ItemStack(Item.skull, 1 /*todo find head value*/), ";)", "<3", "Fixed!"),
     BEBOPVOX("Bebopvox hat", HATRARITY.RARE, new ItemStack(Item.skull, 1 /*todo find head value*/), "Diamonds to you!", "Game on!", "So many to come stuff!"),
     REZZUS("Rezzus hat", HATRARITY.RARE, new ItemStack(Item.skull, 1 /*todo find head value*/), "Yep", "Yep!", "Yep."),
-    KESSIE("Kessie hat", HATRARITY.RARE, new ItemStack(Item.skull, 1 /*todo find head value*/), "Better internet plz!", "Land down under!", "#Aussieinternet"),
+    KEVINKOOL("Kessie hat", HATRARITY.RARE, new ItemStack(Item.skull, 1 /*todo find head value*/), "Better internet plz!", "Land down under!", "#Aussieinternet"), //old kevinkool hat, value appears unchanged, hat is.
     HYPIXEL("Hypixel hat", HATRARITY.RARE, new ItemStack(Item.skull, 1 /*todo find head value*/), "sweg", "I <3 sloths", "wat.gif"),
 
     //todo find out which enchantment + add it.
     THORLON("Thorlon hat", HATRARITY.RARE, new ItemStack(Item.skull, 1 /*todo find head value*/), "I am a god!", "I will smite you!", "Smited!"),
     JAMIE("Jamiethegeek hat", HATRARITY.RARE, new ItemStack(Item.skull, 1 /*todo find head value*/), "For the love of helix!", "Ohwhy", "Nope"),
     CACTUS("Cactus hat", HATRARITY.RARE, new ItemStack(Item.cactus, 1), "Spikey", "Oy-oy!", "Pyoing!"),
-    SPACE_HELMET("Space Helmet", HATRARITY.RARE, new ItemStack(Item.ironBlock, 1), "Ground control?", "Blast-off!", "Houston? We have a problem"),
+    SPACEMAN("Space Helmet", HATRARITY.RARE, new ItemStack(Item.ironBlock, 1), "Ground control?", "Blast-off!", "Houston? We have a problem"),
     POLAR_BEAR("Polar bear hat", HATRARITY.RARE, new ItemStack(Item.snow, 1), "Ice Ice baby", "#FROZEN", "Let it go"),
-    ANGER("Anger hat", HATRARITY.RARE, new ItemStack(Item.redGlass, 1), "RAAAAAWR", "So angry!", "Smash!", "GRAAAAWR"),
+    ANGRY("Anger hat", HATRARITY.RARE, new ItemStack(Item.redGlass, 1), "RAAAAAWR", "So angry!", "Smash!", "GRAAAAWR"),
     CRYOMANCER("Cryomancer hat", HATRARITY.RARE, new ItemStack(Item.ice, 1), "Winter is coming...", "Is it cold out here?", "Frost DOES bite!"),
 
     //epic
-    HELIX("Helix hat", HATRARITY.EPIC, new ItemStack(Item.skull, 1 /*todo find head value*/), "Praise Helix!", "Up up anarchy a a", "start9"),
-    SLOTHPIXEL("Slothpixel hat", HATRARITY.EPIC, new ItemStack(Item.skull, 1 /*todo find head value*/), "Ow", "Ow!", "Ow"),
+    HELIX_FOSSIL("Helix hat", HATRARITY.EPIC, new ItemStack(Item.skull, 1 /*todo find head value*/), "Praise Helix!", "Up up anarchy a a", "start9"),
+    SLOTH("Slothpixel hat", HATRARITY.EPIC, new ItemStack(Item.skull, 1 /*todo find head value*/), "Ow", "Ow!", "Ow"),
     SWEG("Sweg hat", HATRARITY.EPIC, Item.goldHelmet, "Sweggity", "swiggity", "swooty", "sweg"),
     DIAMOND("Diamond Helmet", HATRARITY.EPIC, Item.diamondHelmet, "See you on the leaderboard!", "What's your rating?", "There can only be one!"),
     BEE_KING("Bee king hat", HATRARITY.EPIC, new ItemStack(Item.yellowGlass, 1), "Bzzz", "Honey, plz", "Send in the drones!"),
@@ -73,6 +73,16 @@ public enum HAT {
         for(String s: phrases){
             this.phrases.add(s);
         }
+    }
+
+    public static final ArrayList<String> mapping = initializeMapping();
+
+    private static ArrayList<String> initializeMapping(){
+        ArrayList<String> list = new ArrayList<String>();
+        for(HAT item: HAT.values()){
+            list.add(item.name());
+        }
+        return list;
     }
 
     public String getName() {

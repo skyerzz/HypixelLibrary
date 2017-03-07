@@ -12,7 +12,7 @@ public enum SKILL {
             "Launch a large boulder that will shatter after colliding with the ground, dealing 225 damage to enemies nearby. Launching a boulder directly under a player's feet will immobilize them for 2 seconds.",
             2400, 80, 0, SKILLTYPE.OFFENSE
     ),
-    COOKIE_SHOTGUN("Cookie Shotgun",
+    SHOTGUN("Cookie Shotgun",
                 "Fire 7 cookies in a cone in front of you that each deal 27 damage.",
             12000, 60, 0, SKILLTYPE.OFFENSE
     ),
@@ -32,7 +32,7 @@ public enum SKILL {
                     "Breathe cold air in a cone in front of you, dealing 200 damage instantly. If an enemy is hit by the breath, they will be slowed for 2 seconds.",
             25000, 90, 0, SKILLTYPE.OFFENSE
     ),
-    GUIDED_PIG("Guided Pig",
+    ROCKET_PIG("Guided Pig",
             "Shoot a pig that will explode, dealing 265 damage to all nearby enemies. Your rotation influences the flight.",
             -1, 100, 0, SKILLTYPE.OFFENSE
     ),
@@ -129,7 +129,7 @@ public enum SKILL {
             "Surround yourself with a barricade that lasts for 5 seconds. The barricade can be destroyed by some skills.",
             600, 0, 30, SKILLTYPE.UTILITY
     ),
-    BULL_CHARGE("Bull Charge",
+    CHARGE("Bull Charge",
             "Transform into a cow while you charge forward. Colliding with a player-made structure will destroy it.",
             0, 0, 40, SKILLTYPE.UTILITY
     ),
@@ -137,7 +137,7 @@ public enum SKILL {
             "Drops a golem where you target, destroying structures and knocking back players",
             12000, 0, 40, SKILLTYPE.UTILITY
     ),
-    PETRIFY("Petrify",
+    POLYMORPH("Petrify",
             "Transform the targeted enemy player into stone for 5 seconds. While immobilized, the player will be unable to attack but will slowly regenerate health. The skill is cancelled if the player takes 30 damage.",
             12000, 0, 40, SKILLTYPE.UTILITY
     ),
@@ -165,22 +165,31 @@ public enum SKILL {
                 "Reduces damage taken by 65% for 12 seconds.",
                 0, 0, -1, SKILLTYPE.ULTIMATE
     ),
-    BERSERK("Berserk",
+    BERSEK("Berserk",
             "Doubles your melee damage and increases movement speed by 30% for 15 seconds.",
             1200, 0, -1, SKILLTYPE.ULTIMATE
-    ),
+    ), //typo SOMEONE MISTTYPED THIS SMH
     REFLECT_DAMAGE("Reflect Damage",
             "Reduces damage taken by 50% for 8 seconds and reflects 50% damage back to your attacker for the duration.",
             25000, 0, -1, SKILLTYPE.ULTIMATE
     ),
-    BROODMOTHER("Broodmother",
+    ARACHNID("Broodmother",
             "Summons a large spider that will chase down and poison the targeted enemy player, dealing 180 damage over 6 seconds. When slain, the Broodmother spawns 3 spiderlings that deal 5 damage each per attack.",
             25000, 0, -1, SKILLTYPE.ULTIMATE
     ),
     DOOM_SHROOM("Doom Shroom",
             "Plant a giant mushroom that will damage all enemies within 15 blocks for 20 damage per second while it grows. ONce grown, the mushroom will let out a final burst of 400 damage and destory sall structures. Can be destyroyed by melee hits.",
             35000, 0, -1, SKILLTYPE.ULTIMATE
-    );
+    ),
+
+    //Outdated/ Never implemented skills (looking at you noxy!)
+    STEALTH("OUTDATED- Stealth", "OUTDATED- N/A", -1, -1, -1, null),
+    DEATH_GRIP("OUTDATED- Death Grip", "OUTDATED- N/A", -1, -1, -1, null),
+    BULL_CHARGE("OUTDATED- value now just CHARGE", "see CHARGE", -1, -1, -1, null),
+    ICE_LANCE("OUTDATED- Ice lance", "OUTDATED- N/A", -1, -1, -1, null),
+    BURNING_ARROWS("OUTDATED- Burning Arrows", "OUTDATED- N/A", -1, -1, -1, null),
+    SHOCK_MINE("OUTDATED- value PROXIMITY_MINE", "see PROXIMITY_MINE", -1, -1, -1, null);
+
     //</editor-fold>
 
 
@@ -197,7 +206,6 @@ public enum SKILL {
         this.skillType = skillType;
         this.cooldown = cooldown;
     }
-
 
     public static final ArrayList<String> mapping = initializeMapping();
 
