@@ -19,7 +19,7 @@ import java.util.Map;
 public class PlayerTNTGamesStats extends PlayerGameStats {
     //<editor-fold desc="[GLOBALS]">
     //stats
-    private int coins;
+    private int coins, winStreak;
 
     private int bowspleef_deaths;
     private int bowspleef_wins;
@@ -33,7 +33,7 @@ public class PlayerTNTGamesStats extends PlayerGameStats {
     private int tag_wins;
     private int tag_kills;
 
-    private int run_wins;
+    private int run_wins, runDeaths;
     private int run_record; //max time alive from one game?
 
     private int pvprun_wins;
@@ -78,6 +78,8 @@ public class PlayerTNTGamesStats extends PlayerGameStats {
     private int deaths, kills;
     @OutDated
     private int bombermanKills, bombermanDeaths;
+
+    private boolean tiered_achievement_flag_1;
     //</editor-fold>
 
     public PlayerTNTGamesStats(JsonObject json) {
@@ -103,33 +105,53 @@ public class PlayerTNTGamesStats extends PlayerGameStats {
         switch(key){
             //<editor-fold desc="[Wizards]">
             case "FIREWIZARD_EXPLODE":
+                return true; //outdated
+            case "NEW_FIREWIZARD_EXPLODE":
                 this.wizards_fire_explode = element.getAsInt();
                 return true;
             case "FIREWIZARD_REGEN":
+                return true; //outdated
+            case "NEW_FIREWIZARD_REGEN":
                 this.wizards_fire_regen = element.getAsInt();
                 return true;
             case "KINETICWIZARD_EXPLODE":
+                return true;//outdated
+            case "NEW_KINETICWIZARD_EXPLODE":
                 this.wizards_kinetic_explode = element.getAsInt();
                 return true;
             case "KINETICWIZARD_REGEN":
+                return true;//outdated
+            case "NEW_KINETICWIZARD_REGEN":
                 this.wizards_kinetic_regen = element.getAsInt();
                 return true;
             case "ICEWIZARD_EXPLODE":
+                return true;
+            case "NEW_ICEWIZARD_EXPLODE":
                 this.wizards_ice_explode = element.getAsInt();
                 return true;
             case "ICEWIZARD_REGEN":
+                return true;//outdated
+            case "NEW_ICEWIZARD_REGEN":
                 this.wizards_ice_regen = element.getAsInt();
                 return true;
             case "WITHERWIZARD_EXPLODE":
+                return true;//outdated
+            case "NEW_WITHERWIZARD_EXPLODE":
                 this.wizards_wither_explode = element.getAsInt();
                 return true;
             case "WITHERWIZARD_REGEN":
+                return true;//outdated
+            case "NEW_WITHERWIZARD_REGEN":
                 this.wizards_wither_regen = element.getAsInt();
                 return true;
             case "BLOODWIZARD_EXPLODE":
+                return true;//outdated
+            case "NEW_BLOODWIZARD_EXPLODE":
                 this.wizards_blood_explode = element.getAsInt();
                 return true;
             case "BLOODWIZARD_REGEN":
+                return true;//outdated
+            case "NEW_BLOODWIZARD_REGEN":
                 this.wizards_blood_regen = element.getAsInt();
                 return true;
             case "ASSISTS_CAPTURE":
@@ -148,6 +170,8 @@ public class PlayerTNTGamesStats extends PlayerGameStats {
 
             //<editor-fold desc="[TAG]">
             case "TAG_SPEED":
+                return true; //outdated
+            case "NEW_TAG_SPEEDY":
                 this.tag_speedy = element.getAsInt();
                 return true;
             case "KILLS_TNTAG":
@@ -159,6 +183,9 @@ public class PlayerTNTGamesStats extends PlayerGameStats {
             //</editor-fold>
 
             //<editor-fold desc="[RUN]">
+            case "DEATHS_TNTRUN":
+                this.runDeaths = element.getAsInt();
+                return true;
             case "WINS_TNTRUN":
                 this.run_wins = element.getAsInt();
                 return true;
@@ -166,6 +193,8 @@ public class PlayerTNTGamesStats extends PlayerGameStats {
                 this.run_record = element.getAsInt();
                 return true;
             case "DOUBLEJUMP_TNTRUN":
+                return true; //outdated
+            case "NEW_TNTRUN_DOUBLE_JUMPS":
                 this.run_doubleJump = element.getAsInt();
                 return true;
             case "KILLS_PVPRUN":
@@ -184,12 +213,18 @@ public class PlayerTNTGamesStats extends PlayerGameStats {
                 this.bowspleef_deaths = element.getAsInt();
                 return true;
             case "SPLEEF_DOUBLEJUMP":
+                return true; //outdated
+            case "NEW_SPLEEF_DOUBLE_JUMPS":
                 this.bowspleef_doubleJump = element.getAsInt();
                 return true;
             case "SPLEEF_REPULSE":
+                return true; //outdated
+            case "NEW_SPLEEF_REPULSOR":
                 this.bowspleef_repulsor = element.getAsInt();
                 return true;
             case "SPLEEF_TRIPLE":
+                return true;
+            case "NEW_SPLEEF_TRIPLESHOT":
                 this.bowspleef_tripleShot = element.getAsInt();
                 return true;
             case "TAGS_BOWSPLEEF":
@@ -202,6 +237,9 @@ public class PlayerTNTGamesStats extends PlayerGameStats {
 
             case "COINS":
                 this.coins = element.getAsInt();
+                return true;
+            case "WINSTREAK":
+                this.winStreak = element.getAsInt();
                 return true;
 
             //<editor-fold desc="[Outdated]">
@@ -343,6 +381,8 @@ public class PlayerTNTGamesStats extends PlayerGameStats {
                 this.speed_potion = true;
             }else if(value.equals("SLOW_POTION")){
                 this.slow_potion = true;
+            }else if(value.equals("TIERED_ACHIEVEMENT_FLAG_1")){
+                this.tiered_achievement_flag_1 = true;
             }else if(PARTICLEEFFECT.mapping.contains(value)){
                 this.unlockedParticleEffects.add(PARTICLEEFFECT.valueOf(value));
             }else if(HAT.mapping.contains(value)){
@@ -418,63 +458,63 @@ public class PlayerTNTGamesStats extends PlayerGameStats {
     }
 
     public int getRun_doubleJump() {
-        return run_doubleJump+2;
+        return run_doubleJump+1;
     }
 
     public int getBowspleef_doubleJump() {
-        return bowspleef_doubleJump+2;
+        return bowspleef_doubleJump+1;
     }
 
     public int getBowspleef_tripleShot() {
-        return bowspleef_tripleShot+2;
+        return bowspleef_tripleShot+1;
     }
 
     public int getBowspleef_repulsor() {
-        return bowspleef_repulsor+2;
+        return bowspleef_repulsor+1;
     }
 
     public int getWizards_fire_explode() {
-        return wizards_fire_explode+1;
+        return wizards_fire_explode;
     }
 
     public int getWizards_fire_regen() {
-        return wizards_fire_regen+1;
+        return wizards_fire_regen;
     }
 
     public int getWizards_kinetic_explode() {
-        return wizards_kinetic_explode+1;
+        return wizards_kinetic_explode;
     }
 
     public int getWizards_kinetic_regen() {
-        return wizards_kinetic_regen+1;
+        return wizards_kinetic_regen;
     }
 
     public int getWizards_ice_explode() {
-        return wizards_ice_explode+1;
+        return wizards_ice_explode;
     }
 
     public int getWizards_ice_regen() {
-        return wizards_ice_regen+1;
+        return wizards_ice_regen;
     }
 
     public int getWizards_wither_explode() {
-        return wizards_wither_explode+1;
+        return wizards_wither_explode;
     }
 
     public int getWizards_wither_regen() {
-        return wizards_wither_regen+1;
+        return wizards_wither_regen;
     }
 
     public int getWizards_blood_explode() {
-        return wizards_blood_explode+1;
+        return wizards_blood_explode;
     }
 
     public int getWizards_blood_regen() {
-        return wizards_blood_regen+1;
+        return wizards_blood_regen;
     }
 
     public int getTag_speedy() {
-        return tag_speedy+1;
+        return tag_speedy;
     }
 
     public DEATHEFFECT getSelectedDeathEffect() {
