@@ -12,6 +12,8 @@ public class PlayerAPI extends AbstractAPIReply{
     private JsonObject apiGameJson;
     private JsonObject totalApiJson;
 
+
+    private PlayerCommonStats commonStats;
     private PlayerArcadeStats arcadeStats;
     private PlayerArenaStats arenaStats;
     private PlayerBlitzStats blitzStats;
@@ -32,6 +34,13 @@ public class PlayerAPI extends AbstractAPIReply{
         }catch(IllegalStateException e){
                 throw new NoPlayerStatsException();
         }
+    }
+
+    public PlayerCommonStats getCommonStats(){
+        if(commonStats==null && totalApiJson.get("player")!=null){
+            this.commonStats = new PlayerCommonStats(totalApiJson.get("player").getAsJsonObject());
+        }
+        return commonStats;
     }
 
     public PlayerQuakeStats getQuakeStats(){

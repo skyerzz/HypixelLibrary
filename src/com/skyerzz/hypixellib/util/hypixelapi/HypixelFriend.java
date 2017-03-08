@@ -42,7 +42,7 @@ public class HypixelFriend extends HypixelPlayer {
     }
 
     public HypixelPlayer getAsHypixelPlayer(String apiKey){
-        if(acceptedByOwnUUID) {
+        if(!acceptedByOwnUUID) {
             return new HypixelPlayer(sentByUUID, apiKey);
         }
         return new HypixelPlayer(acceptedByUUID, apiKey);
