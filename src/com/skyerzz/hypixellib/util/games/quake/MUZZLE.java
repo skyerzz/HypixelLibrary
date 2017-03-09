@@ -1,7 +1,7 @@
 package com.skyerzz.hypixellib.util.games.quake;
 
 import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.RANKTYPE;
+import com.skyerzz.hypixellib.util.RANK;
 
 import java.util.ArrayList;
 
@@ -9,23 +9,23 @@ import java.util.ArrayList;
  * Created by sky on 7-7-2016.
  */
 public enum MUZZLE {
-    NONE("No Muzzle", 0, RANKTYPE.DEFAULT),
-    CLAY("Clay Muzzle", 5000, RANKTYPE.DEFAULT),
-    WOOD("Wooden Muzzle", 5000, RANKTYPE.VIP),
-    GOLD("Golden Muzzle", 7500, RANKTYPE.VIP),
-    REDSTONE("Redstone Muzzle", 7500, RANKTYPE.VIP),
-    IRON("Iron Muzzle", 8200, RANKTYPE.VIP_PLUS),
-    DIAMOND("Diamond Muzzle", 9000, RANKTYPE.VIP_PLUS),
-    EMERALD("Emerald Muzzle", 25000, RANKTYPE.VIP_PLUS),
-    OBSIDIAN("Obsidian Muzzle", 50000, RANKTYPE.VIP_PLUS),
-    COMMAND_BLOCK("Command Block Muzzle", 100000, RANKTYPE.VIP_PLUS);
+    NONE("No Muzzle", 0, RANK.NONE),
+    CLAY("Clay Muzzle", 5000, RANK.NONE),
+    WOOD("Wooden Muzzle", 5000, RANK.VIP),
+    GOLD("Golden Muzzle", 7500, RANK.VIP),
+    REDSTONE("Redstone Muzzle", 7500, RANK.VIP),
+    IRON("Iron Muzzle", 8200, RANK.VIP_PLUS),
+    DIAMOND("Diamond Muzzle", 9000, RANK.VIP_PLUS),
+    EMERALD("Emerald Muzzle", 25000, RANK.VIP_PLUS),
+    OBSIDIAN("Obsidian Muzzle", 50000, RANK.VIP_PLUS),
+    COMMAND_BLOCK("Command Block Muzzle", 100000, RANK.VIP_PLUS);
 
 
     private String displayName;
     private int cost;
-    private RANKTYPE rankRequirement;
+    private RANK rankRequirement;
 
-    MUZZLE(String displayName, int cost, RANKTYPE rankRequirement){
+    MUZZLE(String displayName, int cost, RANK rankRequirement){
         this.displayName = displayName;
         this.cost = cost;
         this.rankRequirement = rankRequirement;
@@ -51,7 +51,7 @@ public enum MUZZLE {
 
     public CURRENCY getCurrencyType(){ return CURRENCY.COINS; }
 
-    public RANKTYPE getRankRequirement(){
+    public RANK getRankRequirement(){
         return rankRequirement;
     }
 }

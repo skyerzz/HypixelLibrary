@@ -1,7 +1,7 @@
 package com.skyerzz.hypixellib.util.games.turbokartracers;
 
 import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.RANKTYPE;
+import com.skyerzz.hypixellib.util.RANK;
 
 import java.util.ArrayList;
 
@@ -10,24 +10,24 @@ import java.util.ArrayList;
  */
 public enum HORN {
     //TODO: check
-    DEFAULT("Default Horn", 0, RANKTYPE.DEFAULT),   //checked
-    SHY("Shy Horn", 10000, RANKTYPE.DEFAULT),
-    ALIEN("Alien Horn", 20000, RANKTYPE.VIP),
-    BUSY_TAXI("Busy Taxi Horn", 20000, RANKTYPE.VIP),   //checked
-    KLAXON("Klaxon Horn", 20000, RANKTYPE.VIP),
-    TRICYCLE("Tricucle Horn", 25000, RANKTYPE.VIP_PLUS),
-    ROAD_DRIVER("Road Driver Horn", 30000, RANKTYPE.VIP_PLUS),
-    ALARM("Alarm Horn", 30000, RANKTYPE.MVP),
-    KLOON("Kloon Horn", 40000, RANKTYPE.MVP),
-    TEDDY_BEAR("Teddy Bear Horn", 40000, RANKTYPE.MVP_PLUS),
-    TRUCK("Truck Horn", 50000, RANKTYPE.MVP_PLUS);
+    DEFAULT("Default Horn", 0, RANK.NONE),   //checked
+    SHY("Shy Horn", 10000, RANK.NONE),
+    ALIEN("Alien Horn", 20000, RANK.VIP),
+    BUSY_TAXI("Busy Taxi Horn", 20000, RANK.VIP),   //checked
+    KLAXON("Klaxon Horn", 20000, RANK.VIP),
+    TRICYCLE("Tricucle Horn", 25000, RANK.VIP_PLUS),
+    ROAD_DRIVER("Road Driver Horn", 30000, RANK.VIP_PLUS),
+    ALARM("Alarm Horn", 30000, RANK.MVP),
+    KLOON("Kloon Horn", 40000, RANK.MVP),
+    TEDDY_BEAR("Teddy Bear Horn", 40000, RANK.MVP_PLUS),
+    TRUCK("Truck Horn", 50000, RANK.MVP_PLUS);
 
 
     private String displayName;
     private int cost;
-    private RANKTYPE rankRequirement;
+    private RANK rankRequirement;
 
-    HORN(String displayName, int cost, RANKTYPE rankRequirement){
+    HORN(String displayName, int cost, RANK rankRequirement){
         this.displayName = displayName;
         this.cost = cost;
         this.rankRequirement = rankRequirement;
@@ -55,7 +55,7 @@ public enum HORN {
         return CURRENCY.COINS;
     }
 
-    public RANKTYPE getRankRequirement(){
+    public RANK getRankRequirement(){
         return rankRequirement;
     }
 }

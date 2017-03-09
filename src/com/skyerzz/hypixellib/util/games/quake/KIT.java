@@ -2,7 +2,7 @@ package com.skyerzz.hypixellib.util.games.quake;
 
 import com.skyerzz.hypixellib.OutDated;
 import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.RANKTYPE;
+import com.skyerzz.hypixellib.util.RANK;
 
 import java.util.ArrayList;
 
@@ -11,32 +11,32 @@ import java.util.ArrayList;
  */
 public enum KIT {
     @OutDated
-            RICHKIT("OUTDATED - Rich Kit", -1, RANKTYPE.DEFAULT),
+            RICHKIT("OUTDATED - Rich Kit", -1, RANK.NONE),
     @OutDated
-            FASHIONKIT("OUTDATED - Fashion Kit", -1, RANKTYPE.DEFAULT),
+            FASHIONKIT("OUTDATED - Fashion Kit", -1, RANK.NONE),
 
-    SOLDIER("Soldier Kit", 650, RANKTYPE.DEFAULT),
-    ELITE("Elite Kit", 2250, RANKTYPE.DEFAULT),
-    MAJESTIC("Majestic Kit", 2250, RANKTYPE.VIP),
-    COMMANDER("Commander Kit", 2250, RANKTYPE.VIP),
-    MARINEKIT("Marine Kit", 2250, RANKTYPE.VIP),
-    SWATKIT("SWAT Kit", 2250, RANKTYPE.VIP_PLUS),
-    SPECOPSKIT("Spec Ops Kit", 2250, RANKTYPE.VIP_PLUS),
-    INVADERKIT("Invader Kit", 2250, RANKTYPE.VIP_PLUS),
-    REVENGEKIT("Revenge Kit", 2250, RANKTYPE.VIP_PLUS),
-    SPACEKIT("Space Kit", 2250, RANKTYPE.VIP_PLUS),
-    SLIMEKIT("Slime Kit", 2250, RANKTYPE.VIP_PLUS),
-    SNOWKIT("Snow Kit", 2250, RANKTYPE.VIP_PLUS),
-    FASHIONISTAKIT("Fashionista Kit", 2250, RANKTYPE.VIP_PLUS),
-    BUDDERKIT("Budder Kit", 3375, RANKTYPE.MVP),
-    SWEGKIT("Sweg Kit", 4500, RANKTYPE.MVP_PLUS);
+    SOLDIER("Soldier Kit", 650, RANK.NONE),
+    ELITE("Elite Kit", 2250, RANK.NONE),
+    MAJESTIC("Majestic Kit", 2250, RANK.VIP),
+    COMMANDER("Commander Kit", 2250, RANK.VIP),
+    MARINEKIT("Marine Kit", 2250, RANK.VIP),
+    SWATKIT("SWAT Kit", 2250, RANK.VIP_PLUS),
+    SPECOPSKIT("Spec Ops Kit", 2250, RANK.VIP_PLUS),
+    INVADERKIT("Invader Kit", 2250, RANK.VIP_PLUS),
+    REVENGEKIT("Revenge Kit", 2250, RANK.VIP_PLUS),
+    SPACEKIT("Space Kit", 2250, RANK.VIP_PLUS),
+    SLIMEKIT("Slime Kit", 2250, RANK.VIP_PLUS),
+    SNOWKIT("Snow Kit", 2250, RANK.VIP_PLUS),
+    FASHIONISTAKIT("Fashionista Kit", 2250, RANK.VIP_PLUS),
+    BUDDERKIT("Budder Kit", 3375, RANK.MVP),
+    SWEGKIT("Sweg Kit", 4500, RANK.MVP_PLUS);
 
 
     private String displayName;
     private int cost;
-    private RANKTYPE rankRequirement;
+    private RANK rankRequirement;
 
-    KIT(String displayName, int cost, RANKTYPE rankRequirement){
+    KIT(String displayName, int cost, RANK rankRequirement){
         this.displayName = displayName;
         this.cost = cost;
         this.rankRequirement = rankRequirement;
@@ -62,7 +62,7 @@ public enum KIT {
 
     public CURRENCY getCurrencyType(){ return CURRENCY.COINS; }
 
-    public RANKTYPE getRankRequirement(){
+    public RANK getRankRequirement(){
         return rankRequirement;
     }
 }

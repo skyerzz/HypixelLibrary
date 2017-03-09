@@ -1,7 +1,7 @@
 package com.skyerzz.hypixellib.util.games.turbokartracers;
 
 import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.RANKTYPE;
+import com.skyerzz.hypixellib.util.RANK;
 
 import java.util.ArrayList;
 
@@ -10,21 +10,21 @@ import java.util.ArrayList;
  */
 public enum PARTICLETRAIL {
     //TODO: check
-    RAINBOWZ(       "Rainbowz Trail",       21000,  RANKTYPE.VIP),
-    RED_DUST(       "Red Dust Trail",       1000,   RANKTYPE.VIP),
-    HEARTS(         "Hearts Trail",         3000,   RANKTYPE.VIP),     //checked
-    GREEN_MAGIC(    "Green Magic Trail",    2500,   RANKTYPE.VIP),
-    PURPLE_MAGIC(   "Purple Magic Trail",   2500,   RANKTYPE.VIP),
-    FLAMES(         "Flames Trail",         5000,   RANKTYPE.VIP),
-    SLIME(          "Slime Trail",          5000,   RANKTYPE.VIP),
-    LAVA_BURST(     "Lava Burst Trail",     17000,  RANKTYPE.VIP),
-    DARK_SMOKE(     "Dark Smoke Trail",     3500,   RANKTYPE.VIP);
+    RAINBOWZ(       "Rainbowz Trail",       21000,  RANK.VIP),
+    RED_DUST(       "Red Dust Trail",       1000,   RANK.VIP),
+    HEARTS(         "Hearts Trail",         3000,   RANK.VIP),     //checked
+    GREEN_MAGIC(    "Green Magic Trail",    2500,   RANK.VIP),
+    PURPLE_MAGIC(   "Purple Magic Trail",   2500,   RANK.VIP),
+    FLAMES(         "Flames Trail",         5000,   RANK.VIP),
+    SLIME(          "Slime Trail",          5000,   RANK.VIP),
+    LAVA_BURST(     "Lava Burst Trail",     17000,  RANK.VIP),
+    DARK_SMOKE(     "Dark Smoke Trail",     3500,   RANK.VIP);
 
     private String displayName;
     private int cost;
-    private RANKTYPE rankRequirement;
+    private RANK rankRequirement;
 
-    PARTICLETRAIL(String displayName, int cost, RANKTYPE rankRequirement){
+    PARTICLETRAIL(String displayName, int cost, RANK rankRequirement){
         this.displayName = displayName;
         this.cost = cost;
         this.rankRequirement = rankRequirement;
@@ -52,7 +52,7 @@ public enum PARTICLETRAIL {
         return CURRENCY.COINS;
     }
 
-    public RANKTYPE getRankRequirement(){
+    public RANK getRankRequirement(){
         return rankRequirement;
     }
 }

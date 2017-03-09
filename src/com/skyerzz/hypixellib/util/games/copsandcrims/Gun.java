@@ -1,10 +1,6 @@
 package com.skyerzz.hypixellib.util.games.copsandcrims;
 
 import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.games.paintball.KILLSTREAK;
-import com.skyerzz.hypixellib.util.RANKTYPE;
-
-import java.util.ArrayList;
 
 /**
  * Created by sky on 7-8-2016.

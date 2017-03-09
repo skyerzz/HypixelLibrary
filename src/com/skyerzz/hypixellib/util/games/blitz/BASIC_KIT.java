@@ -2,7 +2,7 @@ package com.skyerzz.hypixellib.util.games.blitz;
 
 import com.skyerzz.hypixellib.Logger;
 import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.RANKTYPE;
+import com.skyerzz.hypixellib.util.RANK;
 import com.skyerzz.hypixellib.util.items.all.*;
 
 import java.util.ArrayList;
@@ -72,7 +72,7 @@ public enum BASIC_KIT {
         return CURRENCY.COINS;
     }
 
-    public RANKTYPE getRankRequirement(){ return RANKTYPE.DEFAULT; }
+    public RANK getRankRequirement(){ return RANK.NONE; }
 
     public ArrayList<ItemStack> getKitItems(int level){
         if(level < 1 || level > 10){

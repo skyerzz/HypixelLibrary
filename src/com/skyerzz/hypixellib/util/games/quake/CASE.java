@@ -1,7 +1,7 @@
 package com.skyerzz.hypixellib.util.games.quake;
 
 import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.RANKTYPE;
+import com.skyerzz.hypixellib.util.RANK;
 
 import java.util.ArrayList;
 
@@ -9,23 +9,23 @@ import java.util.ArrayList;
  * Created by sky on 7-7-2016.
  */
 public enum CASE {
-    WOOD_HOE("Wooden Case", 0, RANKTYPE.DEFAULT),
-    STONE_HOE("Marbled Case", 1000, RANKTYPE.DEFAULT),
-    IRON_HOE("Reinforced Case", 2500, RANKTYPE.VIP),
-    GOLD_HOE("Plated Case", 4000, RANKTYPE.VIP),
-    DIAMOND_HOE("Bling Case", 7000, RANKTYPE.VIP),
-    SHINY_WOOD_HOE("Varnished Wood Case", 2000, RANKTYPE.VIP),
-    SHINY_STONE_HOE("Polished Marble Case", 2000, RANKTYPE.VIP_PLUS),
-    SHINY_IRON_HOE("Polished Reinforced Case", 200000, RANKTYPE.MVP),
-    SHINY_GOLD_HOE("Polished Plated Case", 14000, RANKTYPE.VIP_PLUS),
-    SHINY_DIAMOND_HOE("name", 100000, RANKTYPE.VIP_PLUS);
+    WOOD_HOE("Wooden Case", 0, RANK.NONE),
+    STONE_HOE("Marbled Case", 1000, RANK.NONE),
+    IRON_HOE("Reinforced Case", 2500, RANK.VIP),
+    GOLD_HOE("Plated Case", 4000, RANK.VIP),
+    DIAMOND_HOE("Bling Case", 7000, RANK.VIP),
+    SHINY_WOOD_HOE("Varnished Wood Case", 2000, RANK.VIP),
+    SHINY_STONE_HOE("Polished Marble Case", 2000, RANK.VIP_PLUS),
+    SHINY_IRON_HOE("Polished Reinforced Case", 200000, RANK.MVP),
+    SHINY_GOLD_HOE("Polished Plated Case", 14000, RANK.VIP_PLUS),
+    SHINY_DIAMOND_HOE("name", 100000, RANK.VIP_PLUS);
 
 
     private String displayName;
     private int cost;
-    private RANKTYPE rankRequirement;
+    private RANK rankRequirement;
 
-    CASE(String displayName, int cost, RANKTYPE rankRequirement){
+    CASE(String displayName, int cost, RANK rankRequirement){
         this.displayName = displayName;
         this.cost = cost;
         this.rankRequirement = rankRequirement;
@@ -51,7 +51,7 @@ public enum CASE {
 
     public CURRENCY getCurrencyType(){ return CURRENCY.COINS; }
 
-    public RANKTYPE getRankRequirement(){
+    public RANK getRankRequirement(){
         return rankRequirement;
     }
 }

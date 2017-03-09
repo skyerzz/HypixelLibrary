@@ -1,7 +1,7 @@
 package com.skyerzz.hypixellib.util.games.paintball;
 
 import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.RANKTYPE;
+import com.skyerzz.hypixellib.util.RANK;
 
 import java.util.ArrayList;
 
@@ -9,29 +9,29 @@ import java.util.ArrayList;
  * Created by sky on 21-7-2016.
  */
 public enum KILLSTREAK {
-    FLASHBANG("Flashbang", 2500, 2, RANKTYPE.DEFAULT),
-    TRIPLESHOT("Triple Shot", 2500, 3, RANKTYPE.DEFAULT),
-    CREEPERHEAD("Creeper Head", 2500, 8, RANKTYPE.DEFAULT),
-    TNTRAIN("TNT Rain", 2500, 10, RANKTYPE.DEFAULT),
-    PLUSTEN("+10", 2500, 15, RANKTYPE.DEFAULT),
-    NUKE("Nuke", 5500, 25, RANKTYPE.DEFAULT),
-    SUPERSTRONGARM("Super Strong Arm", 2500, 7, RANKTYPE.DEFAULT),
-    LIGHTNING("Lightning", 2500, 12, RANKTYPE.DEFAULT),
-    ENDERPEARL("Ender Pearl", 2500, 15, RANKTYPE.DEFAULT),
-    ENDEREYE("Ender Eye", 2500, 15, RANKTYPE.DEFAULT),
-    FORCEFIELD("Force Field", 6500, 50, RANKTYPE.DEFAULT),
-    BOMBERMAN("Bomber Man", 2500, 18, RANKTYPE.DEFAULT),
-    BACKSTAB("Backstab", 2500, 5, RANKTYPE.DEFAULT),
-    SENTRY("Sentry", 2500, 9, RANKTYPE.DEFAULT),
-    QUINTUPLESHOT("Quintuple Shot", 5000, 9, RANKTYPE.DEFAULT),
-    LANDMINE("Landmine", 2500, 3, RANKTYPE.DEFAULT);
+    FLASHBANG("Flashbang", 2500, 2, RANK.NONE),
+    TRIPLESHOT("Triple Shot", 2500, 3, RANK.NONE),
+    CREEPERHEAD("Creeper Head", 2500, 8, RANK.NONE),
+    TNTRAIN("TNT Rain", 2500, 10, RANK.NONE),
+    PLUSTEN("+10", 2500, 15, RANK.NONE),
+    NUKE("Nuke", 5500, 25, RANK.NONE),
+    SUPERSTRONGARM("Super Strong Arm", 2500, 7, RANK.NONE),
+    LIGHTNING("Lightning", 2500, 12, RANK.NONE),
+    ENDERPEARL("Ender Pearl", 2500, 15, RANK.NONE),
+    ENDEREYE("Ender Eye", 2500, 15, RANK.NONE),
+    FORCEFIELD("Force Field", 6500, 50, RANK.NONE),
+    BOMBERMAN("Bomber Man", 2500, 18, RANK.NONE),
+    BACKSTAB("Backstab", 2500, 5, RANK.NONE),
+    SENTRY("Sentry", 2500, 9, RANK.NONE),
+    QUINTUPLESHOT("Quintuple Shot", 5000, 9, RANK.NONE),
+    LANDMINE("Landmine", 2500, 3, RANK.NONE);
 
     private String displayName;
     private int cost;
     private int killcoinsCost;
-    private RANKTYPE rankRequirement;
+    private RANK rankRequirement;
 
-    KILLSTREAK(String displayName, int cost, int killcoinsCost, RANKTYPE rankRequirement){
+    KILLSTREAK(String displayName, int cost, int killcoinsCost, RANK rankRequirement){
         this.displayName = displayName;
         this.cost = cost;
         this.killcoinsCost = killcoinsCost;
@@ -58,7 +58,7 @@ public enum KILLSTREAK {
 
     public CURRENCY getCurrencyType(){ return CURRENCY.COINS; }
 
-    public RANKTYPE getRankRequirement(){
+    public RANK getRankRequirement(){
         return rankRequirement;
     }
 

@@ -1,7 +1,7 @@
 package com.skyerzz.hypixellib.util.games.paintball;
 
 import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.RANKTYPE;
+import com.skyerzz.hypixellib.util.RANK;
 
 import java.util.ArrayList;
 
@@ -9,20 +9,20 @@ import java.util.ArrayList;
  * Created by sky on 21-7-2016.
  */
 public enum PERK {
-    GODFATHER("Godfather", 5000, 50, RANKTYPE.DEFAULT),
-    ENDURANCE("Endurance", 7500, 50, RANKTYPE.DEFAULT),
-    SUPERLUCK("Superluck", 250, 20, RANKTYPE.DEFAULT),
-    FORTUNE("Fortune", 1000, 20, RANKTYPE.DEFAULT),
-    ADRENALINE("Adrenaline", 1000, 10, RANKTYPE.DEFAULT),
-    TRANSFUSION("Transfusion", 100, 10, RANKTYPE.DEFAULT), //TODO: check if coins leveling linear
-    HEADSTART("Headstart", 10000, 5, RANKTYPE.DEFAULT); //TODO: check up if max value here is correct. Also check coins leveling linear?
+    GODFATHER("Godfather", 5000, 50, RANK.NONE),
+    ENDURANCE("Endurance", 7500, 50, RANK.NONE),
+    SUPERLUCK("Superluck", 250, 20, RANK.NONE),
+    FORTUNE("Fortune", 1000, 20, RANK.NONE),
+    ADRENALINE("Adrenaline", 1000, 10, RANK.NONE),
+    TRANSFUSION("Transfusion", 100, 10, RANK.NONE), //TODO: check if coins leveling linear
+    HEADSTART("Headstart", 10000, 5, RANK.NONE); //TODO: check up if max value here is correct. Also check coins leveling linear?
 
     private String displayName;
     private int maxLevel;
     private int cost;
-    private RANKTYPE rankRequirement;
+    private RANK rankRequirement;
 
-    PERK(String displayName, int cost, int maxLevel, RANKTYPE rankRequirement){
+    PERK(String displayName, int cost, int maxLevel, RANK rankRequirement){
         this.displayName = displayName;
         this.maxLevel = maxLevel;
         this.cost = cost;
@@ -52,7 +52,7 @@ public enum PERK {
 
     public CURRENCY getCurrencyType(){ return CURRENCY.COINS; }
 
-    public RANKTYPE getRankRequirement(){
+    public RANK getRankRequirement(){
         return rankRequirement;
     }
 

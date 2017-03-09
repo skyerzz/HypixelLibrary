@@ -1,7 +1,6 @@
 package com.skyerzz.hypixellib.util.games.walls;
 
 import com.skyerzz.hypixellib.Logger;
-import com.skyerzz.hypixellib.util.RANKTYPE;
 
 import java.util.ArrayList;
 

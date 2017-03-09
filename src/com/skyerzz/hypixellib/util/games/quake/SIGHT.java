@@ -1,7 +1,7 @@
 package com.skyerzz.hypixellib.util.games.quake;
 
 import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.RANKTYPE;
+import com.skyerzz.hypixellib.util.RANK;
 
 import java.util.ArrayList;
 
@@ -9,23 +9,23 @@ import java.util.ArrayList;
  * Created by sky on 7-7-2016.
  */
 public enum SIGHT {
-    YELLOW("Yellow Laser", 0, RANKTYPE.DEFAULT),
-    GREEN("Green Laser", 4000, RANKTYPE.DEFAULT),
-    WHITE("White Laser", 4000, RANKTYPE.DEFAULT),
-    RED("Red Laser", 5000, RANKTYPE.VIP),
-    BLUE("Blue Laser", 7000, RANKTYPE.VIP),
-    PURPLE("Purple Laser", 8000, RANKTYPE.VIP_PLUS),
-    PINK("Pink Laser", 8000, RANKTYPE.VIP_PLUS),
-    GOLD("Gold Laser", 50000, RANKTYPE.VIP_PLUS),
-    EMERALD("Emerald Laser", 50000, RANKTYPE.VIP_PLUS),
-    DIAMOND("Daimond Laser", 50000, RANKTYPE.VIP_PLUS);
+    YELLOW("Yellow Laser", 0, RANK.NONE),
+    GREEN("Green Laser", 4000, RANK.NONE),
+    WHITE("White Laser", 4000, RANK.NONE),
+    RED("Red Laser", 5000, RANK.VIP),
+    BLUE("Blue Laser", 7000, RANK.VIP),
+    PURPLE("Purple Laser", 8000, RANK.VIP_PLUS),
+    PINK("Pink Laser", 8000, RANK.VIP_PLUS),
+    GOLD("Gold Laser", 50000, RANK.VIP_PLUS),
+    EMERALD("Emerald Laser", 50000, RANK.VIP_PLUS),
+    DIAMOND("Daimond Laser", 50000, RANK.VIP_PLUS);
 
 
     private String displayName;
     private int cost;
-    private RANKTYPE rankRequirement;
+    private RANK rankRequirement;
 
-    SIGHT(String displayName, int cost, RANKTYPE rankRequirement){
+    SIGHT(String displayName, int cost, RANK rankRequirement){
         this.displayName = displayName;
         this.cost = cost;
         this.rankRequirement = rankRequirement;
@@ -51,7 +51,7 @@ public enum SIGHT {
 
     public CURRENCY getCurrencyType(){ return CURRENCY.COINS; }
 
-    public RANKTYPE getRankRequirement(){
+    public RANK getRankRequirement(){
         return rankRequirement;
     }
 }

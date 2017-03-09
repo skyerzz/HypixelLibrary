@@ -1,10 +1,8 @@
 package com.skyerzz.hypixellib.util.games.walls;
 
 import com.skyerzz.hypixellib.Logger;
-import com.skyerzz.hypixellib.util.RANKTYPE;
 import com.skyerzz.hypixellib.util.items.all.Item;
 import com.skyerzz.hypixellib.util.items.all.ItemStack;
-import com.skyerzz.hypixellib.util.items.all.Material;
 
 import java.util.ArrayList;
 

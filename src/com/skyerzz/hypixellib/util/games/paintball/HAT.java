@@ -1,7 +1,7 @@
 package com.skyerzz.hypixellib.util.games.paintball;
 
 import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.RANKTYPE;
+import com.skyerzz.hypixellib.util.RANK;
 
 import java.util.ArrayList;
 
@@ -9,34 +9,34 @@ import java.util.ArrayList;
  * Created by sky on 21-7-2016.
  */
 public enum HAT {
-    TNT_HAT("TNT Hat", 4200, RANKTYPE.DEFAULT),
-    SPEED_HAT("Speed Hat", 3000, RANKTYPE.DEFAULT),
-    SNOW_HAT("Snow Hat", 4200, RANKTYPE.DEFAULT),
-    HARD_HAT("Hard Hat", 4200, RANKTYPE.DEFAULT),
-    ENDER_HAT("Ender Hat", 4200, RANKTYPE.DEFAULT),
-    HAT_OF_DARKNESS("Hat of Darkness", 4200, RANKTYPE.DEFAULT),
-    TROLOLOL_HAT("Trololol Hat", 4200, RANKTYPE.DEFAULT),
-    NORMAL_HAT("Normal Hat", 2000, RANKTYPE.DEFAULT),
-    DRUNK_HAT("Drunk Hat", 4200, RANKTYPE.DEFAULT),
-    SQUID_HAT("Squid Hat", 4200, RANKTYPE.DEFAULT),
-    SPIDER_HAT("Spider Hat", 4200, RANKTYPE.DEFAULT),
-    SHAKY_HAT("Shaky Hat", 4200, RANKTYPE.DEFAULT),
-    VIP_AGENTK_HAT("AgentK Hat", 75000, RANKTYPE.DEFAULT),
-    VIP_KEVINKOOL_HAT("kevinkool Hat", 75000, RANKTYPE.DEFAULT),
-    VIP_REZZUS_HAT("Rezzus Hat", 75000, RANKTYPE.DEFAULT),
-    VIP_NEONMASTER_HAT("Mystery Hat", 75000, RANKTYPE.DEFAULT),         //Mystery Hat IG, Neonmaster in API.
-    VIP_HYPIXEL_HAT("hypixel Hat", 75000, RANKTYPE.DEFAULT),
-    VIP_CODENAME_B_HAT("codename_B Hat", 75000, RANKTYPE.DEFAULT),
-    VIP_PAINTBALLKITTY_HAT("PaintballKitty Hat", 75000, RANKTYPE.DEFAULT),
-    VIP_NOXYD_HAT("NoxyD Hat", 50000, RANKTYPE.DEFAULT),
-    VIP_GHOST_HAT("Ghost Hat", 50000, RANKTYPE.DEFAULT);
+    TNT_HAT("TNT Hat", 4200, RANK.NONE),
+    SPEED_HAT("Speed Hat", 3000, RANK.NONE),
+    SNOW_HAT("Snow Hat", 4200, RANK.NONE),
+    HARD_HAT("Hard Hat", 4200, RANK.NONE),
+    ENDER_HAT("Ender Hat", 4200, RANK.NONE),
+    HAT_OF_DARKNESS("Hat of Darkness", 4200, RANK.NONE),
+    TROLOLOL_HAT("Trololol Hat", 4200, RANK.NONE),
+    NORMAL_HAT("Normal Hat", 2000, RANK.NONE),
+    DRUNK_HAT("Drunk Hat", 4200, RANK.NONE),
+    SQUID_HAT("Squid Hat", 4200, RANK.NONE),
+    SPIDER_HAT("Spider Hat", 4200, RANK.NONE),
+    SHAKY_HAT("Shaky Hat", 4200, RANK.NONE),
+    VIP_AGENTK_HAT("AgentK Hat", 75000, RANK.NONE),
+    VIP_KEVINKOOL_HAT("kevinkool Hat", 75000, RANK.NONE),
+    VIP_REZZUS_HAT("Rezzus Hat", 75000, RANK.NONE),
+    VIP_NEONMASTER_HAT("Mystery Hat", 75000, RANK.NONE),         //Mystery Hat IG, Neonmaster in API.
+    VIP_HYPIXEL_HAT("hypixel Hat", 75000, RANK.NONE),
+    VIP_CODENAME_B_HAT("codename_B Hat", 75000, RANK.NONE),
+    VIP_PAINTBALLKITTY_HAT("PaintballKitty Hat", 75000, RANK.NONE),
+    VIP_NOXYD_HAT("NoxyD Hat", 50000, RANK.NONE),
+    VIP_GHOST_HAT("Ghost Hat", 50000, RANK.NONE);
 
 
     private String displayName;
     private int cost;
-    private RANKTYPE rankRequirement;
+    private RANK rankRequirement;
 
-    HAT(String displayName, int cost, RANKTYPE rankRequirement){
+    HAT(String displayName, int cost, RANK rankRequirement){
         this.displayName = displayName;
         this.cost = cost;
         this.rankRequirement = rankRequirement;
@@ -62,7 +62,7 @@ public enum HAT {
 
     public CURRENCY getCurrencyType(){ return CURRENCY.COINS; }
 
-    public RANKTYPE getRankRequirement(){
+    public RANK getRankRequirement(){
         return rankRequirement;
     }
 

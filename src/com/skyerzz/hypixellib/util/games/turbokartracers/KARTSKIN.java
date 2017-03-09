@@ -1,7 +1,7 @@
 package com.skyerzz.hypixellib.util.games.turbokartracers;
 
 import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.RANKTYPE;
+import com.skyerzz.hypixellib.util.RANK;
 
 import java.util.ArrayList;
 
@@ -10,28 +10,28 @@ import java.util.ArrayList;
  */
 public enum KARTSKIN {
     //TODO: sort this shit out
-    BLUE_KART_DEFAULT("Hypesweggen - Sapphire", 0, RANKTYPE.DEFAULT),
-    BLUE_KART_ALT_1("Hypesweggen - Tranquility", 1300, RANKTYPE.DEFAULT),
-    BLUE_KART_ALT_2("Hypesweggen - Commando", 2800, RANKTYPE.DEFAULT),
-    WHITE_KART_DEFAULT("Blueshell Inc - Phantom", 0, RANKTYPE.DEFAULT),
-    WHITE_KART_ALT_1("Blueshell Inc - Eclipse", 1300, RANKTYPE.DEFAULT),
-    WHITE_KART_ALT_2("Blueshell Inc - Dante", 2800, RANKTYPE.DEFAULT),
-    YELLOW_KART_DEFAULT("Slothdinger - Goldline", 0, RANKTYPE.DEFAULT),
-    YELLOW_KART_ALT_1("Slothdinger - Sunrise", 1300, RANKTYPE.DEFAULT),
-    YELLOW_KART_ALT_2("Slothdinger - Ultraviolet", 2800, RANKTYPE.DEFAULT),
-    RED_KART_DEFAULT("Turbobrine - Diablo", 0, RANKTYPE.DEFAULT),
-    RED_KART_ALT_1("Turbobrine - Junker", 1300, RANKTYPE.DEFAULT),
-    RED_KART_ALT_2("Turbobrine - Frostbit", 2800, RANKTYPE.DEFAULT),
-    GREEN_KART_DEFAULT("Sphax Corp - Salamander", 0, RANKTYPE.DEFAULT),
-    GREEN_KART_ALT_1("Sphax Corp - Glacius", 1300, RANKTYPE.DEFAULT),
-    GREEN_KART_ALT_2("Sphax Corp - Silver Shadow", 2800, RANKTYPE.DEFAULT);
+    BLUE_KART_DEFAULT("Hypesweggen - Sapphire", 0, RANK.NONE),
+    BLUE_KART_ALT_1("Hypesweggen - Tranquility", 1300, RANK.NONE),
+    BLUE_KART_ALT_2("Hypesweggen - Commando", 2800, RANK.NONE),
+    WHITE_KART_DEFAULT("Blueshell Inc - Phantom", 0, RANK.NONE),
+    WHITE_KART_ALT_1("Blueshell Inc - Eclipse", 1300, RANK.NONE),
+    WHITE_KART_ALT_2("Blueshell Inc - Dante", 2800, RANK.NONE),
+    YELLOW_KART_DEFAULT("Slothdinger - Goldline", 0, RANK.NONE),
+    YELLOW_KART_ALT_1("Slothdinger - Sunrise", 1300, RANK.NONE),
+    YELLOW_KART_ALT_2("Slothdinger - Ultraviolet", 2800, RANK.NONE),
+    RED_KART_DEFAULT("Turbobrine - Diablo", 0, RANK.NONE),
+    RED_KART_ALT_1("Turbobrine - Junker", 1300, RANK.NONE),
+    RED_KART_ALT_2("Turbobrine - Frostbit", 2800, RANK.NONE),
+    GREEN_KART_DEFAULT("Sphax Corp - Salamander", 0, RANK.NONE),
+    GREEN_KART_ALT_1("Sphax Corp - Glacius", 1300, RANK.NONE),
+    GREEN_KART_ALT_2("Sphax Corp - Silver Shadow", 2800, RANK.NONE);
 
 
     private String displayName;
     private int cost;
-    private RANKTYPE rankRequirement;
+    private RANK rankRequirement;
 
-    KARTSKIN(String displayName, int cost, RANKTYPE rankRequirement){
+    KARTSKIN(String displayName, int cost, RANK rankRequirement){
         this.displayName = displayName;
         this.cost = cost;
         this.rankRequirement = rankRequirement;
@@ -55,7 +55,7 @@ public enum KARTSKIN {
         return cost;
     }
 
-    public RANKTYPE getRankRequirement(){
+    public RANK getRankRequirement(){
         return rankRequirement;
     }
 

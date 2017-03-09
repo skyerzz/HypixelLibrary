@@ -1,7 +1,7 @@
 package com.skyerzz.hypixellib.util.games.tntgames;
 
 import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.RANKTYPE;
+import com.skyerzz.hypixellib.util.RANK;
 
 import java.util.ArrayList;
 
@@ -9,16 +9,16 @@ import java.util.ArrayList;
  * Created by sky on 22-7-2016.
  */
 public enum WIZARD {
-    FIRE("Fire Wizard", RANKTYPE.DEFAULT),
-    KINETIC("Kinetic Wizard", RANKTYPE.DEFAULT),
-    ICE("Ice Wizard", RANKTYPE.DEFAULT),
-    WITHER("Wither Wizard", RANKTYPE.DEFAULT),
-    BLOOD("Blood Wizard", RANKTYPE.DEFAULT);
+    FIRE("Fire Wizard", RANK.NONE),
+    KINETIC("Kinetic Wizard", RANK.NONE),
+    ICE("Ice Wizard", RANK.NONE),
+    WITHER("Wither Wizard", RANK.NONE),
+    BLOOD("Blood Wizard", RANK.NONE);
 
     private String displayName;
-    private RANKTYPE rankRequirement;
+    private RANK rankRequirement;
 
-    WIZARD(String displayName, RANKTYPE rankRequirement){
+    WIZARD(String displayName, RANK rankRequirement){
         this.displayName = displayName;
         this.rankRequirement = rankRequirement;
     }
@@ -79,7 +79,7 @@ public enum WIZARD {
         return CURRENCY.COINS;
     }
 
-    public RANKTYPE getRankRequirement(){
+    public RANK getRankRequirement(){
         return rankRequirement;
     }
 }

@@ -1,7 +1,7 @@
 package com.skyerzz.hypixellib.util.games.tntgames;
 
 import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.RANKTYPE;
+import com.skyerzz.hypixellib.util.RANK;
 
 import java.util.ArrayList;
 
@@ -9,16 +9,16 @@ import java.util.ArrayList;
  * Created by sky on 22-7-2016.
  */
 public enum DEATHEFFECT {
-    FIREWORK(   "Firework", 2000, RANKTYPE.VIP),
-    CREEPER(    "Creeper",  4000, RANKTYPE.VIP),
-    TNT(        "TNT",      6000, RANKTYPE.VIP_PLUS),
-    WITHER(     "Wither",   6000, RANKTYPE.VIP_PLUS);
+    FIREWORK(   "Firework", 2000, RANK.VIP),
+    CREEPER(    "Creeper",  4000, RANK.VIP),
+    TNT(        "TNT",      6000, RANK.VIP_PLUS),
+    WITHER(     "Wither",   6000, RANK.VIP_PLUS);
 
     private String displayName;
     private int cost;
-    private RANKTYPE rankRequirement;
+    private RANK rankRequirement;
 
-    DEATHEFFECT(String displayName, int cost, RANKTYPE rankRequirement){
+    DEATHEFFECT(String displayName, int cost, RANK rankRequirement){
         this.displayName = displayName;
         this.cost = cost;
         this.rankRequirement = rankRequirement;
@@ -46,7 +46,7 @@ public enum DEATHEFFECT {
         return CURRENCY.COINS;
     }
 
-    public RANKTYPE getRankRequirement(){
+    public RANK getRankRequirement(){
         return rankRequirement;
     }
 }

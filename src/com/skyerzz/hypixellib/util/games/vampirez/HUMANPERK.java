@@ -1,7 +1,7 @@
 package com.skyerzz.hypixellib.util.games.vampirez;
 
 import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.RANKTYPE;
+import com.skyerzz.hypixellib.util.RANK;
 
 import java.util.ArrayList;
 
@@ -10,29 +10,29 @@ import java.util.ArrayList;
  */
 public enum HUMANPERK {
     //todo: check coin progression
-    GOLD_STARTER(       "Gold Starter",     1250,  3, RANKTYPE.DEFAULT),
-    GOLD_BOOSTER(       "Gold Booster",     1250,  3, RANKTYPE.DEFAULT),
-    ZOMBIE_DOUBLER(     "Zombie Doubler",   1250,  3, RANKTYPE.DEFAULT),
-    VAMPIRE_DOUBLER(    "Vampire Doubler",  1250,  3, RANKTYPE.DEFAULT),
-    BABY_HATER(         "Baby Hater",       1250,  3, RANKTYPE.DEFAULT),
-    EXPLOSIVE_KILLER(   "Explosive Killer", 1250,  3, RANKTYPE.DEFAULT),
-    FIREPROOFING(       "Fireproofing",     1250,  3, RANKTYPE.DEFAULT),
-    TRANSFUSION(        "Transfusion",      3750,  3, RANKTYPE.DEFAULT),
-    VAN_HELSING(        "Van Helsing",      10000, 1, RANKTYPE.DEFAULT),
-    CONSTITUTION(       "Constitution",     1250,  3, RANKTYPE.DEFAULT),
-    FORESIGHT(          "Foresight",        6250,  10, RANKTYPE.DEFAULT),
-    THEOLOGY(           "Theology",         1250,  3, RANKTYPE.DEFAULT),
-    LOOT_DROPS(         "Loot Drops",       2500,  3, RANKTYPE.DEFAULT),
-    BASIC_SWAG(         "Basic Swag",       3750,  10, RANKTYPE.DEFAULT),
-    ADVANCED_SWAG(      "Advanced Swag",    6250,  10, RANKTYPE.DEFAULT),
-    EXPERT_SWAG(        "Expert Swag",      12500, 10, RANKTYPE.DEFAULT);
+    GOLD_STARTER(       "Gold Starter",     1250,  3, RANK.NONE),
+    GOLD_BOOSTER(       "Gold Booster",     1250,  3, RANK.NONE),
+    ZOMBIE_DOUBLER(     "Zombie Doubler",   1250,  3, RANK.NONE),
+    VAMPIRE_DOUBLER(    "Vampire Doubler",  1250,  3, RANK.NONE),
+    BABY_HATER(         "Baby Hater",       1250,  3, RANK.NONE),
+    EXPLOSIVE_KILLER(   "Explosive Killer", 1250,  3, RANK.NONE),
+    FIREPROOFING(       "Fireproofing",     1250,  3, RANK.NONE),
+    TRANSFUSION(        "Transfusion",      3750,  3, RANK.NONE),
+    VAN_HELSING(        "Van Helsing",      10000, 1, RANK.NONE),
+    CONSTITUTION(       "Constitution",     1250,  3, RANK.NONE),
+    FORESIGHT(          "Foresight",        6250,  10, RANK.NONE),
+    THEOLOGY(           "Theology",         1250,  3, RANK.NONE),
+    LOOT_DROPS(         "Loot Drops",       2500,  3, RANK.NONE),
+    BASIC_SWAG(         "Basic Swag",       3750,  10, RANK.NONE),
+    ADVANCED_SWAG(      "Advanced Swag",    6250,  10, RANK.NONE),
+    EXPERT_SWAG(        "Expert Swag",      12500, 10, RANK.NONE);
 
 
     private String displayName;
     private int cost, maxLevel;
-    private RANKTYPE rankRequirement;
+    private RANK rankRequirement;
 
-    HUMANPERK(String displayName, int cost, int maxLevel, RANKTYPE rankRequirement){
+    HUMANPERK(String displayName, int cost, int maxLevel, RANK rankRequirement){
         this.displayName = displayName;
         this.cost = cost;
         this.maxLevel = maxLevel;
@@ -66,7 +66,7 @@ public enum HUMANPERK {
         return CURRENCY.COINS;
     }
 
-    public RANKTYPE getRankRequirement(){
+    public RANK getRankRequirement(){
         return rankRequirement;
     }
 }

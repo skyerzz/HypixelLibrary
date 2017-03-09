@@ -1,7 +1,7 @@
 package com.skyerzz.hypixellib.util.games.blitz;
 
 import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.RANKTYPE;
+import com.skyerzz.hypixellib.util.RANK;
 import com.skyerzz.hypixellib.util.items.all.Item;
 import com.skyerzz.hypixellib.util.items.all.ItemStack;
 
@@ -86,7 +86,7 @@ public enum ADVANCED_KIT {
         return CURRENCY.COINS;
     }
 
-    public RANKTYPE getRankRequirement(){ return RANKTYPE.DEFAULT; }
+    public RANK getRankRequirement(){ return RANK.NONE; }
 
     public int getRequiredLevel(){ return requiredLevel;}
 

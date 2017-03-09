@@ -2,7 +2,7 @@ package com.skyerzz.hypixellib.util.games.tntgames;
 
 
 import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.RANKTYPE;
+import com.skyerzz.hypixellib.util.RANK;
 
 import java.util.ArrayList;
 
@@ -10,18 +10,18 @@ import java.util.ArrayList;
  * Created by sky on 21-7-2016.
  */
 public enum PARTICLEEFFECT {
-    SLIME(  "Slime",    10000, RANKTYPE.VIP),
-    WATER(  "Water",    10000, RANKTYPE.VIP),
-    LAVA(   "Lava",     10000, RANKTYPE.VIP),
-    FLAME(  "Flame",    10000, RANKTYPE.VIP_PLUS),
-    ENDER(  "Ender",    10000, RANKTYPE.VIP_PLUS);
+    SLIME(  "Slime",    10000, RANK.VIP),
+    WATER(  "Water",    10000, RANK.VIP),
+    LAVA(   "Lava",     10000, RANK.VIP),
+    FLAME(  "Flame",    10000, RANK.VIP_PLUS),
+    ENDER(  "Ender",    10000, RANK.VIP_PLUS);
 
 
     private String displayName;
     private int cost;
-    private RANKTYPE rankRequirement;
+    private RANK rankRequirement;
 
-    PARTICLEEFFECT(String displayName, int cost, RANKTYPE rankRequirement){
+    PARTICLEEFFECT(String displayName, int cost, RANK rankRequirement){
         this.displayName = displayName;
         this.cost = cost;
         this.rankRequirement = rankRequirement;
@@ -49,7 +49,7 @@ public enum PARTICLEEFFECT {
         return CURRENCY.COINS;
     }
 
-    public RANKTYPE getRankRequirement(){
+    public RANK getRankRequirement(){
         return rankRequirement;
     }
 }

@@ -1,7 +1,7 @@
 package com.skyerzz.hypixellib.util.games.blitz;
 
 import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.RANKTYPE;
+import com.skyerzz.hypixellib.util.RANK;
 
 import java.util.ArrayList;
 
@@ -45,7 +45,7 @@ public enum FINISHER {
 
     public CURRENCY getCurrencyType(){ return CURRENCY.MYSTERY_DUST; }
 
-    public RANKTYPE getRankRequirement(){
-        return RANKTYPE.DEFAULT;
+    public RANK getRankRequirement(){
+        return RANK.NONE;
     }
 }

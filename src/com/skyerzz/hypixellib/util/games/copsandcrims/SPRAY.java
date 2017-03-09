@@ -1,7 +1,7 @@
 package com.skyerzz.hypixellib.util.games.copsandcrims;
 
 import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.RANKTYPE;
+import com.skyerzz.hypixellib.util.RANK;
 
 import java.util.ArrayList;
 
@@ -10,17 +10,17 @@ import java.util.ArrayList;
  * Created by sky on 10-8-2016.
  */
 public enum SPRAY {
-    CREEPER(    "Spray: Red Creeper",   300, RANKTYPE.MVP_PLUS),
-    OCELOT(     "Spray: Blue Ocelot",   300, RANKTYPE.MVP_PLUS),
-    MVP(        "Spray: MVP+ FTW",      300, RANKTYPE.MVP_PLUS),
-    HEADSHOT(   "Spray: Headshot",      300, RANKTYPE.MVP_PLUS),
-    REKT(       "Spray: #REKT",         300, RANKTYPE.MVP_PLUS);
+    CREEPER(    "Spray: Red Creeper",   300, RANK.MVP_PLUS),
+    OCELOT(     "Spray: Blue Ocelot",   300, RANK.MVP_PLUS),
+    MVP(        "Spray: MVP+ FTW",      300, RANK.MVP_PLUS),
+    HEADSHOT(   "Spray: Headshot",      300, RANK.MVP_PLUS),
+    REKT(       "Spray: #REKT",         300, RANK.MVP_PLUS);
 
     private String displayName;
     private int cost;
-    private RANKTYPE rankRequirement;
+    private RANK rankRequirement;
 
-    SPRAY(String displayName, int cost, RANKTYPE rankRequirement){
+    SPRAY(String displayName, int cost, RANK rankRequirement){
         this.displayName = displayName;
         this.cost = cost;
         this.rankRequirement = rankRequirement;
@@ -44,7 +44,7 @@ public enum SPRAY {
         return cost;
     }
 
-    public RANKTYPE getRankRequirement(){
+    public RANK getRankRequirement(){
         return rankRequirement;
     }
 

@@ -1,7 +1,7 @@
 package com.skyerzz.hypixellib.util.games.turbokartracers;
 
 import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.RANKTYPE;
+import com.skyerzz.hypixellib.util.RANK;
 
 import java.util.ArrayList;
 
@@ -9,18 +9,18 @@ import java.util.ArrayList;
  * Created by sky on 2-8-2016.
  */
 public enum PANTS {
-    NO_PANTS(       "No Pants", 0, RANKTYPE.DEFAULT),
-    GOLD_PANTS(     "Slothdinger Pants",    0,      RANKTYPE.DEFAULT), //checked
-    CHAIN_PANTS(    "Blushell Inc Pants",   2000,   RANKTYPE.VIP),      //checked
-    IRON_PANTS(     "Sphax-corp Pants",     3000,   RANKTYPE.VIP_PLUS),
-    DIAMOND_PANTS(  "Turbobrine Pants",     4000,   RANKTYPE.MVP),
-    LEATHER_PANTS(  "Hypesweggen Pants",    5000,   RANKTYPE.MVP_PLUS);
+    NO_PANTS(       "No Pants", 0, RANK.NONE),
+    GOLD_PANTS(     "Slothdinger Pants",    0,      RANK.NONE), //checked
+    CHAIN_PANTS(    "Blushell Inc Pants",   2000,   RANK.VIP),      //checked
+    IRON_PANTS(     "Sphax-corp Pants",     3000,   RANK.VIP_PLUS),
+    DIAMOND_PANTS(  "Turbobrine Pants",     4000,   RANK.MVP),
+    LEATHER_PANTS(  "Hypesweggen Pants",    5000,   RANK.MVP_PLUS);
 
     private String displayName;
     private int cost;
-    private RANKTYPE rankRequirement;
+    private RANK rankRequirement;
 
-    PANTS(String displayName, int cost, RANKTYPE rankRequirement){
+    PANTS(String displayName, int cost, RANK rankRequirement){
         this.displayName = displayName;
         this.cost = cost;
         this.rankRequirement = rankRequirement;
@@ -48,7 +48,7 @@ public enum PANTS {
         return CURRENCY.COINS;
     }
 
-    public RANKTYPE getRankRequirement(){
+    public RANK getRankRequirement(){
         return rankRequirement;
     }
 }

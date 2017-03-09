@@ -1,7 +1,7 @@
 package com.skyerzz.hypixellib.util.games.quake;
 
 import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.RANKTYPE;
+import com.skyerzz.hypixellib.util.RANK;
 
 import java.util.ArrayList;
 
@@ -9,15 +9,15 @@ import java.util.ArrayList;
  * Created by sky on 7-7-2016.
  */
 public enum TRINKET {
-    COMPASS("Tracking Device", 2000, RANKTYPE.DEFAULT),
-    COLD_WAR("Map: Cold War", 10, RANKTYPE.DEFAULT);
+    COMPASS("Tracking Device", 2000, RANK.NONE),
+    COLD_WAR("Map: Cold War", 10, RANK.NONE);
 
 
     private String displayName;
     private int cost;
-    private RANKTYPE rankRequirement;
+    private RANK rankRequirement;
 
-    TRINKET(String displayName, int cost, RANKTYPE rankRequirement){
+    TRINKET(String displayName, int cost, RANK rankRequirement){
         this.displayName = displayName;
         this.cost = cost;
         this.rankRequirement = rankRequirement;
@@ -43,7 +43,7 @@ public enum TRINKET {
 
     public CURRENCY getCurrencyType(){ return CURRENCY.COINS; }
 
-    public RANKTYPE getRankRequirement(){
+    public RANK getRankRequirement(){
         return rankRequirement;
     }
 }

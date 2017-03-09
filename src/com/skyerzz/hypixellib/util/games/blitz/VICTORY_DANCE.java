@@ -1,7 +1,7 @@
 package com.skyerzz.hypixellib.util.games.blitz;
 
 import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.RANKTYPE;
+import com.skyerzz.hypixellib.util.RANK;
 
 import java.util.ArrayList;
 
@@ -9,18 +9,18 @@ import java.util.ArrayList;
  * Created by sky on 19-11-2016.
  */
 public enum VICTORY_DANCE {
-    DRAGON_RIDER("Dragon Rider Dance", 0, RANKTYPE.MVP),
-    PLAYER_FIREWORK("Player Firework Dance", 0, RANKTYPE.VIP_PLUS),
-    EARTH("Earth Dance", 0, RANKTYPE.VIP_PLUS),
-    CREEPER("Creeper Dance", 0, RANKTYPE.VIP),
-    BLAZING_SPEED("Blazing Speed", 0, RANKTYPE.VIP_PLUS),
-    METEOR_SHOWER("Meteor Shower Dance", 0, RANKTYPE.MVP);
+    DRAGON_RIDER("Dragon Rider Dance", 0, RANK.MVP),
+    PLAYER_FIREWORK("Player Firework Dance", 0, RANK.VIP_PLUS),
+    EARTH("Earth Dance", 0, RANK.VIP_PLUS),
+    CREEPER("Creeper Dance", 0, RANK.VIP),
+    BLAZING_SPEED("Blazing Speed", 0, RANK.VIP_PLUS),
+    METEOR_SHOWER("Meteor Shower Dance", 0, RANK.MVP);
 
     private String displayName;
     private int cost;
-    private RANKTYPE rankRequirement;
+    private RANK rankRequirement;
 
-    VICTORY_DANCE(String displayName, int cost, RANKTYPE rankRequirement){
+    VICTORY_DANCE(String displayName, int cost, RANK rankRequirement){
         this.displayName = displayName;
         this.cost = cost;
         this.rankRequirement = rankRequirement;
@@ -46,7 +46,7 @@ public enum VICTORY_DANCE {
 
     public CURRENCY getCurrencyType(){ return CURRENCY.COINS; }
 
-    public RANKTYPE getRankRequirement(){
+    public RANK getRankRequirement(){
         return rankRequirement;
     }
 }

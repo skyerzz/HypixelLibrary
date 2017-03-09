@@ -33,6 +33,8 @@ public class PlayerAPI extends AbstractAPIReply{
             this.apiGameJson = apiJson.get("player").getAsJsonObject().get("stats").getAsJsonObject();
         }catch(IllegalStateException e){
                 throw new NoPlayerStatsException();
+        }catch(NullPointerException e){
+            throw new NoPlayerStatsException();
         }
     }
 

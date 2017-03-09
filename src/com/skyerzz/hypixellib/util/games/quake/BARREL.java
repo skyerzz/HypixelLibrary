@@ -1,7 +1,7 @@
 package com.skyerzz.hypixellib.util.games.quake;
 
 import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.RANKTYPE;
+import com.skyerzz.hypixellib.util.RANK;
 
 import java.util.ArrayList;
 
@@ -9,17 +9,17 @@ import java.util.ArrayList;
  * Created by sky on 7-7-2016.
  */
 public enum BARREL {
-    SMALL_BALL("Small Barrel", 0, RANKTYPE.DEFAULT),
-    LARGE_BALL("Large Barrel", 9000, RANKTYPE.DEFAULT),
-    CREEPER("Creeper Barrel", 9000, RANKTYPE.VIP),
-    BURST("Burst Barrel", 9000, RANKTYPE.VIP),
-    STAR("Star Barrel", 9000, RANKTYPE.VIP_PLUS);
+    SMALL_BALL("Small Barrel", 0, RANK.NONE),
+    LARGE_BALL("Large Barrel", 9000, RANK.NONE),
+    CREEPER("Creeper Barrel", 9000, RANK.VIP),
+    BURST("Burst Barrel", 9000, RANK.VIP),
+    STAR("Star Barrel", 9000, RANK.VIP_PLUS);
 
     private String displayName;
     private int cost;
-    private RANKTYPE rankRequirement;
+    private RANK rankRequirement;
 
-    BARREL(String displayName, int cost, RANKTYPE rankRequirement){
+    BARREL(String displayName, int cost, RANK rankRequirement){
         this.displayName = displayName;
         this.cost = cost;
         this.rankRequirement = rankRequirement;
@@ -45,7 +45,7 @@ public enum BARREL {
 
     public CURRENCY getCurrencyType(){ return CURRENCY.COINS; }
 
-    public RANKTYPE getRankRequirement(){
+    public RANK getRankRequirement(){
         return rankRequirement;
     }
 }
