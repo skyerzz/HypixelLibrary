@@ -3,8 +3,10 @@ package com.skyerzz.hypixellib.util.hypixelapi.playerstats;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.skyerzz.hypixellib.Logger;
+import com.skyerzz.hypixellib.OutDated;
 import com.skyerzz.hypixellib.util.CHAT;
 import com.skyerzz.hypixellib.util.RANK;
+import com.skyerzz.hypixellib.util.network.ParticleQuality;
 
 import java.util.Map;
 import java.util.UUID;
@@ -14,22 +16,35 @@ import java.util.UUID;
  */
 public class PlayerCommonStats extends PlayerGameStats{
 
+    //note: eugine == deliveryman
+
     //<editor-fold desc="[Fields]">
-    private int networkLevel, karma, networkEXP;
+    private int networkLevel, karma, networkEXP, thanksSent, thanksReceived;
     private int mostRecentMinecraftVersion; //5 = 1.8.9 (forge 1722)
 
-    private String _id, displayName, mostRecentlyThankedName, mostRecentlyTippedName;
+    /** Hypixel Credit Value */
+    private int vanityTokens; //todo check if actual credit value
+
+    private String _id, displayName, mostRecentlyThankedName, mostRecentlyTippedName, playerName;
     private UUID mostRecentlyThankedUUID, mostRecentlyTippedUUID;
 
     private CHAT selectedChannel;
     private RANK rank, newPackageRank;
+    private UUID uuid;
+    private ParticleQuality particleQuality;
 
     private long firstLogin, lastlogin; //todo make into date available through getter
 
     private boolean mainLobbyTutorialCompleted;
 
+    @OutDated
+    /** Used to allow you to go on the testing network */
+    private boolean testpass;
+
     //todo find out what values mean
-    private boolean clock;
+    private boolean clock, warlordsRedeemed, websiteSet;
+    private String newClock;
+    private long lastEugeneMessage, lastSurvey;
     //</editor-fold>
 
     public PlayerCommonStats(JsonObject json) {
@@ -66,6 +81,9 @@ public class PlayerCommonStats extends PlayerGameStats{
             case "CLOCK":
                 this.clock = value.getAsBoolean();
                 return true;
+            case "NEWCLOCK":
+                this.newClock = value.getAsString();
+                return true;
             case "FIRSTLOGIN":
                 this.firstLogin = value.getAsLong();
                 return true;
@@ -95,6 +113,36 @@ public class PlayerCommonStats extends PlayerGameStats{
                 return true;
             case "NETWORKEXP":
                 this.networkEXP = value.getAsInt();
+                return true;
+            case "PLAYERNAME":
+                this.playerName = value.getAsString();
+                return true;
+            case "TESTPASS":
+                this.testpass = value.getAsBoolean();
+                return true;
+            case "UUID":
+                this.uuid = parseUUID(value.getAsString());
+                return true;
+            case "VANITYTOKENS":
+                this.vanityTokens = value.getAsInt();
+                return true;
+            case "WARLORDSREDEEMED":
+                this.warlordsRedeemed = value.getAsBoolean();
+                return true;
+            case "WEBSITESET":
+                this.websiteSet = value.getAsBoolean();
+                return true;
+            case "THANKSSENT":
+                this.thanksSent = value.getAsInt();
+                return true;
+            case "THANKSRECEIVED":
+                this.thanksReceived = value.getAsInt();
+                return true;
+            case "LASTEUGENEMESSAGE":
+                this.lastEugeneMessage = value.getAsLong();
+                return true;
+            case "LAST_SURVEY":
+                this.lastSurvey = value.getAsLong();
                 return true;
             //</editor-fold>
         }
@@ -134,6 +182,17 @@ public class PlayerCommonStats extends PlayerGameStats{
                 return true;
             case "QUESTS":
                 // TODO: 09/03/2017
+                return true;
+            case "SETTINGS":
+                // TODO: 14/03/2017
+                return true;
+            case "PARTICLEQUALITY":
+                String particleQuality = value.getAsString().toUpperCase();
+                if(ParticleQuality.mapping.contains(particleQuality)){
+                    this.particleQuality = ParticleQuality.valueOf(particleQuality);
+                }else{
+                    Logger.logWarn("[HypixelAPI.common.particleQuality] Unknown Particle Quality: " + value.getAsString());
+                }
                 return true;
             case "STATS":
                 //is taken care of in HypixelPlayer already
@@ -176,6 +235,10 @@ public class PlayerCommonStats extends PlayerGameStats{
         if(rank!=null) {
             return rank;
         }
-        return newPackageRank;
+        if(newPackageRank!=null){
+            return newPackageRank;
+        }
+        //couldnt find any rank, lets return default
+        return RANK.NONE;
     }
 }
