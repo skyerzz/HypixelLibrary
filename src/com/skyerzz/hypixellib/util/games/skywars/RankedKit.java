@@ -1,9 +1,9 @@
 package com.skyerzz.hypixellib.util.games.skywars;
 
 import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.items.all.Item;
-import com.skyerzz.hypixellib.util.items.all.ItemStack;
-import com.skyerzz.hypixellib.util.items.all.Material;
+import com.skyerzz.hypixellib.util.item.Item;
+import com.skyerzz.hypixellib.util.item.ItemStack;
+import com.skyerzz.hypixellib.util.item.Material;
 
 import java.util.ArrayList;
 
