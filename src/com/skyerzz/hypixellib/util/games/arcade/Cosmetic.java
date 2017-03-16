@@ -1,6 +1,6 @@
 package com.skyerzz.hypixellib.util.games.arcade;
 
-import com.skyerzz.hypixellib.util.Rank;
+import com.skyerzz.hypixellib.util.network.Rank;
 
 import java.util.ArrayList;
 

@@ -1,6 +1,6 @@
 package com.skyerzz.hypixellib.util.games.skywars;
 
-import com.skyerzz.hypixellib.util.Currency;
+import com.skyerzz.hypixellib.util.network.Currency;
 
 import java.util.ArrayList;
 

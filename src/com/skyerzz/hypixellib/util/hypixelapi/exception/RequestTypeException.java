@@ -6,7 +6,6 @@ import com.skyerzz.hypixellib.util.hypixelapi.APIRequest;
  * Created by sky on 5-8-2016.
  */
 public class RequestTypeException extends Exception {
-    //TODO
 
     private APIRequest.RequestParam requestParam;
     private APIRequest.RequestType requestType;

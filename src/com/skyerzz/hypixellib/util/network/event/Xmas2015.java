@@ -11,7 +11,7 @@ public enum Xmas2015 {
     TNTGAMES,
     ARENA,
     ARCADE,
-    CAPSNCRIMS,
+    COPSNCRIMS,
     SKYWARS,
     CRAZYWALLS,
     MEGAWALLS,

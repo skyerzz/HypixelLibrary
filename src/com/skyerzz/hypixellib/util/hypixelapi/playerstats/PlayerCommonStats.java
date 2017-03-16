@@ -4,11 +4,12 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.skyerzz.hypixellib.Logger;
 import com.skyerzz.hypixellib.OutDated;
-import com.skyerzz.hypixellib.util.Chat;
-import com.skyerzz.hypixellib.util.Rank;
-import com.skyerzz.hypixellib.util.network.ParticleQuality;
+import com.skyerzz.hypixellib.util.network.*;
+import com.skyerzz.hypixellib.util.games.Gamemode;
 import com.skyerzz.hypixellib.util.network.event.Xmas2015;
 import com.skyerzz.hypixellib.util.network.event.Xmas2016;
+import com.skyerzz.hypixellib.util.network.mysteryvault.Cloak;
+import com.skyerzz.hypixellib.util.network.networklevel.MVPPlusColor;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -30,19 +31,30 @@ public class PlayerCommonStats extends PlayerGameStats{
 
     private String _id, displayName, mostRecentlyThankedName, mostRecentlyTippedName, playerName;
     private UUID mostRecentlyThankedUUID, mostRecentlyTippedUUID;
+    private int specSpeed;
 
     private Chat selectedChannel;
     private Rank rank, newPackageRank;
     private UUID uuid;
     private ParticleQuality particleQuality;
+    private Gamemode mostRecentGameType;
+    private Language userLanguage;
+    private Cloak selectedCloak;
+    private MVPPlusColor selectedPlusColor;
 
     private long firstLogin, lastlogin; //todo make into date available through getter
 
     private boolean mainLobbyTutorialCompleted;
 
     private ArrayList<Integer> claimedLevelRewards = new ArrayList<>();
+    private ArrayList<AdminNPC> foundAdminNPCs = new ArrayList<>();
+
+    //<editor-fold desc="[EVENTS]">
     private ArrayList<Xmas2016> foundXmas2016Presents = new ArrayList<>();
     private ArrayList<Xmas2015> foundXmas2015Presents = new ArrayList<>();
+
+    private boolean finishedXmas2016SantaQuest, startedXmas2016SantaQuest;
+    //</editor-fold>
 
     @OutDated
     /** Used to allow you to go on the testing network */
@@ -151,6 +163,15 @@ public class PlayerCommonStats extends PlayerGameStats{
             case "LAST_SURVEY":
                 this.lastSurvey = value.getAsLong();
                 return true;
+            case "SPEC_SPEED":
+                this.specSpeed = value.getAsInt();
+                return true;
+            case "SANTA_FINISHED":
+                this.finishedXmas2016SantaQuest = value.getAsBoolean();
+                return true;
+            case "SANTA_QUEST_STARTED":
+                this.startedXmas2016SantaQuest = value.getAsBoolean();
+                return true;
             //</editor-fold>
         }
         return false;
@@ -193,6 +214,62 @@ public class PlayerCommonStats extends PlayerGameStats{
             case "SETTINGS":
                 // TODO: 14/03/2017
                 return true;
+            case "HOUSINGMETA":
+                // TODO: 16/03/2017
+                return true;
+            case "VANITYMETA":
+                // TODO: 16/03/2017
+                return true;
+            case "PETCONSUMABLES":
+                // TODO: 16/03/2017
+                return true;
+            case "PETSTATS":
+                // TODO: 16/03/2017
+                return true;
+            case "SOCIALMEDIA":
+                // TODO: 16/03/2017
+                return true;
+            case "SPECIALITYCOOLDOWNS":
+                // TODO: 16/03/2017
+                return true;
+            case "GIFTINGMETA":
+                // TODO: 16/03/2017
+                return true;
+            case "QUESTSETTINGS":
+                // TODO: 16/03/2017
+                return true;
+            case "MOSTRECENTGAMETYPE":
+                String game = value.getAsString().toUpperCase();
+                if(Gamemode.mapping.contains(game)){
+                    this.mostRecentGameType = Gamemode.valueOf(game);
+                }else {
+                    Logger.logWarn("[HypixelAPI.common.gameType] Unknown Gametype: " + value.getAsString());
+                }
+                return true;
+            case "RANKPLUSCOLOR":
+                String color = value.getAsString().toUpperCase();
+                if(MVPPlusColor.PlusColor.mapping.contains(color)){
+                    this.selectedPlusColor = new MVPPlusColor(MVPPlusColor.PlusColor.valueOf(color));
+                }else {
+                    Logger.logWarn("[HypixelAPI.common.RankPlusColor] Unknown PlusColor: " + value.getAsString());
+                }
+                return true;
+            case "CURRENTCLOAK":
+                String cloak = value.getAsString().toUpperCase();
+                if(Cloak.mapping.contains(cloak)){
+                    this.selectedCloak = Cloak.valueOf(cloak);
+                }else {
+                    Logger.logWarn("[HypixelAPI.common.cloak] Unknown Cloak: " + value.getAsString());
+                }
+                return true;
+            case "USERLANGUAGE":
+                String language = value.getAsString().toUpperCase();
+                if(Language.mapping.contains(language)){
+                    this.userLanguage = Language.valueOf(language);
+                }else {
+                    Logger.logWarn("[HypixelAPI.common.language] Unknown Language: " + value.getAsString());
+                }
+                return true;
             case "PARTICLEQUALITY":
                 String particleQuality = value.getAsString().toUpperCase();
                 if(ParticleQuality.mapping.contains(particleQuality)){
@@ -204,8 +281,6 @@ public class PlayerCommonStats extends PlayerGameStats{
             case "STATS":
                 //is taken care of in HypixelPlayer already
                 return true;
-
-
             case "CHANNEL":
                 String channel = value.getAsString().toUpperCase();
                 if(Chat.mapping.contains(channel)){
@@ -258,7 +333,24 @@ public class PlayerCommonStats extends PlayerGameStats{
             }
             return true;
         }
+        if(key.contains("REWARD_FIND_")){
+            String admin = key.replace("REWARD_FIND_", "");
+            if(value.getAsBoolean() && AdminNPC.mapping.contains(admin)){
+                this.foundAdminNPCs.add(AdminNPC.valueOf(admin));
+            }else{
+                Logger.logWarn("[HypixelAPI.common.adminNPC] Couldnt find NPC value OR value was false: " + key);
+            }
+            return true;
+        }
+        if(key.contains("DMCRATES-")){
+            registerMysteryBoxPacket(key, value.getAsJsonObject());
+            return true;
+        }
         return false;
+    }
+
+    private void registerMysteryBoxPacket(String key, JsonObject object){
+
     }
 
     public int getNetworkLevel(){

@@ -1,10 +1,9 @@
 package com.skyerzz.hypixellib.util.games.blitz;
 
 import com.skyerzz.hypixellib.Logger;
-import com.skyerzz.hypixellib.util.Currency;
-import com.skyerzz.hypixellib.util.Rank;
+import com.skyerzz.hypixellib.util.network.Currency;
+import com.skyerzz.hypixellib.util.network.Rank;
 import com.skyerzz.hypixellib.util.item.*;
-import com.skyerzz.hypixellib.util.items.all.*;
 
 import java.util.ArrayList;
 

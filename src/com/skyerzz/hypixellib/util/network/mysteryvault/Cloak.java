@@ -6,8 +6,12 @@ import java.util.ArrayList;
  * Created by Skyerzz-LAPOTOP on 16/03/2017.
  */
 public enum Cloak {
-    FIRE_WINGS,
+    FIREWINGS,
     SHAMAN;
+
+    Cloak(){
+
+    }
 
     public static final ArrayList<String> mapping = initializeMapping();
 

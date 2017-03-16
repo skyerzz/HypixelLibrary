@@ -1,7 +1,7 @@
 package com.skyerzz.hypixellib.util.games.tntgames;
 
-import com.skyerzz.hypixellib.util.Currency;
-import com.skyerzz.hypixellib.util.Rank;
+import com.skyerzz.hypixellib.util.network.Currency;
+import com.skyerzz.hypixellib.util.network.Rank;
 
 import java.util.ArrayList;
 

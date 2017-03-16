@@ -1,6 +1,6 @@
 package com.skyerzz.hypixellib.util.games.copsandcrims;
 
-import com.skyerzz.hypixellib.util.Currency;
+import com.skyerzz.hypixellib.util.network.Currency;
 
 /**
  * Created by sky on 10-8-2016.

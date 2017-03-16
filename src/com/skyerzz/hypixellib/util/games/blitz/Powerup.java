@@ -1,8 +1,8 @@
 package com.skyerzz.hypixellib.util.games.blitz;
 
 import com.skyerzz.hypixellib.OutDated;
-import com.skyerzz.hypixellib.util.Currency;
-import com.skyerzz.hypixellib.util.Rank;
+import com.skyerzz.hypixellib.util.network.Currency;
+import com.skyerzz.hypixellib.util.network.Rank;
 
 import java.util.ArrayList;
 

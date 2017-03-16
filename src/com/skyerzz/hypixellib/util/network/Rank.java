@@ -1,4 +1,4 @@
-package com.skyerzz.hypixellib.util;
+package com.skyerzz.hypixellib.util.network;
 
 import java.util.ArrayList;
 
