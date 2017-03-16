@@ -8,7 +8,7 @@ import java.util.Date;
 /**
  * Created by sky on 15-1-2017.
  */
-public enum MAP {
+public enum Map {
     COLOR_CLASH("Color Clash", "11-01-2016", true),
     CUBED("Cubed", "11-01-2016", false),
     GROVE("Grove", "11-01-2016", true),
@@ -44,7 +44,7 @@ public enum MAP {
     private boolean inRotation;
     private final SimpleDateFormat sdf = new SimpleDateFormat("dd-mm-yyyy");
 
-    MAP(String displayName, String date, boolean inRotation){
+    Map(String displayName, String date, boolean inRotation){
         this.displayName = displayName;
         try {
             this.dateAdded = sdf.parse(date);
@@ -58,7 +58,7 @@ public enum MAP {
 
     private static ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(MAP item: MAP.values()){
+        for(Map item: Map.values()){
             list.add(item.name());
         }
         return list;

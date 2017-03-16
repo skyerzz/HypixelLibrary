@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * Created by sky on 12-9-2016.
  */
-public enum PERK {
+public enum Perk {
     SWIFT("Swift", 3, 0),
     OPPORTUNITY("Opportunity", 3, 0),
     BERSERK("Berserk", 3, 0),
@@ -28,7 +28,7 @@ public enum PERK {
     private int maxLevel;
     private int levelRequirement;
 
-    PERK(String displayName, int maxLevel, int levelRequirement){
+    Perk(String displayName, int maxLevel, int levelRequirement){
         this.displayName = displayName;
         this.maxLevel = maxLevel;
         this.levelRequirement = levelRequirement;
@@ -38,7 +38,7 @@ public enum PERK {
 
     private static java.util.ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(PERK item: PERK.values()){
+        for(Perk item: Perk.values()){
             list.add(item.name());
         }
         return list;

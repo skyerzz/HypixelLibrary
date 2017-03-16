@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Created by sky on 27-2-2017.
  */
-public enum RUNE {
+public enum Rune {
     SLOWING("Rune of Slowing", "Your melee attacks have a %%AMOUNT%%% chance to slow your enemy for 3 seconds."),
     SPEED("Rune of Speed", "Your melee attacks have a %%AMOUNT%%% chance increase your movement speed by 40% for 3 seconds."), //fixonline chance increase > chance to increase
     ENERGY("Rune of Energy", "Your melee attacks have a %%AMOUNT%%% chance to restore 8 energy."),
@@ -14,7 +14,7 @@ public enum RUNE {
 
     private String name, description;
 
-    RUNE(String name, String description){
+    Rune(String name, String description){
         this.name = name;
         this.description = description;
     }
@@ -23,7 +23,7 @@ public enum RUNE {
 
     private static java.util.ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(RUNE item: RUNE.values()){
+        for(Rune item: Rune.values()){
             list.add(item.name());
         }
         return list;

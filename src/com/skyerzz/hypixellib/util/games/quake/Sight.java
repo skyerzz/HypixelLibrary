@@ -1,31 +1,31 @@
 package com.skyerzz.hypixellib.util.games.quake;
 
-import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.RANK;
+import com.skyerzz.hypixellib.util.Currency;
+import com.skyerzz.hypixellib.util.Rank;
 
 import java.util.ArrayList;
 
 /**
  * Created by sky on 7-7-2016.
  */
-public enum SIGHT {
-    YELLOW("Yellow Laser", 0, RANK.NONE),
-    GREEN("Green Laser", 4000, RANK.NONE),
-    WHITE("White Laser", 4000, RANK.NONE),
-    RED("Red Laser", 5000, RANK.VIP),
-    BLUE("Blue Laser", 7000, RANK.VIP),
-    PURPLE("Purple Laser", 8000, RANK.VIP_PLUS),
-    PINK("Pink Laser", 8000, RANK.VIP_PLUS),
-    GOLD("Gold Laser", 50000, RANK.VIP_PLUS),
-    EMERALD("Emerald Laser", 50000, RANK.VIP_PLUS),
-    DIAMOND("Daimond Laser", 50000, RANK.VIP_PLUS);
+public enum Sight {
+    YELLOW("Yellow Laser", 0, Rank.NONE),
+    GREEN("Green Laser", 4000, Rank.NONE),
+    WHITE("White Laser", 4000, Rank.NONE),
+    RED("Red Laser", 5000, Rank.VIP),
+    BLUE("Blue Laser", 7000, Rank.VIP),
+    PURPLE("Purple Laser", 8000, Rank.VIP_PLUS),
+    PINK("Pink Laser", 8000, Rank.VIP_PLUS),
+    GOLD("Gold Laser", 50000, Rank.VIP_PLUS),
+    EMERALD("Emerald Laser", 50000, Rank.VIP_PLUS),
+    DIAMOND("Daimond Laser", 50000, Rank.VIP_PLUS);
 
 
     private String displayName;
     private int cost;
-    private RANK rankRequirement;
+    private Rank rankRequirement;
 
-    SIGHT(String displayName, int cost, RANK rankRequirement){
+    Sight(String displayName, int cost, Rank rankRequirement){
         this.displayName = displayName;
         this.cost = cost;
         this.rankRequirement = rankRequirement;
@@ -35,7 +35,7 @@ public enum SIGHT {
 
     private static ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(SIGHT item: SIGHT.values()){
+        for(Sight item: Sight.values()){
             list.add(item.name());
         }
         return list;
@@ -49,9 +49,9 @@ public enum SIGHT {
         return cost;
     }
 
-    public CURRENCY getCurrencyType(){ return CURRENCY.COINS; }
+    public Currency getCurrencyType(){ return Currency.COINS; }
 
-    public RANK getRankRequirement(){
+    public Rank getRankRequirement(){
         return rankRequirement;
     }
 }

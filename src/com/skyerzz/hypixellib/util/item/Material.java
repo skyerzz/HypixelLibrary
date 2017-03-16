@@ -1,4 +1,4 @@
-package com.skyerzz.hypixellib.util.items.all;
+package com.skyerzz.hypixellib.util.item;
 
 import java.util.ArrayList;
 

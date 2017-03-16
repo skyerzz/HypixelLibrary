@@ -5,11 +5,11 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.skyerzz.hypixellib.Logger;
 import com.skyerzz.hypixellib.OutDated;
-import com.skyerzz.hypixellib.util.games.arcade.COSMETIC;
-import com.skyerzz.hypixellib.util.games.arcade.miniwalls.KIT;
-import com.skyerzz.hypixellib.util.items.all.Item;
-import com.skyerzz.hypixellib.util.items.all.ItemStack;
-import com.skyerzz.hypixellib.util.items.all.Material;
+import com.skyerzz.hypixellib.util.games.arcade.Cosmetic;
+import com.skyerzz.hypixellib.util.games.arcade.miniwalls.Kit;
+import com.skyerzz.hypixellib.util.item.Item;
+import com.skyerzz.hypixellib.util.item.ItemStack;
+import com.skyerzz.hypixellib.util.item.Material;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -28,15 +28,15 @@ public class PlayerArcadeStats extends PlayerGameStats{
     @OutDated
     private boolean dec2016_achievements, dec2016_achievements2;
 
-    private ArrayList<COSMETIC> unlockedCosmetics = new ArrayList<>();
+    private ArrayList<Cosmetic> unlockedCosmetics = new ArrayList<>();
 
     //BlockingDead
-    private COSMETIC blockingDeadWeaponSkin;
+    private Cosmetic blockingDeadWeaponSkin;
     private int blockingDeadHeadShots, blockingDeadKills, blockingDeadWins;
     private boolean flash /* lightning flashes */;
 
     //Bounty Hunters
-    private COSMETIC bountyHuntersTrail;
+    private Cosmetic bountyHuntersTrail;
     private int bountyHunterBountyKills, bountyHunterDeaths, bountyHunterKills, bountyHunterWins;
 
     //Build Battle solo|team
@@ -52,7 +52,7 @@ public class PlayerArcadeStats extends PlayerGameStats{
     private int dragonWarsKills, dragonWarsWins;
 
     //Ender Spleef
-    private COSMETIC enderSpleefTrail;
+    private Cosmetic enderSpleefTrail;
     private int enderSpleefWins;
 
     //Farm Hunt
@@ -65,7 +65,7 @@ public class PlayerArcadeStats extends PlayerGameStats{
     private int hypixelSaysRounds, hypixelSaysWins;
 
     //Mini Walls
-    private KIT miniWallsActiveKit;
+    private Kit miniWallsActiveKit;
     private int miniWallsKills, miniWallsDeaths, miniWallsWins, miniWallsFinalKills, miniWallsWitherKills, miniWallsArrowsShot, miniWallsArrowsHit, miniWallsWitherDamage;
 
     //PartyGames 1|2|3
@@ -100,7 +100,7 @@ public class PlayerArcadeStats extends PlayerGameStats{
 
     //ThrowOut
     private int throwOutDeaths, throwOutKills, throwOutWins;
-    private COSMETIC throwOutDisguise;
+    private Cosmetic throwOutDisguise;
 
     //grinchSim
     private int grinchWins;
@@ -203,8 +203,8 @@ public class PlayerArcadeStats extends PlayerGameStats{
                 this.flash = value.getAsBoolean();
                 break;
             case "MELEE_WEAPON":
-                if(COSMETIC.mapping.contains(value.getAsString().toUpperCase() + "_MELEE")){
-                    this.blockingDeadWeaponSkin = COSMETIC.valueOf(value.getAsString().toUpperCase() + "_MELEE");
+                if(Cosmetic.mapping.contains(value.getAsString().toUpperCase() + "_MELEE")){
+                    this.blockingDeadWeaponSkin = Cosmetic.valueOf(value.getAsString().toUpperCase() + "_MELEE");
                     break;
                 }
                 Logger.logError("[PlayerAPI.Arcade.BlockingDead.MELEE_WEAPON] Unknown Value: " + value.getAsString().toUpperCase());
@@ -226,11 +226,11 @@ public class PlayerArcadeStats extends PlayerGameStats{
                 break;
             case "BOUNTY_HEAD":
                 if(value.getAsString().toUpperCase().equals("DEFAULT")){
-                    this.bountyHuntersTrail = COSMETIC.BOUNTY_HUNTERS_DEFAULT_TRAIL;
+                    this.bountyHuntersTrail = Cosmetic.BOUNTY_HUNTERS_DEFAULT_TRAIL;
                     break;
                 }
-                if(COSMETIC.mapping.contains(value.getAsString().toUpperCase() + "_TRAIL")){
-                    this.bountyHuntersTrail = COSMETIC.valueOf(value.getAsString().toUpperCase() + "_TRAIL");
+                if(Cosmetic.mapping.contains(value.getAsString().toUpperCase() + "_TRAIL")){
+                    this.bountyHuntersTrail = Cosmetic.valueOf(value.getAsString().toUpperCase() + "_TRAIL");
                     break;
                 }
                 Logger.logError("[PlayerAPI.Arcade.BountyHunters.bounty_head] Unknown Value: " + value.getAsString().toUpperCase());
@@ -273,11 +273,11 @@ public class PlayerArcadeStats extends PlayerGameStats{
                 break;
             case "ENDERSPLEEF_TRAIL":
                 if(value.getAsString().toUpperCase().equals("DEFAULT")){
-                    this.enderSpleefTrail = COSMETIC.ENDER_SPLEEF_DEFAULT_TRAIL;
+                    this.enderSpleefTrail = Cosmetic.ENDER_SPLEEF_DEFAULT_TRAIL;
                     break;
                 }
-                if(COSMETIC.mapping.contains(value.getAsString().toUpperCase() + "_TRAIL")){
-                    this.enderSpleefTrail = COSMETIC.valueOf(value.getAsString().toUpperCase() + "_TRAIL");
+                if(Cosmetic.mapping.contains(value.getAsString().toUpperCase() + "_TRAIL")){
+                    this.enderSpleefTrail = Cosmetic.valueOf(value.getAsString().toUpperCase() + "_TRAIL");
                     break;
                 }
                 Logger.logError("[PlayerAPI.Arcade.EnderSpleef.enderspleef_trail] Unknown Value: " + value.getAsString().toUpperCase());
@@ -319,8 +319,8 @@ public class PlayerArcadeStats extends PlayerGameStats{
 
             //<editor-fold desc="[Mini Walls]">
             case "MINIWALLS_ACTIVEKIT":
-                if(KIT.mapping.contains(value.getAsString().toUpperCase())){
-                    this.miniWallsActiveKit = KIT.valueOf(value.getAsString().toUpperCase());
+                if(Kit.mapping.contains(value.getAsString().toUpperCase())){
+                    this.miniWallsActiveKit = Kit.valueOf(value.getAsString().toUpperCase());
                     break;
                 }
                 Logger.logError("[PlayerAPI.Arcade.Miniwalls.Kit] Unknown value: " + value.getAsString());
@@ -436,8 +436,8 @@ public class PlayerArcadeStats extends PlayerGameStats{
                 this.throwOutWins = value.getAsInt();
                 break;
             case "THROWOUT_DISGUISE":
-                if(COSMETIC.mapping.contains(value.getAsString().toUpperCase() + "_DISGUISE")){
-                    this.throwOutDisguise = COSMETIC.valueOf(value.getAsString().toUpperCase() + "_DISGUISE");
+                if(Cosmetic.mapping.contains(value.getAsString().toUpperCase() + "_DISGUISE")){
+                    this.throwOutDisguise = Cosmetic.valueOf(value.getAsString().toUpperCase() + "_DISGUISE");
                 }else{
                     Logger.logWarn("[PlayerAPI.Arcade.Throwout.Disguise] Couldnt find value: " + value.getAsString());
                 }
@@ -506,8 +506,8 @@ public class PlayerArcadeStats extends PlayerGameStats{
     private void setPackages(JsonArray array){
         for(JsonElement element: array){
             String value = element.getAsString().toUpperCase().trim();
-            if(COSMETIC.mapping.contains(value)){
-                this.unlockedCosmetics.add(COSMETIC.valueOf(value));
+            if(Cosmetic.mapping.contains(value)){
+                this.unlockedCosmetics.add(Cosmetic.valueOf(value));
             }else if(value.equals("TUTORIAL_SPLATOON")){
                 this.splatoonTutorial = true;
             }else{
@@ -571,11 +571,11 @@ public class PlayerArcadeStats extends PlayerGameStats{
         return weekly_coins_b;
     }
 
-    public ArrayList<COSMETIC> getUnlockedCosmetics() {
+    public ArrayList<Cosmetic> getUnlockedCosmetics() {
         return unlockedCosmetics;
     }
 
-    public COSMETIC getBlockingDeadWeaponSkin() {
+    public Cosmetic getBlockingDeadWeaponSkin() {
         return blockingDeadWeaponSkin;
     }
 
@@ -595,7 +595,7 @@ public class PlayerArcadeStats extends PlayerGameStats{
         return flash;
     }
 
-    public COSMETIC getBountyHuntersTrail() {
+    public Cosmetic getBountyHuntersTrail() {
         return bountyHuntersTrail;
     }
 
@@ -639,7 +639,7 @@ public class PlayerArcadeStats extends PlayerGameStats{
         return dragonWarsWins;
     }
 
-    public COSMETIC getEnderSpleefTrail() {
+    public Cosmetic getEnderSpleefTrail() {
         return enderSpleefTrail;
     }
 
@@ -679,7 +679,7 @@ public class PlayerArcadeStats extends PlayerGameStats{
         return hypixelSaysWins;
     }
 
-    public KIT getMiniWallsActiveKit() {
+    public Kit getMiniWallsActiveKit() {
         return miniWallsActiveKit;
     }
 
@@ -847,7 +847,7 @@ public class PlayerArcadeStats extends PlayerGameStats{
         return sumoWins;
     }
 
-    public COSMETIC getThrowOutDisguise() {
+    public Cosmetic getThrowOutDisguise() {
         return throwOutDisguise;
     }
 

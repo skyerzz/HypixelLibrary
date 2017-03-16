@@ -6,14 +6,14 @@ import java.util.ArrayList;
 /**
  * Created by sky on 7-1-2017.
  */
-public enum CLASSTYPE {
+public enum ClassType {
     RANGED("Ranged"),
     MELEE("Melee"),
     HYBRID("Hybrid");
 
     private String displayName;
 
-    CLASSTYPE(String displayName){
+    ClassType(String displayName){
         this.displayName = displayName;
     }
 
@@ -21,7 +21,7 @@ public enum CLASSTYPE {
 
     private static ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(CLASSTYPE item: CLASSTYPE.values()){
+        for(ClassType item: ClassType.values()){
             list.add(item.name());
         }
         return list;

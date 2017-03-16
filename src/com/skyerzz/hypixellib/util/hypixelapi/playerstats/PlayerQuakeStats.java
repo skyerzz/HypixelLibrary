@@ -8,7 +8,6 @@ import com.skyerzz.hypixellib.OutDated;
 import com.skyerzz.hypixellib.util.games.quake.*;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -34,24 +33,24 @@ public class PlayerQuakeStats extends PlayerGameStats {
     private boolean instantRespawn;
 
     private Gun selectedGun;
-    private BARREL selectedBarrel;
-    private CASE selectedCase;
-    private KILLSOUND selectedKillSound;
-    private MUZZLE selectedMuzzle;
-    private SIGHT selectedSight;
-    private TRIGGER selectedTrigger;
-    private KIT selectedKit;
-    private HAT selectedHat;
+    private Barrel selectedBarrel;
+    private Case selectedCase;
+    private Killsound selectedKillSound;
+    private Muzzle selectedMuzzle;
+    private Sight selectedSight;
+    private Trigger selectedTrigger;
+    private Kit selectedKit;
+    private Hat selectedHat;
 
-    private ArrayList<BARREL> unlockedBarrels = new ArrayList<>();
-    private ArrayList<CASE> unlockedCases = new ArrayList<>();
-    private ArrayList<KILLSOUND> unlockedKillSounds = new ArrayList<>();
-    private ArrayList<MUZZLE> unlockedMuzzles = new ArrayList<>();
-    private ArrayList<SIGHT> unlockedSights = new ArrayList<>();
-    private ArrayList<TRIGGER> unlockedTriggers = new ArrayList<>();
-    private ArrayList<KIT> unlockedKits = new ArrayList<>();
-    private ArrayList<HAT> unlockedHats = new ArrayList<>();
-    private ArrayList<TRINKET> unlockedTrinkets = new ArrayList<>();
+    private ArrayList<Barrel> unlockedBarrels = new ArrayList<>();
+    private ArrayList<Case> unlockedCases = new ArrayList<>();
+    private ArrayList<Killsound> unlockedKillSounds = new ArrayList<>();
+    private ArrayList<Muzzle> unlockedMuzzles = new ArrayList<>();
+    private ArrayList<Sight> unlockedSights = new ArrayList<>();
+    private ArrayList<Trigger> unlockedTriggers = new ArrayList<>();
+    private ArrayList<Kit> unlockedKits = new ArrayList<>();
+    private ArrayList<Hat> unlockedHats = new ArrayList<>();
+    private ArrayList<Trinket> unlockedTrinkets = new ArrayList<>();
 
     @OutDated
     private boolean achievement_flag_1, achievement_flag_3;
@@ -154,58 +153,58 @@ public class PlayerQuakeStats extends PlayerGameStats {
             //</editor-fold>
 
             //<editor-fold desc="[Settings]">
-            case "BARREL":
-                if(BARREL.mapping.contains(value.getAsString().toUpperCase())){
-                    this.selectedBarrel = BARREL.valueOf(value.getAsString().toUpperCase());
+            case "Barrel":
+                if(Barrel.mapping.contains(value.getAsString().toUpperCase())){
+                    this.selectedBarrel = Barrel.valueOf(value.getAsString().toUpperCase());
                 }else{
                     Logger.logWarn("[PlayerAPI.Quake.Barrel] Unknown Value: " + value.getAsString().toUpperCase());
                 }
                 break;
-            case "CASE":
-                if(CASE.mapping.contains(value.getAsString().toUpperCase())){
-                    this.selectedCase = CASE.valueOf(value.getAsString().toUpperCase());
+            case "Case":
+                if(Case.mapping.contains(value.getAsString().toUpperCase())){
+                    this.selectedCase = Case.valueOf(value.getAsString().toUpperCase());
                 }else{
                     Logger.logWarn("[PlayerAPI.Quake.Case] Unknown Value: " + value.getAsString().toUpperCase());
                 }
                 break;
-            case "KILLSOUND":
-                if(KILLSOUND.mapping.contains(value.getAsString().toUpperCase())){
-                    this.selectedKillSound = KILLSOUND.valueOf(value.getAsString().toUpperCase());
+            case "Killsound":
+                if(Killsound.mapping.contains(value.getAsString().toUpperCase())){
+                    this.selectedKillSound = Killsound.valueOf(value.getAsString().toUpperCase());
                 }else{
                     Logger.logWarn("[PlayerAPI.Quake.KillSound] Unknown Value: " + value.getAsString().toUpperCase());
                 }
                 break;
-            case "MUZZLE":
-                if(MUZZLE.mapping.contains(value.getAsString().toUpperCase())){
-                    this.selectedMuzzle = MUZZLE.valueOf(value.getAsString().toUpperCase());
+            case "Muzzle":
+                if(Muzzle.mapping.contains(value.getAsString().toUpperCase())){
+                    this.selectedMuzzle = Muzzle.valueOf(value.getAsString().toUpperCase());
                 }else{
                     Logger.logWarn("[PlayerAPI.Quake.Muzzle] Unknown Value: " + value.getAsString().toUpperCase());
                 }
                 break;
-            case "SIGHT":
-                if(SIGHT.mapping.contains(value.getAsString().toUpperCase())){
-                    this.selectedSight = SIGHT.valueOf(value.getAsString().toUpperCase());
+            case "Sight":
+                if(Sight.mapping.contains(value.getAsString().toUpperCase())){
+                    this.selectedSight = Sight.valueOf(value.getAsString().toUpperCase());
                 }else{
                     Logger.logWarn("[PlayerAPI.Quake.Sight] Unknown Value: " + value.getAsString().toUpperCase());
                 }
                 break;
-            case "TRIGGER":
-                if(TRIGGER.mapping.contains(value.getAsString().toUpperCase())){
-                    this.selectedTrigger = TRIGGER.valueOf(value.getAsString().toUpperCase());
+            case "Trigger":
+                if(Trigger.mapping.contains(value.getAsString().toUpperCase())){
+                    this.selectedTrigger = Trigger.valueOf(value.getAsString().toUpperCase());
                 }else{
                     Logger.logWarn("[PlayerAPI.Quake.Trigger] Unknown Value: " + value.getAsString().toUpperCase());
                 }
                 break;
-            case "HAT":
-                if(HAT.mapping.contains(value.getAsString().toUpperCase())){
-                    this.selectedHat = HAT.valueOf(value.getAsString().toUpperCase());
+            case "Hat":
+                if(Hat.mapping.contains(value.getAsString().toUpperCase())){
+                    this.selectedHat = Hat.valueOf(value.getAsString().toUpperCase());
                 }else{
                     Logger.logWarn("[PlayerAPI.Quake.Hat] Unknown Value: " + value.getAsString().toUpperCase());
                 }
                 break;
             case "ARMOR":
-                if(KIT.mapping.contains(value.getAsString().toUpperCase())){
-                    this.selectedKit = KIT.valueOf(value.getAsString().toUpperCase());
+                if(Kit.mapping.contains(value.getAsString().toUpperCase())){
+                    this.selectedKit = Kit.valueOf(value.getAsString().toUpperCase());
                 }else{
                     Logger.logWarn("[PlayerAPI.Quake.Kit] Unknown Value: " + value.getAsString().toUpperCase());
                 }
@@ -241,24 +240,24 @@ public class PlayerQuakeStats extends PlayerGameStats {
                 this.achievement_flag_1 = true;
             }else if(name.equals("ACHIEVEMENT_FLAG_3")){
                 this.achievement_flag_3 = true;
-            }else if(KILLSOUND.mapping.contains(name)){
-                this.unlockedKillSounds.add(KILLSOUND.valueOf(name));
-            }else if(KIT.mapping.contains(name)){
-                this.unlockedKits.add(KIT.valueOf(name));
-            }else if(HAT.mapping.contains(name)){
-                this.unlockedHats.add(HAT.valueOf(name));
-            }else if(BARREL.mapping.contains(name)){
-                this.unlockedBarrels.add(BARREL.valueOf(name));
-            }else if(CASE.mapping.contains(name)){
-                this.unlockedCases.add(CASE.valueOf(name));
-            }else if(MUZZLE.mapping.contains(name)){
-                this.unlockedMuzzles.add(MUZZLE.valueOf(name));
-            }else if(SIGHT.mapping.contains(name)){
-                this.unlockedSights.add(SIGHT.valueOf(name));
-            }else if(TRIGGER.mapping.contains(name)){
-                this.unlockedTriggers.add(TRIGGER.valueOf(name));
-            }else if(TRINKET.mapping.contains(name)){
-                this.unlockedTrinkets.add(TRINKET.valueOf(name));
+            }else if(Killsound.mapping.contains(name)){
+                this.unlockedKillSounds.add(Killsound.valueOf(name));
+            }else if(Kit.mapping.contains(name)){
+                this.unlockedKits.add(Kit.valueOf(name));
+            }else if(Hat.mapping.contains(name)){
+                this.unlockedHats.add(Hat.valueOf(name));
+            }else if(Barrel.mapping.contains(name)){
+                this.unlockedBarrels.add(Barrel.valueOf(name));
+            }else if(Case.mapping.contains(name)){
+                this.unlockedCases.add(Case.valueOf(name));
+            }else if(Muzzle.mapping.contains(name)){
+                this.unlockedMuzzles.add(Muzzle.valueOf(name));
+            }else if(Sight.mapping.contains(name)){
+                this.unlockedSights.add(Sight.valueOf(name));
+            }else if(Trigger.mapping.contains(name)){
+                this.unlockedTriggers.add(Trigger.valueOf(name));
+            }else if(Trinket.mapping.contains(name)){
+                this.unlockedTrinkets.add(Trinket.valueOf(name));
             }else{
                 Logger.logWarn("[PlayerAPI.Quake.packages] Unknown Value: " + value.getAsString().toUpperCase());
             }
@@ -322,15 +321,15 @@ public class PlayerQuakeStats extends PlayerGameStats {
         return instantRespawn;
     }
 
-    public KILLSOUND getSelectedKillSound() {
+    public Killsound getSelectedKillSound() {
         return selectedKillSound;
     }
 
-    public KIT getSelectedKit() {
+    public Kit getSelectedKit() {
         return selectedKit;
     }
 
-    public HAT getSelectedHat() {
+    public Hat getSelectedHat() {
         return selectedHat;
     }
 
@@ -341,59 +340,59 @@ public class PlayerQuakeStats extends PlayerGameStats {
         return selectedGun;
     }
 
-    public ArrayList<BARREL> getUnlockedBarrels() {
+    public ArrayList<Barrel> getUnlockedBarrels() {
         return unlockedBarrels;
     }
 
-    public ArrayList<CASE> getUnlockedCases() {
+    public ArrayList<Case> getUnlockedCases() {
         return unlockedCases;
     }
 
-    public ArrayList<KILLSOUND> getUnlockedKillSounds() {
+    public ArrayList<Killsound> getUnlockedKillSounds() {
         return unlockedKillSounds;
     }
 
-    public ArrayList<MUZZLE> getUnlockedMuzzles() {
+    public ArrayList<Muzzle> getUnlockedMuzzles() {
         return unlockedMuzzles;
     }
 
-    public ArrayList<SIGHT> getUnlockedSights() {
+    public ArrayList<Sight> getUnlockedSights() {
         return unlockedSights;
     }
 
-    public ArrayList<TRIGGER> getUnlockedTriggers() {
+    public ArrayList<Trigger> getUnlockedTriggers() {
         return unlockedTriggers;
     }
 
-    public ArrayList<KIT> getUnlockedKits() {
+    public ArrayList<Kit> getUnlockedKits() {
         return unlockedKits;
     }
 
-    public ArrayList<HAT> getUnlockedHats() {
+    public ArrayList<Hat> getUnlockedHats() {
         return unlockedHats;
     }
 
-    public ArrayList<TRINKET> getUnlockedTrinkets() {
+    public ArrayList<Trinket> getUnlockedTrinkets() {
         return unlockedTrinkets;
     }
 
-    public BARREL getSelectedBarrel() {
+    public Barrel getSelectedBarrel() {
         return selectedBarrel;
     }
 
-    public CASE getSelectedCase() {
+    public Case getSelectedCase() {
         return selectedCase;
     }
 
-    public MUZZLE getSelectedMuzzle() {
+    public Muzzle getSelectedMuzzle() {
         return selectedMuzzle;
     }
 
-    public SIGHT getSelectedSight() {
+    public Sight getSelectedSight() {
         return selectedSight;
     }
 
-    public TRIGGER getSelectedTrigger() {
+    public Trigger getSelectedTrigger() {
         return selectedTrigger;
     }
 

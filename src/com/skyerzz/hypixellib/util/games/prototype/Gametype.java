@@ -1,13 +1,11 @@
 package com.skyerzz.hypixellib.util.games.prototype;
 
-import com.skyerzz.hypixellib.util.games.quake.BARREL;
-
 import java.util.ArrayList;
 
 /**
  * Created by Skyerzz-LAPOTOP on 27/02/2017.
  */
-public enum GAMETYPE {
+public enum Gametype {
     DUELS("Duels", true),
     UHC_DEATHMATCH("UHC Deathmatch", true),
     MURDER_MYSTERY("Murder Mystery", true),
@@ -16,7 +14,7 @@ public enum GAMETYPE {
     private boolean available;
     private String name;
 
-    GAMETYPE(String name, boolean available){
+    Gametype(String name, boolean available){
         this.name = name;
         this.available = available;
     }
@@ -29,7 +27,7 @@ public enum GAMETYPE {
 
     private static ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(GAMETYPE item: GAMETYPE.values()){
+        for(Gametype item: Gametype.values()){
             list.add(item.name());
         }
         return list;

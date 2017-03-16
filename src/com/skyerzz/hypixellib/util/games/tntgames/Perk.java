@@ -1,25 +1,25 @@
 package com.skyerzz.hypixellib.util.games.tntgames;
 
-import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.RANK;
+import com.skyerzz.hypixellib.util.Currency;
+import com.skyerzz.hypixellib.util.Rank;
 
 import java.util.ArrayList;
 
 /**
  * Created by sky on 22-7-2016.
  */
-public enum PERK {
-    DOUBLEJUMP_TNTRUN("TNTRun DoubleJump", 10, RANK.NONE),
-    SPLEEF_DOUBLEJUMP("Bowspleef DoubleJump", 10, RANK.NONE),
-    SPLEEF_REPULSE("Bowspleef Repulsor", 10, RANK.NONE),
-    SPLEEF_TRIPLE("Bowspleef TripleShot", 10, RANK.NONE),
-    TAG_SPEED("TNTTag speedy", 6, RANK.NONE);
+public enum Perk {
+    DOUBLEJUMP_TNTRUN("TNTRun DoubleJump", 10, Rank.NONE),
+    SPLEEF_DOUBLEJUMP("Bowspleef DoubleJump", 10, Rank.NONE),
+    SPLEEF_REPULSE("Bowspleef Repulsor", 10, Rank.NONE),
+    SPLEEF_TRIPLE("Bowspleef TripleShot", 10, Rank.NONE),
+    TAG_SPEED("TNTTag speedy", 6, Rank.NONE);
 
     private String displayName;
     private int maxLevel;
-    private RANK rankRequirement;
+    private Rank rankRequirement;
 
-    PERK(String displayName, int maxLevel, RANK rankRequirement){
+    Perk(String displayName, int maxLevel, Rank rankRequirement){
         this.displayName = displayName;
         this.maxLevel = maxLevel;
         this.rankRequirement = rankRequirement;
@@ -29,7 +29,7 @@ public enum PERK {
 
     private static ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(PERK item: PERK.values()){
+        for(Perk item: Perk.values()){
             list.add(item.name());
         }
         return list;
@@ -71,11 +71,11 @@ public enum PERK {
 
     public int getMaxLevel() {return maxLevel; }
 
-    public CURRENCY getCurrencyType(){
-        return CURRENCY.COINS;
+    public Currency getCurrencyType(){
+        return Currency.COINS;
     }
 
-    public RANK getRankRequirement(){
+    public Rank getRankRequirement(){
         return rankRequirement;
     }
 }

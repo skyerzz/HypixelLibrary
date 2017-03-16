@@ -1,23 +1,23 @@
 package com.skyerzz.hypixellib.util.games.vampirez;
 
-import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.RANK;
+import com.skyerzz.hypixellib.util.Currency;
+import com.skyerzz.hypixellib.util.Rank;
 
 import java.util.ArrayList;
 
 /**
  * Created by sky on 22-7-2016.
  */
-public enum DISGUISE {
-    ATTRACTIVE("Herobrine Disguise", 5000, RANK.VIP),
-    ATTRACTIVE_SKELETON("Skeleton Disguise", 5000, RANK.VIP_PLUS),
-    ATTRACTIVE_ENDERMAN("Witch Disguise", 5000, RANK.VIP_PLUS); //used to be enderman, was changed into witch, JSON value never changed.
+public enum Disguise {
+    ATTRACTIVE("Herobrine Disguise", 5000, Rank.VIP),
+    ATTRACTIVE_SKELETON("Skeleton Disguise", 5000, Rank.VIP_PLUS),
+    ATTRACTIVE_ENDERMAN("Witch Disguise", 5000, Rank.VIP_PLUS); //used to be enderman, was changed into witch, JSON value never changed.
 
     private String displayName;
     private int cost;
-    private RANK rankRequirement;
+    private Rank rankRequirement;
 
-    DISGUISE(String displayName, int cost, RANK rankRequirement){
+    Disguise(String displayName, int cost, Rank rankRequirement){
         this.displayName = displayName;
         this.cost = cost;
         this.rankRequirement = rankRequirement;
@@ -27,7 +27,7 @@ public enum DISGUISE {
 
     private static ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(DISGUISE item: DISGUISE.values()){
+        for(Disguise item: Disguise.values()){
             list.add(item.name());
         }
         return list;
@@ -41,11 +41,11 @@ public enum DISGUISE {
         return cost;
     }
 
-    public CURRENCY getCurrencyType(){
-        return CURRENCY.COINS;
+    public Currency getCurrencyType(){
+        return Currency.COINS;
     }
 
-    public RANK getRankRequirement(){
+    public Rank getRankRequirement(){
         return rankRequirement;
     }
 }

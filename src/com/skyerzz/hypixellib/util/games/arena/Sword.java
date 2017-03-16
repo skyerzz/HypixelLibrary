@@ -1,14 +1,14 @@
 package com.skyerzz.hypixellib.util.games.arena;
 
-import com.skyerzz.hypixellib.util.items.all.Item;
-import com.skyerzz.hypixellib.util.items.all.ItemStack;
+import com.skyerzz.hypixellib.util.item.Item;
+import com.skyerzz.hypixellib.util.item.ItemStack;
 
 import java.util.ArrayList;
 
 /**
  * Created by sky on 27-2-2017.
  */
-public enum SWORD {
+public enum Sword {
     WOOD("Wood Sword", Item.woodenSword),
     STONE("Stone Sword", Item.stoneSword),
     IRON("Iron Sword - DEFAULT", Item.ironSword),
@@ -23,7 +23,7 @@ public enum SWORD {
     private String name;
     private ItemStack swordItem;
 
-    SWORD(String name, ItemStack swordItem){
+    Sword(String name, ItemStack swordItem){
         this.name = name;
         this.swordItem = swordItem;
     }
@@ -32,7 +32,7 @@ public enum SWORD {
 
     private static java.util.ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(SWORD item: SWORD.values()){
+        for(Sword item: Sword.values()){
             list.add(item.name());
         }
         return list;

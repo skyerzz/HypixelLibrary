@@ -1,27 +1,27 @@
 package com.skyerzz.hypixellib.util.games.tntgames;
 
 
-import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.RANK;
+import com.skyerzz.hypixellib.util.Currency;
+import com.skyerzz.hypixellib.util.Rank;
 
 import java.util.ArrayList;
 
 /**
  * Created by sky on 21-7-2016.
  */
-public enum PARTICLEEFFECT {
-    SLIME(  "Slime",    10000, RANK.VIP),
-    WATER(  "Water",    10000, RANK.VIP),
-    LAVA(   "Lava",     10000, RANK.VIP),
-    FLAME(  "Flame",    10000, RANK.VIP_PLUS),
-    ENDER(  "Ender",    10000, RANK.VIP_PLUS);
+public enum ParticleEffect {
+    SLIME(  "Slime",    10000, Rank.VIP),
+    WATER(  "Water",    10000, Rank.VIP),
+    LAVA(   "Lava",     10000, Rank.VIP),
+    FLAME(  "Flame",    10000, Rank.VIP_PLUS),
+    ENDER(  "Ender",    10000, Rank.VIP_PLUS);
 
 
     private String displayName;
     private int cost;
-    private RANK rankRequirement;
+    private Rank rankRequirement;
 
-    PARTICLEEFFECT(String displayName, int cost, RANK rankRequirement){
+    ParticleEffect(String displayName, int cost, Rank rankRequirement){
         this.displayName = displayName;
         this.cost = cost;
         this.rankRequirement = rankRequirement;
@@ -31,7 +31,7 @@ public enum PARTICLEEFFECT {
 
     private static ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(PARTICLEEFFECT item: PARTICLEEFFECT.values()){
+        for(ParticleEffect item: ParticleEffect.values()){
             list.add(item.name());
         }
         return list;
@@ -45,11 +45,11 @@ public enum PARTICLEEFFECT {
         return cost;
     }
 
-    public CURRENCY getCurrencyType(){
-        return CURRENCY.COINS;
+    public Currency getCurrencyType(){
+        return Currency.COINS;
     }
 
-    public RANK getRankRequirement(){
+    public Rank getRankRequirement(){
         return rankRequirement;
     }
 }

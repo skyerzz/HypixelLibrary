@@ -1,6 +1,6 @@
 package com.skyerzz.hypixellib.util.games.arcade;
 
-import com.skyerzz.hypixellib.util.games.GAMEMODE;
+import com.skyerzz.hypixellib.util.games.Gamemode;
 
 /**
  * Created by sky on 4-9-2016.
@@ -11,7 +11,7 @@ public class CurrencyConverter {
 
     }
 
-    public int getConvertedCoins(GAMEMODE gameMode, int level){
+    public int getConvertedCoins(Gamemode gameMode, int level){
         if(level>3 || level < 1){
             return -1;
         }

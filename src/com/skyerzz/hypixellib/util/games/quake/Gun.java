@@ -5,13 +5,13 @@ package com.skyerzz.hypixellib.util.games.quake;
  */
 public class Gun {
 
-    private BARREL barrel;
-    private CASE aCase;
-    private MUZZLE muzzle;
-    private SIGHT sight;
-    private TRIGGER trigger;
+    private Barrel barrel;
+    private Case aCase;
+    private Muzzle muzzle;
+    private Sight sight;
+    private Trigger trigger;
 
-    public Gun(BARREL barrel, CASE aCase, MUZZLE muzzle, SIGHT sight, TRIGGER trigger){
+    public Gun(Barrel barrel, Case aCase, Muzzle muzzle, Sight sight, Trigger trigger){
         this.barrel = barrel;
         this.aCase = aCase;
         this.muzzle = muzzle;
@@ -24,23 +24,23 @@ public class Gun {
         return null;
     }
 
-    public BARREL getBarrel() {
+    public Barrel getBarrel() {
         return barrel;
     }
 
-    public CASE getCase() {
+    public Case getCase() {
         return aCase;
     }
 
-    public MUZZLE getMuzzle() {
+    public Muzzle getMuzzle() {
         return muzzle;
     }
 
-    public SIGHT getSight() {
+    public Sight getSight() {
         return sight;
     }
 
-    public TRIGGER getTrigger() {
+    public Trigger getTrigger() {
         return trigger;
     }
 }

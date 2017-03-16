@@ -5,10 +5,10 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.skyerzz.hypixellib.Logger;
 import com.skyerzz.hypixellib.OutDated;
-import com.skyerzz.hypixellib.util.games.tntgames.DEATHEFFECT;
-import com.skyerzz.hypixellib.util.games.tntgames.HAT;
-import com.skyerzz.hypixellib.util.games.tntgames.PARTICLEEFFECT;
-import com.skyerzz.hypixellib.util.games.tntgames.WIZARD;
+import com.skyerzz.hypixellib.util.games.tntgames.DeathEffect;
+import com.skyerzz.hypixellib.util.games.tntgames.Hat;
+import com.skyerzz.hypixellib.util.games.tntgames.ParticleEffect;
+import com.skyerzz.hypixellib.util.games.tntgames.Wizard;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -63,14 +63,14 @@ public class PlayerTNTGamesStats extends PlayerGameStats {
     private int tag_speedy;
 
 
-    private DEATHEFFECT selectedDeathEffect;
-    private PARTICLEEFFECT selectedParticleEffect;
-    private HAT selectedHat;
-    private WIZARD selectedWizard;
+    private DeathEffect selectedDeathEffect;
+    private ParticleEffect selectedParticleEffect;
+    private Hat selectedHat;
+    private Wizard selectedWizard;
 
-    private ArrayList<HAT> unlockedHats = new ArrayList<>();
-    private ArrayList<DEATHEFFECT> unlockedDeathEffects = new ArrayList<>();
-    private ArrayList<PARTICLEEFFECT> unlockedParticleEffects = new ArrayList<>();
+    private ArrayList<Hat> unlockedHats = new ArrayList<>();
+    private ArrayList<DeathEffect> unlockedDeathEffects = new ArrayList<>();
+    private ArrayList<ParticleEffect> unlockedParticleEffects = new ArrayList<>();
 
     @OutDated
     private int votes_Quadral, votes_ForgottenPlanet, votes_Atior, votes_Node, votes_TallGate, votes_GreenBelt, votes_TwinSpire, votes_TheVale, votes_Totum, votes_FireFall, votes_Blossom, votes_Gladius, votes_Crucible, votes_Heather, votes_Downvault, votes_DreadPit, votes_IceFortress, votes_Tombed, votes_BowSpleefC, votes_Biosphere, votes_Crystalline, votes_bloom, votes_Mars, votes_Hypogeal;
@@ -336,33 +336,33 @@ public class PlayerTNTGamesStats extends PlayerGameStats {
     private boolean setSpecialValue(String key, JsonElement element){
         switch(key){
             case "CAPTURE_CLASS":
-                String value = element.getAsString().toUpperCase().replace(" WIZARD", "");
-                if(WIZARD.mapping.contains(value)){
-                    this.selectedWizard = WIZARD.valueOf(value);
+                String value = element.getAsString().toUpperCase().replace(" Wizard", "");
+                if(Wizard.mapping.contains(value)){
+                    this.selectedWizard = Wizard.valueOf(value);
                 }else{
                     Logger.logWarn("[PlayerAPI.TNTGames.CaptureClass] Value not found: " + value);
                 }
                 return true;
             case "ACTIVE_PARTICLE_EFFECT":
                 value = element.getAsString().toUpperCase();
-                if(PARTICLEEFFECT.mapping.contains(value)){
-                    this.selectedParticleEffect = PARTICLEEFFECT.valueOf(value);
+                if(ParticleEffect.mapping.contains(value)){
+                    this.selectedParticleEffect = ParticleEffect.valueOf(value);
                 }else{
                     Logger.logWarn("[PlayerAPI.TNTGames.ParticleEffect] Value not found: " + value);
                 }
                 return true;
             case "SELECTED_HAT":
                 value = element.getAsString().toUpperCase();
-                if(HAT.mapping.contains(value)){
-                    this.selectedHat = HAT.valueOf(value);
+                if(Hat.mapping.contains(value)){
+                    this.selectedHat = Hat.valueOf(value);
                 }else{
                     Logger.logWarn("[PlayerAPI.TNTGames.Hat] Value not found: " + value);
                 }
                 return true;
             case "ACTIVE_DEATH_EFFECT":
                 value = element.getAsString().toUpperCase();
-                if(DEATHEFFECT.mapping.contains(value)){
-                    this.selectedDeathEffect = DEATHEFFECT.valueOf(value);
+                if(DeathEffect.mapping.contains(value)){
+                    this.selectedDeathEffect = DeathEffect.valueOf(value);
                 }else{
                     Logger.logWarn("[PlayerAPI.TNTGames.DeathEffect] Value not found: " + value);
                 }
@@ -383,12 +383,12 @@ public class PlayerTNTGamesStats extends PlayerGameStats {
                 this.slow_potion = true;
             }else if(value.equals("TIERED_ACHIEVEMENT_FLAG_1")){
                 this.tiered_achievement_flag_1 = true;
-            }else if(PARTICLEEFFECT.mapping.contains(value)){
-                this.unlockedParticleEffects.add(PARTICLEEFFECT.valueOf(value));
-            }else if(HAT.mapping.contains(value)){
-                this.unlockedHats.add(HAT.valueOf(value));
-            }else if(DEATHEFFECT.mapping.contains(value)){
-                this.unlockedDeathEffects.add(DEATHEFFECT.valueOf(value));
+            }else if(ParticleEffect.mapping.contains(value)){
+                this.unlockedParticleEffects.add(ParticleEffect.valueOf(value));
+            }else if(Hat.mapping.contains(value)){
+                this.unlockedHats.add(Hat.valueOf(value));
+            }else if(DeathEffect.mapping.contains(value)){
+                this.unlockedDeathEffects.add(DeathEffect.valueOf(value));
             }else{
                 //guess it wasnt any of those. Print out the value it was trying to use?
                 Logger.logWarn("[PlayerAPI.TNTGames.package] Unknown value: " + value);
@@ -517,19 +517,19 @@ public class PlayerTNTGamesStats extends PlayerGameStats {
         return tag_speedy;
     }
 
-    public DEATHEFFECT getSelectedDeathEffect() {
+    public DeathEffect getSelectedDeathEffect() {
         return selectedDeathEffect;
     }
 
-    public PARTICLEEFFECT getSelectedParticleEffect() {
+    public ParticleEffect getSelectedParticleEffect() {
         return selectedParticleEffect;
     }
 
-    public HAT getSelectedHat() {
+    public Hat getSelectedHat() {
         return selectedHat;
     }
 
-    public WIZARD getSelectedWizard() {
+    public Wizard getSelectedWizard() {
         return selectedWizard;
     }
 
@@ -541,11 +541,11 @@ public class PlayerTNTGamesStats extends PlayerGameStats {
         return slow_potion;
     }
 
-    public ArrayList<HAT> getUnlockedHats() {
+    public ArrayList<Hat> getUnlockedHats() {
         return unlockedHats;
     }
 
-    public ArrayList<DEATHEFFECT> getUnlockedDeathEffects() { return unlockedDeathEffects; }
+    public ArrayList<DeathEffect> getUnlockedDeathEffects() { return unlockedDeathEffects; }
     @OutDated
     public int getVotes_Quadral() {
         return votes_Quadral;
@@ -615,7 +615,7 @@ public class PlayerTNTGamesStats extends PlayerGameStats {
         return votes_IceFortress;
     }
 
-    public ArrayList<PARTICLEEFFECT> getUnlockedParticleEffects() {
+    public ArrayList<ParticleEffect> getUnlockedParticleEffects() {
         return unlockedParticleEffects;
     }
     @OutDated

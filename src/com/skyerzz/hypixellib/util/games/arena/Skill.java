@@ -6,7 +6,7 @@ import java.util.ArrayList;
 /**
  * Created by Skyerzz-LAPOTOP on 27/02/2017.
  */
-public enum SKILL {
+public enum Skill {
     //<editor-fold desc="[OFFENSIVE]">
     BOULDER_TOSS("Boulder Toss",
             "Launch a large boulder that will shatter after colliding with the ground, dealing 225 damage to enemies nearby. Launching a boulder directly under a player's feet will immobilize them for 2 seconds.",
@@ -198,7 +198,7 @@ public enum SKILL {
     private SKILLTYPE skillType;
 
 
-    SKILL(String name, String description, int cost, int energyCost, int cooldown, SKILLTYPE skillType){
+    Skill(String name, String description, int cost, int energyCost, int cooldown, SKILLTYPE skillType){
         this.name = name;
         this.description = description;
         this.cost = cost;
@@ -211,7 +211,7 @@ public enum SKILL {
 
     private static ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(SKILL item: SKILL.values()){
+        for(Skill item: Skill.values()){
             list.add(item.name());
         }
         return list;

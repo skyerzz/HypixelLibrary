@@ -1,31 +1,31 @@
 package com.skyerzz.hypixellib.util.games.quake;
 
-import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.RANK;
+import com.skyerzz.hypixellib.util.Currency;
+import com.skyerzz.hypixellib.util.Rank;
 
 import java.util.ArrayList;
 
 /**
  * Created by sky on 7-7-2016.
  */
-public enum MUZZLE {
-    NONE("No Muzzle", 0, RANK.NONE),
-    CLAY("Clay Muzzle", 5000, RANK.NONE),
-    WOOD("Wooden Muzzle", 5000, RANK.VIP),
-    GOLD("Golden Muzzle", 7500, RANK.VIP),
-    REDSTONE("Redstone Muzzle", 7500, RANK.VIP),
-    IRON("Iron Muzzle", 8200, RANK.VIP_PLUS),
-    DIAMOND("Diamond Muzzle", 9000, RANK.VIP_PLUS),
-    EMERALD("Emerald Muzzle", 25000, RANK.VIP_PLUS),
-    OBSIDIAN("Obsidian Muzzle", 50000, RANK.VIP_PLUS),
-    COMMAND_BLOCK("Command Block Muzzle", 100000, RANK.VIP_PLUS);
+public enum Muzzle {
+    NONE("No Muzzle", 0, Rank.NONE),
+    CLAY("Clay Muzzle", 5000, Rank.NONE),
+    WOOD("Wooden Muzzle", 5000, Rank.VIP),
+    GOLD("Golden Muzzle", 7500, Rank.VIP),
+    REDSTONE("Redstone Muzzle", 7500, Rank.VIP),
+    IRON("Iron Muzzle", 8200, Rank.VIP_PLUS),
+    DIAMOND("Diamond Muzzle", 9000, Rank.VIP_PLUS),
+    EMERALD("Emerald Muzzle", 25000, Rank.VIP_PLUS),
+    OBSIDIAN("Obsidian Muzzle", 50000, Rank.VIP_PLUS),
+    COMMAND_BLOCK("Command Block Muzzle", 100000, Rank.VIP_PLUS);
 
 
     private String displayName;
     private int cost;
-    private RANK rankRequirement;
+    private Rank rankRequirement;
 
-    MUZZLE(String displayName, int cost, RANK rankRequirement){
+    Muzzle(String displayName, int cost, Rank rankRequirement){
         this.displayName = displayName;
         this.cost = cost;
         this.rankRequirement = rankRequirement;
@@ -35,7 +35,7 @@ public enum MUZZLE {
 
     private static ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(MUZZLE item: MUZZLE.values()){
+        for(Muzzle item: Muzzle.values()){
             list.add(item.name());
         }
         return list;
@@ -49,9 +49,9 @@ public enum MUZZLE {
         return cost;
     }
 
-    public CURRENCY getCurrencyType(){ return CURRENCY.COINS; }
+    public Currency getCurrencyType(){ return Currency.COINS; }
 
-    public RANK getRankRequirement(){
+    public Rank getRankRequirement(){
         return rankRequirement;
     }
 }

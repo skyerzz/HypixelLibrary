@@ -1,6 +1,6 @@
 package com.skyerzz.hypixellib.util.games.skywars;
 
-import com.skyerzz.hypixellib.util.CURRENCY;
+import com.skyerzz.hypixellib.util.Currency;
 import com.skyerzz.hypixellib.util.item.Item;
 import com.skyerzz.hypixellib.util.item.ItemStack;
 
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by sky on 25-12-2016.
  */
-public enum MEGA_KIT {
+public enum MegaKit {
     DEFAULT("Default"),
     ARMORER("Armorer"),
     ARMORSMITH("Armorsmith"),
@@ -27,7 +27,7 @@ public enum MEGA_KIT {
 
     private String displayName;
 
-    MEGA_KIT(String displayName){
+    MegaKit(String displayName){
         this.displayName = displayName;
     }
 
@@ -35,7 +35,7 @@ public enum MEGA_KIT {
 
     private static ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(MEGA_KIT item: MEGA_KIT.values()){
+        for(MegaKit item: MegaKit.values()){
             list.add(item.name());
         }
         return list;
@@ -63,7 +63,7 @@ public enum MEGA_KIT {
 
     public int getMaxLevel(){ return 5; }
 
-    public CURRENCY getCurrencyType(){ return CURRENCY.COINS; }
+    public Currency getCurrencyType(){ return Currency.COINS; }
 
     public ArrayList<ItemStack> getKitItems(int level) {
         if(level < 1 || level > getMaxLevel()){

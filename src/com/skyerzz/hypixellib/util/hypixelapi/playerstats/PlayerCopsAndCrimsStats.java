@@ -16,11 +16,11 @@ import java.util.Map;
 public class PlayerCopsAndCrimsStats extends PlayerGameStats {
 
     //<editor-fold desc="[GLOBAL VARIABLES]">
-    private ArrayList<RADIOCOMMAND> unlockedRadioCommands = new ArrayList<>();
-    private ArrayList<ARMORSKIN> unlockedArmorSkins = new ArrayList<>();
-    private ArrayList<KNIFESKIN> unlockedKnifeSkins = new ArrayList<>();
-    private ArrayList<GUNSKIN> unlockedGunSkins = new ArrayList<>();
-    private ArrayList<SPRAY> unlockedSprays = new ArrayList<>();
+    private ArrayList<RadioCommand> unlockedRadioCommands = new ArrayList<>();
+    private ArrayList<ArmorSkin> unlockedArmorSkins = new ArrayList<>();
+    private ArrayList<KnifeSkin> unlockedKnifeSkins = new ArrayList<>();
+    private ArrayList<GunSkin> unlockedGunSkins = new ArrayList<>();
+    private ArrayList<Spray> unlockedSprays = new ArrayList<>();
 
     //game
     private int bombsDefused, bombsPlanted;
@@ -33,11 +33,11 @@ public class PlayerCopsAndCrimsStats extends PlayerGameStats {
     private int crimKillsDeathmatch, copKillsDeathmatch;
 
     //gun
-    private GUNSKIN selectedCarbineSkin, selectedMagnumSkin;
-    private KNIFESKIN selectedKnifeSkin;
+    private GunSkin selectedCarbineSkin, selectedMagnumSkin;
+    private KnifeSkin selectedKnifeSkin;
 
     //body armor
-    private ARMORSKIN copsHelmetSkin, crimsHelmetSkin, copsBodyArmorSkin, crimsBodyArmorSkin;
+    private ArmorSkin copsHelmetSkin, crimsHelmetSkin, copsBodyArmorSkin, crimsBodyArmorSkin;
 
     //knife
     private int knifeAttackDelay, knifeDamageIncrease;
@@ -184,8 +184,8 @@ public class PlayerCopsAndCrimsStats extends PlayerGameStats {
                 this.carbineCostReduction = value.getAsInt();
                 break;
             case "SELECTEDCARBINEDEV":
-                if(GUNSKIN.mapping.contains(value.getAsString().toUpperCase())){
-                    GUNSKIN gunSkin = GUNSKIN.valueOf(value.getAsString().toUpperCase());
+                if(GunSkin.mapping.contains(value.getAsString().toUpperCase())){
+                    GunSkin gunSkin = GunSkin.valueOf(value.getAsString().toUpperCase());
                     if(gunSkin.getGunType() != Gun.GUNTYPE.CARBINE){
                         Logger.logError("[PlayerAPI.CopsandCrims.CarbineSkin] Unsupported Carbine Skin: " + value.getAsString().toUpperCase());
                     }else{
@@ -249,8 +249,8 @@ public class PlayerCopsAndCrimsStats extends PlayerGameStats {
                 this.magnumReloadSpeedReduction = value.getAsInt();
                 break;
             case "SELECTEDMAGNUMDEV":
-                if(GUNSKIN.mapping.contains(value.getAsString().toUpperCase())){
-                    GUNSKIN gunSkin = GUNSKIN.valueOf(value.getAsString().toUpperCase());
+                if(GunSkin.mapping.contains(value.getAsString().toUpperCase())){
+                    GunSkin gunSkin = GunSkin.valueOf(value.getAsString().toUpperCase());
                     if(gunSkin.getGunType() != Gun.GUNTYPE.MAGNUM){
                         Logger.logError("[PlayerAPI.CopsandCrims.MagnumSkin] Unsupported Magnum Skin: " + value.getAsString().toUpperCase());
                     }else{
@@ -274,37 +274,37 @@ public class PlayerCopsAndCrimsStats extends PlayerGameStats {
                 this.knifeDamageIncrease = value.getAsInt();
                 break;
             case "SELECTEDKNIFEDEV":
-                if(KNIFESKIN.mapping.contains(value.getAsString().toUpperCase())){
-                    this.selectedKnifeSkin = KNIFESKIN.valueOf(value.getAsString().toUpperCase());
+                if(KnifeSkin.mapping.contains(value.getAsString().toUpperCase())){
+                    this.selectedKnifeSkin = KnifeSkin.valueOf(value.getAsString().toUpperCase());
                 }else{
                     Logger.logWarn("[PlayerAPI.CopsandCrims.KnifeSkin] Unknown value: " + value.getAsString().toUpperCase());
                 }
                 break;
 
             case "SELECTEDOCELOTHELMETDEV":
-                if(ARMORSKIN.mapping.contains(value.getAsString().toUpperCase())){
-                    this.copsHelmetSkin = ARMORSKIN.valueOf(value.getAsString().toUpperCase());
+                if(ArmorSkin.mapping.contains(value.getAsString().toUpperCase())){
+                    this.copsHelmetSkin = ArmorSkin.valueOf(value.getAsString().toUpperCase());
                 }else{
                     Logger.logWarn("[PlayerAPI.CopsandCrims.OcelotHelmet] Unknown value: " + value.getAsString().toUpperCase());
                 }
                 break;
             case "SELECTEDOCELOTCHESTPLATEDEV":
-                if(ARMORSKIN.mapping.contains(value.getAsString().toUpperCase())){
-                    this.copsBodyArmorSkin = ARMORSKIN.valueOf(value.getAsString().toUpperCase());
+                if(ArmorSkin.mapping.contains(value.getAsString().toUpperCase())){
+                    this.copsBodyArmorSkin = ArmorSkin.valueOf(value.getAsString().toUpperCase());
                 }else{
                     Logger.logWarn("[PlayerAPI.CopsandCrims.OcelotArmor] Unknown value: " + value.getAsString().toUpperCase());
                 }
                 break;
             case "SELECTEDCREEPERHELMETDEV":
-                if(ARMORSKIN.mapping.contains(value.getAsString().toUpperCase())){
-                    this.crimsHelmetSkin = ARMORSKIN.valueOf(value.getAsString().toUpperCase());
+                if(ArmorSkin.mapping.contains(value.getAsString().toUpperCase())){
+                    this.crimsHelmetSkin = ArmorSkin.valueOf(value.getAsString().toUpperCase());
                 }else{
                     Logger.logWarn("[PlayerAPI.CopsandCrims.CreeperHelmet] Unknown value: " + value.getAsString().toUpperCase());
                 }
                 break;
             case "SELECTEDCREEPERCHESTPLATEDEV":
-                if(ARMORSKIN.mapping.contains(value.getAsString().toUpperCase())){
-                    this.crimsBodyArmorSkin = ARMORSKIN.valueOf(value.getAsString().toUpperCase());
+                if(ArmorSkin.mapping.contains(value.getAsString().toUpperCase())){
+                    this.crimsBodyArmorSkin = ArmorSkin.valueOf(value.getAsString().toUpperCase());
                 }else{
                     Logger.logWarn("[PlayerAPI.CopsandCrims.CreeperArmor] Unknown value: " + value.getAsString().toUpperCase());
                 }
@@ -390,39 +390,39 @@ public class PlayerCopsAndCrimsStats extends PlayerGameStats {
     private void setPackageValues(JsonArray array){
         for(JsonElement element: array){
             String name = element.getAsString().toUpperCase();
-            if(ARMORSKIN.mapping.contains(name)){
-                this.unlockedArmorSkins.add(ARMORSKIN.valueOf(name));
-            }else if(KNIFESKIN.mapping.contains(name)){
-                this.unlockedKnifeSkins.add(KNIFESKIN.valueOf(name));
-            }else if(RADIOCOMMAND.mapping.contains(name)){
-                this.unlockedRadioCommands.add(RADIOCOMMAND.valueOf(name));
-            }else if(SPRAY.mapping.contains(name)){
-                this.unlockedSprays.add(SPRAY.valueOf(name));
-            }else if(GUNSKIN.mapping.contains(name)){
-                this.unlockedGunSkins.add(GUNSKIN.valueOf(name));
+            if(ArmorSkin.mapping.contains(name)){
+                this.unlockedArmorSkins.add(ArmorSkin.valueOf(name));
+            }else if(KnifeSkin.mapping.contains(name)){
+                this.unlockedKnifeSkins.add(KnifeSkin.valueOf(name));
+            }else if(RadioCommand.mapping.contains(name)){
+                this.unlockedRadioCommands.add(RadioCommand.valueOf(name));
+            }else if(Spray.mapping.contains(name)){
+                this.unlockedSprays.add(Spray.valueOf(name));
+            }else if(GunSkin.mapping.contains(name)){
+                this.unlockedGunSkins.add(GunSkin.valueOf(name));
             }else{
                 Logger.logWarn("[PlayerAPI.CopsandCrims.Packages] Unknown Value: " + name);
             }
         }
     }
 
-    public ArrayList<RADIOCOMMAND> getUnlockedRadioCommands() {
+    public ArrayList<RadioCommand> getUnlockedRadioCommands() {
         return unlockedRadioCommands;
     }
 
-    public ArrayList<ARMORSKIN> getUnlockedArmorSkins() {
+    public ArrayList<ArmorSkin> getUnlockedArmorSkins() {
         return unlockedArmorSkins;
     }
 
-    public ArrayList<KNIFESKIN> getUnlockedKnifeSkins() {
+    public ArrayList<KnifeSkin> getUnlockedKnifeSkins() {
         return unlockedKnifeSkins;
     }
 
-    public ArrayList<GUNSKIN> getUnlockedGunSkins() {
+    public ArrayList<GunSkin> getUnlockedGunSkins() {
         return unlockedGunSkins;
     }
 
-    public ArrayList<SPRAY> getUnlockedSprays() {
+    public ArrayList<Spray> getUnlockedSprays() {
         return unlockedSprays;
     }
 
@@ -534,31 +534,31 @@ public class PlayerCopsAndCrimsStats extends PlayerGameStats {
         return copKillsDeathmatch;
     }
 
-    public GUNSKIN getSelectedCarbineSkin() {
+    public GunSkin getSelectedCarbineSkin() {
         return selectedCarbineSkin;
     }
 
-    public GUNSKIN getSelectedMagnumSkin() {
+    public GunSkin getSelectedMagnumSkin() {
         return selectedMagnumSkin;
     }
 
-    public KNIFESKIN getSelectedKnifeSkin() {
+    public KnifeSkin getSelectedKnifeSkin() {
         return selectedKnifeSkin;
     }
 
-    public ARMORSKIN getCopsHelmetSkin() {
+    public ArmorSkin getCopsHelmetSkin() {
         return copsHelmetSkin;
     }
 
-    public ARMORSKIN getCrimsHelmetSkin() {
+    public ArmorSkin getCrimsHelmetSkin() {
         return crimsHelmetSkin;
     }
 
-    public ARMORSKIN getCopsBodyArmorSkin() {
+    public ArmorSkin getCopsBodyArmorSkin() {
         return copsBodyArmorSkin;
     }
 
-    public ARMORSKIN getCrimsBodyArmorSkin() {
+    public ArmorSkin getCrimsBodyArmorSkin() {
         return crimsBodyArmorSkin;
     }
 

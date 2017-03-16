@@ -1,15 +1,15 @@
 package com.skyerzz.hypixellib.util.games.walls;
 
 import com.skyerzz.hypixellib.Logger;
-import com.skyerzz.hypixellib.util.items.all.Item;
-import com.skyerzz.hypixellib.util.items.all.ItemStack;
+import com.skyerzz.hypixellib.util.item.Item;
+import com.skyerzz.hypixellib.util.item.ItemStack;
 
 import java.util.ArrayList;
 
 /**
  * Created by sky on 12-9-2016.
  */
-public enum BASICSTARTER {
+public enum BasicStarter {
     DWARVEN_SKILLS("Dwarven Skills", 1),
     GRAVE_DIGGER("Grave Digger", 1),
     HUNTER("HUNTER", 3),
@@ -41,7 +41,7 @@ public enum BASICSTARTER {
     private String displayName;
     private int maxLevel;
 
-    BASICSTARTER(String displayName, int maxLevel){
+    BasicStarter(String displayName, int maxLevel){
         this.displayName = displayName;
         this.maxLevel = maxLevel;
     }
@@ -50,7 +50,7 @@ public enum BASICSTARTER {
 
     private static java.util.ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(BASICSTARTER item: BASICSTARTER.values()){
+        for(BasicStarter item: BasicStarter.values()){
             list.add(item.name());
         }
         return list;

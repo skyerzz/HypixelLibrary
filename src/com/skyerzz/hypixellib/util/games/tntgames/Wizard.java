@@ -1,24 +1,24 @@
 package com.skyerzz.hypixellib.util.games.tntgames;
 
-import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.RANK;
+import com.skyerzz.hypixellib.util.Currency;
+import com.skyerzz.hypixellib.util.Rank;
 
 import java.util.ArrayList;
 
 /**
  * Created by sky on 22-7-2016.
  */
-public enum WIZARD {
-    FIRE("Fire Wizard", RANK.NONE),
-    KINETIC("Kinetic Wizard", RANK.NONE),
-    ICE("Ice Wizard", RANK.NONE),
-    WITHER("Wither Wizard", RANK.NONE),
-    BLOOD("Blood Wizard", RANK.NONE);
+public enum Wizard {
+    FIRE("Fire Wizard", Rank.NONE),
+    KINETIC("Kinetic Wizard", Rank.NONE),
+    ICE("Ice Wizard", Rank.NONE),
+    WITHER("Wither Wizard", Rank.NONE),
+    BLOOD("Blood Wizard", Rank.NONE);
 
     private String displayName;
-    private RANK rankRequirement;
+    private Rank rankRequirement;
 
-    WIZARD(String displayName, RANK rankRequirement){
+    Wizard(String displayName, Rank rankRequirement){
         this.displayName = displayName;
         this.rankRequirement = rankRequirement;
     }
@@ -27,7 +27,7 @@ public enum WIZARD {
 
     private static ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(WIZARD item: WIZARD.values()){
+        for(Wizard item: Wizard.values()){
             list.add(item.name());
         }
         return list;
@@ -75,11 +75,11 @@ public enum WIZARD {
          */
     }
 
-    public CURRENCY getCurrencyType(){
-        return CURRENCY.COINS;
+    public Currency getCurrencyType(){
+        return Currency.COINS;
     }
 
-    public RANK getRankRequirement(){
+    public Rank getRankRequirement(){
         return rankRequirement;
     }
 }

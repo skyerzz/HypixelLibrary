@@ -1,4 +1,4 @@
-package com.skyerzz.hypixellib.util.items.all;
+package com.skyerzz.hypixellib.util.item;
 
 /**
  * Created by sky on 8-9-2016.

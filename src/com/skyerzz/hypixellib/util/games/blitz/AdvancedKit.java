@@ -1,7 +1,7 @@
 package com.skyerzz.hypixellib.util.games.blitz;
 
-import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.RANK;
+import com.skyerzz.hypixellib.util.Currency;
+import com.skyerzz.hypixellib.util.Rank;
 import com.skyerzz.hypixellib.util.item.Item;
 import com.skyerzz.hypixellib.util.item.ItemStack;
 
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Created by sky on 19-11-2016.
  */
-public enum ADVANCED_KIT {
+public enum AdvancedKit {
     HORSETAMER("Horsetamer", 45),
     ASTRONAUT("Astronaut", 20),
     TROLL("Troll", 15),
@@ -37,7 +37,7 @@ public enum ADVANCED_KIT {
     private String displayName;
     private int requiredLevel;
 
-    ADVANCED_KIT(String displayName, int level){
+    AdvancedKit(String displayName, int level){
         this.displayName = displayName;
         this.requiredLevel = level;
     }
@@ -46,7 +46,7 @@ public enum ADVANCED_KIT {
 
     private static ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(ADVANCED_KIT item: ADVANCED_KIT.values()){
+        for(AdvancedKit item: AdvancedKit.values()){
             list.add(item.name());
         }
         return list;
@@ -82,11 +82,11 @@ public enum ADVANCED_KIT {
         }
     }
 
-    public CURRENCY getCurrencyType(){
-        return CURRENCY.COINS;
+    public Currency getCurrencyType(){
+        return Currency.COINS;
     }
 
-    public RANK getRankRequirement(){ return RANK.NONE; }
+    public Rank getRankRequirement(){ return Rank.NONE; }
 
     public int getRequiredLevel(){ return requiredLevel;}
 

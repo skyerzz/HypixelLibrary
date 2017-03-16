@@ -3,7 +3,7 @@ package com.skyerzz.hypixellib.util.games.smashheroes;
 /**
  * Created by sky on 15-1-2017.
  */
-public enum BOOSTER {
+public enum Booster {
     _10_PLAYS(10, 6000),
     _30_PLAYS(30, 15000),
     _50_PLAYS(50, 22500),
@@ -11,7 +11,7 @@ public enum BOOSTER {
 
     int games, cost;
 
-    BOOSTER(int games, int cost){
+    Booster(int games, int cost){
         this.games = games;
         this.cost = cost;
     }

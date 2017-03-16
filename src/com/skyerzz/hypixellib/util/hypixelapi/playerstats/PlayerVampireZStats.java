@@ -4,9 +4,9 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.skyerzz.hypixellib.Logger;
 import com.skyerzz.hypixellib.OutDated;
-import com.skyerzz.hypixellib.util.games.vampirez.DISGUISE;
-import com.skyerzz.hypixellib.util.games.vampirez.HUMANPERK;
-import com.skyerzz.hypixellib.util.games.vampirez.VAMPIREPERK;
+import com.skyerzz.hypixellib.util.games.vampirez.Disguise;
+import com.skyerzz.hypixellib.util.games.vampirez.HumanPerk;
+import com.skyerzz.hypixellib.util.games.vampirez.VampirePerk;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -44,11 +44,11 @@ public class PlayerVampireZStats extends PlayerGameStats {
     @OutDated
     private int votes_Plundered, votes_Church, votes_DarkValley, votes_Pyramids, votes_Overhill, votes_Erias;
 
-    private HashMap<HUMANPERK, Integer> humanPerk = new HashMap<HUMANPERK, Integer>();
-    private HashMap<VAMPIREPERK, Integer> vampirePerk = new HashMap<VAMPIREPERK, Integer>();
-    private ArrayList<DISGUISE> unlockedDisguises = new ArrayList<DISGUISE>();
+    private HashMap<HumanPerk, Integer> humanPerk = new HashMap<HumanPerk, Integer>();
+    private HashMap<VampirePerk, Integer> vampirePerk = new HashMap<VampirePerk, Integer>();
+    private ArrayList<Disguise> unlockedDisguises = new ArrayList<Disguise>();
 
-    private DISGUISE selectedDisguise;
+    private Disguise selectedDisguise;
     //</editor-fold>
 
     public PlayerVampireZStats(JsonObject json) {
@@ -61,12 +61,12 @@ public class PlayerVampireZStats extends PlayerGameStats {
 
             String key = e.getKey().toUpperCase();
 
-            if(HUMANPERK.mapping.contains(key)){
-                humanPerk.put(HUMANPERK.valueOf(key), e.getValue().getAsInt()+1);
+            if(HumanPerk.mapping.contains(key)){
+                humanPerk.put(HumanPerk.valueOf(key), e.getValue().getAsInt()+1);
                 continue;
             }
-            if(VAMPIREPERK.mapping.contains(key)){
-                vampirePerk.put(VAMPIREPERK.valueOf(key), e.getValue().getAsInt()+1);
+            if(VampirePerk.mapping.contains(key)){
+                vampirePerk.put(VampirePerk.valueOf(key), e.getValue().getAsInt()+1);
                 continue;
             }
 
@@ -83,7 +83,7 @@ public class PlayerVampireZStats extends PlayerGameStats {
             case "PACKAGES":
                 setPackages();
                 return true;
-            case "DISGUISE":
+            case "Disguise":
                 return setDisguiseValue(value.getAsString());
             case "COMBATTRACKER":
                 this.combatTracker = value.getAsBoolean();
@@ -194,8 +194,8 @@ public class PlayerVampireZStats extends PlayerGameStats {
     private void setPackages(){
         for(JsonElement s: getJsonArray("packages")){
             String value = s.getAsString().toUpperCase();
-            if(DISGUISE.mapping.contains(value)){
-                unlockedDisguises.add(DISGUISE.valueOf(value));
+            if(Disguise.mapping.contains(value)){
+                unlockedDisguises.add(Disguise.valueOf(value));
                 continue;
             }
             //vampireZ doesnt have anything other than disguises in packages. This should never trigger, if it does, something changed!
@@ -206,13 +206,13 @@ public class PlayerVampireZStats extends PlayerGameStats {
     private boolean setDisguiseValue(String value){
         switch(value){
             case "ENDERMAN":
-                this.selectedDisguise = DISGUISE.ATTRACTIVE_ENDERMAN;
+                this.selectedDisguise = Disguise.ATTRACTIVE_ENDERMAN;
                 return true;
             case "SKELETON":
-                this.selectedDisguise = DISGUISE.ATTRACTIVE_SKELETON;
+                this.selectedDisguise = Disguise.ATTRACTIVE_SKELETON;
                 return true;
             case "HEROBRINE":
-                this.selectedDisguise = DISGUISE.ATTRACTIVE;
+                this.selectedDisguise = Disguise.ATTRACTIVE;
                 return true;
             default:
                 return false;
@@ -299,19 +299,19 @@ public class PlayerVampireZStats extends PlayerGameStats {
         return weekly_vampire_wins_a;
     }
 
-    public HashMap<HUMANPERK, Integer> getHumanPerks() {
+    public HashMap<HumanPerk, Integer> getHumanPerks() {
         return humanPerk;
     }
 
-    public HashMap<VAMPIREPERK, Integer> getVampirePerks() {
+    public HashMap<VampirePerk, Integer> getVampirePerks() {
         return vampirePerk;
     }
 
-    public ArrayList<DISGUISE> getUnlockedDisguises() {
+    public ArrayList<Disguise> getUnlockedDisguises() {
         return unlockedDisguises;
     }
 
-    public DISGUISE getSelectedDisguise() {
+    public Disguise getSelectedDisguise() {
         return selectedDisguise;
     }
 
@@ -343,11 +343,11 @@ public class PlayerVampireZStats extends PlayerGameStats {
         return votes_Erias;
     }
 
-    public HashMap<HUMANPERK, Integer> getHumanPerk() {
+    public HashMap<HumanPerk, Integer> getHumanPerk() {
         return humanPerk;
     }
 
-    public HashMap<VAMPIREPERK, Integer> getVampirePerk() {
+    public HashMap<VampirePerk, Integer> getVampirePerk() {
         return vampirePerk;
     }
 }

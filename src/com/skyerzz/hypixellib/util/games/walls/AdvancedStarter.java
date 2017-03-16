@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by sky on 12-9-2016.
  */
-public enum ADVCANCEDSTARTER {
+public enum AdvancedStarter {
     BOSS_SKILLS("Boss Skills", 1, 10),
     BOSS_DIGGER("Boss Digger", 1, 10),
     BOSS_GUARDIAN("Boss Guardian", 1, 10),
@@ -34,7 +34,7 @@ public enum ADVCANCEDSTARTER {
     private int maxLevel;
     private int levelRequirement;
 
-    ADVCANCEDSTARTER(String displayName, int maxLevel, int levelRequirement){
+    AdvancedStarter(String displayName, int maxLevel, int levelRequirement){
         this.displayName = displayName;
         this.maxLevel = maxLevel;
         this.levelRequirement = levelRequirement;
@@ -44,7 +44,7 @@ public enum ADVCANCEDSTARTER {
 
     private static java.util.ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(ADVCANCEDSTARTER item: ADVCANCEDSTARTER.values()){
+        for(AdvancedStarter item: AdvancedStarter.values()){
             list.add(item.name());
         }
         return list;

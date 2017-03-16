@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Created by sky on 25-12-2016.
  */
-public enum PROJECTILE_TRAIL {
+public enum ProjectileTrail {
     VANILLA("Vanilla Trail"),
     HEARTS("Hearts Trail"),
     ENDER("Unknown"),
@@ -20,7 +20,7 @@ public enum PROJECTILE_TRAIL {
 
     private String displayName;
 
-    PROJECTILE_TRAIL(String displayName){
+    ProjectileTrail(String displayName){
         this.displayName = displayName;
     }
 
@@ -28,7 +28,7 @@ public enum PROJECTILE_TRAIL {
 
     private static ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(PROJECTILE_TRAIL item: PROJECTILE_TRAIL.values()){
+        for(ProjectileTrail item: ProjectileTrail.values()){
             list.add(item.name());
         }
         return list;

@@ -1,31 +1,31 @@
 package com.skyerzz.hypixellib.util.games.quake;
 
-import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.RANK;
+import com.skyerzz.hypixellib.util.Currency;
+import com.skyerzz.hypixellib.util.Rank;
 
 import java.util.ArrayList;
 
 /**
  * Created by sky on 7-7-2016.
  */
-public enum CASE {
-    WOOD_HOE("Wooden Case", 0, RANK.NONE),
-    STONE_HOE("Marbled Case", 1000, RANK.NONE),
-    IRON_HOE("Reinforced Case", 2500, RANK.VIP),
-    GOLD_HOE("Plated Case", 4000, RANK.VIP),
-    DIAMOND_HOE("Bling Case", 7000, RANK.VIP),
-    SHINY_WOOD_HOE("Varnished Wood Case", 2000, RANK.VIP),
-    SHINY_STONE_HOE("Polished Marble Case", 2000, RANK.VIP_PLUS),
-    SHINY_IRON_HOE("Polished Reinforced Case", 200000, RANK.MVP),
-    SHINY_GOLD_HOE("Polished Plated Case", 14000, RANK.VIP_PLUS),
-    SHINY_DIAMOND_HOE("name", 100000, RANK.VIP_PLUS);
+public enum Case {
+    WOOD_HOE("Wooden Case", 0, Rank.NONE),
+    STONE_HOE("Marbled Case", 1000, Rank.NONE),
+    IRON_HOE("Reinforced Case", 2500, Rank.VIP),
+    GOLD_HOE("Plated Case", 4000, Rank.VIP),
+    DIAMOND_HOE("Bling Case", 7000, Rank.VIP),
+    SHINY_WOOD_HOE("Varnished Wood Case", 2000, Rank.VIP),
+    SHINY_STONE_HOE("Polished Marble Case", 2000, Rank.VIP_PLUS),
+    SHINY_IRON_HOE("Polished Reinforced Case", 200000, Rank.MVP),
+    SHINY_GOLD_HOE("Polished Plated Case", 14000, Rank.VIP_PLUS),
+    SHINY_DIAMOND_HOE("name", 100000, Rank.VIP_PLUS);
 
 
     private String displayName;
     private int cost;
-    private RANK rankRequirement;
+    private Rank rankRequirement;
 
-    CASE(String displayName, int cost, RANK rankRequirement){
+    Case(String displayName, int cost, Rank rankRequirement){
         this.displayName = displayName;
         this.cost = cost;
         this.rankRequirement = rankRequirement;
@@ -35,7 +35,7 @@ public enum CASE {
 
     private static ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(CASE item: CASE.values()){
+        for(Case item: Case.values()){
             list.add(item.name());
         }
         return list;
@@ -49,9 +49,9 @@ public enum CASE {
         return cost;
     }
 
-    public CURRENCY getCurrencyType(){ return CURRENCY.COINS; }
+    public Currency getCurrencyType(){ return Currency.COINS; }
 
-    public RANK getRankRequirement(){
+    public Rank getRankRequirement(){
         return rankRequirement;
     }
 }

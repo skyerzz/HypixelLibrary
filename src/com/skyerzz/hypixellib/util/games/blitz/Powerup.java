@@ -1,15 +1,15 @@
 package com.skyerzz.hypixellib.util.games.blitz;
 
 import com.skyerzz.hypixellib.OutDated;
-import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.RANK;
+import com.skyerzz.hypixellib.util.Currency;
+import com.skyerzz.hypixellib.util.Rank;
 
 import java.util.ArrayList;
 
 /**
  * Created by sky on 19-11-2016.
  */
-public enum BLITZ_POWERUP {
+public enum Powerup {
     @OutDated
     RAPID_FIRE("DOESNT EXIST ANYMORE- RapidFire", -1),
     @OutDated
@@ -42,7 +42,7 @@ public enum BLITZ_POWERUP {
     private String displayName;
     private int cost;
 
-    BLITZ_POWERUP(String displayName, int cost){
+    Powerup(String displayName, int cost){
         this.displayName = displayName;
         this.cost = cost;
     }
@@ -51,7 +51,7 @@ public enum BLITZ_POWERUP {
 
     private static ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(BLITZ_POWERUP item: BLITZ_POWERUP.values()){
+        for(Powerup item: Powerup.values()){
             list.add(item.name());
         }
         return list;
@@ -65,9 +65,9 @@ public enum BLITZ_POWERUP {
         return cost;
     }
 
-    public CURRENCY getCurrencyType(){ return CURRENCY.COINS; }
+    public Currency getCurrencyType(){ return Currency.COINS; }
 
-    public RANK getRankRequirement(){
-        return RANK.NONE;
+    public Rank getRankRequirement(){
+        return Rank.NONE;
     }
 }

@@ -1,14 +1,14 @@
 package com.skyerzz.hypixellib.util.games.blitz;
 
-import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.RANK;
+import com.skyerzz.hypixellib.util.Currency;
+import com.skyerzz.hypixellib.util.Rank;
 
 import java.util.ArrayList;
 
 /**
  * Created by sky on 19-11-2016.
  */
-public enum FINISHER {
+public enum Finisher {
     BOOM("Boom", 20),
     LIGHTNING_STRIKES("Lightning strikes", 20),
     CREEPER_FIREWORK("Creeper firework", 20),
@@ -20,7 +20,7 @@ public enum FINISHER {
     private String displayName;
     private int cost;
 
-    FINISHER(String displayName, int cost){
+    Finisher(String displayName, int cost){
         this.displayName = displayName;
         this.cost = cost;
     }
@@ -29,7 +29,7 @@ public enum FINISHER {
 
     private static ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(FINISHER item: FINISHER.values()){
+        for(Finisher item: Finisher.values()){
             list.add(item.name());
         }
         return list;
@@ -43,9 +43,9 @@ public enum FINISHER {
         return cost;
     }
 
-    public CURRENCY getCurrencyType(){ return CURRENCY.MYSTERY_DUST; }
+    public Currency getCurrencyType(){ return Currency.MYSTERY_DUST; }
 
-    public RANK getRankRequirement(){
-        return RANK.NONE;
+    public Rank getRankRequirement(){
+        return Rank.NONE;
     }
 }

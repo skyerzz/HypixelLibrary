@@ -1,7 +1,7 @@
 package com.skyerzz.hypixellib.util.games.copsandcrims;
 
-import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.RANK;
+import com.skyerzz.hypixellib.util.Currency;
+import com.skyerzz.hypixellib.util.Rank;
 
 import java.util.ArrayList;
 
@@ -9,18 +9,18 @@ import java.util.ArrayList;
 /**
  * Created by sky on 10-8-2016.
  */
-public enum SPRAY {
-    CREEPER(    "Spray: Red Creeper",   300, RANK.MVP_PLUS),
-    OCELOT(     "Spray: Blue Ocelot",   300, RANK.MVP_PLUS),
-    MVP(        "Spray: MVP+ FTW",      300, RANK.MVP_PLUS),
-    HEADSHOT(   "Spray: Headshot",      300, RANK.MVP_PLUS),
-    REKT(       "Spray: #REKT",         300, RANK.MVP_PLUS);
+public enum Spray {
+    CREEPER(    "Spray: Red Creeper",   300, Rank.MVP_PLUS),
+    OCELOT(     "Spray: Blue Ocelot",   300, Rank.MVP_PLUS),
+    MVP(        "Spray: MVP+ FTW",      300, Rank.MVP_PLUS),
+    HEADSHOT(   "Spray: Headshot",      300, Rank.MVP_PLUS),
+    REKT(       "Spray: #REKT",         300, Rank.MVP_PLUS);
 
     private String displayName;
     private int cost;
-    private RANK rankRequirement;
+    private Rank rankRequirement;
 
-    SPRAY(String displayName, int cost, RANK rankRequirement){
+    Spray(String displayName, int cost, Rank rankRequirement){
         this.displayName = displayName;
         this.cost = cost;
         this.rankRequirement = rankRequirement;
@@ -30,7 +30,7 @@ public enum SPRAY {
 
     private static ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(SPRAY item: SPRAY.values()){
+        for(Spray item: Spray.values()){
             list.add(item.name());
         }
         return list;
@@ -44,9 +44,9 @@ public enum SPRAY {
         return cost;
     }
 
-    public RANK getRankRequirement(){
+    public Rank getRankRequirement(){
         return rankRequirement;
     }
 
-    public CURRENCY getCurrency() { return CURRENCY.COINS; }
+    public Currency getCurrency() { return Currency.COINS; }
 }

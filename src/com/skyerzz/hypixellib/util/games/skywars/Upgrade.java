@@ -5,14 +5,14 @@ import java.util.ArrayList;
 /**
  * Created by sky on 25-12-2016.
  */
-public enum UPGRADE {
+public enum Upgrade {
     XEZBETH_LUCK("Xezbeth Luck", 3),
     HARVESTING_SEASON("Harvesting Season", 5);
 
     private String displayName;
     private int maxLevel;
 
-    UPGRADE(String displayName, int maxLevel){
+    Upgrade(String displayName, int maxLevel){
         this.displayName = displayName;
         this.maxLevel = maxLevel;
     }
@@ -21,7 +21,7 @@ public enum UPGRADE {
 
     private static ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(UPGRADE item: UPGRADE.values()){
+        for(Upgrade item: Upgrade.values()){
             list.add(item.name());
         }
         return list;

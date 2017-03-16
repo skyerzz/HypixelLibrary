@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Created by sky on 27-2-2017.
  */
-public enum COMBATUPGRADE {
+public enum CombatUpgrade {
     DAMAGE("Melee Upgrade", "Melee Damage: %%VALUE%%"),
     HEALTH("Helath Upgrade", "Maximum Health: %%VALUE%%"),
     ENERGY("Energy Upgrade", "Maximum Energy: %%VALUE%%"),
@@ -13,7 +13,7 @@ public enum COMBATUPGRADE {
 
     private String name, description;
 
-    COMBATUPGRADE(String name, String description){
+    CombatUpgrade(String name, String description){
         this.name = name;
         this.description = description;
     }
@@ -22,7 +22,7 @@ public enum COMBATUPGRADE {
 
     private static java.util.ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(COMBATUPGRADE item: COMBATUPGRADE.values()){
+        for(CombatUpgrade item: CombatUpgrade.values()){
             list.add(item.name());
         }
         return list;

@@ -7,9 +7,9 @@ import java.util.ArrayList;
 /**
  * Created by sky on 7-1-2017.
  */
-public enum HERO {
+public enum Hero {
     //<editor-fold desc="[BULK]">
-    THE_BULK("Bulk", "Capable of smashing anything that stands in front of him, he is one of the world's most fearsome Heroes. Try not to anger him...", CLASSTYPE.MELEE, 2, 0, 0,
+    THE_BULK("Bulk", "Capable of smashing anything that stands in front of him, he is one of the world's most fearsome Heroes. Try not to anger him...", ClassType.MELEE, 2, 0, 0,
         new SmashAbility(
                  "BOULDER",
                  "BULK THROW!",
@@ -41,7 +41,7 @@ public enum HERO {
     ),
     //</editor-fold>
     //<editor-fold desc="[GENERAL CLUCK]">
-    GENERAL_CLUCK("General Cluck", "Bawk bawk...BACAAAWWWK!", CLASSTYPE.RANGED, 1, 0, 0,
+    GENERAL_CLUCK("General Cluck", "Bawk bawk...BACAAAWWWK!", ClassType.RANGED, 1, 0, 0,
         new SmashAbility(
                 "BAZOOKA",
                 "Shoot Rocket",
@@ -73,7 +73,7 @@ public enum HERO {
     ),
     //</editor-fold>
     //<editor-fold desc="[CAKE MONSTER]">
-    CAKE_MONSTER("Cake Monster", "This pastry-loving monster has one dream and one dream only. He wishes to become the world's most renowned chef!", CLASSTYPE.MELEE, 2, 0, 0,
+    CAKE_MONSTER("Cake Monster", "This pastry-loving monster has one dream and one dream only. He wishes to become the world's most renowned chef!", ClassType.MELEE, 2, 0, 0,
         new SmashAbility(
                 "SWING_PIN",
                 "Swing Pin",
@@ -102,7 +102,7 @@ public enum HERO {
     ),
     //</editor-fold>
     //<editor-fold desc="[BOTMON]">
-    BOTMUN("Botmon", "After achieving mental and physical perfection through arduous training, he now fights crime dressed up as a bat. He is vengeance, he is the night, he is...the Botmon", CLASSTYPE.RANGED, 1, 0, 0,
+    BOTMUN("Botmon", "After achieving mental and physical perfection through arduous training, he now fights crime dressed up as a bat. He is vengeance, he is the night, he is...the Botmon", ClassType.RANGED, 1, 0, 0,
         new SmashAbility(
                 "BATARANG",
                 "Throw Botarang",
@@ -132,7 +132,7 @@ public enum HERO {
     ),
     //</editor-fold>
     //<editor-fold desc="[TINMAN]">
-    TINMAN("Tinman", "We have always been taught and shown that iron is stronger than tin. But is it really? Tinman is here to prove otherwise!", CLASSTYPE.RANGED, 1, 0, 10000,
+    TINMAN("Tinman", "We have always been taught and shown that iron is stronger than tin. But is it really? Tinman is here to prove otherwise!", ClassType.RANGED, 1, 0, 10000,
         new SmashAbility(
                 "LASER_CANNON",
                 "Shoot Laser",
@@ -163,7 +163,7 @@ public enum HERO {
     ),
     //</editor-fold>
     //<editor-fold desc="[MARAUDER]">
-    MARAUDER("Marauder", "His real name is a mystery. Rumor says that he used to be a valiant knight known by everyone in the galaxy. All we know is that he utilizes Dark Energy to do his evil deeds", CLASSTYPE.MELEE, 2, 0, 10000,
+    MARAUDER("Marauder", "His real name is a mystery. Rumor says that he used to be a valiant knight known by everyone in the galaxy. All we know is that he utilizes Dark Energy to do his evil deeds", ClassType.MELEE, 2, 0, 10000,
         new SmashAbility(
                 "FORCE_LIGHTNING",
                 "Lightning",
@@ -194,7 +194,7 @@ public enum HERO {
     ),
     //</editor-fold>
     //<editor-fold desc="[SPOODERMAN]">
-    SPODERMAN("Spooderman", "Due 2 n unfortunate accidnet, spooderman became who he iz aftur gettin bit by a spooder. dis caused him 2 gain incredible abilities at teh cost of brain funcshun. with graet powr comes graet reshponsibility", CLASSTYPE.HYBRID, 4, 0, 25000,
+    SPODERMAN("Spooderman", "Due 2 n unfortunate accidnet, spooderman became who he iz aftur gettin bit by a spooder. dis caused him 2 gain incredible abilities at teh cost of brain funcshun. with graet powr comes graet reshponsibility", ClassType.HYBRID, 4, 0, 25000,
         new SmashAbility(
                 "SPIDER_KICK",
                 "Spooder Kick",
@@ -226,7 +226,7 @@ public enum HERO {
     ),
     //</editor-fold>
     //<editor-fold desc="[PUG]">
-    PUG("Pug", "Don't get fooled by this puppy's cuteness! The last thing Pug wants is a bely rub!", CLASSTYPE.MELEE, 2, 0, 25000,
+    PUG("Pug", "Don't get fooled by this puppy's cuteness! The last thing Pug wants is a bely rub!", ClassType.MELEE, 2, 0, 25000,
         new SmashAbility(
                 "BITE",
                 "Bite",
@@ -256,7 +256,7 @@ public enum HERO {
     ),
     //</editor-fold>
     //<editor-fold desc="[CRYOMANCER]">
-    FROSTY("Cryomancer", "As a Mage who specialized in the power of Ice, he is pretty cool. Hehe heh hehehe heh... heheheheh...hehe...ehehe......heh...", CLASSTYPE.HYBRID, 3, 0, 25000,
+    FROSTY("Cryomancer", "As a Mage who specialized in the power of Ice, he is pretty cool. Hehe heh hehehe heh... heheheheh...hehe...ehehe......heh...", ClassType.HYBRID, 3, 0, 25000,
         new SmashAbility(
                 "FROSTBOLT",
                 "Frostbolt",
@@ -285,7 +285,7 @@ public enum HERO {
     ),
     //</editor-fold>
     //<editor-fold desc="[SGT SHIELD]">
-    SERGEANT_SHIELD("Sgt. Shield", "After experimenting with a dangerous Irish super serum and tons of aerobics, Sergeant Shield became the pinnacle of human physical perfection. He throws his shield at his foes and can block with it. A fantastic melee fighter, some might call him the One-man army", CLASSTYPE.HYBRID, 3, 0, 25000,
+    SERGEANT_SHIELD("Sgt. Shield", "After experimenting with a dangerous Irish super serum and tons of aerobics, Sergeant Shield became the pinnacle of human physical perfection. He throws his shield at his foes and can block with it. A fantastic melee fighter, some might call him the One-man army", ClassType.HYBRID, 3, 0, 25000,
         new SmashAbility(
                 "SHIELD_BASH",
                 "Shield",
@@ -317,7 +317,7 @@ public enum HERO {
     ),
     //</editor-fold>
     //<editor-fold desc="[KARAKOT]">
-    GOKU("Karakot", "One of Earth's greatest fighters, Karakot does his best to use his strength and amazing skills to uphold peace", CLASSTYPE.HYBRID, 3, 0, 50000,
+    GOKU("Karakot", "One of Earth's greatest fighters, Karakot does his best to use his strength and amazing skills to uphold peace", ClassType.HYBRID, 3, 0, 50000,
         new SmashAbility(
                 "KI_BLAST",
                 "Ki Blast",
@@ -349,7 +349,7 @@ public enum HERO {
     ),
     //</editor-fold>
     //<editor-fold desc="[Skullfire]">
-    SKULLFIRE("Skullfire", "As a professional Cops and Crims player, Skullfire causes terror and chaos using his favourite weapon; The Deagle", CLASSTYPE.RANGED, 3, 0, 50000,
+    SKULLFIRE("Skullfire", "As a professional Cops and Crims player, Skullfire causes terror and chaos using his favourite weapon; The Deagle", ClassType.RANGED, 3, 0, 50000,
         new SmashAbility(
                 "DESERT_EAGLE",
                 "Deagle",
@@ -381,7 +381,7 @@ public enum HERO {
     ),
     //</editor-fold>
     //<editor-fold desc="[SANIC]">
-    SANIC("Sanic", "Gotta go fast", CLASSTYPE.MELEE, 2, 0, 75000,
+    SANIC("Sanic", "Gotta go fast", ClassType.MELEE, 2, 0, 75000,
         new SmashAbility(
                 "DASH",
                 "Spin Dash",
@@ -409,7 +409,7 @@ public enum HERO {
     ),
     //</editor-fold>
     //<editor-fold desc="[Void CRAWLER]">
-    DUSK_CRAWLER("Void Crawler", "A few years ago, reports were filed claiming he appeared out of thin air to steal an artifact weapon from the ruins of an ancient location called Warlords Armory, and then disappeared again. His origins are unknown", CLASSTYPE.MELEE, 2, 100, 100000,
+    DUSK_CRAWLER("Void Crawler", "A few years ago, reports were filed claiming he appeared out of thin air to steal an artifact weapon from the ruins of an ancient location called Warlords Armory, and then disappeared again. His origins are unknown", ClassType.MELEE, 2, 100, 100000,
         new SmashAbility(
                 "VOID_SLASH",
                 "Void Slash",
@@ -441,7 +441,7 @@ public enum HERO {
     ),
     //</editor-fold>
     //<editor-fold desc="[Shoop]">
-    SHOOP_DA_WHOOP("Shoop", "Shoop is capable of emitting light from his oral cavity through a process of optical amplification based on the stimulated emission of electromagnetic radiation. In other words... HE CAN SHOOT LASERS OUT OF HIS MOUTH!", CLASSTYPE.RANGED, 3, 150, 150000,
+    SHOOP_DA_WHOOP("Shoop", "Shoop is capable of emitting light from his oral cavity through a process of optical amplification based on the stimulated emission of electromagnetic radiation. In other words... HE CAN SHOOT LASERS OUT OF HIS MOUTH!", ClassType.RANGED, 3, 150, 150000,
         new SmashAbility(
                 "STATIC_LASER",
                 "Lightning Bolt",
@@ -472,7 +472,7 @@ public enum HERO {
     ),
     //</editor-fold>
     //<editor-fold desc="[GreenHood]">
-    GREEN_HOOD("Green Hood", "By day, a waiter in a French restaurant; by night a vigilante archer. The Green Hood uses his martial arts and bow skills to destroy his enemies", CLASSTYPE.RANGED, 4, 200, 200000,
+    GREEN_HOOD("Green Hood", "By day, a waiter in a French restaurant; by night a vigilante archer. The Green Hood uses his martial arts and bow skills to destroy his enemies", ClassType.RANGED, 4, 200, 200000,
         new SmashAbility(
                 "NOTCHED_BOW",
                 "Enhanced Bow",
@@ -536,11 +536,11 @@ public enum HERO {
 
 
     private String displayName, description;
-    private CLASSTYPE classType;
+    private ClassType classType;
     private int difficulty, requiredSmashLevel, unlockCost;
     private SmashAbility quickMove, chargeMove, smashMove, passive;
 
-    HERO(String displayName, String description, CLASSTYPE classType, int difficulty, int requiredSmashLevel, int unlockCost,
+    Hero(String displayName, String description, ClassType classType, int difficulty, int requiredSmashLevel, int unlockCost,
          SmashAbility quickMove, SmashAbility chargeMove, SmashAbility smashMove, SmashAbility passive){
         this.displayName = displayName;
         this.description = description;
@@ -559,7 +559,7 @@ public enum HERO {
 
     private static ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(HERO item: HERO.values()){
+        for(Hero item: Hero.values()){
             list.add(item.name());
         }
         return list;
@@ -573,7 +573,7 @@ public enum HERO {
         return description;
     }
 
-    public CLASSTYPE getClassType() {
+    public ClassType getClassType() {
         return classType;
     }
 

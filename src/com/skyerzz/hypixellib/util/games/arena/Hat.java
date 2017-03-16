@@ -1,15 +1,14 @@
 package com.skyerzz.hypixellib.util.games.arena;
 
-import com.skyerzz.hypixellib.util.items.all.Item;
-import com.skyerzz.hypixellib.util.items.all.ItemStack;
-import com.sun.xml.internal.ws.model.ReflectAnnotationReader;
+import com.skyerzz.hypixellib.util.item.Item;
+import com.skyerzz.hypixellib.util.item.ItemStack;
 
 import java.util.ArrayList;
 
 /**
  * Created by Skyerzz-LAPOTOP on 02/03/2017.
  */
-public enum HAT {
+public enum Hat {
     TROLL("Troll Hat", HATRARITY.COMMON, new ItemStack(Item.bedrock, 1), "umadbro?", "Trolol!", "Try harder bro"),
     COMPLIMENT("Compliment Hat", HATRARITY.COMMON, new ItemStack(Item.commandBlock, 1), "You're amazing!", "I love your style!", "You smell great!"),
     INSULT("Insult Hat", HATRARITY.COMMON, new ItemStack(Item.obsidian, 1), "You suck!", "I'm better!", "You smell bad!"),
@@ -66,7 +65,7 @@ public enum HAT {
     private ItemStack hatItem;
     private ArrayList<String> phrases = new ArrayList<>();
 
-    HAT(String name, HATRARITY rarity, ItemStack hatItem, String...phrases){
+    Hat(String name, HATRARITY rarity, ItemStack hatItem, String...phrases){
         this.name = name;
         this.rarity = rarity;
         this.hatItem = hatItem;
@@ -79,7 +78,7 @@ public enum HAT {
 
     private static ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(HAT item: HAT.values()){
+        for(Hat item: Hat.values()){
             list.add(item.name());
         }
         return list;

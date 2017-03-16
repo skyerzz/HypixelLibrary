@@ -1,14 +1,14 @@
 package com.skyerzz.hypixellib.util.games.blitz;
 
-import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.RANK;
+import com.skyerzz.hypixellib.util.Currency;
+import com.skyerzz.hypixellib.util.Rank;
 
 import java.util.ArrayList;
 
 /**
  * Created by sky on 19-11-2016.
  */
-public enum KILL_EFFECT {
+public enum KillEffect {
     SPEED("Speed", 0),
     RESISTANCE("Resistance", 5000),
     REGENERATION("Regeneration", 5000),
@@ -18,7 +18,7 @@ public enum KILL_EFFECT {
     private String displayName;
     private int cost;
 
-    KILL_EFFECT(String displayName, int cost){
+    KillEffect(String displayName, int cost){
         this.displayName = displayName;
         this.cost = cost;
     }
@@ -27,7 +27,7 @@ public enum KILL_EFFECT {
 
     private static ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(KILL_EFFECT item: KILL_EFFECT.values()){
+        for(KillEffect item: KillEffect.values()){
             list.add(item.name());
         }
         return list;
@@ -41,9 +41,9 @@ public enum KILL_EFFECT {
         return cost;
     }
 
-    public CURRENCY getCurrencyType(){ return CURRENCY.COINS; }
+    public Currency getCurrencyType(){ return Currency.COINS; }
 
-    public RANK getRankRequirement(){
-        return RANK.NONE;
+    public Rank getRankRequirement(){
+        return Rank.NONE;
     }
 }

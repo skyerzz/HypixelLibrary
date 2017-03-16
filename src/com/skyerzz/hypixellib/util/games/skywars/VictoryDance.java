@@ -5,14 +5,14 @@ import java.util.ArrayList;
 /**
  * Created by sky on 25-12-2016.
  */
-public enum VICTORY_DANCE {
+public enum VictoryDance {
     FIREWORKS("Fireworks Victory Dance"),
     DRAGON_RIDER("Dragon Rider Victory Dance"),
     GUARDIANS("Guardians Victory Dance");
 
     private String displayName;
 
-    VICTORY_DANCE(String displayName){
+    VictoryDance(String displayName){
         this.displayName = displayName;
     }
 
@@ -20,7 +20,7 @@ public enum VICTORY_DANCE {
 
     private static ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(VICTORY_DANCE item: VICTORY_DANCE.values()){
+        for(VictoryDance item: VictoryDance.values()){
             list.add(item.name());
         }
         return list;

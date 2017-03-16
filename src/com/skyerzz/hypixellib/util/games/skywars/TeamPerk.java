@@ -1,38 +1,38 @@
 package com.skyerzz.hypixellib.util.games.skywars;
 
-import com.skyerzz.hypixellib.util.CURRENCY;
+import com.skyerzz.hypixellib.util.Currency;
 
 import java.util.ArrayList;
 
 /**
  * Created by sky on 25-12-2016.
  */
-public enum TEAM_PERK {
-    ARROW_RECOVERY("Arrow Recovery", RARITY.RARE, 5),
-    BLAZING_ARROWS("Blazing Arrows", RARITY.RARE, 5),
-    BRIDGER("Bridger", RARITY.COMMON, 5),
-    ENDER_MASTERY("Ender Mastery", RARITY.COMMON, 5),
-    ENVIRONMENTAL_EXPERT("Environmental Expert", RARITY.RARE, 5),
-    INSTANT_SMELTING("Instant Smelting", RARITY.COMMON, 1),
-    JUGGERNAUT("Juggernaut", RARITY.RARE, 5),
-    LUCKY_CHARM("Lucky Charm", RARITY.COMMON, 6), //todo check final level & prices
-    MARKSMANSHIP("Marksmanship", RARITY.LEGENDARY, 1),
-    MINING_EXPERTISE("Mining Expertise", RARITY.COMMON, 5),
-    SPEED_BOOST("Speed Boost", RARITY.RARE, 5),
-    RESISTANCE_BOOST("Resistance_boost Boost", RARITY.COMMON, 3),
-    SAVIOR("Savior", RARITY.COMMON, 5),
-    KNOWLEDGE("Knowledge", RARITY.COMMON, 3),
-    NOURISHMENT("Nourishment", RARITY.COMMON, 1),
-    ANNOY_O_MITE("Annoy-o-mite", RARITY.RARE, 5),
-    REVENGE("Revenge", RARITY.LEGENDARY, 5),
-    FAT("Fat", RARITY.RARE, 5);
+public enum TeamPerk {
+    ARROW_RECOVERY("Arrow Recovery", Rarity.RARE, 5),
+    BLAZING_ARROWS("Blazing Arrows", Rarity.RARE, 5),
+    BRIDGER("Bridger", Rarity.COMMON, 5),
+    ENDER_MASTERY("Ender Mastery", Rarity.COMMON, 5),
+    ENVIRONMENTAL_EXPERT("Environmental Expert", Rarity.RARE, 5),
+    INSTANT_SMELTING("Instant Smelting", Rarity.COMMON, 1),
+    JUGGERNAUT("Juggernaut", Rarity.RARE, 5),
+    LUCKY_CHARM("Lucky Charm", Rarity.COMMON, 6), //todo check final level & prices
+    MARKSMANSHIP("Marksmanship", Rarity.LEGENDARY, 1),
+    MINING_EXPERTISE("Mining Expertise", Rarity.COMMON, 5),
+    SPEED_BOOST("Speed Boost", Rarity.RARE, 5),
+    RESISTANCE_BOOST("Resistance_boost Boost", Rarity.COMMON, 3),
+    SAVIOR("Savior", Rarity.COMMON, 5),
+    KNOWLEDGE("Knowledge", Rarity.COMMON, 3),
+    NOURISHMENT("Nourishment", Rarity.COMMON, 1),
+    ANNOY_O_MITE("Annoy-o-mite", Rarity.RARE, 5),
+    REVENGE("Revenge", Rarity.LEGENDARY, 5),
+    FAT("Fat", Rarity.RARE, 5);
 
 
     private String displayName;
-    private RARITY rarity;
+    private Rarity rarity;
     private int maxLevel;
 
-    TEAM_PERK(String displayName, RARITY rarity, int maxLevel){
+    TeamPerk(String displayName, Rarity rarity, int maxLevel){
         this.displayName = displayName;
         this.rarity = rarity;
         this.maxLevel = maxLevel;
@@ -42,7 +42,7 @@ public enum TEAM_PERK {
 
     private static ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(TEAM_PERK item: TEAM_PERK.values()){
+        for(TeamPerk item: TeamPerk.values()){
             list.add(item.name());
         }
         return list;
@@ -81,13 +81,13 @@ public enum TEAM_PERK {
         return -1;
     }
 
-    public RARITY getRarity(){
+    public Rarity getRarity(){
         return rarity;
     }
 
     public int getMaxLevel() { return maxLevel; }
 
-    public CURRENCY getCurrencyType(){ return CURRENCY.COINS; }
+    public Currency getCurrencyType(){ return Currency.COINS; }
 
     public String getDescription(int level){
         if(level < 1 || level > maxLevel){

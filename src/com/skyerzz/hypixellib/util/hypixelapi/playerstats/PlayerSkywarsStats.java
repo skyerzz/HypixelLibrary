@@ -6,7 +6,6 @@ import com.google.gson.JsonObject;
 import com.skyerzz.hypixellib.Logger;
 import com.skyerzz.hypixellib.OutDated;
 import com.skyerzz.hypixellib.util.games.skywars.*;
-import sun.rmi.runtime.Log;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,89 +18,89 @@ public class PlayerSkywarsStats extends PlayerGameStats {
 
     //<editor-fold desc="[Global Variables]">
     private ArrayList<String> favoritedMaps = new ArrayList<>();
-    private ArrayList<VICTORY_DANCE> unlockedVictoryDances = new ArrayList<>();
-    private ArrayList<DEATH_CRY> unlockedDeathCries = new ArrayList<>();
-    private ArrayList<CAGE> unlockedCages = new ArrayList<>();
-    private ArrayList<PROJECTILE_TRAIL> unlockedProjectileTrails = new ArrayList<>();
-    private ArrayList<KILL_EFFECT> unlockedKillEffects = new ArrayList<>();
-    private HashMap<UPGRADE, Integer> unlockedUpgrades = new HashMap<>();
+    private ArrayList<VictoryDance> unlockedVictoryDances = new ArrayList<>();
+    private ArrayList<DeathCry> unlockedDeathCries = new ArrayList<>();
+    private ArrayList<Cage> unlockedCages = new ArrayList<>();
+    private ArrayList<ProjectileTrail> unlockedProjectileTrails = new ArrayList<>();
+    private ArrayList<KillEffect> unlockedKillEffects = new ArrayList<>();
+    private HashMap<Upgrade, Integer> unlockedUpgrades = new HashMap<>();
 
-    private ArrayList<SOLO_KIT> unlockedSoloKits = new ArrayList<>();
-    private ArrayList<TEAM_KIT> unlockedTeamKits = new ArrayList<>();
-    private HashMap<RANKED_KIT, Integer> unlockedRankedKits = new HashMap<>();
-    private HashMap<MEGA_KIT, Integer> unlockedMegaKits = new HashMap<>();
+    private ArrayList<SoloKit> unlockedSoloKits = new ArrayList<>();
+    private ArrayList<TeamKit> unlockedTeamKits = new ArrayList<>();
+    private HashMap<RankedKit, Integer> unlockedRankedKits = new HashMap<>();
+    private HashMap<MegaKit, Integer> unlockedMegaKits = new HashMap<>();
 
-    private HashMap<SOLO_PERK, Integer> unlockedSoloPerks = new HashMap<>();
-    private HashMap<TEAM_PERK, Integer> unlockedTeamPerks = new HashMap<>();
-    private HashMap<RANKED_PERK, Integer> unlockedRankedPerks = new HashMap<>();
-    private HashMap<MEGA_PERK, Integer> unlockedMegaPerks = new HashMap<>();
+    private HashMap<SoloPerk, Integer> unlockedSoloPerks = new HashMap<>();
+    private HashMap<TeamPerk, Integer> unlockedTeamPerks = new HashMap<>();
+    private HashMap<RankedPerk, Integer> unlockedRankedPerks = new HashMap<>();
+    private HashMap<MegaPerk, Integer> unlockedMegaPerks = new HashMap<>();
 
-    private HashMap<SOLO_KIT, Integer> survivedPlayersBySoloKit = new HashMap<>();
-    private HashMap<TEAM_KIT, Integer> survivedPlayersByTeamKit = new HashMap<>();
-    private HashMap<RANKED_KIT, Integer> survivedPlayersByRankedKit = new HashMap<>();
-    private HashMap<MEGA_KIT, Integer> survivedPlayersByMegaKit = new HashMap<>();
-    private HashMap<SOLO_KIT, Integer> lossesBySoloKit = new HashMap<>();
-    private HashMap<TEAM_KIT, Integer> lossesByTeamKit = new HashMap<>();
-    private HashMap<RANKED_KIT, Integer> lossesByRankedKit = new HashMap<>();
-    private HashMap<MEGA_KIT, Integer> lossesByMegaKit = new HashMap<>();
-    private HashMap<SOLO_KIT, Integer> winsBySoloKit = new HashMap<>();
-    private HashMap<TEAM_KIT, Integer> winsByTeamKit = new HashMap<>();
-    private HashMap<RANKED_KIT, Integer> winsByRankedKit = new HashMap<>();
-    private HashMap<MEGA_KIT, Integer> winsByMegaKit = new HashMap<>();
-    private HashMap<SOLO_KIT, Integer> gamesBySoloKit = new HashMap<>();
-    private HashMap<TEAM_KIT, Integer> gamesByTeamKit = new HashMap<>();
-    private HashMap<RANKED_KIT, Integer> gamesByRankedKit = new HashMap<>();
-    private HashMap<MEGA_KIT, Integer> gamesByMegaKit = new HashMap<>();
-    private HashMap<SOLO_KIT, Integer> assistsBySoloKit = new HashMap<>();
-    private HashMap<TEAM_KIT, Integer> assistsByTeamKit = new HashMap<>();
-    private HashMap<RANKED_KIT, Integer> assistsByRankedKit = new HashMap<>();
-    private HashMap<MEGA_KIT, Integer> assistsByMegaKit = new HashMap<>();
-    private HashMap<SOLO_KIT, Integer> killsBySoloKit = new HashMap<>();
-    private HashMap<TEAM_KIT, Integer> killsByTeamKit = new HashMap<>();
-    private HashMap<RANKED_KIT, Integer> killsByRankedKit = new HashMap<>();
-    private HashMap<MEGA_KIT, Integer> killsByMegaKit = new HashMap<>();
-    private HashMap<SOLO_KIT, Integer> deathsBySoloKit = new HashMap<>();
-    private HashMap<TEAM_KIT, Integer> deathsByTeamKit = new HashMap<>();
-    private HashMap<RANKED_KIT, Integer> deathsByRankedKit = new HashMap<>();
-    private HashMap<MEGA_KIT, Integer> deathsByMegaKit = new HashMap<>();
-    private HashMap<SOLO_KIT, Integer> arrowsHitBySoloKit = new HashMap<>();
-    private HashMap<TEAM_KIT, Integer> arrowsHitByTeamKit = new HashMap<>();
-    private HashMap<RANKED_KIT, Integer> arrowsHitByRankedKit = new HashMap<>();
-    private HashMap<MEGA_KIT, Integer> arrowsHitByMegaKit = new HashMap<>();
-    private HashMap<SOLO_KIT, Integer> chestsOpenedBySoloKit = new HashMap<>();
-    private HashMap<TEAM_KIT, Integer> chestsOpenedByTeamKit = new HashMap<>();
-    private HashMap<RANKED_KIT, Integer> chestsOpenedByRankedKit = new HashMap<>();
-    private HashMap<MEGA_KIT, Integer> chestsOpenedByMegaKit = new HashMap<>();
-    private HashMap<SOLO_KIT, Integer> timePlayedBySoloKit = new HashMap<>();
-    private HashMap<TEAM_KIT, Integer> timePlayedByTeamKit = new HashMap<>();
-    private HashMap<RANKED_KIT, Integer> timePlayedByRankedKit = new HashMap<>();
-    private HashMap<MEGA_KIT, Integer> timePlayedByMegaKit = new HashMap<>();
-    private HashMap<SOLO_KIT, Integer> fastestWinBySoloKit = new HashMap<>();
-    private HashMap<TEAM_KIT, Integer> fastestWinByTeamKit = new HashMap<>();
-    private HashMap<RANKED_KIT, Integer> fastestWinByRankedKit = new HashMap<>();
-    private HashMap<MEGA_KIT, Integer> fastestWinByMegaKit = new HashMap<>();
-    private HashMap<SOLO_KIT, Integer> arrowsShotBySoloKit = new HashMap<>();
-    private HashMap<TEAM_KIT, Integer> arrowsShotByTeamKit = new HashMap<>();
-    private HashMap<RANKED_KIT, Integer> arrowsShotByRankedKit = new HashMap<>();
-    private HashMap<MEGA_KIT, Integer> arrowsShotByMegaKit = new HashMap<>();
-    private HashMap<SOLO_KIT, Integer> longestBowShotBySoloKit = new HashMap<>();
-    private HashMap<TEAM_KIT, Integer> longestBowShotByTeamKit = new HashMap<>();
-    private HashMap<RANKED_KIT, Integer> longestBowShotByRankedKit = new HashMap<>();
-    private HashMap<MEGA_KIT, Integer> longestBowShotByMegaKit = new HashMap<>();
+    private HashMap<SoloKit, Integer> survivedPlayersBySoloKit = new HashMap<>();
+    private HashMap<TeamKit, Integer> survivedPlayersByTeamKit = new HashMap<>();
+    private HashMap<RankedKit, Integer> survivedPlayersByRankedKit = new HashMap<>();
+    private HashMap<MegaKit, Integer> survivedPlayersByMegaKit = new HashMap<>();
+    private HashMap<SoloKit, Integer> lossesBySoloKit = new HashMap<>();
+    private HashMap<TeamKit, Integer> lossesByTeamKit = new HashMap<>();
+    private HashMap<RankedKit, Integer> lossesByRankedKit = new HashMap<>();
+    private HashMap<MegaKit, Integer> lossesByMegaKit = new HashMap<>();
+    private HashMap<SoloKit, Integer> winsBySoloKit = new HashMap<>();
+    private HashMap<TeamKit, Integer> winsByTeamKit = new HashMap<>();
+    private HashMap<RankedKit, Integer> winsByRankedKit = new HashMap<>();
+    private HashMap<MegaKit, Integer> winsByMegaKit = new HashMap<>();
+    private HashMap<SoloKit, Integer> gamesBySoloKit = new HashMap<>();
+    private HashMap<TeamKit, Integer> gamesByTeamKit = new HashMap<>();
+    private HashMap<RankedKit, Integer> gamesByRankedKit = new HashMap<>();
+    private HashMap<MegaKit, Integer> gamesByMegaKit = new HashMap<>();
+    private HashMap<SoloKit, Integer> assistsBySoloKit = new HashMap<>();
+    private HashMap<TeamKit, Integer> assistsByTeamKit = new HashMap<>();
+    private HashMap<RankedKit, Integer> assistsByRankedKit = new HashMap<>();
+    private HashMap<MegaKit, Integer> assistsByMegaKit = new HashMap<>();
+    private HashMap<SoloKit, Integer> killsBySoloKit = new HashMap<>();
+    private HashMap<TeamKit, Integer> killsByTeamKit = new HashMap<>();
+    private HashMap<RankedKit, Integer> killsByRankedKit = new HashMap<>();
+    private HashMap<MegaKit, Integer> killsByMegaKit = new HashMap<>();
+    private HashMap<SoloKit, Integer> deathsBySoloKit = new HashMap<>();
+    private HashMap<TeamKit, Integer> deathsByTeamKit = new HashMap<>();
+    private HashMap<RankedKit, Integer> deathsByRankedKit = new HashMap<>();
+    private HashMap<MegaKit, Integer> deathsByMegaKit = new HashMap<>();
+    private HashMap<SoloKit, Integer> arrowsHitBySoloKit = new HashMap<>();
+    private HashMap<TeamKit, Integer> arrowsHitByTeamKit = new HashMap<>();
+    private HashMap<RankedKit, Integer> arrowsHitByRankedKit = new HashMap<>();
+    private HashMap<MegaKit, Integer> arrowsHitByMegaKit = new HashMap<>();
+    private HashMap<SoloKit, Integer> chestsOpenedBySoloKit = new HashMap<>();
+    private HashMap<TeamKit, Integer> chestsOpenedByTeamKit = new HashMap<>();
+    private HashMap<RankedKit, Integer> chestsOpenedByRankedKit = new HashMap<>();
+    private HashMap<MegaKit, Integer> chestsOpenedByMegaKit = new HashMap<>();
+    private HashMap<SoloKit, Integer> timePlayedBySoloKit = new HashMap<>();
+    private HashMap<TeamKit, Integer> timePlayedByTeamKit = new HashMap<>();
+    private HashMap<RankedKit, Integer> timePlayedByRankedKit = new HashMap<>();
+    private HashMap<MegaKit, Integer> timePlayedByMegaKit = new HashMap<>();
+    private HashMap<SoloKit, Integer> fastestWinBySoloKit = new HashMap<>();
+    private HashMap<TeamKit, Integer> fastestWinByTeamKit = new HashMap<>();
+    private HashMap<RankedKit, Integer> fastestWinByRankedKit = new HashMap<>();
+    private HashMap<MegaKit, Integer> fastestWinByMegaKit = new HashMap<>();
+    private HashMap<SoloKit, Integer> arrowsShotBySoloKit = new HashMap<>();
+    private HashMap<TeamKit, Integer> arrowsShotByTeamKit = new HashMap<>();
+    private HashMap<RankedKit, Integer> arrowsShotByRankedKit = new HashMap<>();
+    private HashMap<MegaKit, Integer> arrowsShotByMegaKit = new HashMap<>();
+    private HashMap<SoloKit, Integer> longestBowShotBySoloKit = new HashMap<>();
+    private HashMap<TeamKit, Integer> longestBowShotByTeamKit = new HashMap<>();
+    private HashMap<RankedKit, Integer> longestBowShotByRankedKit = new HashMap<>();
+    private HashMap<MegaKit, Integer> longestBowShotByMegaKit = new HashMap<>();
 
     private HashMap<String, Integer> mapVotes = new HashMap<>();
     private HashMap<String, Integer> quickJoinUses = new HashMap<>();
 
-    private SOLO_KIT selectedSoloKit;
-    private TEAM_KIT selectedTeamKit;
-    private RANKED_KIT selectedRankedKit;
-    private MEGA_KIT selectedMegaKit;
-    private VICTORY_DANCE selectedVictoryDance;
-    private KILL_EFFECT selectedKillEffect;
-    private PROJECTILE_TRAIL selectedProjectileTrail;
-    private DEATH_CRY selectedDeathCry;
+    private SoloKit selectedSoloKit;
+    private TeamKit selectedTeamKit;
+    private RankedKit selectedRankedKit;
+    private MegaKit selectedMegaKit;
+    private VictoryDance selectedVictoryDance;
+    private KillEffect selectedKillEffect;
+    private ProjectileTrail selectedProjectileTrail;
+    private DeathCry selectedDeathCry;
 
-    private CAGE selectedCage;
+    private Cage selectedCage;
 
     private int coins, soulWell, winStreak, survivedPlayers, losses, wins, games, deaths, blocksPlaced, assists, souls, kills, blocksBroken, eggsThrown;
     private int enderPearlsThrown, paidSouls, soulWellRares, soulWellLegendaries, arrowsHit, arrowsShot, itemsEnchanted, quits, soulsGathered, mobKills;
@@ -269,7 +268,7 @@ public class PlayerSkywarsStats extends PlayerGameStats {
             case "WINSTREAK":
                 this.winStreak = value.getAsInt();
                 return true;
-            case "KILLSTREAK":
+            case "Killstreak":
                 this.killStreak = value.getAsInt();
                 return true;
             case "COMBATTRACKER":
@@ -741,84 +740,84 @@ public class PlayerSkywarsStats extends PlayerGameStats {
                 return true;
             case "ACTIVEKIT_SOLO":
                 String kit = value.getAsString().toUpperCase().replaceAll("[\\w+_]*SOLO_", "").replace("-", "_");
-                if(!SOLO_KIT.mapping.contains(kit)){
+                if(!SoloKit.mapping.contains(kit)){
                     Logger.logError("[PlayerAPI.Skywars.initialize] Unknown Active Solo Kit: " + kit);
                     return true;
                 }
-                selectedSoloKit = SOLO_KIT.valueOf(kit);
+                selectedSoloKit = SoloKit.valueOf(kit);
                 return true;
             case "ACTIVEKIT_TEAM":
                 kit = value.getAsString().toUpperCase().replaceAll("[\\w+_]+TEAM_", "").replace("-", "_");
-                if(!TEAM_KIT.mapping.contains(kit)){
+                if(!TeamKit.mapping.contains(kit)){
                     Logger.logError("[PlayerAPI.Skywars.initialize] Unknown Active Team Kit: " + kit);
                     return true;
                 }
-                selectedTeamKit = TEAM_KIT.valueOf(kit);
+                selectedTeamKit = TeamKit.valueOf(kit);
                 return true;
             case "ACTIVEKIT_RANKED":
                 kit = value.getAsString().toUpperCase().replaceAll("[\\w+_]*RANKED_", "").replace("-", "_");
-                if(!RANKED_KIT.mapping.contains(kit)){
+                if(!RankedKit.mapping.contains(kit)){
                     Logger.logError("[PlayerAPI.Skywars.initialize] Unknown Active Ranked Kit: " + kit);
                     return true;
                 }
-                selectedRankedKit = RANKED_KIT.valueOf(kit);
+                selectedRankedKit = RankedKit.valueOf(kit);
                 return true;
             case "ACTIVEKIT_MEGA":
                 kit = value.getAsString().toUpperCase().replaceAll("[\\w+_]*MEGA_", "").replace("-", "_");
-                if(!MEGA_KIT.mapping.contains(kit)){
+                if(!MegaKit.mapping.contains(kit)){
                     Logger.logError("[PlayerAPI.Skywars.initialize] Unknown Active Mega Kit: " + kit);
                     return true;
                 }
-                selectedMegaKit = MEGA_KIT.valueOf(kit);
+                selectedMegaKit = MegaKit.valueOf(kit);
                 return true;
             case "ACTIVECAGE":
                 String cage = value.getAsString().toUpperCase().replaceAll("[\\w+_]*CAGE_", "").replace("-", "_");
-                if(!CAGE.mapping.contains(cage)){
+                if(!Cage.mapping.contains(cage)){
                     Logger.logError("[PlayerAPI.Skywars.initialize] Unknown Active Cage: " + cage);
                     return true;
                 }
-                selectedCage = CAGE.valueOf(cage);
+                selectedCage = Cage.valueOf(cage);
                 return true;
             case "ACTIVEVICTORYDANCE":
                 String victoryDance = value.getAsString().toUpperCase().replaceAll("[\\w+_]*VICTORYDANCE_", "").replace("-", "_");
-                if(!VICTORY_DANCE.mapping.contains(victoryDance)){
+                if(!VictoryDance.mapping.contains(victoryDance)){
                     Logger.logError("[PlayerAPI.Skywars.initialize] Unknown Active Victory Dance: " + victoryDance);
                     return true;
                 }
-                selectedVictoryDance = VICTORY_DANCE.valueOf(victoryDance);
+                selectedVictoryDance = VictoryDance.valueOf(victoryDance);
                 return true;
             case "ACTIVEKILLEFFECT":
                 String killEffect = value.getAsString().toUpperCase().replaceAll("[\\w+_]*KILLEFFECT_", "").replace("-", "_");
                 killEffect = killEffect.replace("BLOOD_", ""); //different values in package/active.
-                if(!KILL_EFFECT.mapping.contains(killEffect)){
+                if(!KillEffect.mapping.contains(killEffect)){
                     Logger.logError("[PlayerAPI.Skywars.initialize] Unknown Active Kill Effect: " + killEffect);
                     return true;
                 }
-                selectedKillEffect = KILL_EFFECT.valueOf(killEffect);
+                selectedKillEffect = KillEffect.valueOf(killEffect);
                 return true;
             case "ACTIVEARROWTRAIL": //this one is outdated
                 return true;
             case "ACTIVEPROJECTILETRAIL":
                 String arrowTrail = value.getAsString().toUpperCase().replaceAll("[\\w+_]*PROJECTILETRAIL_", "").replace("-", "_");
-                if(!PROJECTILE_TRAIL.mapping.contains(arrowTrail)){
+                if(!ProjectileTrail.mapping.contains(arrowTrail)){
                     Logger.logError("[PlayerAPI.Skywars.initialize] Unknown Projectile Trail: " + arrowTrail);
                     return true;
                 }
-                selectedProjectileTrail = PROJECTILE_TRAIL.valueOf(arrowTrail);
+                selectedProjectileTrail = ProjectileTrail.valueOf(arrowTrail);
                 return true;
             case "ACTIVEDEATHCRY":
                 String deathCry = value.getAsString().toUpperCase().replaceAll("[\\w+_]*DEATHCRY_", "").replace("-", "_");
-                if(!DEATH_CRY.mapping.contains(deathCry)){
+                if(!DeathCry.mapping.contains(deathCry)){
                     Logger.logError("[PlayerAPI.Skywars.initialize] Unknown Death Cry : " + deathCry);
                     return true;
                 }
-                selectedDeathCry = DEATH_CRY.valueOf(deathCry);
+                selectedDeathCry = DeathCry.valueOf(deathCry);
                 return true;
             case "XEZBETH_LUCK":
-                unlockedUpgrades.put(UPGRADE.XEZBETH_LUCK, value.getAsInt());
+                unlockedUpgrades.put(Upgrade.XEZBETH_LUCK, value.getAsInt());
                 return true;
             case "HARVESTING_SEASON":
-                unlockedUpgrades.put(UPGRADE.HARVESTING_SEASON, value.getAsInt());
+                unlockedUpgrades.put(Upgrade.HARVESTING_SEASON, value.getAsInt());
                 return true;
                 
         }
@@ -839,20 +838,20 @@ public class PlayerSkywarsStats extends PlayerGameStats {
             return true;
         }
 
-        if(key.contains("MEGA") && key.contains("KIT")){
+        if(key.contains("MEGA") && key.contains("Kit")){
             String kit = key.replaceAll("[\\w+_]*MEGA_", "").replace("-", "_");
-            if(MEGA_KIT.mapping.contains(kit)){
-                this.unlockedMegaKits.put(MEGA_KIT.valueOf(kit), value.getAsInt());
+            if(MegaKit.mapping.contains(kit)){
+                this.unlockedMegaKits.put(MegaKit.valueOf(kit), value.getAsInt());
                 return true;
             }
             Logger.logError("[PlayerAPI.Skywars.MEGA_STAT] Unknown Mega Kit value: " + kit + " >> " + key);
             return true;
         }
 
-        if(key.contains("RANKED") && key.contains("KIT")){
+        if(key.contains("RANKED") && key.contains("Kit")){
             String kit = key.replaceAll("[\\w+_]*RANKED_", "").replace("-", "_");
-            if(RANKED_KIT.mapping.contains(kit)){
-                this.unlockedRankedKits.put(RANKED_KIT.valueOf(kit), value.getAsInt());
+            if(RankedKit.mapping.contains(kit)){
+                this.unlockedRankedKits.put(RankedKit.valueOf(kit), value.getAsInt());
                 return true;
             }
             Logger.logError("[PlayerAPI.Skywars.RANKED_STAT] Unknown Ranked Kit value: " + kit + " >> " + key);
@@ -860,13 +859,13 @@ public class PlayerSkywarsStats extends PlayerGameStats {
         }
 
         //<editor-fold desc="[statHashmaps]">
-        if(key.contains("SOLO") && key.contains("KIT")){
+        if(key.contains("SOLO") && key.contains("Kit")){
             String kit = key.replaceAll("[\\w+_]+SOLO_", "");
-            if(!SOLO_KIT.mapping.contains(kit)){
+            if(!SoloKit.mapping.contains(kit)){
                 Logger.logError("[PlayerAPI.Skywars.SOLO_STAT] Unknown Solo Kit value: " + kit  + " >> " + key);
                 return true;
             }
-            SOLO_KIT sKit = SOLO_KIT.valueOf(kit);
+            SoloKit sKit = SoloKit.valueOf(kit);
             int amount = value.getAsInt();
             if(key.contains("WINS")){
                 this.winsBySoloKit.put(sKit, amount);
@@ -912,13 +911,13 @@ public class PlayerSkywarsStats extends PlayerGameStats {
             return true;
         }
         
-        if(key.contains("TEAM") && key.contains("KIT")){
+        if(key.contains("TEAM") && key.contains("Kit")){
             String kit = key.replaceAll("[\\w+_]+TEAM_", "").replace("-", "_");
-            if(!TEAM_KIT.mapping.contains(kit)){
+            if(!TeamKit.mapping.contains(kit)){
                 Logger.logError("[PlayerAPI.Skywars.TEAM_STAT] Unknown Team Kit value: " + kit  + " >> " + key);
                 return true;
             }
-            TEAM_KIT sKit = TEAM_KIT.valueOf(kit);
+            TeamKit sKit = TeamKit.valueOf(kit);
             int amount = value.getAsInt();
             if(key.contains("WINS")){
                 this.winsByTeamKit.put(sKit, amount);
@@ -964,13 +963,13 @@ public class PlayerSkywarsStats extends PlayerGameStats {
             return true;
         }
         
-        if(key.contains("RANKED") && key.contains("KIT")){
+        if(key.contains("RANKED") && key.contains("Kit")){
             String kit = key.replaceAll("[\\w+_]+RANKED_", "");
-            if(!RANKED_KIT.mapping.contains(kit)){
+            if(!RankedKit.mapping.contains(kit)){
                 Logger.logError("[PlayerAPI.Skywars.RANKED_STAT] Unknown Ranked Kit value: " + kit  + " >> " + key);
                 return true;
             }
-            RANKED_KIT sKit = RANKED_KIT.valueOf(kit);
+            RankedKit sKit = RankedKit.valueOf(kit);
             int amount = value.getAsInt();
             if(key.contains("WINS")){
                 this.winsByRankedKit.put(sKit, amount);
@@ -1016,13 +1015,13 @@ public class PlayerSkywarsStats extends PlayerGameStats {
             return true;
         }
         
-        if(key.contains("MEGA") && key.contains("KIT")){
+        if(key.contains("MEGA") && key.contains("Kit")){
             String kit = key.replaceAll("[\\w+_]+MEGA_", "");
-            if(!MEGA_KIT.mapping.contains(kit)){
+            if(!MegaKit.mapping.contains(kit)){
                 Logger.logError("[PlayerAPI.Skywars.MEGA_STAT] Unknown Mega Kit value: " + kit  + " >> " + key);
                 return true;
             }
-            MEGA_KIT sKit = MEGA_KIT.valueOf(kit);
+            MegaKit sKit = MegaKit.valueOf(kit);
             int amount = value.getAsInt();
             if(key.contains("WINS")){
                 this.winsByMegaKit.put(sKit, amount);
@@ -1072,38 +1071,38 @@ public class PlayerSkywarsStats extends PlayerGameStats {
         //<editor-fold desc="[Perks]">
         if(key.contains("SOLO")){
             String kit = key.replaceAll("[\\w+_]*SOLO_", "").replace("-", "_");
-            if(!SOLO_PERK.mapping.contains(kit)){
-                Logger.logError("[PlayerAPI.Skywars.SOLO_PERK] Unknown Solo Perk value: " + kit  + " >> " + key);
+            if(!SoloPerk.mapping.contains(kit)){
+                Logger.logError("[PlayerAPI.Skywars.SoloPerk] Unknown Solo Perk value: " + kit  + " >> " + key);
                 return true;
             }
-            unlockedSoloPerks.put(SOLO_PERK.valueOf(kit), value.getAsInt());
+            unlockedSoloPerks.put(SoloPerk.valueOf(kit), value.getAsInt());
             return true;
         }
         if(key.contains("TEAM")){
             String kit = key.replaceAll("[\\w+_]*TEAM_", "").replace("-", "_");
-            if(!TEAM_PERK.mapping.contains(kit)){
-                Logger.logError("[PlayerAPI.Skywars.TEAM_PERK] Unknown Team Perk value: " + kit  + " >> " + key);
+            if(!TeamPerk.mapping.contains(kit)){
+                Logger.logError("[PlayerAPI.Skywars.TeamPerk] Unknown Team Perk value: " + kit  + " >> " + key);
                 return true;
             }
-            unlockedTeamPerks.put(TEAM_PERK.valueOf(kit), value.getAsInt());
+            unlockedTeamPerks.put(TeamPerk.valueOf(kit), value.getAsInt());
             return true;
         }
         if(key.contains("MEGA")){
             String kit = key.replaceAll("[\\w+_]*MEGA_", "");
-            if(!MEGA_PERK.mapping.contains(kit)){
-                Logger.logError("[PlayerAPI.Skywars.MEGA_PERK] Unknown Mega Perk value: " + kit  + " >> " + key);
+            if(!MegaPerk.mapping.contains(kit)){
+                Logger.logError("[PlayerAPI.Skywars.MegaPerk] Unknown Mega Perk value: " + kit  + " >> " + key);
                 return true;
             }
-            unlockedMegaPerks.put(MEGA_PERK.valueOf(kit), value.getAsInt());
+            unlockedMegaPerks.put(MegaPerk.valueOf(kit), value.getAsInt());
             return true;
         }
         if(key.contains("RANKED")){
             String kit = key.replaceAll("[\\w+_]*RANKED_", "").replace("_PERK", "");
-            if(!RANKED_PERK.mapping.contains(kit)){
-                Logger.logError("[PlayerAPI.Skywars.RANKED_PERK] Unknown Ranked Perk value: " + kit  + " >> " + key);
+            if(!RankedPerk.mapping.contains(kit)){
+                Logger.logError("[PlayerAPI.Skywars.RankedPerk] Unknown Ranked Perk value: " + kit  + " >> " + key);
                 return true;
             }
-            unlockedRankedPerks.put(RANKED_PERK.valueOf(kit), value.getAsInt());
+            unlockedRankedPerks.put(RankedPerk.valueOf(kit), value.getAsInt());
             return true;
         }
             //</editor-fold>
@@ -1121,10 +1120,10 @@ public class PlayerSkywarsStats extends PlayerGameStats {
                 continue;
             }
 
-            if(key.contains("CAGE")){
+            if(key.contains("Cage")){
                 key = key.replaceAll("[\\w+_]*CAGE_", "").replace("-", "_");
-                if(CAGE.mapping.contains(key)){
-                    this.unlockedCages.add(CAGE.valueOf(key));
+                if(Cage.mapping.contains(key)){
+                    this.unlockedCages.add(Cage.valueOf(key));
                     continue;
                 }
                 Logger.logError("[PlayerAPI.Skywars.packages] Unknown cage value: " + element.getAsString() + " >> " + key);
@@ -1133,8 +1132,8 @@ public class PlayerSkywarsStats extends PlayerGameStats {
 
             if(key.contains("SOLO")){
                 key = key.replaceAll("[\\w+_]*SOLO_", "").replace("-", "_");;
-                if(SOLO_KIT.mapping.contains(key)){
-                    this.unlockedSoloKits.add(SOLO_KIT.valueOf(key));
+                if(SoloKit.mapping.contains(key)){
+                    this.unlockedSoloKits.add(SoloKit.valueOf(key));
                     continue;
                 }
                 Logger.logError("[PlayerAPI.Skywars.packages] Unknown Solo Kit value: " + element.getAsString() + " >> " + key);
@@ -1143,28 +1142,28 @@ public class PlayerSkywarsStats extends PlayerGameStats {
 
             if(key.contains("TEAM")){
                 key = key.replaceAll("[\\w+_]*TEAM_", "").replace("-", "_");
-                if(TEAM_KIT.mapping.contains(key)){
-                    this.unlockedTeamKits.add(TEAM_KIT.valueOf(key));
+                if(TeamKit.mapping.contains(key)){
+                    this.unlockedTeamKits.add(TeamKit.valueOf(key));
                     continue;
                 }
                 Logger.logError("[PlayerAPI.Skywars.packages] Unknown Team Kit value: " + element.getAsString() + " >> " + key);
                 continue;
             }
 
-            if(key.contains("VICTORYDANCE") || key.contains("VICTORY_DANCE")){
+            if(key.contains("VICTORYDANCE") || key.contains("VictoryDance")){
                 key = key.replaceAll("[\\w+_]*VICTORYDANCE_", "").replaceAll("[\\w+_]*VICTORY_DANCE_", "").replace("-", "_");
-                if(VICTORY_DANCE.mapping.contains(key)){
-                    this.unlockedVictoryDances.add(VICTORY_DANCE.valueOf(key));
+                if(VictoryDance.mapping.contains(key)){
+                    this.unlockedVictoryDances.add(VictoryDance.valueOf(key));
                     continue;
                 }
                 Logger.logError("[PlayerAPI.Skywars.packages] Unknown Victory Dance value: " + element.getAsString() + " >> " + key);
                 continue;
             }
 
-            if(key.contains("KILLEFFECT") || key.contains("KILL_EFFECT")){
+            if(key.contains("KILLEFFECT") || key.contains("KillEffect")){
                 key = key.replaceAll("[\\w+_]*KILLEFFECT_", "").replaceAll("[\\w+_]*KILL_EFFECT_", "").replace("-", "_");
-                if(KILL_EFFECT.mapping.contains(key)){
-                    this.unlockedKillEffects.add(KILL_EFFECT.valueOf(key));
+                if(KillEffect.mapping.contains(key)){
+                    this.unlockedKillEffects.add(KillEffect.valueOf(key));
                     continue;
                 }
                 Logger.logError("[PlayerAPI.Skywars.packages] Unknown Kill Effect value: " + element.getAsString() + " >> " + key);
@@ -1173,8 +1172,8 @@ public class PlayerSkywarsStats extends PlayerGameStats {
 
             if(key.contains("DEATHCRY")){
                 key = key.replaceAll("[\\w+_]*DEATHCRY_", "").replace("-", "_");
-                if(DEATH_CRY.mapping.contains(key)){
-                    this.unlockedDeathCries.add(DEATH_CRY.valueOf(key));
+                if(DeathCry.mapping.contains(key)){
+                    this.unlockedDeathCries.add(DeathCry.valueOf(key));
                     continue;
                 }
                 Logger.logError("[PlayerAPI.Skywars.packages] Unknown Death Cry value: " + element.getAsString() + " >> " + key);
@@ -1183,8 +1182,8 @@ public class PlayerSkywarsStats extends PlayerGameStats {
 
             if(key.contains("PROJECTILETRAIL") || key.contains("ARROWTRAIL")){
                 key = key.replaceAll("[\\w+]*ARROWTRAIL_", "").replaceAll("[\\w+]*PROJECTILETRAIL_", "").replace("-", "_");
-                if(PROJECTILE_TRAIL.mapping.contains(key)){
-                    this.unlockedProjectileTrails.add(PROJECTILE_TRAIL.valueOf(key));
+                if(ProjectileTrail.mapping.contains(key)){
+                    this.unlockedProjectileTrails.add(ProjectileTrail.valueOf(key));
                     continue;
                 }
                 Logger.logError("[PlayerAPI.Skywars.packages] Unknown Projectile Trail value: " + element.getAsString() + " >> " + key);
@@ -1252,7 +1251,7 @@ public class PlayerSkywarsStats extends PlayerGameStats {
     }
 
     //<editor-fold desc=["getters]">
-    public ArrayList<TEAM_KIT> getUnlockedTeamKits() {
+    public ArrayList<TeamKit> getUnlockedTeamKits() {
         return unlockedTeamKits;
     }
 
@@ -1260,263 +1259,263 @@ public class PlayerSkywarsStats extends PlayerGameStats {
         return favoritedMaps;
     }
 
-    public ArrayList<VICTORY_DANCE> getUnlockedVictoryDances() {
+    public ArrayList<VictoryDance> getUnlockedVictoryDances() {
         return unlockedVictoryDances;
     }
 
-    public ArrayList<DEATH_CRY> getUnlockedDeathCries() {
+    public ArrayList<DeathCry> getUnlockedDeathCries() {
         return unlockedDeathCries;
     }
 
-    public ArrayList<CAGE> getUnlockedCages() {
+    public ArrayList<Cage> getUnlockedCages() {
         return unlockedCages;
     }
 
-    public ArrayList<PROJECTILE_TRAIL> getUnlockedProjectileTrails() {
+    public ArrayList<ProjectileTrail> getUnlockedProjectileTrails() {
         return unlockedProjectileTrails;
     }
 
-    public ArrayList<KILL_EFFECT> getUnlockedKillEffects() {
+    public ArrayList<KillEffect> getUnlockedKillEffects() {
         return unlockedKillEffects;
     }
 
-    public HashMap<UPGRADE, Integer> getUnlockedUpgrades() {
+    public HashMap<Upgrade, Integer> getUnlockedUpgrades() {
         return unlockedUpgrades;
     }
 
-    public ArrayList<SOLO_KIT> getUnlockedSoloKits() {
+    public ArrayList<SoloKit> getUnlockedSoloKits() {
         return unlockedSoloKits;
     }
 
-    public HashMap<RANKED_KIT, Integer> getUnlockedRankedKits() {
+    public HashMap<RankedKit, Integer> getUnlockedRankedKits() {
         return unlockedRankedKits;
     }
 
-    public HashMap<MEGA_KIT, Integer> getUnlockedMegaKits() {
+    public HashMap<MegaKit, Integer> getUnlockedMegaKits() {
         return unlockedMegaKits;
     }
 
-    public HashMap<SOLO_PERK, Integer> getUnlockedSoloPerks() {
+    public HashMap<SoloPerk, Integer> getUnlockedSoloPerks() {
         return unlockedSoloPerks;
     }
 
-    public HashMap<TEAM_PERK, Integer> getUnlockedTeamPerks() {
+    public HashMap<TeamPerk, Integer> getUnlockedTeamPerks() {
         return unlockedTeamPerks;
     }
 
-    public HashMap<RANKED_PERK, Integer> getUnlockedRankedPerks() {
+    public HashMap<RankedPerk, Integer> getUnlockedRankedPerks() {
         return unlockedRankedPerks;
     }
 
-    public HashMap<MEGA_PERK, Integer> getUnlockedMegaPerks() {
+    public HashMap<MegaPerk, Integer> getUnlockedMegaPerks() {
         return unlockedMegaPerks;
     }
 
-    public HashMap<SOLO_KIT, Integer> getSurvivedPlayersBySoloKit() {
+    public HashMap<SoloKit, Integer> getSurvivedPlayersBySoloKit() {
         return survivedPlayersBySoloKit;
     }
 
-    public HashMap<TEAM_KIT, Integer> getSurvivedPlayersByTeamKit() {
+    public HashMap<TeamKit, Integer> getSurvivedPlayersByTeamKit() {
         return survivedPlayersByTeamKit;
     }
 
-    public HashMap<RANKED_KIT, Integer> getSurvivedPlayersByRankedKit() {
+    public HashMap<RankedKit, Integer> getSurvivedPlayersByRankedKit() {
         return survivedPlayersByRankedKit;
     }
 
-    public HashMap<MEGA_KIT, Integer> getSurvivedPlayersByMegaKit() {
+    public HashMap<MegaKit, Integer> getSurvivedPlayersByMegaKit() {
         return survivedPlayersByMegaKit;
     }
 
-    public HashMap<SOLO_KIT, Integer> getLossesBySoloKit() {
+    public HashMap<SoloKit, Integer> getLossesBySoloKit() {
         return lossesBySoloKit;
     }
 
-    public HashMap<TEAM_KIT, Integer> getLossesByTeamKit() {
+    public HashMap<TeamKit, Integer> getLossesByTeamKit() {
         return lossesByTeamKit;
     }
 
-    public HashMap<RANKED_KIT, Integer> getLossesByRankedKit() {
+    public HashMap<RankedKit, Integer> getLossesByRankedKit() {
         return lossesByRankedKit;
     }
 
-    public HashMap<MEGA_KIT, Integer> getLossesByMegaKit() {
+    public HashMap<MegaKit, Integer> getLossesByMegaKit() {
         return lossesByMegaKit;
     }
 
-    public HashMap<SOLO_KIT, Integer> getWinsBySoloKit() {
+    public HashMap<SoloKit, Integer> getWinsBySoloKit() {
         return winsBySoloKit;
     }
 
-    public HashMap<TEAM_KIT, Integer> getWinsByTeamKit() {
+    public HashMap<TeamKit, Integer> getWinsByTeamKit() {
         return winsByTeamKit;
     }
 
-    public HashMap<RANKED_KIT, Integer> getWinsByRankedKit() {
+    public HashMap<RankedKit, Integer> getWinsByRankedKit() {
         return winsByRankedKit;
     }
 
-    public HashMap<MEGA_KIT, Integer> getWinsByMegaKit() {
+    public HashMap<MegaKit, Integer> getWinsByMegaKit() {
         return winsByMegaKit;
     }
 
-    public HashMap<SOLO_KIT, Integer> getGamesBySoloKit() {
+    public HashMap<SoloKit, Integer> getGamesBySoloKit() {
         return gamesBySoloKit;
     }
 
-    public HashMap<TEAM_KIT, Integer> getGamesByTeamKit() {
+    public HashMap<TeamKit, Integer> getGamesByTeamKit() {
         return gamesByTeamKit;
     }
 
-    public HashMap<RANKED_KIT, Integer> getGamesByRankedKit() {
+    public HashMap<RankedKit, Integer> getGamesByRankedKit() {
         return gamesByRankedKit;
     }
 
-    public HashMap<MEGA_KIT, Integer> getGamesByMegaKit() {
+    public HashMap<MegaKit, Integer> getGamesByMegaKit() {
         return gamesByMegaKit;
     }
 
-    public HashMap<SOLO_KIT, Integer> getAssistsBySoloKit() {
+    public HashMap<SoloKit, Integer> getAssistsBySoloKit() {
         return assistsBySoloKit;
     }
 
-    public HashMap<TEAM_KIT, Integer> getAssistsByTeamKit() {
+    public HashMap<TeamKit, Integer> getAssistsByTeamKit() {
         return assistsByTeamKit;
     }
 
-    public HashMap<RANKED_KIT, Integer> getAssistsByRankedKit() {
+    public HashMap<RankedKit, Integer> getAssistsByRankedKit() {
         return assistsByRankedKit;
     }
 
-    public HashMap<MEGA_KIT, Integer> getAssistsByMegaKit() {
+    public HashMap<MegaKit, Integer> getAssistsByMegaKit() {
         return assistsByMegaKit;
     }
 
-    public HashMap<SOLO_KIT, Integer> getKillsBySoloKit() {
+    public HashMap<SoloKit, Integer> getKillsBySoloKit() {
         return killsBySoloKit;
     }
 
-    public HashMap<TEAM_KIT, Integer> getKillsByTeamKit() {
+    public HashMap<TeamKit, Integer> getKillsByTeamKit() {
         return killsByTeamKit;
     }
 
-    public HashMap<RANKED_KIT, Integer> getKillsByRankedKit() {
+    public HashMap<RankedKit, Integer> getKillsByRankedKit() {
         return killsByRankedKit;
     }
 
-    public HashMap<MEGA_KIT, Integer> getKillsByMegaKit() {
+    public HashMap<MegaKit, Integer> getKillsByMegaKit() {
         return killsByMegaKit;
     }
 
-    public HashMap<SOLO_KIT, Integer> getDeathsBySoloKit() {
+    public HashMap<SoloKit, Integer> getDeathsBySoloKit() {
         return deathsBySoloKit;
     }
 
-    public HashMap<TEAM_KIT, Integer> getDeathsByTeamKit() {
+    public HashMap<TeamKit, Integer> getDeathsByTeamKit() {
         return deathsByTeamKit;
     }
 
-    public HashMap<RANKED_KIT, Integer> getDeathsByRankedKit() {
+    public HashMap<RankedKit, Integer> getDeathsByRankedKit() {
         return deathsByRankedKit;
     }
 
-    public HashMap<MEGA_KIT, Integer> getDeathsByMegaKit() {
+    public HashMap<MegaKit, Integer> getDeathsByMegaKit() {
         return deathsByMegaKit;
     }
 
-    public HashMap<SOLO_KIT, Integer> getArrowsHitBySoloKit() {
+    public HashMap<SoloKit, Integer> getArrowsHitBySoloKit() {
         return arrowsHitBySoloKit;
     }
 
-    public HashMap<TEAM_KIT, Integer> getArrowsHitByTeamKit() {
+    public HashMap<TeamKit, Integer> getArrowsHitByTeamKit() {
         return arrowsHitByTeamKit;
     }
 
-    public HashMap<RANKED_KIT, Integer> getArrowsHitByRankedKit() {
+    public HashMap<RankedKit, Integer> getArrowsHitByRankedKit() {
         return arrowsHitByRankedKit;
     }
 
-    public HashMap<MEGA_KIT, Integer> getArrowsHitByMegaKit() {
+    public HashMap<MegaKit, Integer> getArrowsHitByMegaKit() {
         return arrowsHitByMegaKit;
     }
 
-    public HashMap<SOLO_KIT, Integer> getChestsOpenedBySoloKit() {
+    public HashMap<SoloKit, Integer> getChestsOpenedBySoloKit() {
         return chestsOpenedBySoloKit;
     }
 
-    public HashMap<TEAM_KIT, Integer> getChestsOpenedByTeamKit() {
+    public HashMap<TeamKit, Integer> getChestsOpenedByTeamKit() {
         return chestsOpenedByTeamKit;
     }
 
-    public HashMap<RANKED_KIT, Integer> getChestsOpenedByRankedKit() {
+    public HashMap<RankedKit, Integer> getChestsOpenedByRankedKit() {
         return chestsOpenedByRankedKit;
     }
 
-    public HashMap<MEGA_KIT, Integer> getChestsOpenedByMegaKit() {
+    public HashMap<MegaKit, Integer> getChestsOpenedByMegaKit() {
         return chestsOpenedByMegaKit;
     }
 
-    public HashMap<SOLO_KIT, Integer> getTimePlayedBySoloKit() {
+    public HashMap<SoloKit, Integer> getTimePlayedBySoloKit() {
         return timePlayedBySoloKit;
     }
 
-    public HashMap<TEAM_KIT, Integer> getTimePlayedByTeamKit() {
+    public HashMap<TeamKit, Integer> getTimePlayedByTeamKit() {
         return timePlayedByTeamKit;
     }
 
-    public HashMap<RANKED_KIT, Integer> getTimePlayedByRankedKit() {
+    public HashMap<RankedKit, Integer> getTimePlayedByRankedKit() {
         return timePlayedByRankedKit;
     }
 
-    public HashMap<MEGA_KIT, Integer> getTimePlayedByMegaKit() {
+    public HashMap<MegaKit, Integer> getTimePlayedByMegaKit() {
         return timePlayedByMegaKit;
     }
 
-    public HashMap<SOLO_KIT, Integer> getFastestWinBySoloKit() {
+    public HashMap<SoloKit, Integer> getFastestWinBySoloKit() {
         return fastestWinBySoloKit;
     }
 
-    public HashMap<TEAM_KIT, Integer> getFastestWinByTeamKit() {
+    public HashMap<TeamKit, Integer> getFastestWinByTeamKit() {
         return fastestWinByTeamKit;
     }
 
-    public HashMap<RANKED_KIT, Integer> getFastestWinByRankedKit() {
+    public HashMap<RankedKit, Integer> getFastestWinByRankedKit() {
         return fastestWinByRankedKit;
     }
 
-    public HashMap<MEGA_KIT, Integer> getFastestWinByMegaKit() {
+    public HashMap<MegaKit, Integer> getFastestWinByMegaKit() {
         return fastestWinByMegaKit;
     }
 
-    public HashMap<SOLO_KIT, Integer> getArrowsShotBySoloKit() {
+    public HashMap<SoloKit, Integer> getArrowsShotBySoloKit() {
         return arrowsShotBySoloKit;
     }
 
-    public HashMap<TEAM_KIT, Integer> getArrowsShotByTeamKit() {
+    public HashMap<TeamKit, Integer> getArrowsShotByTeamKit() {
         return arrowsShotByTeamKit;
     }
 
-    public HashMap<RANKED_KIT, Integer> getArrowsShotByRankedKit() {
+    public HashMap<RankedKit, Integer> getArrowsShotByRankedKit() {
         return arrowsShotByRankedKit;
     }
 
-    public HashMap<MEGA_KIT, Integer> getArrowsShotByMegaKit() {
+    public HashMap<MegaKit, Integer> getArrowsShotByMegaKit() {
         return arrowsShotByMegaKit;
     }
 
-    public HashMap<SOLO_KIT, Integer> getLongestBowShotBySoloKit() {
+    public HashMap<SoloKit, Integer> getLongestBowShotBySoloKit() {
         return longestBowShotBySoloKit;
     }
 
-    public HashMap<TEAM_KIT, Integer> getLongestBowShotByTeamKit() {
+    public HashMap<TeamKit, Integer> getLongestBowShotByTeamKit() {
         return longestBowShotByTeamKit;
     }
 
-    public HashMap<RANKED_KIT, Integer> getLongestBowShotByRankedKit() {
+    public HashMap<RankedKit, Integer> getLongestBowShotByRankedKit() {
         return longestBowShotByRankedKit;
     }
 
-    public HashMap<MEGA_KIT, Integer> getLongestBowShotByMegaKit() {
+    public HashMap<MegaKit, Integer> getLongestBowShotByMegaKit() {
         return longestBowShotByMegaKit;
     }
 
@@ -1528,31 +1527,31 @@ public class PlayerSkywarsStats extends PlayerGameStats {
         return quickJoinUses;
     }
 
-    public SOLO_KIT getSelectedSoloKit() {
+    public SoloKit getSelectedSoloKit() {
         return selectedSoloKit;
     }
 
-    public TEAM_KIT getSelectedTeamKit() {
+    public TeamKit getSelectedTeamKit() {
         return selectedTeamKit;
     }
 
-    public RANKED_KIT getSelectedRankedKit() {
+    public RankedKit getSelectedRankedKit() {
         return selectedRankedKit;
     }
 
-    public MEGA_KIT getSelectedMegaKit() {
+    public MegaKit getSelectedMegaKit() {
         return selectedMegaKit;
     }
 
-    public VICTORY_DANCE getSelectedVictoryDance() {
+    public VictoryDance getSelectedVictoryDance() {
         return selectedVictoryDance;
     }
 
-    public KILL_EFFECT getSelectedKillEffect() {
+    public KillEffect getSelectedKillEffect() {
         return selectedKillEffect;
     }
 
-    public CAGE getSelectedCage() {
+    public Cage getSelectedCage() {
         return selectedCage;
     }
 

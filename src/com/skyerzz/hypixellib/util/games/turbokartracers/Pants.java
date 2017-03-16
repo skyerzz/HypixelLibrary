@@ -1,26 +1,26 @@
 package com.skyerzz.hypixellib.util.games.turbokartracers;
 
-import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.RANK;
+import com.skyerzz.hypixellib.util.Currency;
+import com.skyerzz.hypixellib.util.Rank;
 
 import java.util.ArrayList;
 
 /**
  * Created by sky on 2-8-2016.
  */
-public enum PANTS {
-    NO_PANTS(       "No Pants", 0, RANK.NONE),
-    GOLD_PANTS(     "Slothdinger Pants",    0,      RANK.NONE), //checked
-    CHAIN_PANTS(    "Blushell Inc Pants",   2000,   RANK.VIP),      //checked
-    IRON_PANTS(     "Sphax-corp Pants",     3000,   RANK.VIP_PLUS),
-    DIAMOND_PANTS(  "Turbobrine Pants",     4000,   RANK.MVP),
-    LEATHER_PANTS(  "Hypesweggen Pants",    5000,   RANK.MVP_PLUS);
+public enum Pants {
+    NO_PANTS(       "No Pants", 0, Rank.NONE),
+    GOLD_PANTS(     "Slothdinger Pants",    0,      Rank.NONE), //checked
+    CHAIN_PANTS(    "Blushell Inc Pants",   2000,   Rank.VIP),      //checked
+    IRON_PANTS(     "Sphax-corp Pants",     3000,   Rank.VIP_PLUS),
+    DIAMOND_PANTS(  "Turbobrine Pants",     4000,   Rank.MVP),
+    LEATHER_PANTS(  "Hypesweggen Pants",    5000,   Rank.MVP_PLUS);
 
     private String displayName;
     private int cost;
-    private RANK rankRequirement;
+    private Rank rankRequirement;
 
-    PANTS(String displayName, int cost, RANK rankRequirement){
+    Pants(String displayName, int cost, Rank rankRequirement){
         this.displayName = displayName;
         this.cost = cost;
         this.rankRequirement = rankRequirement;
@@ -30,7 +30,7 @@ public enum PANTS {
 
     private static ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(PANTS item: PANTS.values()){
+        for(Pants item: Pants.values()){
             list.add(item.name());
         }
         return list;
@@ -44,11 +44,11 @@ public enum PANTS {
         return cost;
     }
 
-    public CURRENCY getCurrencyType(){
-        return CURRENCY.COINS;
+    public Currency getCurrencyType(){
+        return Currency.COINS;
     }
 
-    public RANK getRankRequirement(){
+    public Rank getRankRequirement(){
         return rankRequirement;
     }
 }

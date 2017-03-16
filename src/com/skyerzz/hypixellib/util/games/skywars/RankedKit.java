@@ -1,6 +1,6 @@
 package com.skyerzz.hypixellib.util.games.skywars;
 
-import com.skyerzz.hypixellib.util.CURRENCY;
+import com.skyerzz.hypixellib.util.Currency;
 import com.skyerzz.hypixellib.util.item.Item;
 import com.skyerzz.hypixellib.util.item.ItemStack;
 import com.skyerzz.hypixellib.util.item.Material;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Created by Skyerzz-LAPOTOP on 21/12/2016.
  */
-public enum RANKED_KIT {
+public enum RankedKit {
     DEFAULT("Default"),
     ARMORER("Armorer"),
     ATHLETE("Athlete"),
@@ -25,7 +25,7 @@ public enum RANKED_KIT {
 
     private String displayName;
 
-    RANKED_KIT(String displayName){
+    RankedKit(String displayName){
         this.displayName = displayName;
     }
 
@@ -33,7 +33,7 @@ public enum RANKED_KIT {
 
     private static ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(RANKED_KIT item: RANKED_KIT.values()){
+        for(RankedKit item: RankedKit.values()){
             list.add(item.name());
         }
         return list;
@@ -59,7 +59,7 @@ public enum RANKED_KIT {
         return -1;
     }
 
-    public CURRENCY getCurrencyType(){ return CURRENCY.COINS; }
+    public Currency getCurrencyType(){ return Currency.COINS; }
 
     public int getMaxLevel(){ return 5; }
 

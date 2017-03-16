@@ -7,20 +7,20 @@ import java.util.ArrayList;
  */
 public class Kart {
 
-    private KARTSKIN skin;
-    private HORN horn;
-    private PARTICLETRAIL particleTrail;
+    private KartSkin skin;
+    private Horn horn;
+    private ParticleTrail particleTrail;
 
     private ArrayList<KartPart> kartParts = new ArrayList<>();
 
-    public Kart(KARTSKIN skin, HORN horn, PARTICLETRAIL trail, KartPart...kartParts){
+    public Kart(KartSkin skin, Horn horn, ParticleTrail trail, KartPart...kartParts){
         this.skin = skin;
         for(KartPart kartPart: kartParts){
             this.kartParts.add(kartPart);
         }
     }
 
-    public KARTSKIN getSkin(){
+    public KartSkin getSkin(){
         return skin;
     }
 
@@ -28,11 +28,11 @@ public class Kart {
         return kartParts;
     }
 
-    public HORN getHorn(){
+    public Horn getHorn(){
         return horn;
     }
 
-    public PARTICLETRAIL getParticleTrail(){
+    public ParticleTrail getParticleTrail(){
         return particleTrail;
     }
 }

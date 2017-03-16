@@ -1,33 +1,33 @@
 package com.skyerzz.hypixellib.util.games.skywars;
 
-import com.skyerzz.hypixellib.util.CURRENCY;
+import com.skyerzz.hypixellib.util.Currency;
 
 import java.util.ArrayList;
 
 /**
  * Created by sky on 25-12-2016.
  */
-public enum MEGA_PERK {
-    ARROW_RECOVERY("Arrow Recovery", RARITY.RARE, 5),
-    BLAZING_ARROWS("Blazing Arrows", RARITY.RARE, 5),
-    ENDER_MASTERY("Ender Mastery", RARITY.COMMON, 5),
-    JUGGERNAUT("Juggernaut", RARITY.RARE, 5),
-    MINING_EXPERTISE("Mining Expertise", RARITY.COMMON, 5),
-    RUSHER("Rusher", RARITY.COMMON, 5),
-    TANK("Tank", RARITY.LEGENDARY, 5),
-    NOTORIETY("Notoriety", RARITY.LEGENDARY, 5),
-    NOURISHMENT("Nourishment", RARITY.COMMON, 1),
-    INSTANT_SMELTING("Instant Smelting", RARITY.COMMON, 1),
-    MARKSMANSHIP("Marksmanship", RARITY.LEGENDARY, 1),
-    BRIDGER("Bridger", RARITY.COMMON, 5),
-    ENVIRONMENTAL_EXPERT("Environmental Expert", RARITY.RARE, 5),
-    LUCKY_CHARM("Lucky Charm", RARITY.COMMON, 5); //todo unknown max level: find out
+public enum MegaPerk {
+    ARROW_RECOVERY("Arrow Recovery", Rarity.RARE, 5),
+    BLAZING_ARROWS("Blazing Arrows", Rarity.RARE, 5),
+    ENDER_MASTERY("Ender Mastery", Rarity.COMMON, 5),
+    JUGGERNAUT("Juggernaut", Rarity.RARE, 5),
+    MINING_EXPERTISE("Mining Expertise", Rarity.COMMON, 5),
+    RUSHER("Rusher", Rarity.COMMON, 5),
+    TANK("Tank", Rarity.LEGENDARY, 5),
+    NOTORIETY("Notoriety", Rarity.LEGENDARY, 5),
+    NOURISHMENT("Nourishment", Rarity.COMMON, 1),
+    INSTANT_SMELTING("Instant Smelting", Rarity.COMMON, 1),
+    MARKSMANSHIP("Marksmanship", Rarity.LEGENDARY, 1),
+    BRIDGER("Bridger", Rarity.COMMON, 5),
+    ENVIRONMENTAL_EXPERT("Environmental Expert", Rarity.RARE, 5),
+    LUCKY_CHARM("Lucky Charm", Rarity.COMMON, 5); //todo unknown max level: find out
 
     private String displayName;
-    private RARITY rarity;
+    private Rarity rarity;
     private int maxLevel;
 
-    MEGA_PERK(String displayName, RARITY rarity, int maxLevel){
+    MegaPerk(String displayName, Rarity rarity, int maxLevel){
         this.displayName = displayName;
         this.rarity = rarity;
         this.maxLevel = maxLevel;
@@ -37,7 +37,7 @@ public enum MEGA_PERK {
 
     private static ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(MEGA_PERK item: MEGA_PERK.values()){
+        for(MegaPerk item: MegaPerk.values()){
             list.add(item.name());
         }
         return list;
@@ -73,13 +73,13 @@ public enum MEGA_PERK {
         return -1;
     }
 
-    public RARITY getRarity(){
+    public Rarity getRarity(){
         return rarity;
     }
 
     public int getMaxLevel() { return maxLevel; }
 
-    public CURRENCY getCurrencyType(){ return CURRENCY.COINS; }
+    public Currency getCurrencyType(){ return Currency.COINS; }
 
     public String getDescription(int level){
         if(level < 1 || level > maxLevel){

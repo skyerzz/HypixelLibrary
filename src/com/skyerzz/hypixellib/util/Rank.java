@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Created by sky on 7-7-2016.
  */
-public enum RANK {
+public enum Rank {
     NONE("default"),
     VIP("[VIP]"),
     VIP_PLUS("[VIP+]"),
@@ -20,13 +20,13 @@ public enum RANK {
     MOJANG("[MOJANG]", MODERATOR);
 
     private String displayName;
-    private RANK baseRank;
+    private Rank baseRank;
 
-    RANK(String displayName){
+    Rank(String displayName){
         this.displayName = displayName;
     }
 
-    RANK(String displayName, RANK baseRank){
+    Rank(String displayName, Rank baseRank){
         this(displayName);
         this.baseRank = baseRank;
     }
@@ -36,7 +36,7 @@ public enum RANK {
 
     private static ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(RANK item: RANK.values()){
+        for(Rank item: Rank.values()){
             list.add(item.name());
         }
         return list;
@@ -50,7 +50,7 @@ public enum RANK {
      * returns the baserank if it exists, otherwise null
      * @return baserank / null
      */
-    public RANK getBaseRank(){
+    public Rank getBaseRank(){
         return baseRank;
     }
 

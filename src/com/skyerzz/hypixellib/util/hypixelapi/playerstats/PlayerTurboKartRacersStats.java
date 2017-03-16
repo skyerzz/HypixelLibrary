@@ -54,19 +54,19 @@ public class PlayerTurboKartRacersStats extends PlayerGameStats {
 
     private int olympusPlays, junglerushPlays, hypixelGPPlays, retroPlays, canyonPlays;
 
-    private ArrayList<HELMET> unlockedHelmets = new ArrayList<>();
-    private ArrayList<KARTSKIN> unlockedKartSkins = new ArrayList<>();
-    private ArrayList<PANTS> unlockedPants = new ArrayList<>();
-    private ArrayList<JACKET> unlockedJackets = new ArrayList<>();
-    private ArrayList<SHOES> unlockedShoes = new ArrayList<>();
-    private ArrayList<HORN> unlockedHorns = new ArrayList<>();
-    private ArrayList<PARTICLETRAIL> unlockedParticleTrails = new ArrayList<>();
+    private ArrayList<Helmet> unlockedHelmets = new ArrayList<>();
+    private ArrayList<KartSkin> unlockedKartSkins = new ArrayList<>();
+    private ArrayList<Pants> unlockedPants = new ArrayList<>();
+    private ArrayList<Jacket> unlockedJackets = new ArrayList<>();
+    private ArrayList<Shoes> unlockedShoes = new ArrayList<>();
+    private ArrayList<Horn> unlockedHorns = new ArrayList<>();
+    private ArrayList<ParticleTrail> unlockedParticleTrails = new ArrayList<>();
     private ArrayList<KartPart> unlockedKartParts = new ArrayList<>();
 
-    private HELMET selectedHelmet;
-    private PANTS selectedPants;
-    private JACKET selectedJacket;
-    private SHOES selectedShoes;
+    private Helmet selectedHelmet;
+    private Pants selectedPants;
+    private Jacket selectedJacket;
+    private Shoes selectedShoes;
 
     private Kart selectedKart;
 
@@ -280,7 +280,7 @@ public class PlayerTurboKartRacersStats extends PlayerGameStats {
             case "FRAME_ACTIVE":
             case "ENGINE_ACTIVE":
             case "BOOSTER_ACTIVE":
-            case "HORN":
+            case "Horn":
             case "PARTICLE_TRAIL":
                 if (this.selectedKart != null) {
                     setActiveKart();
@@ -314,20 +314,20 @@ public class PlayerTurboKartRacersStats extends PlayerGameStats {
     private void initPackages(JsonArray array) {
         for(JsonElement element: array) {
             String s = element.getAsString().replace("_unlocked", "").toUpperCase();
-            if (HELMET.mapping.contains(s)) {
-                this.unlockedHelmets.add(HELMET.valueOf(s));
-            } else if (HORN.mapping.contains(s)) {
-                this.unlockedHorns.add(HORN.valueOf(s));
-            } else if (JACKET.mapping.contains(s)) {
-                this.unlockedJackets.add(JACKET.valueOf(s));
-            } else if (KARTSKIN.mapping.contains(s)) {
-                this.unlockedKartSkins.add(KARTSKIN.valueOf(s));
-            } else if (PANTS.mapping.contains(s)) {
-                this.unlockedPants.add(PANTS.valueOf(s));
-            } else if (PARTICLETRAIL.mapping.contains(s)) {
-                this.unlockedParticleTrails.add(PARTICLETRAIL.valueOf(s));
-            } else if (SHOES.mapping.contains(s)) {
-                this.unlockedShoes.add(SHOES.valueOf(s));
+            if (Helmet.mapping.contains(s)) {
+                this.unlockedHelmets.add(Helmet.valueOf(s));
+            } else if (Horn.mapping.contains(s)) {
+                this.unlockedHorns.add(Horn.valueOf(s));
+            } else if (Jacket.mapping.contains(s)) {
+                this.unlockedJackets.add(Jacket.valueOf(s));
+            } else if (KartSkin.mapping.contains(s)) {
+                this.unlockedKartSkins.add(KartSkin.valueOf(s));
+            } else if (Pants.mapping.contains(s)) {
+                this.unlockedPants.add(Pants.valueOf(s));
+            } else if (ParticleTrail.mapping.contains(s)) {
+                this.unlockedParticleTrails.add(ParticleTrail.valueOf(s));
+            } else if (Shoes.mapping.contains(s)) {
+                this.unlockedShoes.add(Shoes.valueOf(s));
             }else if(s.contains("_MUTED")){
                     muteTrack(s.replace("_MUTED", ""));
             }else{
@@ -364,21 +364,21 @@ public class PlayerTurboKartRacersStats extends PlayerGameStats {
 
     private void setActiveKart() {
         String temp = getJsonString("skin_active").toUpperCase();
-        KARTSKIN kartSkin = null;
-        if (KARTSKIN.mapping.contains(temp)) {
-            kartSkin = KARTSKIN.valueOf(temp);
+        KartSkin kartSkin = null;
+        if (KartSkin.mapping.contains(temp)) {
+            kartSkin = KartSkin.valueOf(temp);
         }
 
         temp = getJsonString("horn").toUpperCase();
-        HORN horn = null;
-        if(HORN.mapping.contains(temp)){
-            horn = HORN.valueOf(temp);
+        Horn horn = null;
+        if(Horn.mapping.contains(temp)){
+            horn = Horn.valueOf(temp);
         }
 
         temp = getJsonString("particle_trail").toUpperCase();
-        PARTICLETRAIL trail = null;
-        if(PARTICLETRAIL.mapping.contains(temp)){
-            trail = PARTICLETRAIL.valueOf(temp);
+        ParticleTrail trail = null;
+        if(ParticleTrail.mapping.contains(temp)){
+            trail = ParticleTrail.valueOf(temp);
         }
 
         JsonObject tempObject = getJsonObject("frame_active").get("GingerbreadPart").getAsJsonObject();
@@ -395,14 +395,14 @@ public class PlayerTurboKartRacersStats extends PlayerGameStats {
     }
 
     private void setActiveSuitPart(String key, String value) {
-        if (HELMET.mapping.contains(value)) {
-            this.selectedHelmet = HELMET.valueOf(value);
-        } else if (PANTS.mapping.contains(value)) {
-            this.selectedPants = PANTS.valueOf(value);
-        } else if (JACKET.mapping.contains(value)) {
-            this.selectedJacket = JACKET.valueOf(value);
-        } else if (SHOES.mapping.contains(value)) {
-            this.selectedShoes = SHOES.valueOf(value);
+        if (Helmet.mapping.contains(value)) {
+            this.selectedHelmet = Helmet.valueOf(value);
+        } else if (Pants.mapping.contains(value)) {
+            this.selectedPants = Pants.valueOf(value);
+        } else if (Jacket.mapping.contains(value)) {
+            this.selectedJacket = Jacket.valueOf(value);
+        } else if (Shoes.mapping.contains(value)) {
+            this.selectedShoes = Shoes.valueOf(value);
         } else {
             Logger.logWarn("[PlayerAPI.TurboKartRacers." + key + "] Unknown value: " + value);
         }
@@ -617,31 +617,31 @@ public class PlayerTurboKartRacersStats extends PlayerGameStats {
         return canyonPlays;
     }
 
-    public ArrayList<HELMET> getUnlockedHelmets() {
+    public ArrayList<Helmet> getUnlockedHelmets() {
         return unlockedHelmets;
     }
 
-    public ArrayList<KARTSKIN> getUnlockedKartSkins() {
+    public ArrayList<KartSkin> getUnlockedKartSkins() {
         return unlockedKartSkins;
     }
 
-    public ArrayList<PANTS> getUnlockedPants() {
+    public ArrayList<Pants> getUnlockedPants() {
         return unlockedPants;
     }
 
-    public ArrayList<JACKET> getUnlockedJackets() {
+    public ArrayList<Jacket> getUnlockedJackets() {
         return unlockedJackets;
     }
 
-    public ArrayList<SHOES> getUnlockedShoes() {
+    public ArrayList<Shoes> getUnlockedShoes() {
         return unlockedShoes;
     }
 
-    public ArrayList<HORN> getUnlockedHorns() {
+    public ArrayList<Horn> getUnlockedHorns() {
         return unlockedHorns;
     }
 
-    public ArrayList<PARTICLETRAIL> getUnlockedParticleTrails() {
+    public ArrayList<ParticleTrail> getUnlockedParticleTrails() {
         return unlockedParticleTrails;
     }
 
@@ -649,19 +649,19 @@ public class PlayerTurboKartRacersStats extends PlayerGameStats {
         return unlockedKartParts;
     }
 
-    public HELMET getSelectedHelmet() {
+    public Helmet getSelectedHelmet() {
         return selectedHelmet;
     }
 
-    public PANTS getSelectedPants() {
+    public Pants getSelectedPants() {
         return selectedPants;
     }
 
-    public JACKET getSelectedJacket() {
+    public Jacket getSelectedJacket() {
         return selectedJacket;
     }
 
-    public SHOES getSelectedShoes() {
+    public Shoes getSelectedShoes() {
         return selectedShoes;
     }
 

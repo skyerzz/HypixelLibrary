@@ -1,15 +1,15 @@
 package com.skyerzz.hypixellib.util.games.arcade.miniwalls;
 
-import com.skyerzz.hypixellib.util.items.all.Item;
-import com.skyerzz.hypixellib.util.items.all.ItemStack;
-import com.skyerzz.hypixellib.util.items.all.Material;
+import com.skyerzz.hypixellib.util.item.Item;
+import com.skyerzz.hypixellib.util.item.ItemStack;
+import com.skyerzz.hypixellib.util.item.Material;
 
 import java.util.ArrayList;
 
 /**
  * Created by sky on 8-9-2016.
  */
-public enum KIT {
+public enum Kit {
     SOLDIER(new ItemStack(new Item(Material.STONE_SWORD)),
             new ItemStack(new Item(Material.STONE_PICKAXE)),
             new ItemStack(new Item(Material.WOOD_AXE)),
@@ -25,7 +25,7 @@ public enum KIT {
 
     private ArrayList<ItemStack> kitItems;
 
-    KIT(ItemStack...stack){
+    Kit(ItemStack...stack){
         ArrayList<ItemStack> list = new ArrayList<>();
         for(ItemStack s: stack){
             list.add(s);
@@ -37,7 +37,7 @@ public enum KIT {
 
     private static ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(KIT item: KIT.values()){
+        for(Kit item: Kit.values()){
             list.add(item.name());
         }
         return list;

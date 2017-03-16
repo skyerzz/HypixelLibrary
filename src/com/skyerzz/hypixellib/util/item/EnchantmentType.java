@@ -1,4 +1,4 @@
-package com.skyerzz.hypixellib.util.items.all;
+package com.skyerzz.hypixellib.util.item;
 
 /**
  * Created by Ruben on 13/09/2016.

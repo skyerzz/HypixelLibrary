@@ -9,7 +9,6 @@ import com.skyerzz.hypixellib.util.games.blitz.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -23,26 +22,26 @@ public class PlayerBlitzStats extends PlayerGameStats {
     }
 
     //<editor-fold desc="[PRIVATES INDEX]"
-    private HashMap<BASIC_KIT, Integer> basicKits = new HashMap<>();
-    private HashMap<ADVANCED_KIT, Integer> advancedKits = new HashMap<>();
+    private HashMap<BasicKit, Integer> basicKits = new HashMap<>();
+    private HashMap<AdvancedKit, Integer> advancedKits = new HashMap<>();
 
     @OutDated /*Permutations are the old kit inventories*/
-    private HashMap<BASIC_KIT, Integer> basicKitPermutations = new HashMap<>();
-    private HashMap<ADVANCED_KIT, Integer> advancedKitPermutations = new HashMap<>();
+    private HashMap<BasicKit, Integer> basicKitPermutations = new HashMap<>();
+    private HashMap<AdvancedKit, Integer> advancedKitPermutations = new HashMap<>();
 
     private HashMap<String, String> renamedItems = new HashMap<>();
 
-    private ArrayList<BLITZ_POWERUP> unlockedPowerups = new ArrayList<>();
-    private ArrayList<KILL_EFFECT> unlockedKillEffects = new ArrayList<>();
-    private ArrayList<FINISHER> unlockedFinishers = new ArrayList<>();
+    private ArrayList<Powerup> unlockedPowerups = new ArrayList<>();
+    private ArrayList<KillEffect> unlockedKillEffects = new ArrayList<>();
+    private ArrayList<Finisher> unlockedFinishers = new ArrayList<>();
 
-    private AURA selectedAura;
-    private TAUNT selectedTaunt;
-    private VICTORY_DANCE selectedVictoryDance;
-    private FINISHER selectedFinisher;
-    private KILL_EFFECT selectedKillEffect;
-    private BASIC_KIT selectedBasicKit;
-    private ADVANCED_KIT selectedAdvancedKit;
+    private Aura selectedAura;
+    private Taunt selectedTaunt;
+    private VictoryDance selectedVictoryDance;
+    private Finisher selectedFinisher;
+    private KillEffect selectedKillEffect;
+    private BasicKit selectedBasicKit;
+    private AdvancedKit selectedAdvancedKit;
 
     private boolean blood, fancyMode /* killcounter */, tauntAbility, toggled /*killcounter*/, autoArmor, combatTracker /*/trackcombat?*/, aura;
 
@@ -70,39 +69,39 @@ public class PlayerBlitzStats extends PlayerGameStats {
     private boolean setValue(String key, JsonElement element){
         switch(key.toUpperCase().trim()){
             //<editor-fold desc="[Selected Items]">
-            case "AURA":
-                if(AURA.mapping.contains(element.getAsString().toUpperCase().replace("_PARTICLE", ""))){
-                    this.selectedAura = AURA.valueOf(element.getAsString().toUpperCase().replace("_PARTICLE", ""));
+            case "Aura":
+                if(Aura.mapping.contains(element.getAsString().toUpperCase().replace("_PARTICLE", ""))){
+                    this.selectedAura = Aura.valueOf(element.getAsString().toUpperCase().replace("_PARTICLE", ""));
                 }else{
-                    Logger.logError("[PlayerAPI.Blitz.AURA] Unknown aura: " + element.getAsString().toUpperCase());
+                    Logger.logError("[PlayerAPI.Blitz.Aura] Unknown aura: " + element.getAsString().toUpperCase());
                 }
                 return true;
             case "CHOSEN_TAUNT":
-                if(TAUNT.mapping.contains(element.getAsString().toUpperCase())){
-                    this.selectedTaunt = TAUNT.valueOf(element.getAsString().toUpperCase());
+                if(Taunt.mapping.contains(element.getAsString().toUpperCase())){
+                    this.selectedTaunt = Taunt.valueOf(element.getAsString().toUpperCase());
                 }else{
-                    Logger.logError("[PlayerAPI.Blitz.TAUNT] Unknown taunt: " + element.getAsString().toUpperCase());
+                    Logger.logError("[PlayerAPI.Blitz.Taunt] Unknown taunt: " + element.getAsString().toUpperCase());
                 }
                 return true;
             case "CHOSEN_VICTORYDANCE":
-                if(VICTORY_DANCE.mapping.contains(element.getAsString().toUpperCase())){
-                    this.selectedVictoryDance = VICTORY_DANCE.valueOf(element.getAsString().toUpperCase());
+                if(VictoryDance.mapping.contains(element.getAsString().toUpperCase())){
+                    this.selectedVictoryDance = VictoryDance.valueOf(element.getAsString().toUpperCase());
                 }else{
-                    Logger.logError("[PlayerAPI.Blitz.VICTORY_DANCE] Unknown dance: " + element.getAsString().toUpperCase());
+                    Logger.logError("[PlayerAPI.Blitz.VictoryDance] Unknown dance: " + element.getAsString().toUpperCase());
                 }
                 return true;
             case "CHOSEN_FINISHER":
-                if(FINISHER.mapping.contains(element.getAsString().toUpperCase())){
-                    this.selectedFinisher = FINISHER.valueOf(element.getAsString().toUpperCase());
+                if(Finisher.mapping.contains(element.getAsString().toUpperCase())){
+                    this.selectedFinisher = Finisher.valueOf(element.getAsString().toUpperCase());
                 }else{
-                    Logger.logError("[PlayerAPI.Blitz.FINISHER] Unknown finisher: " + element.getAsString().toUpperCase());
+                    Logger.logError("[PlayerAPI.Blitz.Finisher] Unknown finisher: " + element.getAsString().toUpperCase());
                 }
                 return true;
             case "AFTERKILL":
-                if(KILL_EFFECT.mapping.contains(element.getAsString().toUpperCase())){
-                    this.selectedKillEffect = KILL_EFFECT.valueOf(element.getAsString().toUpperCase());
+                if(KillEffect.mapping.contains(element.getAsString().toUpperCase())){
+                    this.selectedKillEffect = KillEffect.valueOf(element.getAsString().toUpperCase());
                 }else{
-                    Logger.logError("[PlayerAPI.Blitz.KILL_EFFECT] Unknown kill effect: " + element.getAsString().toUpperCase());
+                    Logger.logError("[PlayerAPI.Blitz.KillEffect] Unknown kill effect: " + element.getAsString().toUpperCase());
                 }
                 return true;
             //</editor-fold>
@@ -215,22 +214,22 @@ public class PlayerBlitzStats extends PlayerGameStats {
 
     private boolean setSpecialValue(String key, JsonElement element){
         key = key.replace(" ", "_");
-        if(BASIC_KIT.mapping.contains(key.toUpperCase())){
-            basicKits.put(BASIC_KIT.valueOf(key.toUpperCase()), element.getAsInt());
+        if(BasicKit.mapping.contains(key.toUpperCase())){
+            basicKits.put(BasicKit.valueOf(key.toUpperCase()), element.getAsInt());
             return true;
         }
-        if(ADVANCED_KIT.mapping.contains(key.toUpperCase())){
-            advancedKits.put(ADVANCED_KIT.valueOf(key.toUpperCase()), element.getAsInt());
+        if(AdvancedKit.mapping.contains(key.toUpperCase())){
+            advancedKits.put(AdvancedKit.valueOf(key.toUpperCase()), element.getAsInt());
             return true;
         }
         if(key.equals("DEFAULTKIT")){
             String kit = element.getAsString().toUpperCase().replace(" ", "_");
-            if(BASIC_KIT.mapping.contains(kit)){
-                selectedBasicKit = BASIC_KIT.valueOf(kit);
+            if(BasicKit.mapping.contains(kit)){
+                selectedBasicKit = BasicKit.valueOf(kit);
                 return true;
             }
-            if(ADVANCED_KIT.mapping.contains(kit)){
-                selectedAdvancedKit = ADVANCED_KIT.valueOf(kit);
+            if(AdvancedKit.mapping.contains(kit)){
+                selectedAdvancedKit = AdvancedKit.valueOf(kit);
                 return true;
             }
             Logger.logInfo("[PlayerAPI.Blitz.DefaultKit] Could not find kit: " + element.getAsString());
@@ -242,11 +241,11 @@ public class PlayerBlitzStats extends PlayerGameStats {
         }
         if(key.contains("PERMUTATION")){
             String kit = key.replace("KIT_PERMUTATIONS_", "").toUpperCase();
-            if(BASIC_KIT.mapping.contains(kit)){
-                basicKitPermutations.put(BASIC_KIT.valueOf(kit), element.getAsInt());
+            if(BasicKit.mapping.contains(kit)){
+                basicKitPermutations.put(BasicKit.valueOf(kit), element.getAsInt());
             }
-            else if(ADVANCED_KIT.mapping.contains(kit)){
-                advancedKitPermutations.put(ADVANCED_KIT.valueOf(kit), element.getAsInt());
+            else if(AdvancedKit.mapping.contains(kit)){
+                advancedKitPermutations.put(AdvancedKit.valueOf(kit), element.getAsInt());
             }else{
                 Logger.logError("[PlayerAPI.Blitz.kitPermutations] Could not find kit: " + kit);
             }
@@ -267,12 +266,12 @@ public class PlayerBlitzStats extends PlayerGameStats {
     private void setPackageValues(JsonArray array){
         for(JsonElement element: array) {
             String name = element.getAsString().toUpperCase().replace("FINISHER_", "").replace("_FINISHER", "");
-            if (BLITZ_POWERUP.mapping.contains(name)) {
-                this.unlockedPowerups.add(BLITZ_POWERUP.valueOf(name));
-            } else if(KILL_EFFECT.mapping.contains(name)){
-                this.unlockedKillEffects.add(KILL_EFFECT.valueOf(name));
-            }else if(FINISHER.mapping.contains(name)){
-                this.unlockedFinishers.add(FINISHER.valueOf(name));
+            if (Powerup.mapping.contains(name)) {
+                this.unlockedPowerups.add(Powerup.valueOf(name));
+            } else if(KillEffect.mapping.contains(name)){
+                this.unlockedKillEffects.add(KillEffect.valueOf(name));
+            }else if(Finisher.mapping.contains(name)){
+                this.unlockedFinishers.add(Finisher.valueOf(name));
             }else if (name.equals("PACKAGE_TAUNT")) {
                 this.tauntAbility = true;
             } else if(name.equals("DEFAULT_TAUNT")){
@@ -284,19 +283,19 @@ public class PlayerBlitzStats extends PlayerGameStats {
     }
 
     //<editor-fold desc="[GETTERS]">
-    public HashMap<BASIC_KIT, Integer> getBasicKits() {
+    public HashMap<BasicKit, Integer> getBasicKits() {
         return basicKits;
     }
 
-    public HashMap<ADVANCED_KIT, Integer> getAdvancedKits() {
+    public HashMap<AdvancedKit, Integer> getAdvancedKits() {
         return advancedKits;
     }
 
-    public HashMap<BASIC_KIT, Integer> getBasicKitPermutations() {
+    public HashMap<BasicKit, Integer> getBasicKitPermutations() {
         return basicKitPermutations;
     }
 
-    public HashMap<ADVANCED_KIT, Integer> getAdvancedKitPermutations() {
+    public HashMap<AdvancedKit, Integer> getAdvancedKitPermutations() {
         return advancedKitPermutations;
     }
 
@@ -304,43 +303,43 @@ public class PlayerBlitzStats extends PlayerGameStats {
         return renamedItems;
     }
 
-    public ArrayList<BLITZ_POWERUP> getUnlockedPowerups() {
+    public ArrayList<Powerup> getUnlockedPowerups() {
         return unlockedPowerups;
     }
 
-    public ArrayList<KILL_EFFECT> getUnlockedKillEffects() {
+    public ArrayList<KillEffect> getUnlockedKillEffects() {
         return unlockedKillEffects;
     }
 
-    public ArrayList<FINISHER> getUnlockedFinishers() {
+    public ArrayList<Finisher> getUnlockedFinishers() {
         return unlockedFinishers;
     }
 
-    public AURA getSelectedAura() {
+    public Aura getSelectedAura() {
         return selectedAura;
     }
 
-    public TAUNT getSelectedTaunt() {
+    public Taunt getSelectedTaunt() {
         return selectedTaunt;
     }
 
-    public VICTORY_DANCE getSelectedVictoryDance() {
+    public VictoryDance getSelectedVictoryDance() {
         return selectedVictoryDance;
     }
 
-    public FINISHER getSelectedFinisher() {
+    public Finisher getSelectedFinisher() {
         return selectedFinisher;
     }
 
-    public KILL_EFFECT getSelectedKillEffect() {
+    public KillEffect getSelectedKillEffect() {
         return selectedKillEffect;
     }
 
-    public BASIC_KIT getSelectedBasicKit() {
+    public BasicKit getSelectedBasicKit() {
         return selectedBasicKit;
     }
 
-    public ADVANCED_KIT getSelectedAdvancedKit() {
+    public AdvancedKit getSelectedAdvancedKit() {
         return selectedAdvancedKit;
     }
 

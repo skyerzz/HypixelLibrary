@@ -1,8 +1,8 @@
 package com.skyerzz.hypixellib.util.games.blitz;
 
 import com.skyerzz.hypixellib.Logger;
-import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.RANK;
+import com.skyerzz.hypixellib.util.Currency;
+import com.skyerzz.hypixellib.util.Rank;
 import com.skyerzz.hypixellib.util.item.*;
 import com.skyerzz.hypixellib.util.items.all.*;
 
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 /**
  * Created by sky on 19-11-2016.
  */
-public enum BASIC_KIT {
+public enum BasicKit {
     ARCHER("Archer"),
     SCOUT("Scout"),
     MEATMASTER("Meatmaster"),
@@ -25,7 +25,7 @@ public enum BASIC_KIT {
 
     private String displayName;
 
-    BASIC_KIT(String displayName){
+    BasicKit(String displayName){
         this.displayName = displayName;
     }
 
@@ -33,7 +33,7 @@ public enum BASIC_KIT {
 
     private static ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(BASIC_KIT item: BASIC_KIT.values()){
+        for(BasicKit item: BasicKit.values()){
             list.add(item.name());
         }
         return list;
@@ -69,11 +69,11 @@ public enum BASIC_KIT {
         }
     }
 
-    public CURRENCY getCurrencyType(){
-        return CURRENCY.COINS;
+    public Currency getCurrencyType(){
+        return Currency.COINS;
     }
 
-    public RANK getRankRequirement(){ return RANK.NONE; }
+    public Rank getRankRequirement(){ return Rank.NONE; }
 
     public ArrayList<ItemStack> getKitItems(int level){
         if(level < 1 || level > 10){

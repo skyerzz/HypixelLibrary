@@ -5,7 +5,7 @@ import com.skyerzz.hypixellib.OutDated;
 /**
  * Created by sky on 4-9-2016.
  */
-public enum GAMETYPE {
+public enum Gametype {
     BLOCKING_DEAD(24),
     BOUNTY_HUNTERS(14),
     BUILD_BATTLE_SOLO(16),
@@ -31,7 +31,7 @@ public enum GAMETYPE {
 
     private int maxPlayers;
 
-    GAMETYPE(int maxPlayers){
+    Gametype(int maxPlayers){
         this.maxPlayers = maxPlayers;
     }
 

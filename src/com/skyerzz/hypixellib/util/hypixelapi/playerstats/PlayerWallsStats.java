@@ -5,9 +5,9 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.skyerzz.hypixellib.Logger;
 import com.skyerzz.hypixellib.OutDated;
-import com.skyerzz.hypixellib.util.games.walls.ADVCANCEDSTARTER;
-import com.skyerzz.hypixellib.util.games.walls.BASICSTARTER;
-import com.skyerzz.hypixellib.util.games.walls.PERK;
+import com.skyerzz.hypixellib.util.games.walls.AdvancedStarter;
+import com.skyerzz.hypixellib.util.games.walls.BasicStarter;
+import com.skyerzz.hypixellib.util.games.walls.Perk;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,9 +26,9 @@ public class PlayerWallsStats extends PlayerGameStats {
 
     private int coins, wins, deaths, kills, losses;
 
-    private HashMap<ADVCANCEDSTARTER, Integer> advancedStarters = new HashMap<>();
-    private HashMap<PERK, Integer> perks = new HashMap<>();
-    private HashMap<BASICSTARTER, Integer> basicStarters = new HashMap<>();
+    private HashMap<AdvancedStarter, Integer> advancedStarters = new HashMap<>();
+    private HashMap<Perk, Integer> perks = new HashMap<>();
+    private HashMap<BasicStarter, Integer> basicStarters = new HashMap<>();
 
     @OutDated
     private int monthly_wins_a, monthly_wins_b, weekly_wins_a, weekly_wins_b, monthly_kills_a, monthly_kills_b, weekly_kills_a, weekly_kills_b;
@@ -104,16 +104,16 @@ public class PlayerWallsStats extends PlayerGameStats {
             setPackageValues(element.getAsJsonArray());
             return true;
         }
-        if(ADVCANCEDSTARTER.mapping.contains(key)){
-            advancedStarters.put(ADVCANCEDSTARTER.valueOf(key), element.getAsInt());
+        if(AdvancedStarter.mapping.contains(key)){
+            advancedStarters.put(AdvancedStarter.valueOf(key), element.getAsInt());
             return true;
         }
-        if(BASICSTARTER.mapping.contains(key)){
-            basicStarters.put(BASICSTARTER.valueOf(key), element.getAsInt());
+        if(BasicStarter.mapping.contains(key)){
+            basicStarters.put(BasicStarter.valueOf(key), element.getAsInt());
             return true;
         }
-        if(PERK.mapping.contains(key)){
-            perks.put(PERK.valueOf(key), element.getAsInt());
+        if(Perk.mapping.contains(key)){
+            perks.put(Perk.valueOf(key), element.getAsInt());
         }
         return false;
     }
@@ -146,15 +146,15 @@ public class PlayerWallsStats extends PlayerGameStats {
         return losses;
     }
 
-    public HashMap<ADVCANCEDSTARTER, Integer> getAdvancedStarters() {
+    public HashMap<AdvancedStarter, Integer> getAdvancedStarters() {
         return advancedStarters;
     }
 
-    public HashMap<PERK, Integer> getPerks() {
+    public HashMap<Perk, Integer> getPerks() {
         return perks;
     }
 
-    public HashMap<BASICSTARTER, Integer> getBasicStarters() {
+    public HashMap<BasicStarter, Integer> getBasicStarters() {
         return basicStarters;
     }
     @OutDated

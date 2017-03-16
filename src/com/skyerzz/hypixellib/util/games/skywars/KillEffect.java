@@ -5,14 +5,14 @@ import java.util.ArrayList;
 /**
  * Created by sky on 25-12-2016.
  */
-public enum KILL_EFFECT {
+public enum KillEffect {
     NONE("NONE"),
     EXPLOSION("Blood Explosion Kill Effect"), //double values idk why
     BLOOD_EXPLOSION("Blood Explosion Kill Effect");
 
     private String displayName;
 
-    KILL_EFFECT(String displayName){
+    KillEffect(String displayName){
         this.displayName = displayName;
     }
 
@@ -20,7 +20,7 @@ public enum KILL_EFFECT {
 
     private static ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(KILL_EFFECT item: KILL_EFFECT.values()){
+        for(KillEffect item: KillEffect.values()){
             list.add(item.name());
         }
         return list;

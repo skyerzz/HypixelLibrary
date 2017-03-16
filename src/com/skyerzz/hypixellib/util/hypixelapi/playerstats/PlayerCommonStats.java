@@ -4,10 +4,13 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.skyerzz.hypixellib.Logger;
 import com.skyerzz.hypixellib.OutDated;
-import com.skyerzz.hypixellib.util.CHAT;
-import com.skyerzz.hypixellib.util.RANK;
+import com.skyerzz.hypixellib.util.Chat;
+import com.skyerzz.hypixellib.util.Rank;
 import com.skyerzz.hypixellib.util.network.ParticleQuality;
+import com.skyerzz.hypixellib.util.network.event.Xmas2015;
+import com.skyerzz.hypixellib.util.network.event.Xmas2016;
 
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.UUID;
 
@@ -28,14 +31,18 @@ public class PlayerCommonStats extends PlayerGameStats{
     private String _id, displayName, mostRecentlyThankedName, mostRecentlyTippedName, playerName;
     private UUID mostRecentlyThankedUUID, mostRecentlyTippedUUID;
 
-    private CHAT selectedChannel;
-    private RANK rank, newPackageRank;
+    private Chat selectedChannel;
+    private Rank rank, newPackageRank;
     private UUID uuid;
     private ParticleQuality particleQuality;
 
     private long firstLogin, lastlogin; //todo make into date available through getter
 
     private boolean mainLobbyTutorialCompleted;
+
+    private ArrayList<Integer> claimedLevelRewards = new ArrayList<>();
+    private ArrayList<Xmas2016> foundXmas2016Presents = new ArrayList<>();
+    private ArrayList<Xmas2015> foundXmas2015Presents = new ArrayList<>();
 
     @OutDated
     /** Used to allow you to go on the testing network */
@@ -201,28 +208,55 @@ public class PlayerCommonStats extends PlayerGameStats{
 
             case "CHANNEL":
                 String channel = value.getAsString().toUpperCase();
-                if(CHAT.mapping.contains(channel)){
-                    this.selectedChannel = CHAT.valueOf(channel);
+                if(Chat.mapping.contains(channel)){
+                    this.selectedChannel = Chat.valueOf(channel);
                 }else{
                     Logger.logWarn("[HypixelAPI.common.channel] Unknown CHANNEL: " + value.getAsString());
                 }
                 return true;
             case "NEWPACKAGERANK":
                 String newpackagerank = value.getAsString().toUpperCase();
-                if(RANK.mapping.contains(newpackagerank)){
-                    this.newPackageRank = RANK.valueOf(newpackagerank);
+                if(Rank.mapping.contains(newpackagerank)){
+                    this.newPackageRank = Rank.valueOf(newpackagerank);
                 }else{
-                    Logger.logWarn("[HypixelAPI.common.newPackageRank] Unknown RANK: " + value.getAsString());
+                    Logger.logWarn("[HypixelAPI.common.newPackageRank] Unknown Rank: " + value.getAsString());
                 }
                 return true;
-            case "RANK":
+            case "Rank":
                 String rank = value.getAsString().toUpperCase();
-                if(RANK.mapping.contains(rank)){
-                    this.rank = RANK.valueOf(rank);
+                if(Rank.mapping.contains(rank)){
+                    this.rank = Rank.valueOf(rank);
                 }else{
-                    Logger.logWarn("[HypixelAPI.common.rank] Unknown RANK: " + value.getAsString());
+                    Logger.logWarn("[HypixelAPI.common.rank] Unknown Rank: " + value.getAsString());
                 }
                 return true;
+        }
+        if(key.contains("LEVELINGREWARD_")){
+            if(value.getAsBoolean()){
+                int level = Integer.parseInt(key.replace("LEVELINGREWARD_", ""));
+                this.claimedLevelRewards.add(level);
+            }else{
+                Logger.logWarn("[HypixelAPI.common.levelReward] FALSE value for reward? " + key);
+            }
+            return true;
+        }
+        if(key.contains("XMAS2016_")){
+            String present = key.replace("XMAS2016_", "");
+            if(value.getAsBoolean() && Xmas2016.mapping.contains(present)){
+                this.foundXmas2016Presents.add(Xmas2016.valueOf(present));
+            }else{
+                Logger.logWarn("[HypixelAPI.common.xmas2016] Couldnt find xmas2016 value OR value was false: " + key);
+            }
+            return true;
+        }
+        if(key.contains("PRESENT_FIND_")){
+            String present = key.replace("PRESENT_FIND_", "");
+            if(value.getAsBoolean() && Xmas2015.mapping.contains(present)){
+                this.foundXmas2015Presents.add(Xmas2015.valueOf(present));
+            }else{
+                Logger.logWarn("[HypixelAPI.common.xmas2015] Couldnt find xmas2015 value OR value was false: " + key);
+            }
+            return true;
         }
         return false;
     }
@@ -231,7 +265,7 @@ public class PlayerCommonStats extends PlayerGameStats{
         return networkLevel;
     }
 
-    public RANK getRank(){
+    public Rank getRank(){
         if(rank!=null) {
             return rank;
         }
@@ -239,6 +273,6 @@ public class PlayerCommonStats extends PlayerGameStats{
             return newPackageRank;
         }
         //couldnt find any rank, lets return default
-        return RANK.NONE;
+        return Rank.NONE;
     }
 }

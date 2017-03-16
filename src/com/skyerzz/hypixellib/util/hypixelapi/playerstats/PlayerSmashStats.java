@@ -5,12 +5,11 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.skyerzz.hypixellib.Logger;
 import com.skyerzz.hypixellib.OutDated;
-import com.skyerzz.hypixellib.util.games.smashheroes.HERO;
-import com.skyerzz.hypixellib.util.games.smashheroes.MAP;
+import com.skyerzz.hypixellib.util.games.smashheroes.Hero;
+import com.skyerzz.hypixellib.util.games.smashheroes.Map;
 import com.skyerzz.hypixellib.util.games.smashheroes.SmashClass;
 
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by sky on 7-1-2017.
@@ -33,12 +32,12 @@ public class PlayerSmashStats extends PlayerGameStats {
 
     private boolean combatTracker;
 
-    private HERO activeHero;
+    private Hero activeHero;
 
-    private SmashClass  bulk = new SmashClass(HERO.THE_BULK), generalCluck = new SmashClass(HERO.GENERAL_CLUCK), cakeMonster = new SmashClass(HERO.CAKE_MONSTER), botmon = new SmashClass(HERO.BOTMUN),
-                        tinman = new SmashClass(HERO.TINMAN), marauder = new SmashClass(HERO.MARAUDER), spooderman = new SmashClass(HERO.SPODERMAN), pug = new SmashClass(HERO.PUG),
-                        cryomancer = new SmashClass(HERO.FROSTY), sgtShield = new SmashClass(HERO.SERGEANT_SHIELD), karakot = new SmashClass(HERO.GOKU), skullfire = new SmashClass(HERO.SKULLFIRE),
-                        sanic = new SmashClass(HERO.SANIC), voidCrawler = new SmashClass(HERO.DUSK_CRAWLER), shoop = new SmashClass(HERO.SHOOP_DA_WHOOP), greenHood = new SmashClass(HERO.GREEN_HOOD);
+    private SmashClass  bulk = new SmashClass(Hero.THE_BULK), generalCluck = new SmashClass(Hero.GENERAL_CLUCK), cakeMonster = new SmashClass(Hero.CAKE_MONSTER), botmon = new SmashClass(Hero.BOTMUN),
+                        tinman = new SmashClass(Hero.TINMAN), marauder = new SmashClass(Hero.MARAUDER), spooderman = new SmashClass(Hero.SPODERMAN), pug = new SmashClass(Hero.PUG),
+                        cryomancer = new SmashClass(Hero.FROSTY), sgtShield = new SmashClass(Hero.SERGEANT_SHIELD), karakot = new SmashClass(Hero.GOKU), skullfire = new SmashClass(Hero.SKULLFIRE),
+                        sanic = new SmashClass(Hero.SANIC), voidCrawler = new SmashClass(Hero.DUSK_CRAWLER), shoop = new SmashClass(Hero.SHOOP_DA_WHOOP), greenHood = new SmashClass(Hero.GREEN_HOOD);
 
     //fixonline BROKEN stat
     private int winStreak;
@@ -49,8 +48,8 @@ public class PlayerSmashStats extends PlayerGameStats {
     @OutDated
     private int losses_weekly_b, losses_monthly_b, games_monthly_b, kills_monthly_b, games_weekly_b, kills_weekly_b, wins_weekly_b, wins_monthly_b;
     private int losses_weekly_a, losses_monthly_a, games_monthly_a, kills_monthly_a, games_weekly_a, kills_weekly_a, wins_weekly_a, wins_monthly_a;
-    private HashMap<MAP, Integer> mapVotes = new HashMap<>();
-    private SmashClass shaun = new SmashClass(HERO.SHAUN_SHEEP);
+    private HashMap<Map, Integer> mapVotes = new HashMap<>();
+    private SmashClass shaun = new SmashClass(Hero.SHAUN_SHEEP);
     private int deaths3v3, games3v3, losses3v3, kills3v3, damageDealt3v3, smasher3v3, smashed3v3, wins3v3, assists3v3;
 
     public PlayerSmashStats(JsonObject json) {
@@ -59,7 +58,7 @@ public class PlayerSmashStats extends PlayerGameStats {
     }
 
     private void initialize() {
-        for (Map.Entry<String, JsonElement> e : json.entrySet()) {
+        for (java.util.Map.Entry<String, JsonElement> e : json.entrySet()) {
 
             String key = e.getKey().toUpperCase().trim();
             if (setValue(key, e.getValue())) {
@@ -359,8 +358,8 @@ public class PlayerSmashStats extends PlayerGameStats {
                 initPackages(value.getAsJsonArray());
                 return true;
             case "ACTIVE_CLASS":
-                if(HERO.mapping.contains(value.getAsString().toUpperCase())){
-                    this.activeHero = HERO.valueOf(value.getAsString().toUpperCase());
+                if(Hero.mapping.contains(value.getAsString().toUpperCase())){
+                    this.activeHero = Hero.valueOf(value.getAsString().toUpperCase());
                     return true;
                 }
                 Logger.logWarn("[PlayerAPI.SmashHeroes.activeClass] Unknown value: " + value.getAsString().toUpperCase());
@@ -388,39 +387,39 @@ public class PlayerSmashStats extends PlayerGameStats {
         }
         if(key.contains("VOTES_")){
             String map = key.replace("VOTES_", "").replace(" ", "_");
-            if(!MAP.mapping.contains(map)){
+            if(!Map.mapping.contains(map)){
                 Logger.logWarn("[PlayerAPI.SmashHeroes.votes] Unknown map value: " + key);
                 return true;
             }
-            this.mapVotes.put(MAP.valueOf(map), value.getAsInt());
+            this.mapVotes.put(Map.valueOf(map), value.getAsInt());
             return true;
         }
         return false;
     }
 
     private void setClassStats(JsonObject json){
-        for (Map.Entry<String, JsonElement> e : json.entrySet()) {
+        for (java.util.Map.Entry<String, JsonElement> e : json.entrySet()) {
 
             String key = e.getKey().toUpperCase().trim();
-            if(!HERO.mapping.contains(key)){
+            if(!Hero.mapping.contains(key)){
                 Logger.logWarn("[PlayerAPI.SmashHeroes.classStats] Unknown class: " + key);
                 continue;
             }
-            HERO hero = HERO.valueOf(key);
+            Hero hero = Hero.valueOf(key);
             SmashClass smash = getClass(hero);
             smash.setClassJson(e.getValue().getAsJsonObject());
         }
     }
 
     private void setClasses(JsonObject json){
-        for (Map.Entry<String, JsonElement> e : json.entrySet()) {
+        for (java.util.Map.Entry<String, JsonElement> e : json.entrySet()) {
 
             String key = e.getKey().toUpperCase().trim();
-            if(!HERO.mapping.contains(key)){
+            if(!Hero.mapping.contains(key)){
                 Logger.logWarn("[PlayerAPI.SmashHeroes.classes] Unknown value: " + key);
                 continue;
             }
-            HERO hero = HERO.valueOf(key);
+            Hero hero = Hero.valueOf(key);
             SmashClass smash = getClass(hero);
             smash.setHasClassUnlocked(e.getValue().getAsBoolean());
         }
@@ -436,14 +435,14 @@ public class PlayerSmashStats extends PlayerGameStats {
     }
 
     public SmashClass getClass(String hero) {
-        if(HERO.mapping.contains(hero)){
-            return getClass(HERO.valueOf(hero));
+        if(Hero.mapping.contains(hero)){
+            return getClass(Hero.valueOf(hero));
         }
         Logger.logWarn("[PlayerAPI.SmashHeroes.getClass] Unknown class: " + hero);
         return null;
     }
 
-    public SmashClass getClass(HERO hero){
+    public SmashClass getClass(Hero hero){
         switch(hero){
             case THE_BULK: return bulk;
             case GENERAL_CLUCK: return generalCluck;

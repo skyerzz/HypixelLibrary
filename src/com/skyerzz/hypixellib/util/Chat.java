@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Created by Skyerzz-LAPOTOP on 09/03/2017.
  */
-public enum CHAT {
+public enum Chat {
     ALL("all", 'a'),
     PARTY("party", 'p'),
     GUILD("guild", 'g');
@@ -13,7 +13,7 @@ public enum CHAT {
     private String name;
     private char code;
 
-    CHAT(String name, char code){
+    Chat(String name, char code){
         this.name = name;
         this.code = code;
     }
@@ -22,7 +22,7 @@ public enum CHAT {
 
     private static ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(CHAT item: CHAT.values()){
+        for(Chat item: Chat.values()){
             list.add(item.name());
         }
         return list;

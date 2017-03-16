@@ -1,6 +1,6 @@
 package com.skyerzz.hypixellib.util.games.copsandcrims;
 
-import com.skyerzz.hypixellib.util.CURRENCY;
+import com.skyerzz.hypixellib.util.Currency;
 
 /**
  * Created by sky on 23-8-2016.
@@ -40,8 +40,8 @@ public class Character {
         }
     }
 
-    public CURRENCY getCurrencyType(){
-        return CURRENCY.COINS;
+    public Currency getCurrencyType(){
+        return Currency.COINS;
     }
 
     public int getPocketChange() {

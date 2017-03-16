@@ -5,9 +5,9 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.skyerzz.hypixellib.Logger;
 import com.skyerzz.hypixellib.OutDated;
-import com.skyerzz.hypixellib.util.games.paintball.HAT;
-import com.skyerzz.hypixellib.util.games.paintball.KILLSTREAK;
-import com.skyerzz.hypixellib.util.games.paintball.PERK;
+import com.skyerzz.hypixellib.util.games.paintball.Hat;
+import com.skyerzz.hypixellib.util.games.paintball.Killstreak;
+import com.skyerzz.hypixellib.util.games.paintball.Perk;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -44,11 +44,11 @@ public class PlayerPaintballStats extends PlayerGameStats {
     private int monthly_kills_b;
     private int monthly_kills_a;
 
-    private HAT selectedHat;
+    private Hat selectedHat;
 
-    private HashMap<String, HAT> unlockedHats = new HashMap<String, HAT>();
-    private HashMap<String, KILLSTREAK> unlockedKillstreaks = new HashMap<String, KILLSTREAK>();
-    private HashMap<String, PERK> unlockedPerks = new HashMap<String, PERK>();
+    private HashMap<String, Hat> unlockedHats = new HashMap<String, Hat>();
+    private HashMap<String, Killstreak> unlockedKillstreaks = new HashMap<String, Killstreak>();
+    private HashMap<String, Perk> unlockedPerks = new HashMap<String, Perk>();
 
     @OutDated
     private int votes_Juice, votes_Babyland, votes_Victorian, votes_Courtyard, votes_Outback, votes_Herobrine, votes_Octagon, votes_OhCanada, votes_Egypt, votes_Market;
@@ -145,9 +145,9 @@ public class PlayerPaintballStats extends PlayerGameStats {
             //</editor-fold>
 
             //<editor-fold desc="[Misc stuff]">
-            case "HAT":
-                if(HAT.mapping.contains(value.getAsString().toUpperCase())){
-                    this.selectedHat = HAT.valueOf(value.getAsString().toUpperCase());
+            case "Hat":
+                if(Hat.mapping.contains(value.getAsString().toUpperCase())){
+                    this.selectedHat = Hat.valueOf(value.getAsString().toUpperCase());
                 }else{
                     Logger.logWarn("[HypixelAPI.Paintball.Hat] Unsupported Value: " + value.getAsString().toUpperCase());
                 }
@@ -209,16 +209,16 @@ public class PlayerPaintballStats extends PlayerGameStats {
     private void setPackageValues(JsonArray array){
         for(JsonElement element: array){
             String value = element.getAsString().toUpperCase();
-            if(PERK.mapping.contains(value)){
-                PERK item = PERK.valueOf(value);
+            if(Perk.mapping.contains(value)){
+                Perk item = Perk.valueOf(value);
                 this.unlockedPerks.put(value, item);
                 return;
-            }else if(HAT.mapping.contains(value)){
-                HAT item = HAT.valueOf(value);
+            }else if(Hat.mapping.contains(value)){
+                Hat item = Hat.valueOf(value);
                 this.unlockedHats.put(value, item);
                 return;
-            }else if(KILLSTREAK.mapping.contains(value)){
-                KILLSTREAK item = KILLSTREAK.valueOf(value);
+            }else if(Killstreak.mapping.contains(value)){
+                Killstreak item = Killstreak.valueOf(value);
                 this.unlockedKillstreaks.put(value, item);
                 return;
             }else if(value.equals("ACHIEVEMENT_FLAG_1")){
@@ -329,19 +329,19 @@ public class PlayerPaintballStats extends PlayerGameStats {
         return monthly_kills_a;
     }
 
-    public HAT getSelectedHat() {
+    public Hat getSelectedHat() {
         return selectedHat;
     }
 
-    public HashMap<String, HAT> getUnlockedHats() {
+    public HashMap<String, Hat> getUnlockedHats() {
         return unlockedHats;
     }
 
-    public HashMap<String, KILLSTREAK> getUnlockedKillstreaks() {
+    public HashMap<String, Killstreak> getUnlockedKillstreaks() {
         return unlockedKillstreaks;
     }
 
-    public HashMap<String, PERK> getUnlockedPerks() {
+    public HashMap<String, Perk> getUnlockedPerks() {
         return unlockedPerks;
     }
 

@@ -1,6 +1,6 @@
 package com.skyerzz.hypixellib.util.games.skywars;
 
-import com.skyerzz.hypixellib.util.CURRENCY;
+import com.skyerzz.hypixellib.util.Currency;
 import com.skyerzz.hypixellib.util.item.Item;
 import com.skyerzz.hypixellib.util.item.ItemStack;
 import com.skyerzz.hypixellib.util.item.Material;
@@ -10,39 +10,39 @@ import java.util.ArrayList;
 /**
  * Created by Skyerzz-LAPOTOP on 20/12/2016.
  */
-public enum SOLO_KIT {
+public enum SoloKit {
     DEFAULT("Default", null),
-    ARMORER("Armorer", RARITY.RARE),
-    ARMORSMITH("Armorsmith", RARITY.COMMON),
-    CANNONEER("Cannoneer", RARITY.LEGENDARY),
-    ECOLOGIST("Ecologist", RARITY.COMMON),
-    ENCHANTER("Enchanter", RARITY.COMMON),
-    ENDERCHEST("Enderchest", RARITY.RARE),
-    ENDERMAN("Enderman", RARITY.LEGENDARY),
-    FARMER("Farmer", RARITY.RARE),
-    FISHERMAN("Fisherman", RARITY.RARE),
-    HUNTER("Hunter", RARITY.RARE),
-    KNIGHT("Knight", RARITY.RARE),
-    PHARAOH("Pharaoh", RARITY.RARE),
-    PYRO("Pyro", RARITY.LEGENDARY),
-    ROOKIE("Rookie", RARITY.COMMON),
-    SNOWMAN("Snowman", RARITY.RARE),
-    SPELEOLOGIST("Speleologist", RARITY.RARE),
-    TROLL("Troll", RARITY.LEGENDARY),
-    BATGUY("Batguy", RARITY.COMMON),
-    DISCO("Disco", RARITY.COMMON),
-    ENERGIX("Energix", RARITY.COMMON),
-    FROG("Frog", RARITY.COMMON),
-    GRENADE("Grenade", RARITY.COMMON),
-    SCOUT("Scout", RARITY.COMMON),
-    PRINCESS("Princess", RARITY.RARE),
-    BASEBALL_PLAYER("Baseball Player", RARITY.RARE);
+    ARMORER("Armorer", Rarity.RARE),
+    ARMORSMITH("Armorsmith", Rarity.COMMON),
+    CANNONEER("Cannoneer", Rarity.LEGENDARY),
+    ECOLOGIST("Ecologist", Rarity.COMMON),
+    ENCHANTER("Enchanter", Rarity.COMMON),
+    ENDERCHEST("Enderchest", Rarity.RARE),
+    ENDERMAN("Enderman", Rarity.LEGENDARY),
+    FARMER("Farmer", Rarity.RARE),
+    FISHERMAN("Fisherman", Rarity.RARE),
+    HUNTER("Hunter", Rarity.RARE),
+    KNIGHT("Knight", Rarity.RARE),
+    PHARAOH("Pharaoh", Rarity.RARE),
+    PYRO("Pyro", Rarity.LEGENDARY),
+    ROOKIE("Rookie", Rarity.COMMON),
+    SNOWMAN("Snowman", Rarity.RARE),
+    SPELEOLOGIST("Speleologist", Rarity.RARE),
+    TROLL("Troll", Rarity.LEGENDARY),
+    BATGUY("Batguy", Rarity.COMMON),
+    DISCO("Disco", Rarity.COMMON),
+    ENERGIX("Energix", Rarity.COMMON),
+    FROG("Frog", Rarity.COMMON),
+    GRENADE("Grenade", Rarity.COMMON),
+    SCOUT("Scout", Rarity.COMMON),
+    PRINCESS("Princess", Rarity.RARE),
+    BASEBALL_PLAYER("Baseball Player", Rarity.RARE);
 
 
     private String displayName;
-    private RARITY rarity;
+    private Rarity rarity;
 
-    SOLO_KIT(String displayName, RARITY rarity){
+    SoloKit(String displayName, Rarity rarity){
         this.displayName = displayName;
         this.rarity = rarity;
     }
@@ -51,7 +51,7 @@ public enum SOLO_KIT {
 
     private static ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(SOLO_KIT item: SOLO_KIT.values()){
+        for(SoloKit item: SoloKit.values()){
             list.add(item.name());
         }
         return list;
@@ -73,11 +73,11 @@ public enum SOLO_KIT {
         return -1;
     }
 
-    public RARITY getRarity(){
+    public Rarity getRarity(){
         return rarity;
     }
 
-    public CURRENCY getCurrencyType(){ return CURRENCY.COINS; }
+    public Currency getCurrencyType(){ return Currency.COINS; }
 
     public ArrayList<ItemStack> getKitItems(){
         ArrayList<ItemStack> kit = new ArrayList<>();

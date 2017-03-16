@@ -3,7 +3,7 @@ package com.skyerzz.hypixellib.util.games;
 /**
  * Created by sky on 4-9-2016.
  */
-public enum GAMEMODE {
+public enum Gamemode {
     ARCADE,
     ARENA_BRAWL,
     COPS_AND_CRIMS,
@@ -23,7 +23,7 @@ public enum GAMEMODE {
     SPEED_UHC,
     SKYCLASH;
 
-    GAMEMODE(){
+    Gamemode(){
 
     }
 }

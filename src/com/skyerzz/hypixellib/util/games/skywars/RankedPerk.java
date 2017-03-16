@@ -1,45 +1,45 @@
 package com.skyerzz.hypixellib.util.games.skywars;
 
 import com.skyerzz.hypixellib.OutDated;
-import com.skyerzz.hypixellib.util.CURRENCY;
+import com.skyerzz.hypixellib.util.Currency;
 
 import java.util.ArrayList;
 
 /**
  * Created by sky on 25-12-2016.
  */
-public enum RANKED_PERK {
-    ARROW_RECOVERY("Arrow Recovery", RARITY.RARE, 5),
-    BLAZING_ARROWS("Blazing Arrows", RARITY.RARE, 5),
-    BRIDGER("Bridger", RARITY.COMMON, 5),
-    ENDER_MASTERY("Ender Mastery", RARITY.COMMON, 5),
-    ENVIRONMENTAL_EXPERT("Environmental Expert", RARITY.RARE, 5),
-    JUGGERNAUT("Juggernaut", RARITY.RARE, 5),
-    MINING_EXPERTISE("Mining Expertise", RARITY.COMMON, 5),
-    COMBO("Combo", RARITY.RARE, 1),
-    LAST_STAND("Last stand", RARITY.LEGENDARY, 3),
-    RUSHER("Rusher", RARITY.COMMON, 5),
-    TOUGH_SKIN("Tough Skin", RARITY.LEGENDARY, 3),
+public enum RankedPerk {
+    ARROW_RECOVERY("Arrow Recovery", Rarity.RARE, 5),
+    BLAZING_ARROWS("Blazing Arrows", Rarity.RARE, 5),
+    BRIDGER("Bridger", Rarity.COMMON, 5),
+    ENDER_MASTERY("Ender Mastery", Rarity.COMMON, 5),
+    ENVIRONMENTAL_EXPERT("Environmental Expert", Rarity.RARE, 5),
+    JUGGERNAUT("Juggernaut", Rarity.RARE, 5),
+    MINING_EXPERTISE("Mining Expertise", Rarity.COMMON, 5),
+    COMBO("Combo", Rarity.RARE, 1),
+    LAST_STAND("Last stand", Rarity.LEGENDARY, 3),
+    RUSHER("Rusher", Rarity.COMMON, 5),
+    TOUGH_SKIN("Tough Skin", Rarity.LEGENDARY, 3),
 
     //one time perks- kit dependant
-    ARMORER("Armorer Perk", RARITY.LEGENDARY, 1),
-    BOWMAN("Bowman Perk", RARITY.LEGENDARY, 1),
-    CHAMPION("Champion Perk", RARITY.LEGENDARY, 1),
-    MAGICIAN("Magician Perk", RARITY.LEGENDARY, 1),
-    SCOUT("Scout Perk", RARITY.LEGENDARY, 1),
-    ATHLETE("Athlete Perk", RARITY.LEGENDARY, 1),
-    BLACKSMITH("Blacksmith Perk", RARITY.LEGENDARY, 1),
-    HEALER("Healer Perk", RARITY.LEGENDARY, 1),
-    PYROMANCER("Pyromancer Perk", RARITY.LEGENDARY, 1),
+    ARMORER("Armorer Perk", Rarity.LEGENDARY, 1),
+    BOWMAN("Bowman Perk", Rarity.LEGENDARY, 1),
+    CHAMPION("Champion Perk", Rarity.LEGENDARY, 1),
+    MAGICIAN("Magician Perk", Rarity.LEGENDARY, 1),
+    SCOUT("Scout Perk", Rarity.LEGENDARY, 1),
+    ATHLETE("Athlete Perk", Rarity.LEGENDARY, 1),
+    BLACKSMITH("Blacksmith Perk", Rarity.LEGENDARY, 1),
+    HEALER("Healer Perk", Rarity.LEGENDARY, 1),
+    PYROMANCER("Pyromancer Perk", Rarity.LEGENDARY, 1),
 
     @OutDated
     INSTANT_SMELTING("OUTDATED - Instant Smelting", null, -1);
 
     private String displayName;
-    private RARITY rarity;
+    private Rarity rarity;
     private int maxLevel;
 
-    RANKED_PERK(String displayName, RARITY rarity, int maxLevel){
+    RankedPerk(String displayName, Rarity rarity, int maxLevel){
         this.displayName = displayName;
         this.rarity = rarity;
         this.maxLevel = maxLevel;
@@ -49,7 +49,7 @@ public enum RANKED_PERK {
 
     private static ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(RANKED_PERK item: RANKED_PERK.values()){
+        for(RankedPerk item: RankedPerk.values()){
             list.add(item.name());
         }
         return list;
@@ -85,13 +85,13 @@ public enum RANKED_PERK {
         return -1;
     }
 
-    public RARITY getRarity(){
+    public Rarity getRarity(){
         return rarity;
     }
 
     public int getMaxLevel() { return maxLevel; }
 
-    public CURRENCY getCurrencyType(){ return CURRENCY.COINS; }
+    public Currency getCurrencyType(){ return Currency.COINS; }
 
     public String getDescription(int level){
         if(level < 1 || level > maxLevel){

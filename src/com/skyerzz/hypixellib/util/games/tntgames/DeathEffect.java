@@ -1,24 +1,24 @@
 package com.skyerzz.hypixellib.util.games.tntgames;
 
-import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.RANK;
+import com.skyerzz.hypixellib.util.Currency;
+import com.skyerzz.hypixellib.util.Rank;
 
 import java.util.ArrayList;
 
 /**
  * Created by sky on 22-7-2016.
  */
-public enum DEATHEFFECT {
-    FIREWORK(   "Firework", 2000, RANK.VIP),
-    CREEPER(    "Creeper",  4000, RANK.VIP),
-    TNT(        "TNT",      6000, RANK.VIP_PLUS),
-    WITHER(     "Wither",   6000, RANK.VIP_PLUS);
+public enum DeathEffect {
+    FIREWORK(   "Firework", 2000, Rank.VIP),
+    CREEPER(    "Creeper",  4000, Rank.VIP),
+    TNT(        "TNT",      6000, Rank.VIP_PLUS),
+    WITHER(     "Wither",   6000, Rank.VIP_PLUS);
 
     private String displayName;
     private int cost;
-    private RANK rankRequirement;
+    private Rank rankRequirement;
 
-    DEATHEFFECT(String displayName, int cost, RANK rankRequirement){
+    DeathEffect(String displayName, int cost, Rank rankRequirement){
         this.displayName = displayName;
         this.cost = cost;
         this.rankRequirement = rankRequirement;
@@ -28,7 +28,7 @@ public enum DEATHEFFECT {
 
     private static ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(DEATHEFFECT item: DEATHEFFECT.values()){
+        for(DeathEffect item: DeathEffect.values()){
             list.add(item.name());
         }
         return list;
@@ -42,11 +42,11 @@ public enum DEATHEFFECT {
         return cost;
     }
 
-    public CURRENCY getCurrencyType(){
-        return CURRENCY.COINS;
+    public Currency getCurrencyType(){
+        return Currency.COINS;
     }
 
-    public RANK getRankRequirement(){
+    public Rank getRankRequirement(){
         return rankRequirement;
     }
 }

@@ -1,32 +1,32 @@
 package com.skyerzz.hypixellib.util.games.vampirez;
 
-import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.RANK;
+import com.skyerzz.hypixellib.util.Currency;
+import com.skyerzz.hypixellib.util.Rank;
 
 import java.util.ArrayList;
 
 /**
  * Created by sky on 22-7-2016.
  */
-public enum VAMPIREPERK {
-    VAMPIRIC_MINION(    "Vampiric Minion",  1250,   3, RANK.NONE),
-    BLOOD_BOOSTER(      "Blood Booster",    1250,   3, RANK.NONE),
-    DRAIN_PUNCH(        "Drain Punch",      1250,   3, RANK.NONE),
-    WAVE_BOOSTER(       "Wave Booster",     1250,   3, RANK.NONE),
-    KILL_BOOSTER(       "Kill Booster",     1250,   3, RANK.NONE),
-    BLOOD_DRINKER(      "Blood Drinker",    1250,   3, RANK.NONE),
-    FINAL_BREATH(       "Final Breath",     1250,   3, RANK.NONE),
-    HELLBORN(           "Hellborn",         1250,   3, RANK.NONE),
-    VAMPIRIC_SCREAM(    "Vampiric Scream",  1250,   3, RANK.VIP),           //TODO: unchecked
-    RENFIELD(           "Renfield",         10000,  1, RANK.NONE),
-    TERROR_LEVEL(       "Terror Level",     1250,   3, RANK.NONE),
-    FRANKENSTEINS_MONSTER("Frankensteins Monster", 25000, 3, RANK.NONE); //TODO: unchecked
+public enum VampirePerk {
+    VAMPIRIC_MINION(    "Vampiric Minion",  1250,   3, Rank.NONE),
+    BLOOD_BOOSTER(      "Blood Booster",    1250,   3, Rank.NONE),
+    DRAIN_PUNCH(        "Drain Punch",      1250,   3, Rank.NONE),
+    WAVE_BOOSTER(       "Wave Booster",     1250,   3, Rank.NONE),
+    KILL_BOOSTER(       "Kill Booster",     1250,   3, Rank.NONE),
+    BLOOD_DRINKER(      "Blood Drinker",    1250,   3, Rank.NONE),
+    FINAL_BREATH(       "Final Breath",     1250,   3, Rank.NONE),
+    HELLBORN(           "Hellborn",         1250,   3, Rank.NONE),
+    VAMPIRIC_SCREAM(    "Vampiric Scream",  1250,   3, Rank.VIP),           //TODO: unchecked
+    RENFIELD(           "Renfield",         10000,  1, Rank.NONE),
+    TERROR_LEVEL(       "Terror Level",     1250,   3, Rank.NONE),
+    FRANKENSTEINS_MONSTER("Frankensteins Monster", 25000, 3, Rank.NONE); //TODO: unchecked
 
     private String displayName;
     private int cost, maxLevel;
-    private RANK rankRequirement;
+    private Rank rankRequirement;
 
-    VAMPIREPERK(String displayName, int cost, int maxLevel, RANK rankRequirement){
+    VampirePerk(String displayName, int cost, int maxLevel, Rank rankRequirement){
         this.displayName = displayName;
         this.cost = cost;
         this.maxLevel = maxLevel;
@@ -37,7 +37,7 @@ public enum VAMPIREPERK {
 
     private static ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(VAMPIREPERK item: VAMPIREPERK.values()){
+        for(VampirePerk item: VampirePerk.values()){
             list.add(item.name());
         }
         return list;
@@ -56,11 +56,11 @@ public enum VAMPIREPERK {
 
     public int getMaxLevel() {return maxLevel; }
 
-    public CURRENCY getCurrencyType(){
-        return CURRENCY.COINS;
+    public Currency getCurrencyType(){
+        return Currency.COINS;
     }
 
-    public RANK getRankRequirement(){
+    public Rank getRankRequirement(){
         return rankRequirement;
     }
 }

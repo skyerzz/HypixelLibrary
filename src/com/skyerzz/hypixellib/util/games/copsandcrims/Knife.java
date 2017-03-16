@@ -1,6 +1,6 @@
 package com.skyerzz.hypixellib.util.games.copsandcrims;
 
-import com.skyerzz.hypixellib.util.CURRENCY;
+import com.skyerzz.hypixellib.util.Currency;
 
 /**
  * Created by sky on 10-8-2016.
@@ -8,9 +8,9 @@ import com.skyerzz.hypixellib.util.CURRENCY;
 public class Knife {
 
     private int damageIncrease, attackDelay;
-    private KNIFESKIN knifeSkin;
+    private KnifeSkin knifeSkin;
 
-    public Knife(KNIFESKIN knifeSkin, int damageIncrease, int attackDelay){
+    public Knife(KnifeSkin knifeSkin, int damageIncrease, int attackDelay){
         this.knifeSkin = knifeSkin;
         this.damageIncrease = damageIncrease;
         this.attackDelay = attackDelay;
@@ -45,15 +45,15 @@ public class Knife {
         }
     }
 
-    public CURRENCY getCurrencyType(){
-        return CURRENCY.COINS;
+    public Currency getCurrencyType(){
+        return Currency.COINS;
     }
 
     public int getAttackDelay() {
         return attackDelay;
     }
 
-    public KNIFESKIN getKnifeSkin() {
+    public KnifeSkin getKnifeSkin() {
         return knifeSkin;
     }
 }

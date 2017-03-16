@@ -21,7 +21,7 @@ public class SmashClass {
 
     private int level = 0, exp = 0, prestigeLevel = 0;
     private boolean hasClassUnlocked = false, hasMasterSkinUnlocked = false;
-    private HERO hero;
+    private Hero hero;
 
     private HashMap<SmashAbility, Integer> smashedByMove = new HashMap<>();
     private HashMap<SmashAbility, Integer> smashedByMoveteam = new HashMap<>();
@@ -45,7 +45,7 @@ public class SmashClass {
     private HashMap<SmashAbility, Integer> OWNkills3v3 = new HashMap<>(), OWNdamagedealt3v3= new HashMap<>(), OWNsmasher3v3= new HashMap<>();
 
 
-    public SmashClass(HERO hero) {
+    public SmashClass(Hero hero) {
         this.hero = hero;
     }
 
@@ -384,8 +384,8 @@ public class SmashClass {
         if(move.equals("MELEE")){
             return new SmashAbility("MELEE", "Melee", "Hitting your opponent by left-click");
         }
-        for(String string: HERO.mapping){
-            HERO hero = HERO.valueOf(string);
+        for(String string: Hero.mapping){
+            Hero hero = Hero.valueOf(string);
             if(hero.getQuickMove().getAPIName().equals(move)){
                 return hero.getQuickMove();
             }
@@ -401,22 +401,22 @@ public class SmashClass {
         }
         //ROGUE PLS WHY U BREAK MY STUFF WITH OUTDATED VALUES #blamerogue
         if(move.equals("SHIELD")){
-            return HERO.SERGEANT_SHIELD.getQuickMove();
+            return Hero.SERGEANT_SHIELD.getQuickMove();
         }
         if(move.equals("ARROW_STORM")){
-            return HERO.GREEN_HOOD.getSmashMove();
+            return Hero.GREEN_HOOD.getSmashMove();
         }
         if(move.equals("SANIC_BOOM")){
-            return HERO.SANIC.getChargeMove();
+            return Hero.SANIC.getChargeMove();
         }
         if(move.equals("SPIN_DASH")){
-            return HERO.SANIC.getQuickMove();
+            return Hero.SANIC.getQuickMove();
         }
         if(move.equals("BOUNCE")){
-            return HERO.PUG.getPassive();
+            return Hero.PUG.getPassive();
         }
         if(move.equals("ANGRY_CUB")){
-            return HERO.PUG.getSmashMove();
+            return Hero.PUG.getSmashMove();
         }
         Logger.logError("[PlayerAPI.SmashHeroes.getMove] Could not find move: " + move);
         return null;
@@ -446,7 +446,7 @@ public class SmashClass {
         return hasMasterSkinUnlocked;
     }
 
-    public HERO getHero() {
+    public Hero getHero() {
         return hero;
     }
 

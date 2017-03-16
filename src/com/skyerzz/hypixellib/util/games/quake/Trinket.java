@@ -1,23 +1,23 @@
 package com.skyerzz.hypixellib.util.games.quake;
 
-import com.skyerzz.hypixellib.util.CURRENCY;
-import com.skyerzz.hypixellib.util.RANK;
+import com.skyerzz.hypixellib.util.Currency;
+import com.skyerzz.hypixellib.util.Rank;
 
 import java.util.ArrayList;
 
 /**
  * Created by sky on 7-7-2016.
  */
-public enum TRINKET {
-    COMPASS("Tracking Device", 2000, RANK.NONE),
-    COLD_WAR("Map: Cold War", 10, RANK.NONE);
+public enum Trinket {
+    COMPASS("Tracking Device", 2000, Rank.NONE),
+    COLD_WAR("Map: Cold War", 10, Rank.NONE);
 
 
     private String displayName;
     private int cost;
-    private RANK rankRequirement;
+    private Rank rankRequirement;
 
-    TRINKET(String displayName, int cost, RANK rankRequirement){
+    Trinket(String displayName, int cost, Rank rankRequirement){
         this.displayName = displayName;
         this.cost = cost;
         this.rankRequirement = rankRequirement;
@@ -27,7 +27,7 @@ public enum TRINKET {
 
     private static ArrayList<String> initializeMapping(){
         ArrayList<String> list = new ArrayList<String>();
-        for(TRINKET item: TRINKET.values()){
+        for(Trinket item: Trinket.values()){
             list.add(item.name());
         }
         return list;
@@ -41,9 +41,9 @@ public enum TRINKET {
         return cost;
     }
 
-    public CURRENCY getCurrencyType(){ return CURRENCY.COINS; }
+    public Currency getCurrencyType(){ return Currency.COINS; }
 
-    public RANK getRankRequirement(){
+    public Rank getRankRequirement(){
         return rankRequirement;
     }
 }

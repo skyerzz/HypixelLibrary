@@ -1,6 +1,6 @@
 package com.skyerzz.hypixellib.util.games.copsandcrims;
 
-import com.skyerzz.hypixellib.util.CURRENCY;
+import com.skyerzz.hypixellib.util.Currency;
 
 /**
  * Created by sky on 7-8-2016.
@@ -9,10 +9,10 @@ public class Gun {
 
     private int damageIncrease=0, recoilReduction=0, reloadReduction=0, costReduction=0, targetAquire=0;
     private GUNTYPE gunType;
-    private GUNSKIN selectedSkin;
+    private GunSkin selectedSkin;
     private boolean ammoClip;
 
-    public Gun(GUNTYPE guntype, GUNSKIN selectedSkin, boolean ammoClip, int firstPerk, int secondPerk, int thirdPerk, int fourthPerk) throws IncompatibleGunSkinException{
+    public Gun(GUNTYPE guntype, GunSkin selectedSkin, boolean ammoClip, int firstPerk, int secondPerk, int thirdPerk, int fourthPerk) throws IncompatibleGunSkinException{
         this.gunType = guntype;
         this.selectedSkin = selectedSkin;
         if(selectedSkin.getGunType() != guntype){
@@ -64,7 +64,7 @@ public class Gun {
         return gunType;
     }
 
-    public GUNSKIN getSelectedSkin() {
+    public GunSkin getSelectedSkin() {
         return selectedSkin;
     }
 
@@ -101,16 +101,16 @@ public class Gun {
         return (int) (25000*gunType.getCostMultiplier());
     }
 
-    public CURRENCY getCurrencyType(){
-        return CURRENCY.COINS;
+    public Currency getCurrencyType(){
+        return Currency.COINS;
     }
 
     private class IncompatibleGunSkinException extends Exception{
 
-        private GUNSKIN gunskin;
+        private GunSkin gunskin;
         private GUNTYPE guntype;
 
-        public IncompatibleGunSkinException(GUNSKIN gunskin, GUNTYPE guntype){
+        public IncompatibleGunSkinException(GunSkin gunskin, GUNTYPE guntype){
             this.gunskin = gunskin;
             this.guntype = guntype;
         }
@@ -119,7 +119,7 @@ public class Gun {
             return guntype;
         }
 
-        private GUNSKIN getGunskin(){
+        private GunSkin getGunskin(){
             return gunskin;
         }
 

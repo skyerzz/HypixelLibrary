@@ -20,15 +20,15 @@ public class PlayerArenaStats extends PlayerGameStats {
 
     //<editor-fold desc="[FIELDS]
 
-    private RUNE selectedRune;
-    private SWORD selectedSword;
-    private SKILL selectedOffensiveSkill, selectedSupportSkill, selectedUltimateSkill, selectedUtilitySkill;
-    private HAT selectedHat;
-    private HashMap<RUNE, Integer> unlockedRunes = new HashMap<>();
-    private HashMap<COMBATUPGRADE, Integer> unlockedCombatUpgrades = new HashMap<>();
-    private ArrayList<HAT> unlockedHats = new ArrayList<>();
-    private ArrayList<SKILL> unlockedSkills = new ArrayList<>();
-    private ArrayList<SWORD> unlockedSwords = new ArrayList<>();
+    private Rune selectedRune;
+    private Sword selectedSword;
+    private Skill selectedOffensiveSkill, selectedSupportSkill, selectedUltimateSkill, selectedUtilitySkill;
+    private Hat selectedHat;
+    private HashMap<Rune, Integer> unlockedRunes = new HashMap<>();
+    private HashMap<CombatUpgrade, Integer> unlockedCombatUpgrades = new HashMap<>();
+    private ArrayList<Hat> unlockedHats = new ArrayList<>();
+    private ArrayList<Skill> unlockedSkills = new ArrayList<>();
+    private ArrayList<Sword> unlockedSwords = new ArrayList<>();
     
     private int coins, coinsSpent, keys, magicalChestOpenings;
     
@@ -210,58 +210,58 @@ public class PlayerArenaStats extends PlayerGameStats {
         switch(key){
             case "ACTIVE_RUNE":
                 String rune = value.getAsString().toUpperCase();
-                if(RUNE.mapping.contains(rune)){
-                    this.selectedRune = RUNE.valueOf(rune);
+                if(Rune.mapping.contains(rune)){
+                    this.selectedRune = Rune.valueOf(rune);
                 }else{
-                    Logger.logWarn("[PlayerAPI.Arena.initialize] Unknown RUNE value: " + rune);
+                    Logger.logWarn("[PlayerAPI.Arena.initialize] Unknown Rune value: " + rune);
                 }
                 return true;
             case "SELECTED_SWORD":
                 String sword = value.getAsString().toUpperCase().replace("SWORD_", ""); //sometimes they do have sword_ , sometimes they dont. fixing this here.
-                if(SWORD.mapping.contains(sword)){
-                    this.selectedSword = SWORD.valueOf(sword);
+                if(Sword.mapping.contains(sword)){
+                    this.selectedSword = Sword.valueOf(sword);
                 }else{
-                    Logger.logWarn("[PlayerAPI.Arena.initialize] Unknown SWORD value: " + sword);
+                    Logger.logWarn("[PlayerAPI.Arena.initialize] Unknown Sword value: " + sword);
                 }
                 return true;
             case "ULTIMATE":
                 String ultimate = value.getAsString().toUpperCase();
-                if(SKILL.mapping.contains(ultimate)){
-                    this.selectedUltimateSkill = SKILL.valueOf(ultimate);
+                if(Skill.mapping.contains(ultimate)){
+                    this.selectedUltimateSkill = Skill.valueOf(ultimate);
                 }else{
-                    Logger.logWarn("[PlayerAPI.Arena.initialize] Unknown SKILL(ultimate) value: " + ultimate);
+                    Logger.logWarn("[PlayerAPI.Arena.initialize] Unknown Skill(ultimate) value: " + ultimate);
                 }
                 return true;
             case "SUPPORT":
                 String support = value.getAsString().toUpperCase();
-                if(SKILL.mapping.contains(support)){
-                    this.selectedSupportSkill = SKILL.valueOf(support);
+                if(Skill.mapping.contains(support)){
+                    this.selectedSupportSkill = Skill.valueOf(support);
                 }else{
-                    Logger.logWarn("[PlayerAPI.Arena.initialize] Unknown SKILL(support) value: " + support);
+                    Logger.logWarn("[PlayerAPI.Arena.initialize] Unknown Skill(support) value: " + support);
                 }
                 return true;
             case "UTILITY":
                 String utility = value.getAsString().toUpperCase();
-                if(SKILL.mapping.contains(utility)){
-                    this.selectedUtilitySkill = SKILL.valueOf(utility);
+                if(Skill.mapping.contains(utility)){
+                    this.selectedUtilitySkill = Skill.valueOf(utility);
                 }else{
-                    Logger.logWarn("[PlayerAPI.Arena.initialize] Unknown SKILL(utility) value: " + utility);
+                    Logger.logWarn("[PlayerAPI.Arena.initialize] Unknown Skill(utility) value: " + utility);
                 }
                 return true;
             case "OFFENSIVE":
                 String offensive = value.getAsString().toUpperCase();
-                if(SKILL.mapping.contains(offensive)){
-                    this.selectedOffensiveSkill = SKILL.valueOf(offensive);
+                if(Skill.mapping.contains(offensive)){
+                    this.selectedOffensiveSkill = Skill.valueOf(offensive);
                 }else{
-                    Logger.logWarn("[PlayerAPI.Arena.initialize] Unknown SKILL(offensive) value: " + offensive);
+                    Logger.logWarn("[PlayerAPI.Arena.initialize] Unknown Skill(offensive) value: " + offensive);
                 }
                 return true;
-            case "HAT":
+            case "Hat":
                 String hat = value.getAsString().toUpperCase();
-                if(HAT.mapping.contains(hat)){
-                    this.selectedHat = HAT.valueOf(hat);
+                if(Hat.mapping.contains(hat)){
+                    this.selectedHat = Hat.valueOf(hat);
                 }else{
-                    Logger.logWarn("[PlayerAPI.Arena.initialize] Unknown HAT value: " + hat);
+                    Logger.logWarn("[PlayerAPI.Arena.initialize] Unknown Hat value: " + hat);
                 }
                 return true;
             case "PACKAGES":
@@ -270,19 +270,19 @@ public class PlayerArenaStats extends PlayerGameStats {
         }
         if(key.contains("LVL_")){
             String skill = key.replace("LVL_", "");
-            if(COMBATUPGRADE.mapping.contains(skill)){
-                this.unlockedCombatUpgrades.put(COMBATUPGRADE.valueOf(skill), value.getAsInt());
+            if(CombatUpgrade.mapping.contains(skill)){
+                this.unlockedCombatUpgrades.put(CombatUpgrade.valueOf(skill), value.getAsInt());
             }else{
-                Logger.logWarn("[PlayerAPI.Arena.initialize.unlock] Unknown COMBATUPGRADE value: " + skill);
+                Logger.logWarn("[PlayerAPI.Arena.initialize.unlock] Unknown CombatUpgrade value: " + skill);
             }
             return true;
         }
         if(key.contains("RUNE_")){
             String rune = key.replace("RUNE_LEVEL_", "");
-            if(RUNE.mapping.contains(rune)){
-                this.unlockedRunes.put(RUNE.valueOf(rune), value.getAsInt());
+            if(Rune.mapping.contains(rune)){
+                this.unlockedRunes.put(Rune.valueOf(rune), value.getAsInt());
             }else{
-                Logger.logWarn("[PlayerAPI.Arena.initialize.unlock] Unknown RUNE value: " + rune);
+                Logger.logWarn("[PlayerAPI.Arena.initialize.unlock] Unknown Rune value: " + rune);
             }
             return true;
         }
@@ -297,13 +297,13 @@ public class PlayerArenaStats extends PlayerGameStats {
     private void setPackages(JsonArray array){
         for(JsonElement element: array){
             String value = element.getAsString().toUpperCase().trim().replace("SWORD_", "").replace(" ", "_"); //fixing sword values & spaces>_ (cmon jamie)
-            if(HAT.mapping.contains(value)){
-                this.unlockedHats.add(HAT.valueOf(value));
-            }else if(SKILL.mapping.contains(value)){
-                this.unlockedSkills.add(SKILL.valueOf(value));
-            }else if(SWORD.mapping.contains(value)){
-                this.unlockedSwords.add(SWORD.valueOf(value));
-            }else if(value.contains("RUNE") || value.contains("PACKAGEARENA_ARENA_RATING_") || value.contains("_SPEC")){
+            if(Hat.mapping.contains(value)){
+                this.unlockedHats.add(Hat.valueOf(value));
+            }else if(Skill.mapping.contains(value)){
+                this.unlockedSkills.add(Skill.valueOf(value));
+            }else if(Sword.mapping.contains(value)){
+                this.unlockedSwords.add(Sword.valueOf(value));
+            }else if(value.contains("Rune") || value.contains("PACKAGEARENA_ARENA_RATING_") || value.contains("_SPEC")){
                 //we already are handling unlocked runes by their levels, no need to add them here.
                 //packageArena_Arena_Rating_2 / 6_16 are dummy values and do not have to be stored.
                 //how on earth did warlords values end up here? removing them through this.
@@ -314,51 +314,51 @@ public class PlayerArenaStats extends PlayerGameStats {
         }
     }
 
-    public HashMap<RUNE, Integer> getUnlockedRunes() {
+    public HashMap<Rune, Integer> getUnlockedRunes() {
         return unlockedRunes;
     }
 
-    public RUNE getSelectedRune() {
+    public Rune getSelectedRune() {
         return selectedRune;
     }
 
-    public SWORD getSelectedSword() {
+    public Sword getSelectedSword() {
         return selectedSword;
     }
 
-    public SKILL getSelectedOffensiveSkill() {
+    public Skill getSelectedOffensiveSkill() {
         return selectedOffensiveSkill;
     }
 
-    public SKILL getSelectedSupportSkill() {
+    public Skill getSelectedSupportSkill() {
         return selectedSupportSkill;
     }
 
-    public SKILL getSelectedUltimateSkill() {
+    public Skill getSelectedUltimateSkill() {
         return selectedUltimateSkill;
     }
 
-    public SKILL getSelectedUtilitySkill() {
+    public Skill getSelectedUtilitySkill() {
         return selectedUtilitySkill;
     }
 
-    public HAT getSelectedHat() {
+    public Hat getSelectedHat() {
         return selectedHat;
     }
 
-    public HashMap<COMBATUPGRADE, Integer> getUnlockedCombatUpgrades() {
+    public HashMap<CombatUpgrade, Integer> getUnlockedCombatUpgrades() {
         return unlockedCombatUpgrades;
     }
 
-    public ArrayList<HAT> getUnlockedHats() {
+    public ArrayList<Hat> getUnlockedHats() {
         return unlockedHats;
     }
 
-    public ArrayList<SKILL> getUnlockedSkills() {
+    public ArrayList<Skill> getUnlockedSkills() {
         return unlockedSkills;
     }
 
-    public ArrayList<SWORD> getUnlockedSwords() {
+    public ArrayList<Sword> getUnlockedSwords() {
         return unlockedSwords;
     }
 
