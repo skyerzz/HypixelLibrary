@@ -10,6 +10,9 @@ import com.skyerzz.hypixellib.util.network.event.Xmas2015;
 import com.skyerzz.hypixellib.util.network.event.Xmas2016;
 import com.skyerzz.hypixellib.util.network.mysteryvault.Cloak;
 import com.skyerzz.hypixellib.util.network.networklevel.MVPPlusColor;
+import com.skyerzz.hypixellib.util.network.pet.Pet;
+import com.skyerzz.hypixellib.util.network.pet.PetSpecies;
+import com.skyerzz.hypixellib.util.network.pet.PetStat;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -32,6 +35,7 @@ public class PlayerCommonStats extends PlayerGameStats{
     private String _id, displayName, mostRecentlyThankedName, mostRecentlyTippedName, playerName;
     private UUID mostRecentlyThankedUUID, mostRecentlyTippedUUID;
     private int specSpeed;
+    private long lastPetJourney;
 
     private Chat selectedChannel;
     private Rank rank, newPackageRank;
@@ -44,10 +48,11 @@ public class PlayerCommonStats extends PlayerGameStats{
 
     private long firstLogin, lastlogin; //todo make into date available through getter
 
-    private boolean mainLobbyTutorialCompleted;
+    private boolean mainLobbyTutorialCompleted, spectatorNightVision;
 
     private ArrayList<Integer> claimedLevelRewards = new ArrayList<>();
     private ArrayList<AdminNPC> foundAdminNPCs = new ArrayList<>();
+    private ArrayList<Pet> petStats = new ArrayList<>();
 
     //<editor-fold desc="[EVENTS]">
     private ArrayList<Xmas2016> foundXmas2016Presents = new ArrayList<>();
@@ -172,6 +177,12 @@ public class PlayerCommonStats extends PlayerGameStats{
             case "SANTA_QUEST_STARTED":
                 this.startedXmas2016SantaQuest = value.getAsBoolean();
                 return true;
+            case "PETJOURNEYTIMESTAMP":
+                this.lastPetJourney = value.getAsInt();
+                return true;
+            case "SPEC_NIGHT_VISION":
+                this.spectatorNightVision = value.getAsBoolean();
+                return true;
             //</editor-fold>
         }
         return false;
@@ -224,7 +235,7 @@ public class PlayerCommonStats extends PlayerGameStats{
                 // TODO: 16/03/2017
                 return true;
             case "PETSTATS":
-                // TODO: 16/03/2017
+                getPetStats(value.getAsJsonObject());
                 return true;
             case "SOCIALMEDIA":
                 // TODO: 16/03/2017
@@ -350,7 +361,31 @@ public class PlayerCommonStats extends PlayerGameStats{
     }
 
     private void registerMysteryBoxPacket(String key, JsonObject object){
+        // TODO: 17/03/2017
+    }
 
+    private void getPetStats(JsonObject json){
+        for (Map.Entry<String, JsonElement> e : json.entrySet()) {
+            String key = e.getKey().toUpperCase();
+            if(PetSpecies.mapping.contains(key)){
+                PetSpecies species = PetSpecies.valueOf(key);
+                int experience = json.get(key).getAsJsonObject().get("experience").getAsInt();
+                String customName = null;
+                if(!json.get(key).getAsJsonObject().get("name").isJsonNull() && json.get(key).getAsJsonObject().get("name") !=null){
+                    customName = json.get(key).getAsJsonObject().get("name").getAsString();
+                }
+
+                JsonObject thirstObject = json.get(key).getAsJsonObject().get("THIRST").getAsJsonObject();
+                PetStat thirst = new PetStat(PetStat.petStatType.THIRST, thirstObject.get("timestamp").getAsLong(), thirstObject.get("value").getAsInt());
+                JsonObject hungerObject = json.get(key).getAsJsonObject().get("HUNGER").getAsJsonObject();
+                PetStat hunger = new PetStat(PetStat.petStatType.HUNGER, hungerObject.get("timestamp").getAsLong(), hungerObject.get("value").getAsInt());
+                JsonObject exerciseObject = json.get(key).getAsJsonObject().get("EXERCISE").getAsJsonObject();
+                PetStat exercise = new PetStat(PetStat.petStatType.EXERCISE, exerciseObject.get("timestamp").getAsLong(), exerciseObject.get("value").getAsInt());
+                this.petStats.add(new Pet(species, customName, experience, thirst, hunger, exercise));
+                continue;
+            }
+            Logger.logWarn("[PlayerAPI.Common.PetStat] Unknown PET: " + key);
+        }
     }
 
     public int getNetworkLevel(){
