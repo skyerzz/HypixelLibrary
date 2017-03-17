@@ -838,7 +838,7 @@ public class PlayerSkywarsStats extends PlayerGameStats {
             return true;
         }
 
-        if(key.contains("MEGA") && key.contains("Kit")){
+        if(key.contains("MEGA") && key.contains("KIT")){
             String kit = key.replaceAll("[\\w+_]*MEGA_", "").replace("-", "_");
             if(MegaKit.mapping.contains(kit)){
                 this.unlockedMegaKits.put(MegaKit.valueOf(kit), value.getAsInt());
@@ -848,7 +848,7 @@ public class PlayerSkywarsStats extends PlayerGameStats {
             return true;
         }
 
-        if(key.contains("RANKED") && key.contains("Kit")){
+        if(key.contains("RANKED") && key.contains("KIT")){
             String kit = key.replaceAll("[\\w+_]*RANKED_", "").replace("-", "_");
             if(RankedKit.mapping.contains(kit)){
                 this.unlockedRankedKits.put(RankedKit.valueOf(kit), value.getAsInt());
@@ -859,7 +859,7 @@ public class PlayerSkywarsStats extends PlayerGameStats {
         }
 
         //<editor-fold desc="[statHashmaps]">
-        if(key.contains("SOLO") && key.contains("Kit")){
+        if(key.contains("SOLO") && key.contains("KIT")){
             String kit = key.replaceAll("[\\w+_]+SOLO_", "");
             if(!SoloKit.mapping.contains(kit)){
                 Logger.logError("[PlayerAPI.Skywars.SOLO_STAT] Unknown Solo Kit value: " + kit  + " >> " + key);
@@ -911,7 +911,7 @@ public class PlayerSkywarsStats extends PlayerGameStats {
             return true;
         }
         
-        if(key.contains("TEAM") && key.contains("Kit")){
+        if(key.contains("TEAM") && key.contains("KIT")){
             String kit = key.replaceAll("[\\w+_]+TEAM_", "").replace("-", "_");
             if(!TeamKit.mapping.contains(kit)){
                 Logger.logError("[PlayerAPI.Skywars.TEAM_STAT] Unknown Team Kit value: " + kit  + " >> " + key);
@@ -963,7 +963,7 @@ public class PlayerSkywarsStats extends PlayerGameStats {
             return true;
         }
         
-        if(key.contains("RANKED") && key.contains("Kit")){
+        if(key.contains("RANKED") && key.contains("KIT")){
             String kit = key.replaceAll("[\\w+_]+RANKED_", "");
             if(!RankedKit.mapping.contains(kit)){
                 Logger.logError("[PlayerAPI.Skywars.RANKED_STAT] Unknown Ranked Kit value: " + kit  + " >> " + key);
@@ -1015,7 +1015,7 @@ public class PlayerSkywarsStats extends PlayerGameStats {
             return true;
         }
         
-        if(key.contains("MEGA") && key.contains("Kit")){
+        if(key.contains("MEGA") && key.contains("KIT")){
             String kit = key.replaceAll("[\\w+_]+MEGA_", "");
             if(!MegaKit.mapping.contains(kit)){
                 Logger.logError("[PlayerAPI.Skywars.MEGA_STAT] Unknown Mega Kit value: " + kit  + " >> " + key);
@@ -1120,7 +1120,7 @@ public class PlayerSkywarsStats extends PlayerGameStats {
                 continue;
             }
 
-            if(key.contains("Cage")){
+            if(key.contains("CAGE")){
                 key = key.replaceAll("[\\w+_]*CAGE_", "").replace("-", "_");
                 if(Cage.mapping.contains(key)){
                     this.unlockedCages.add(Cage.valueOf(key));
@@ -1150,7 +1150,7 @@ public class PlayerSkywarsStats extends PlayerGameStats {
                 continue;
             }
 
-            if(key.contains("VICTORYDANCE") || key.contains("VictoryDance")){
+            if(key.contains("VICTORYDANCE")){
                 key = key.replaceAll("[\\w+_]*VICTORYDANCE_", "").replaceAll("[\\w+_]*VICTORY_DANCE_", "").replace("-", "_");
                 if(VictoryDance.mapping.contains(key)){
                     this.unlockedVictoryDances.add(VictoryDance.valueOf(key));
@@ -1160,7 +1160,7 @@ public class PlayerSkywarsStats extends PlayerGameStats {
                 continue;
             }
 
-            if(key.contains("KILLEFFECT") || key.contains("KillEffect")){
+            if(key.contains("KILLEFFECT")){
                 key = key.replaceAll("[\\w+_]*KILLEFFECT_", "").replaceAll("[\\w+_]*KILL_EFFECT_", "").replace("-", "_");
                 if(KillEffect.mapping.contains(key)){
                     this.unlockedKillEffects.add(KillEffect.valueOf(key));

@@ -280,7 +280,7 @@ public class PlayerTurboKartRacersStats extends PlayerGameStats {
             case "FRAME_ACTIVE":
             case "ENGINE_ACTIVE":
             case "BOOSTER_ACTIVE":
-            case "Horn":
+            case "HORN":
             case "PARTICLE_TRAIL":
                 if (this.selectedKart != null) {
                     setActiveKart();

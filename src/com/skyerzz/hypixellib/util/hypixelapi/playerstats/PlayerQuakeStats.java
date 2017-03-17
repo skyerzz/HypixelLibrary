@@ -153,49 +153,49 @@ public class PlayerQuakeStats extends PlayerGameStats {
             //</editor-fold>
 
             //<editor-fold desc="[Settings]">
-            case "Barrel":
+            case "BARREL":
                 if(Barrel.mapping.contains(value.getAsString().toUpperCase())){
                     this.selectedBarrel = Barrel.valueOf(value.getAsString().toUpperCase());
                 }else{
                     Logger.logWarn("[PlayerAPI.Quake.Barrel] Unknown Value: " + value.getAsString().toUpperCase());
                 }
                 break;
-            case "Case":
+            case "CASE":
                 if(Case.mapping.contains(value.getAsString().toUpperCase())){
                     this.selectedCase = Case.valueOf(value.getAsString().toUpperCase());
                 }else{
                     Logger.logWarn("[PlayerAPI.Quake.Case] Unknown Value: " + value.getAsString().toUpperCase());
                 }
                 break;
-            case "Killsound":
+            case "KILLSOUND":
                 if(Killsound.mapping.contains(value.getAsString().toUpperCase())){
                     this.selectedKillSound = Killsound.valueOf(value.getAsString().toUpperCase());
                 }else{
                     Logger.logWarn("[PlayerAPI.Quake.KillSound] Unknown Value: " + value.getAsString().toUpperCase());
                 }
                 break;
-            case "Muzzle":
+            case "MUZZLE":
                 if(Muzzle.mapping.contains(value.getAsString().toUpperCase())){
                     this.selectedMuzzle = Muzzle.valueOf(value.getAsString().toUpperCase());
                 }else{
                     Logger.logWarn("[PlayerAPI.Quake.Muzzle] Unknown Value: " + value.getAsString().toUpperCase());
                 }
                 break;
-            case "Sight":
+            case "SIGHT":
                 if(Sight.mapping.contains(value.getAsString().toUpperCase())){
                     this.selectedSight = Sight.valueOf(value.getAsString().toUpperCase());
                 }else{
                     Logger.logWarn("[PlayerAPI.Quake.Sight] Unknown Value: " + value.getAsString().toUpperCase());
                 }
                 break;
-            case "Trigger":
+            case "TRIGGER":
                 if(Trigger.mapping.contains(value.getAsString().toUpperCase())){
                     this.selectedTrigger = Trigger.valueOf(value.getAsString().toUpperCase());
                 }else{
                     Logger.logWarn("[PlayerAPI.Quake.Trigger] Unknown Value: " + value.getAsString().toUpperCase());
                 }
                 break;
-            case "Hat":
+            case "HAT":
                 if(Hat.mapping.contains(value.getAsString().toUpperCase())){
                     this.selectedHat = Hat.valueOf(value.getAsString().toUpperCase());
                 }else{

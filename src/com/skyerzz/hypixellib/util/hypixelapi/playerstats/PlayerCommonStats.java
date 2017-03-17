@@ -32,10 +32,11 @@ public class PlayerCommonStats extends PlayerGameStats{
     /** Hypixel Credit Value */
     private int vanityTokens; //todo check if actual credit value
 
-    private String _id, displayName, mostRecentlyThankedName, mostRecentlyTippedName, playerName;
+    private String _id, displayName, mostRecentlyThankedName, mostRecentlyTippedName, playerName, mcVersionRP;
     private UUID mostRecentlyThankedUUID, mostRecentlyTippedUUID;
-    private int specSpeed;
-    private long lastPetJourney;
+    private int specSpeed, adsenseTokens, totalRewards, totalDailyRewards, rewardStreak, rewardScore, rewardHighScore;
+    private long lastPetJourney, mvpPlusColorUnlocked, vanityFirstConvertedBox, lastAdsenseTime, lastClaimedReward, quickjoinTimestamp;
+    private int quickJoinUses, flashingNewsPoppedUp, flashingNewsOpens;
 
     private Chat selectedChannel;
     private Rank rank, newPackageRank;
@@ -48,7 +49,7 @@ public class PlayerCommonStats extends PlayerGameStats{
 
     private long firstLogin, lastlogin; //todo make into date available through getter
 
-    private boolean mainLobbyTutorialCompleted, spectatorNightVision;
+    private boolean mainLobbyTutorialCompleted, spectatorNightVision, newMainTutorial, silence;
 
     private ArrayList<Integer> claimedLevelRewards = new ArrayList<>();
     private ArrayList<AdminNPC> foundAdminNPCs = new ArrayList<>();
@@ -65,8 +66,12 @@ public class PlayerCommonStats extends PlayerGameStats{
     /** Used to allow you to go on the testing network */
     private boolean testpass;
 
+    @OutDated
+    /** Used to keep track of online time, doesnt work anymore*/
+    private int timePlaying;
+
     //todo find out what values mean
-    private boolean clock, warlordsRedeemed, websiteSet;
+    private boolean clock, warlordsRedeemed, websiteSet, rewardConsumed;
     private String newClock;
     private long lastEugeneMessage, lastSurvey;
     //</editor-fold>
@@ -183,6 +188,63 @@ public class PlayerCommonStats extends PlayerGameStats{
             case "SPEC_NIGHT_VISION":
                 this.spectatorNightVision = value.getAsBoolean();
                 return true;
+            case "TIMEPLAYING":
+                this.timePlaying = value.getAsInt();
+                return true;
+            case "NEWMAINTUTORIAL":
+                this.newMainTutorial = value.getAsBoolean();
+                return true;
+            case "VANITYFIRSTCONVERTEDBOX":
+                this.vanityFirstConvertedBox = value.getAsLong();
+                return true;
+            case "LEVELUP_MVP_PLUS":
+                this.mvpPlusColorUnlocked = value.getAsLong();
+                return true;
+            case "SILENCE":
+                this.silence = value.getAsBoolean();
+                return true;
+            case "MCVERSIONRP":
+                this.mcVersionRP = value.getAsString();
+                return true;
+            case "REWARDCONSUMED":
+                this.rewardConsumed = value.getAsBoolean();
+                return true;
+            case "LASTADSENSEGENERATETIME":
+                this.lastAdsenseTime = value.getAsLong();
+                return true;
+            case "LASTCLAIMEDREWARD":
+                this.lastClaimedReward = value.getAsLong();
+                return true;
+            case "TOTALREWARDS":
+                this.totalRewards = value.getAsInt();
+                return true;
+            case "TOTALDAILYREWARDS":
+                this.totalDailyRewards = value.getAsInt();
+                return true;
+            case "REWARDSTREAK":
+                this.rewardStreak = value.getAsInt();
+                return true;
+            case "REWARDSCORE":
+                this.rewardScore = value.getAsInt();
+                return true;
+            case "ADSENSE_TOKENS":
+                this.adsenseTokens = value.getAsInt();
+                return true;
+            case "REWARDHIGHSCORE":
+                this.rewardHighScore = value.getAsInt();
+                return true;
+            case "QUICKJOIN_TIMESTAMP":
+                this.quickjoinTimestamp = value.getAsLong();
+                return true;
+            case "FLASHINGNEWSPOPPEDUP":
+                this.flashingNewsPoppedUp = value.getAsInt();
+                return true;
+            case "QUICKJOIN_USES":
+                this.quickJoinUses = value.getAsInt();
+                return true;
+            case "FLASHINGNEWSOPENS":
+                this.flashingNewsOpens = value.getAsInt();
+                return true;
             //</editor-fold>
         }
         return false;
@@ -249,6 +311,18 @@ public class PlayerCommonStats extends PlayerGameStats{
             case "QUESTSETTINGS":
                 // TODO: 16/03/2017
                 return true;
+            case "EUGENE":
+                // TODO: 17/03/2017
+                return true;
+            case "VOTING":
+                // TODO: 17/03/2017
+                return true;
+            case "FIREWORKSTORAGE": //outdated
+                // TODO: 17/03/2017
+                return true;
+            case "SPECIALTYCOOLDOWNS":
+                // TODO: 17/03/2017
+                return true;
             case "MOSTRECENTGAMETYPE":
                 String game = value.getAsString().toUpperCase();
                 if(Gamemode.mapping.contains(game)){
@@ -308,7 +382,7 @@ public class PlayerCommonStats extends PlayerGameStats{
                     Logger.logWarn("[HypixelAPI.common.newPackageRank] Unknown Rank: " + value.getAsString());
                 }
                 return true;
-            case "Rank":
+            case "RANK":
                 String rank = value.getAsString().toUpperCase();
                 if(Rank.mapping.contains(rank)){
                     this.rank = Rank.valueOf(rank);
@@ -369,19 +443,28 @@ public class PlayerCommonStats extends PlayerGameStats{
             String key = e.getKey().toUpperCase();
             if(PetSpecies.mapping.contains(key)){
                 PetSpecies species = PetSpecies.valueOf(key);
-                int experience = json.get(key).getAsJsonObject().get("experience").getAsInt();
+                int experience = -1;
+                if(json.get(key).getAsJsonObject().get("experience") !=null && !json.get(key).getAsJsonObject().get("experience").isJsonNull()){
+                     experience = json.get(key).getAsJsonObject().get("experience").getAsInt();
+                }
                 String customName = null;
-                if(!json.get(key).getAsJsonObject().get("name").isJsonNull() && json.get(key).getAsJsonObject().get("name") !=null){
+                if(json.get(key).getAsJsonObject().get("name") !=null && !json.get(key).getAsJsonObject().get("name").isJsonNull()){
                     customName = json.get(key).getAsJsonObject().get("name").getAsString();
                 }
 
-                JsonObject thirstObject = json.get(key).getAsJsonObject().get("THIRST").getAsJsonObject();
-                PetStat thirst = new PetStat(PetStat.petStatType.THIRST, thirstObject.get("timestamp").getAsLong(), thirstObject.get("value").getAsInt());
-                JsonObject hungerObject = json.get(key).getAsJsonObject().get("HUNGER").getAsJsonObject();
-                PetStat hunger = new PetStat(PetStat.petStatType.HUNGER, hungerObject.get("timestamp").getAsLong(), hungerObject.get("value").getAsInt());
-                JsonObject exerciseObject = json.get(key).getAsJsonObject().get("EXERCISE").getAsJsonObject();
-                PetStat exercise = new PetStat(PetStat.petStatType.EXERCISE, exerciseObject.get("timestamp").getAsLong(), exerciseObject.get("value").getAsInt());
-                this.petStats.add(new Pet(species, customName, experience, thirst, hunger, exercise));
+                if(json.get(key).getAsJsonObject().get("THIRST") !=null && !json.get(key).getAsJsonObject().get("THIRST").isJsonNull()) {
+                    JsonObject thirstObject = json.get(key).getAsJsonObject().get("THIRST").getAsJsonObject();
+
+                    PetStat thirst = new PetStat(PetStat.petStatType.THIRST, thirstObject.get("timestamp").getAsLong(), thirstObject.get("value").getAsInt());
+                    JsonObject hungerObject = json.get(key).getAsJsonObject().get("HUNGER").getAsJsonObject();
+                    PetStat hunger = new PetStat(PetStat.petStatType.HUNGER, hungerObject.get("timestamp").getAsLong(), hungerObject.get("value").getAsInt());
+                    JsonObject exerciseObject = json.get(key).getAsJsonObject().get("EXERCISE").getAsJsonObject();
+                    PetStat exercise = new PetStat(PetStat.petStatType.EXERCISE, exerciseObject.get("timestamp").getAsLong(), exerciseObject.get("value").getAsInt());
+
+                    this.petStats.add(new Pet(species, customName, experience, thirst, hunger, exercise));
+                }else{
+                    Logger.logWarn("[HypixelAPI.common.petStats] couldnt find thirst,hunger,exercise for pet: " + key);
+                }
                 continue;
             }
             Logger.logWarn("[PlayerAPI.Common.PetStat] Unknown PET: " + key);

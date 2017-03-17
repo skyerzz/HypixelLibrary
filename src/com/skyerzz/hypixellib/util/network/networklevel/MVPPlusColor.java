@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Created by Skyerzz-LAPOTOP on 16/03/2017.
  */
-public class MVPPlusColor extends LevelReward {
+public class MVPPlusColor {
 
     private PlusColor color;
 
