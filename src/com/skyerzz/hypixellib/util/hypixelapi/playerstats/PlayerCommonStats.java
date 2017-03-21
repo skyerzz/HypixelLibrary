@@ -10,9 +10,7 @@ import com.skyerzz.hypixellib.util.network.event.Xmas2015;
 import com.skyerzz.hypixellib.util.network.event.Xmas2016;
 import com.skyerzz.hypixellib.util.network.mysteryvault.Cloak;
 import com.skyerzz.hypixellib.util.network.networklevel.MVPPlusColor;
-import com.skyerzz.hypixellib.util.network.pet.Pet;
-import com.skyerzz.hypixellib.util.network.pet.PetSpecies;
-import com.skyerzz.hypixellib.util.network.pet.PetStat;
+import com.skyerzz.hypixellib.util.network.pet.*;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -35,8 +33,8 @@ public class PlayerCommonStats extends PlayerGameStats{
     private String _id, displayName, mostRecentlyThankedName, mostRecentlyTippedName, playerName, mcVersionRP;
     private UUID mostRecentlyThankedUUID, mostRecentlyTippedUUID;
     private int specSpeed, adsenseTokens, totalRewards, totalDailyRewards, rewardStreak, rewardScore, rewardHighScore;
-    private long lastPetJourney, mvpPlusColorUnlocked, vanityFirstConvertedBox, lastAdsenseTime, lastClaimedReward, quickjoinTimestamp;
-    private int quickJoinUses, flashingNewsPoppedUp, flashingNewsOpens;
+    private long lastPetJourney, mvpPlusColorUnlocked, vanityFirstConvertedBox, lastAdsenseTime, lastClaimedReward, quickjoinTimestamp, flashingSalePopup;
+    private int quickJoinUses, flashingNewsPoppedUp, flashingNewsOpens, flashingSaleOpens, flashingSaleClicks;
 
     private Chat selectedChannel;
     private Rank rank, newPackageRank;
@@ -49,11 +47,12 @@ public class PlayerCommonStats extends PlayerGameStats{
 
     private long firstLogin, lastlogin; //todo make into date available through getter
 
-    private boolean mainLobbyTutorialCompleted, spectatorNightVision, newMainTutorial, silence;
+    private boolean mainLobbyTutorialCompleted, spectatorNightVision, newMainTutorial, silence, showTipHolograms, showTNTRunHolograms;
 
     private ArrayList<Integer> claimedLevelRewards = new ArrayList<>();
     private ArrayList<AdminNPC> foundAdminNPCs = new ArrayList<>();
     private ArrayList<Pet> petStats = new ArrayList<>();
+    private ArrayList<Companion> companions = new ArrayList<>();
 
     //<editor-fold desc="[EVENTS]">
     private ArrayList<Xmas2016> foundXmas2016Presents = new ArrayList<>();
@@ -67,8 +66,12 @@ public class PlayerCommonStats extends PlayerGameStats{
     private boolean testpass;
 
     @OutDated
-    /** Used to keep track of online time, doesnt work anymore*/
+    /** Used to keep track of online time, doesnt work anymore */
     private int timePlaying;
+
+    @OutDated
+    /** Amount of grinch gifts collected (christmas game), not sure why its in here */
+    private int giftsGrinch;
 
     //todo find out what values mean
     private boolean clock, warlordsRedeemed, websiteSet, rewardConsumed;
@@ -245,6 +248,21 @@ public class PlayerCommonStats extends PlayerGameStats{
             case "FLASHINGNEWSOPENS":
                 this.flashingNewsOpens = value.getAsInt();
                 return true;
+            case "FLASHINGSALEPOPUP":
+                this.flashingSalePopup = value.getAsLong();
+                return true;
+            case "FLASHINGSALEOPENS":
+                this.flashingSaleOpens = value.getAsInt();
+                return true;
+            case "FLASHINGSALECLICKS":
+                this.flashingSaleClicks = value.getAsInt();
+                return true;
+            case "SHOW_TIP_HOLOGRAMS":
+                this.showTipHolograms = value.getAsBoolean();
+                return true;
+            case "SHOW_TNTRUN_ACTIONBAR_INFO":
+                this.showTNTRunHolograms = value.getAsBoolean();
+                return true;
             //</editor-fold>
         }
         return false;
@@ -322,6 +340,9 @@ public class PlayerCommonStats extends PlayerGameStats{
                 return true;
             case "SPECIALTYCOOLDOWNS":
                 // TODO: 17/03/2017
+                return true;
+            case "FLASHINGNEWSPOPUP":
+                // TODO: 20/03/2017
                 return true;
             case "MOSTRECENTGAMETYPE":
                 String game = value.getAsString().toUpperCase();
@@ -466,8 +487,16 @@ public class PlayerCommonStats extends PlayerGameStats{
                     Logger.logWarn("[HypixelAPI.common.petStats] couldnt find thirst,hunger,exercise for pet: " + key);
                 }
                 continue;
+            }else if(CompanionSpecies.mapping.contains(key)){
+                CompanionSpecies species = CompanionSpecies.valueOf(key);
+                String customName = null;
+                if(json.get(key).getAsJsonObject().get("name") !=null && !json.get(key).getAsJsonObject().get("name").isJsonNull()){
+                    customName = json.get(key).getAsJsonObject().get("name").getAsString();
+                }
+                this.companions.add(new Companion(species, customName));
+                continue;
             }
-            Logger.logWarn("[PlayerAPI.Common.PetStat] Unknown PET: " + key);
+            Logger.logWarn("[PlayerAPI.Common.PetStat] Unknown PET or COMPANION: " + key);
         }
     }
 

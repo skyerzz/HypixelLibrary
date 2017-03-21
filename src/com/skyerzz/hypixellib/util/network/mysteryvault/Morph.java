@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Created by Skyerzz-LAPOTOP on 17/03/2017.
  */
 public enum Morph {
-    ;
+    ZOMBIE("Zombie", Rarity.COMMON); //todo check rarities + finish this
 
     private String displayName;
     private Rarity rarity;
