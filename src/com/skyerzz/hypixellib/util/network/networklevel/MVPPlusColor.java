@@ -23,7 +23,8 @@ public class MVPPlusColor {
         AQUA("Aqua", 0),
         WHITE("Wite", 0),
         GOLD("Gold", 0),
-        BLACK("Black", 0);
+        BLACK("Black", 0),
+        DARK_PURPLE("Dark Purple", 0);
 
         private int unlockedLevel;
         private String display;
