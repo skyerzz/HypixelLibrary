@@ -1,4 +1,4 @@
-package com.skyerzz.hypixellib.util.network.mysteryvault;
+package com.skyerzz.hypixellib.util.network.collectibles.mysteryvault;
 
 /**
  * Created by Skyerzz-LAPOTOP on 16/03/2017.
