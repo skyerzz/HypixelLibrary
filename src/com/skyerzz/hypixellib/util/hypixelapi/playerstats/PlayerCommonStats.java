@@ -3,24 +3,20 @@ package com.skyerzz.hypixellib.util.hypixelapi.playerstats;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.skyerzz.hypixellib.Logger;
-<<<<<<< Updated upstream
 import com.skyerzz.hypixellib.OutDated;
 import com.skyerzz.hypixellib.util.network.*;
 import com.skyerzz.hypixellib.util.games.Gamemode;
+import com.skyerzz.hypixellib.util.network.collectibles.ParticlePack;
 import com.skyerzz.hypixellib.util.network.event.Xmas2015;
 import com.skyerzz.hypixellib.util.network.event.Xmas2016;
-import com.skyerzz.hypixellib.util.network.mysteryvault.Cloak;
+import com.skyerzz.hypixellib.util.network.collectibles.Cloak;
 import com.skyerzz.hypixellib.util.network.networklevel.MVPPlusColor;
-import com.skyerzz.hypixellib.util.network.pet.*;
+import com.skyerzz.hypixellib.util.network.collectibles.pet.*;
+import com.skyerzz.hypixellib.util.ILevel;
+
 
 import java.util.ArrayList;
-=======
-import com.skyerzz.hypixellib.util.CHAT;
-import com.skyerzz.hypixellib.util.ILevel;
-import com.skyerzz.hypixellib.util.RANK;
-
 import java.util.Date;
->>>>>>> Stashed changes
 import java.util.Map;
 import java.util.UUID;
 
@@ -35,19 +31,14 @@ public class PlayerCommonStats extends PlayerGameStats implements ILevel{
     private int networkLevel, karma, networkEXP, thanksSent, thanksReceived;
     private int mostRecentMinecraftVersion; //5 = 1.8.9 (forge 1722)
 
-<<<<<<< Updated upstream
     /** Hypixel Credit Value */
     private int vanityTokens; //todo check if actual credit value
 
     private String _id, displayName, mostRecentlyThankedName, mostRecentlyTippedName, playerName, mcVersionRP;
-    private UUID mostRecentlyThankedUUID, mostRecentlyTippedUUID;
+    private UUID mostRecentlyThankedUUID, mostRecentlyTippedUUID, playerUUID;
     private int specSpeed, adsenseTokens, totalRewards, totalDailyRewards, rewardStreak, rewardScore, rewardHighScore;
     private long lastPetJourney, mvpPlusColorUnlocked, vanityFirstConvertedBox, lastAdsenseTime, lastClaimedReward, quickjoinTimestamp, flashingSalePopup;
-    private int quickJoinUses, flashingNewsPoppedUp, flashingNewsOpens, flashingSaleOpens, flashingSaleClicks;
-=======
-    private String _id, displayName, mostRecentlyThankedName, mostRecentlyTippedName;
-    private UUID mostRecentlyThankedUUID, mostRecentlyTippedUUID, playerUUID;
->>>>>>> Stashed changes
+    private int quickJoinUses, flashingNewsPoppedUp, flashingNewsOpens, flashingSaleOpens, flashingSaleClicks, flashingSalePoppedUp, fortuneBuff;
 
     private Chat selectedChannel;
     private Rank rank, newPackageRank;
@@ -60,12 +51,18 @@ public class PlayerCommonStats extends PlayerGameStats implements ILevel{
 
     private long firstLogin, lastlogin; //todo make into date available through getter
 
-    private boolean mainLobbyTutorialCompleted, spectatorNightVision, newMainTutorial, silence, showTipHolograms, showTNTRunHolograms;
+    private boolean mainLobbyTutorialCompleted, spectatorNightVision, newMainTutorial, silence, showTipHolograms, showTNTRunHolograms, showTNTTagActionbarInfo, fly, combatTracker;
 
     private ArrayList<Integer> claimedLevelRewards = new ArrayList<>();
     private ArrayList<AdminNPC> foundAdminNPCs = new ArrayList<>();
     private ArrayList<Pet> petStats = new ArrayList<>();
     private ArrayList<Companion> companions = new ArrayList<>();
+
+    //currentPet can be pet/companion
+    private PetSpecies currentPet;
+    private CompanionSpecies currentCompanion;
+
+    private ParticlePack currentParticlePack;
 
     //<editor-fold desc="[EVENTS]">
     private ArrayList<Xmas2016> foundXmas2016Presents = new ArrayList<>();
@@ -86,10 +83,22 @@ public class PlayerCommonStats extends PlayerGameStats implements ILevel{
     /** Amount of grinch gifts collected (christmas game), not sure why its in here */
     private int giftsGrinch;
 
+    @OutDated
+    /** rank before eula (i think) */
+    private Rank packageRank;
+
+    @OutDated
+    /** wardrobe function is long gone*/
+    private String wardrobe;
+
     //todo find out what values mean
     private boolean clock, warlordsRedeemed, websiteSet, rewardConsumed;
     private String newClock;
     private long lastEugeneMessage, lastSurvey;
+    private boolean eulaCoins;
+
+    //UNKNOWN values (pancake doesnt know either):
+    private boolean reverted, notifiedOfStuff;
     //</editor-fold>
 
     public PlayerCommonStats(JsonObject json) {
@@ -159,15 +168,11 @@ public class PlayerCommonStats extends PlayerGameStats implements ILevel{
             case "NETWORKEXP":
                 this.networkEXP = value.getAsInt();
                 return true;
-<<<<<<< Updated upstream
             case "PLAYERNAME":
                 this.playerName = value.getAsString();
                 return true;
             case "TESTPASS":
                 this.testpass = value.getAsBoolean();
-                return true;
-            case "UUID":
-                this.uuid = parseUUID(value.getAsString());
                 return true;
             case "VANITYTOKENS":
                 this.vanityTokens = value.getAsInt();
@@ -276,10 +281,39 @@ public class PlayerCommonStats extends PlayerGameStats implements ILevel{
                 return true;
             case "SHOW_TNTRUN_ACTIONBAR_INFO":
                 this.showTNTRunHolograms = value.getAsBoolean();
-=======
+                return true;
             case "UUID":
                 this.playerUUID = parseUUID(value.getAsString());
->>>>>>> Stashed changes
+                return true;
+            case "EULACOINS":
+                this.eulaCoins = value.getAsBoolean();
+                return true;
+            case "FLY":
+                this.fly = value.getAsBoolean();
+                return true;
+            case "REVERTED":
+                this.reverted = value.getAsBoolean();
+                return true;
+            case "NOTIFIEDOFSTUFF":
+                this.notifiedOfStuff = value.getAsBoolean();
+                return true;
+            case "FLASHINGSALEPOPPEDUP":
+                this.flashingSalePoppedUp = value.getAsInt();
+                return true;
+            case "COMBATTRACKER":
+                this.combatTracker = value.getAsBoolean();
+                return true;
+            case "GIFTS_GRINCH":
+                this.giftsGrinch = value.getAsInt();
+                return true;
+            case "WARDROBE":
+                this.wardrobe = value.getAsString();
+                return true;
+            case "FORTUNEBUFF":
+                this.fortuneBuff = value.getAsInt();
+                return true;
+            case "SHOW_TNTTAG_ACTIONBAR_INFO":
+                this.showTNTTagActionbarInfo = value.getAsBoolean();
                 return true;
             //</editor-fold>
         }
@@ -296,6 +330,7 @@ public class PlayerCommonStats extends PlayerGameStats implements ILevel{
 
     private boolean setSpecialValue(String key, JsonElement value){
         switch(key){
+            //<editor-fold desc="[Values]">
             case "ACHIEVEMENTS":
                 //todo achievements
                 return true;
@@ -362,6 +397,57 @@ public class PlayerCommonStats extends PlayerGameStats implements ILevel{
             case "FLASHINGNEWSPOPUP":
                 // TODO: 20/03/2017
                 return true;
+            case "GADGET":
+                //// TODO: 13-6-2017
+                return true;
+            case "TRANSFORMATION":
+                // TODO: 13-6-2017
+                return true;
+            case "BOOSTERCOOLDOWNS":
+                // TODO: 13-6-2017
+                return true;
+            case "HALLOWEEN2016COOLDOWNS":
+                // TODO: 13-6-2017
+                return true;
+            case "HOLIDAY2016COOLDOWNS":
+                // TODO: 13-6-2017
+                return true;
+            case "LANGUAGE":
+                // TODO: 13-6-2017
+                return true;
+            case "SURVEY":
+                // TODO: 13-6-2017
+                return true;
+            case "COMPASSSTATS":
+                // TODO: 13-6-2017
+                return true;
+            case "CURRENTHAT":
+                // TODO: 13-6-2017
+                return true;
+            case "CHALLENGES":
+                // TODO: 13-6-2017
+                return true;
+            case "PARTICLEPACK":
+                String currentPack = value.getAsString().toUpperCase();
+                if(ParticlePack.mapping.contains(currentPack)){
+                    this.currentParticlePack = ParticlePack.valueOf(currentPack);
+                }else{
+                    Logger.logWarn("[HypixelAPI.common.currentParticlePack] Unknown ParticlePack: " + value.getAsString());
+                }
+                return true;
+            case "SUMMER2017COOLDOWNS":
+                // TODO: 13-6-2017
+                return true;
+            case "CURRENTPET":
+                String currentPet = value.getAsString().toUpperCase();
+                if(PetSpecies.mapping.contains(currentPet)){
+                    this.currentPet = PetSpecies.valueOf(currentPet);
+                }else if(CompanionSpecies.mapping.contains(currentPet)){
+                    this.currentCompanion = CompanionSpecies.valueOf(currentPet);
+                }else{
+                    Logger.logWarn("[HypixelAPI.common.currentPet] Unknown pet/companion: " + value.getAsString());
+                }
+                return true;
             case "MOSTRECENTGAMETYPE":
                 String game = value.getAsString().toUpperCase();
                 if(Gamemode.mapping.contains(game)){
@@ -421,6 +507,14 @@ public class PlayerCommonStats extends PlayerGameStats implements ILevel{
                     Logger.logWarn("[HypixelAPI.common.newPackageRank] Unknown Rank: " + value.getAsString());
                 }
                 return true;
+            case "PACKAGERANK":
+                String packageRank = value.getAsString().toUpperCase();
+                if(Rank.mapping.contains(packageRank)){
+                    this.packageRank = Rank.valueOf(packageRank);
+                }else{
+                    Logger.logWarn("[HypixelAPI.common.PackageRank] Unknown Rank: " + value.getAsString());
+                }
+                return true;
             case "RANK":
                 String rank = value.getAsString().toUpperCase();
                 if(Rank.mapping.contains(rank)){
@@ -429,7 +523,9 @@ public class PlayerCommonStats extends PlayerGameStats implements ILevel{
                     Logger.logWarn("[HypixelAPI.common.rank] Unknown Rank: " + value.getAsString());
                 }
                 return true;
+            //</editor-fold>
         }
+        //<editor-fold desc="[IfStatements]">
         if(key.contains("LEVELINGREWARD_")){
             if(value.getAsBoolean()){
                 int level = Integer.parseInt(key.replace("LEVELINGREWARD_", ""));
@@ -470,10 +566,10 @@ public class PlayerCommonStats extends PlayerGameStats implements ILevel{
             registerMysteryBoxPacket(key, value.getAsJsonObject());
             return true;
         }
+        //</editor-fold>
         return false;
     }
 
-<<<<<<< Updated upstream
     private void registerMysteryBoxPacket(String key, JsonObject object){
         // TODO: 17/03/2017
     }
@@ -492,7 +588,9 @@ public class PlayerCommonStats extends PlayerGameStats implements ILevel{
                     customName = json.get(key).getAsJsonObject().get("name").getAsString();
                 }
 
-                if(json.get(key).getAsJsonObject().get("THIRST") !=null && !json.get(key).getAsJsonObject().get("THIRST").isJsonNull()) {
+                if( json.get(key).getAsJsonObject().get("THIRST") !=null && !json.get(key).getAsJsonObject().get("THIRST").isJsonNull() &&
+                    json.get(key).getAsJsonObject().get("HUNGER") !=null && !json.get(key).getAsJsonObject().get("HUNGER").isJsonNull() &&
+                    json.get(key).getAsJsonObject().get("EXERCISE") !=null && !json.get(key).getAsJsonObject().get("EXERCISE").isJsonNull()) {
                     JsonObject thirstObject = json.get(key).getAsJsonObject().get("THIRST").getAsJsonObject();
 
                     PetStat thirst = new PetStat(PetStat.petStatType.THIRST, thirstObject.get("timestamp").getAsLong(), thirstObject.get("value").getAsInt());
@@ -503,7 +601,8 @@ public class PlayerCommonStats extends PlayerGameStats implements ILevel{
 
                     this.petStats.add(new Pet(species, customName, experience, thirst, hunger, exercise));
                 }else{
-                    Logger.logWarn("[HypixelAPI.common.petStats] couldnt find thirst,hunger,exercise for pet: " + key);
+                    //disabled debug
+                    //Logger.logWarn("[HypixelAPI.common.petStats] couldnt find thirst,hunger,exercise for pet: " + key);
                 }
                 continue;
             }else if(CompanionSpecies.mapping.contains(key)){
@@ -519,31 +618,16 @@ public class PlayerCommonStats extends PlayerGameStats implements ILevel{
         }
     }
 
-    public int getNetworkLevel(){
-        return networkLevel;
-    }
-
-    public Rank getRank(){
-        if(rank!=null) {
-            return rank;
-        }
-        if(newPackageRank!=null){
-            return newPackageRank;
-        }
-        //couldnt find any rank, lets return default
-        return Rank.NONE;
-=======
     public double getNetworkLevel(){
-        return ILevel.getLevel(getNetworkLevelExperience() + ILevel.getTotalExpToLevel(getLastNetworkLevel())) + 1;
+        return ILevel.getExactLevel(getNetworkLevelExperience() + ILevel.getTotalExpToLevel(getLastNetworkLevel())) + 1;
     }
 
     public int getLastNetworkLevel(){
         return networkLevel;
     }
 
-    public RANK getRank(){
-        return (rank!=null) ? rank : (newPackageRank!=null) ? newPackageRank : RANK.NONE;
->>>>>>> Stashed changes
+    public Rank getRank(){
+        return (rank!=null) ? rank : (newPackageRank!=null) ? newPackageRank : Rank.NONE;
     }
 
     public UUID getPlayerUUID(){ return playerUUID; }
