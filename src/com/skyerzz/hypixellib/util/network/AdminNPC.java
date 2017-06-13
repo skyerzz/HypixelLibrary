@@ -47,7 +47,7 @@ public enum AdminNPC {
     XAEL(null),
     ZANFLANGO(null),
     ZEROERRORS(null),
-    ZUMULUS(null),;//todo get all currencyPackages
+    ZUMULUS(null),;//todo get all currencyPackages & chat
 
     private CurrencyPackage currencyPackage;
 
