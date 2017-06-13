@@ -1,4 +1,4 @@
-package com.skyerzz.hypixellib.util.network.pet;
+package com.skyerzz.hypixellib.util.network.collectibles.pet;
 
 import com.skyerzz.hypixellib.Logger;
 
@@ -57,7 +57,7 @@ public class Pet {
 
         }
         Logger.logWarn("[HypixelAPI.Pet.satisfactionValue] Couldn't find value for consumable " + consumable.getDisplayName());
-        return -1;
+        return -1; //todo this..
     }
 
     public ArrayList<PetConsumable> getBestConsumables(PetConsumable.consumableType type){

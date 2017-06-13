@@ -1,4 +1,4 @@
-package com.skyerzz.hypixellib.util.network.pet;
+package com.skyerzz.hypixellib.util.network.collectibles.pet;
 
 /**
  * Created by Skyerzz-LAPOTOP on 17/03/2017.
