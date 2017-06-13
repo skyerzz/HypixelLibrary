@@ -1,6 +1,7 @@
 package com.skyerzz.hypixellib.util.hypixelapi;
 
 import com.google.gson.JsonObject;
+import com.skyerzz.hypixellib.Logger;
 import com.skyerzz.hypixellib.util.hypixelapi.exception.NoPlayerStatsException;
 import com.skyerzz.hypixellib.util.hypixelapi.playerstats.*;
 
@@ -32,9 +33,9 @@ public class PlayerAPI extends AbstractAPIReply{
         try {
             this.apiGameJson = apiJson.get("player").getAsJsonObject().get("stats").getAsJsonObject();
         }catch(IllegalStateException e){
-                throw new NoPlayerStatsException();
+            Logger.logError("Could not find STATS object for player!");
         }catch(NullPointerException e){
-            throw new NoPlayerStatsException();
+            Logger.logError("Could not find STATS object for player!");
         }
     }
 
