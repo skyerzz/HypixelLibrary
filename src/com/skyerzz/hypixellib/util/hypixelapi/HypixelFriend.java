@@ -7,7 +7,7 @@ import java.util.Date;
  */
 public class HypixelFriend extends HypixelPlayer {
 
-    private String acceptedByUUID, sentByUUID, id;
+    private String ownUUID, friendUUID, id;
     private Date dateAccepted;
     private boolean acceptedByOwnUUID;
 
@@ -16,21 +16,16 @@ public class HypixelFriend extends HypixelPlayer {
         dateAccepted = new Date(epochDate);
         this.id = id;
         this.acceptedByOwnUUID = acceptedByOwnUUID;
-        if(acceptedByOwnUUID){
-            this.acceptedByUUID = uuid;
-            this.sentByUUID = friendUUID;
-        }else{
-            this.acceptedByUUID = friendUUID;
-            this.sentByUUID = uuid;
-        }
+        this.friendUUID = friendUUID;
+        this.ownUUID = uuid;
     }
 
-    public String getAcceptedByUUID() {
-        return acceptedByUUID;
+    public String getOwnUUID() {
+        return ownUUID;
     }
 
-    public String getSentByUUID() {
-        return sentByUUID;
+    public String getFriendUUID() {
+        return friendUUID;
     }
 
     public String getId() {
@@ -42,9 +37,8 @@ public class HypixelFriend extends HypixelPlayer {
     }
 
     public HypixelPlayer getAsHypixelPlayer(String apiKey){
-        if(!acceptedByOwnUUID) {
-            return new HypixelPlayer(sentByUUID, apiKey);
-        }
-        return new HypixelPlayer(acceptedByUUID, apiKey);
+        return new HypixelPlayer(ownUUID, apiKey);
     }
+
+    public boolean acceptedByOwnUUID(){ return acceptedByOwnUUID; }
 }

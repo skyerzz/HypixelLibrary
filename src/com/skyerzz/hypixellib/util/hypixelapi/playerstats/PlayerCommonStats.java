@@ -3,6 +3,7 @@ package com.skyerzz.hypixellib.util.hypixelapi.playerstats;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.skyerzz.hypixellib.Logger;
+<<<<<<< Updated upstream
 import com.skyerzz.hypixellib.OutDated;
 import com.skyerzz.hypixellib.util.network.*;
 import com.skyerzz.hypixellib.util.games.Gamemode;
@@ -13,13 +14,20 @@ import com.skyerzz.hypixellib.util.network.networklevel.MVPPlusColor;
 import com.skyerzz.hypixellib.util.network.pet.*;
 
 import java.util.ArrayList;
+=======
+import com.skyerzz.hypixellib.util.CHAT;
+import com.skyerzz.hypixellib.util.ILevel;
+import com.skyerzz.hypixellib.util.RANK;
+
+import java.util.Date;
+>>>>>>> Stashed changes
 import java.util.Map;
 import java.util.UUID;
 
 /**
  * Created by Skyerzz-LAPOTOP on 08/03/2017.
  */
-public class PlayerCommonStats extends PlayerGameStats{
+public class PlayerCommonStats extends PlayerGameStats implements ILevel{
 
     //note: eugine == deliveryman
 
@@ -27,6 +35,7 @@ public class PlayerCommonStats extends PlayerGameStats{
     private int networkLevel, karma, networkEXP, thanksSent, thanksReceived;
     private int mostRecentMinecraftVersion; //5 = 1.8.9 (forge 1722)
 
+<<<<<<< Updated upstream
     /** Hypixel Credit Value */
     private int vanityTokens; //todo check if actual credit value
 
@@ -35,6 +44,10 @@ public class PlayerCommonStats extends PlayerGameStats{
     private int specSpeed, adsenseTokens, totalRewards, totalDailyRewards, rewardStreak, rewardScore, rewardHighScore;
     private long lastPetJourney, mvpPlusColorUnlocked, vanityFirstConvertedBox, lastAdsenseTime, lastClaimedReward, quickjoinTimestamp, flashingSalePopup;
     private int quickJoinUses, flashingNewsPoppedUp, flashingNewsOpens, flashingSaleOpens, flashingSaleClicks;
+=======
+    private String _id, displayName, mostRecentlyThankedName, mostRecentlyTippedName;
+    private UUID mostRecentlyThankedUUID, mostRecentlyTippedUUID, playerUUID;
+>>>>>>> Stashed changes
 
     private Chat selectedChannel;
     private Rank rank, newPackageRank;
@@ -146,6 +159,7 @@ public class PlayerCommonStats extends PlayerGameStats{
             case "NETWORKEXP":
                 this.networkEXP = value.getAsInt();
                 return true;
+<<<<<<< Updated upstream
             case "PLAYERNAME":
                 this.playerName = value.getAsString();
                 return true;
@@ -262,6 +276,10 @@ public class PlayerCommonStats extends PlayerGameStats{
                 return true;
             case "SHOW_TNTRUN_ACTIONBAR_INFO":
                 this.showTNTRunHolograms = value.getAsBoolean();
+=======
+            case "UUID":
+                this.playerUUID = parseUUID(value.getAsString());
+>>>>>>> Stashed changes
                 return true;
             //</editor-fold>
         }
@@ -455,6 +473,7 @@ public class PlayerCommonStats extends PlayerGameStats{
         return false;
     }
 
+<<<<<<< Updated upstream
     private void registerMysteryBoxPacket(String key, JsonObject object){
         // TODO: 17/03/2017
     }
@@ -513,5 +532,23 @@ public class PlayerCommonStats extends PlayerGameStats{
         }
         //couldnt find any rank, lets return default
         return Rank.NONE;
+=======
+    public double getNetworkLevel(){
+        return ILevel.getLevel(getNetworkLevelExperience() + ILevel.getTotalExpToLevel(getLastNetworkLevel())) + 1;
     }
+
+    public int getLastNetworkLevel(){
+        return networkLevel;
+    }
+
+    public RANK getRank(){
+        return (rank!=null) ? rank : (newPackageRank!=null) ? newPackageRank : RANK.NONE;
+>>>>>>> Stashed changes
+    }
+
+    public UUID getPlayerUUID(){ return playerUUID; }
+
+    public Date getLastLoginDate() { return new Date(lastlogin); }
+
+    public int getNetworkLevelExperience(){ return networkEXP; }
 }
