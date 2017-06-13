@@ -37,7 +37,7 @@ public class HypixelFriend extends HypixelPlayer {
     }
 
     public HypixelPlayer getAsHypixelPlayer(String apiKey){
-        return new HypixelPlayer(ownUUID, apiKey);
+        return (HypixelPlayer) this;
     }
 
     public boolean acceptedByOwnUUID(){ return acceptedByOwnUUID; }
