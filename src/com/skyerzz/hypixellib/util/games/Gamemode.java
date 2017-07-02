@@ -6,27 +6,31 @@ import java.util.ArrayList;
  * Created by sky on 4-9-2016.
  */
 public enum Gamemode {
-    ARCADE,
-    ARENA_BRAWL,
-    COPS_AND_CRIMS,
-    BLITZ,
-    WALLS,
-    MEGA_WALLS,
-    TNT_GAMES,
-    VAMPIREZ,
-    PAINTBALL,
-    QUAKECRAFT,
-    CRAZY_WALLS,
-    UHC,
-    WARLORDS,
-    SKYWARS,
-    TURBO_KART_RACERS,
-    SMASH_HEROES,
-    SPEED_UHC,
-    SKYCLASH;
+    ARCADEGAMES("Arcade Games"),
+    ARENA("Arena Brawl"),
+    COPS_AND_CRIMS("Cops 'n Crims"),
+    BLITZ("Blitz Survival Games"),
+    WALLS("The Walls"),
+    MEGA_WALLS("Mega Walls"),
+    TNT_GAMES("Tnt Games"),
+    VAMPIREZ("VampireZ"),
+    PAINTBALL("Paintball"),
+    QUAKECRAFT("Quakecraft"),
+    CRAZY_WALLS("Crazy Walls"),
+    UHC("UHC"),
+    WARLORDS("Warlords"),
+    SKYWARS("Skywars"),
+    TURBO_KART_RACERS("Turbo Kart Racers"),
+    SMASH_HEROES("Smash Heroes"),
+    SPEED_UHC("Speed UHC"),
+    SKYCLASH("Skyclash"),
+    BEDWARS("Bedwars"),
+    PROTOTYPE("Prototype Lobby");
 
-    Gamemode(){
+    private String displayName;
 
+    Gamemode(String displayName){
+        this.displayName = displayName;
     }
 
     public static final ArrayList<String> mapping = initializeMapping();
@@ -37,6 +41,10 @@ public enum Gamemode {
             list.add(item.name());
         }
         return list;
+    }
+
+    public String getDisplayName(){
+        return displayName;
     }
 
 }
