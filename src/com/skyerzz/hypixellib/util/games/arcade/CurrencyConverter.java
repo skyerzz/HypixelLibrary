@@ -28,7 +28,7 @@ public class CurrencyConverter {
             case COPS_AND_CRIMS:
             case BLITZ:
             case QUAKECRAFT:
-            case ARENA_BRAWL:
+            case ARENA:
             case CRAZY_WALLS:
                 return 750*multiplier;
 
