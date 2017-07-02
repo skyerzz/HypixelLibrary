@@ -1,9 +1,11 @@
 package com.skyerzz.hypixellib.util.hypixelapi.playerstats;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.skyerzz.hypixellib.Logger;
 import com.skyerzz.hypixellib.OutDated;
+import com.skyerzz.hypixellib.util.mojangapi.UUIDHandler;
 import com.skyerzz.hypixellib.util.network.*;
 import com.skyerzz.hypixellib.util.games.Gamemode;
 import com.skyerzz.hypixellib.util.network.collectibles.ParticlePack;
@@ -13,6 +15,7 @@ import com.skyerzz.hypixellib.util.network.collectibles.Cloak;
 import com.skyerzz.hypixellib.util.network.networklevel.MVPPlusColor;
 import com.skyerzz.hypixellib.util.network.collectibles.pet.*;
 import com.skyerzz.hypixellib.util.ILevel;
+import com.skyerzz.hypixellib.util.network.parkour.Parkour;
 
 
 import java.util.ArrayList;
@@ -49,7 +52,7 @@ public class PlayerCommonStats extends PlayerGameStats implements ILevel{
     private Cloak selectedCloak;
     private MVPPlusColor selectedPlusColor;
 
-    private long firstLogin, lastlogin; //todo make into date available through getter
+    private long firstLogin, lastlogin, lastLogout; //todo make into date available through getter
 
     private boolean mainLobbyTutorialCompleted, spectatorNightVision, newMainTutorial, silence, showTipHolograms, showTNTRunHolograms, showTNTTagActionbarInfo, fly, combatTracker;
 
@@ -57,12 +60,17 @@ public class PlayerCommonStats extends PlayerGameStats implements ILevel{
     private ArrayList<AdminNPC> foundAdminNPCs = new ArrayList<>();
     private ArrayList<Pet> petStats = new ArrayList<>();
     private ArrayList<Companion> companions = new ArrayList<>();
+    private ArrayList<String> knownAliases = new ArrayList<>();
 
     //currentPet can be pet/companion
     private PetSpecies currentPet;
     private CompanionSpecies currentCompanion;
 
     private ParticlePack currentParticlePack;
+
+    private NetworkSettings networkSettings;
+
+    private Parkour parkour;
 
     //<editor-fold desc="[EVENTS]">
     private ArrayList<Xmas2016> foundXmas2016Presents = new ArrayList<>();
@@ -147,6 +155,9 @@ public class PlayerCommonStats extends PlayerGameStats implements ILevel{
             case "LASTLOGIN":
                 this.lastlogin = value.getAsLong();
                 return true;
+            case "LASTLOGOUT":
+                this.lastLogout = value.getAsLong();
+                return true;
             case "MAINLOBBYTUTORIAL":
                 this.mainLobbyTutorialCompleted = value.getAsBoolean();
                 return true;
@@ -160,10 +171,10 @@ public class PlayerCommonStats extends PlayerGameStats implements ILevel{
                 this.mostRecentlyTippedName = value.getAsString();
                 return true;
             case "MOSTRECENTLYTHANKEDUUID":
-                this.mostRecentlyThankedUUID = parseUUID(value.getAsString());
+                this.mostRecentlyThankedUUID = UUIDHandler.parseUUID(value.getAsString());
                 return true;
             case "MOSTRECENTLYTIPPEDUUID":
-                this.mostRecentlyTippedUUID = parseUUID(value.getAsString());
+                this.mostRecentlyTippedUUID = UUIDHandler.parseUUID(value.getAsString());
                 return true;
             case "NETWORKEXP":
                 this.networkEXP = value.getAsInt();
@@ -283,7 +294,7 @@ public class PlayerCommonStats extends PlayerGameStats implements ILevel{
                 this.showTNTRunHolograms = value.getAsBoolean();
                 return true;
             case "UUID":
-                this.playerUUID = parseUUID(value.getAsString());
+                this.playerUUID = UUIDHandler.parseUUID(value.getAsString());
                 return true;
             case "EULACOINS":
                 this.eulaCoins = value.getAsBoolean();
@@ -320,14 +331,6 @@ public class PlayerCommonStats extends PlayerGameStats implements ILevel{
         return false;
     }
 
-    private UUID parseUUID(String uuid){
-        if(uuid.contains("-")){
-            return UUID.fromString(uuid);
-        }
-        String newUUID = uuid.substring(0, 7) + "-" + uuid.substring(8, 11) + "-" + uuid.substring(12, 15) + "-" + uuid.substring(16, 19) + "-" + uuid.substring(20);
-        return UUID.fromString(newUUID);
-    }
-
     private boolean setSpecialValue(String key, JsonElement value){
         switch(key){
             //<editor-fold desc="[Values]">
@@ -338,25 +341,25 @@ public class PlayerCommonStats extends PlayerGameStats implements ILevel{
                 //todo
                 return true;
             case "FRIENDREQUESTS":
-                //// TODO: 09/03/2017
+                //// TODO: 09/03/2017 find out what this is
                 return true;
             case "FRIENDREQUESTSUUID":
-                //// TODO: 09/03/2017
+                //// TODO: 09/03/2017 find out what this is sent/recieve
                 return true;
             case "KNOWNALIASES":
-                // TODO: 09/03/2017
+                setKnownAliases(value.getAsJsonArray());
                 return true;
             case "KNOWNALIASESLOWER":
-                // TODO: 09/03/2017
+                //not using this one, function to get the aliases in lowercase isnt needed.
                 return true;
             case "PARKOURCOMPLETIONS":
-                // TODO: 09/03/2017
+                this.parkour = new Parkour(value.getAsJsonObject());
                 return true;
             case "QUESTS":
                 // TODO: 09/03/2017
                 return true;
             case "SETTINGS":
-                // TODO: 14/03/2017
+                this.networkSettings = new NetworkSettings(value.getAsJsonObject());
                 return true;
             case "HOUSINGMETA":
                 // TODO: 16/03/2017
@@ -428,6 +431,7 @@ public class PlayerCommonStats extends PlayerGameStats implements ILevel{
                 // TODO: 13-6-2017
                 return true;
             case "PARTICLEPACK":
+            case "PP": //blame Smoarzified for having this string instead of ParticlePack
                 String currentPack = value.getAsString().toUpperCase();
                 if(ParticlePack.mapping.contains(currentPack)){
                     this.currentParticlePack = ParticlePack.valueOf(currentPack);
@@ -572,6 +576,15 @@ public class PlayerCommonStats extends PlayerGameStats implements ILevel{
 
     private void registerMysteryBoxPacket(String key, JsonObject object){
         // TODO: 17/03/2017
+    }
+
+    private void setKnownAliases(JsonArray array){
+        if(array.isJsonNull() || array ==null){
+            return;
+        }
+        for(JsonElement element: array){
+            this.knownAliases.add(element.getAsString());
+        }
     }
 
     private void getPetStats(JsonObject json){
