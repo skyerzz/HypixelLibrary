@@ -341,10 +341,8 @@ public class PlayerCommonStats extends PlayerGameStats implements ILevel{
                 //todo
                 return true;
             case "FRIENDREQUESTS":
-                //// TODO: 09/03/2017 find out what this is
-                return true;
             case "FRIENDREQUESTSUUID":
-                //// TODO: 09/03/2017 find out what this is sent/recieve
+                //note these are legacy according to plancke
                 return true;
             case "KNOWNALIASES":
                 setKnownAliases(value.getAsJsonArray());

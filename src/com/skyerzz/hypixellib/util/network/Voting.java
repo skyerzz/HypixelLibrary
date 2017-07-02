@@ -35,7 +35,7 @@ public class Voting {
 
     public boolean setValue(String key, JsonElement value){
         if(key.contains("SECONDARY")){
-            //note secondary is the exact same value as total, no need to double up
+            //note secondary is the exact same value as total, internal counter for the system. meaningless, according to plancke
             return true;
         }
         switch(key){
