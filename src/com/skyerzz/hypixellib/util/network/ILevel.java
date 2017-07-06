@@ -1,4 +1,4 @@
-package com.skyerzz.hypixellib.util;
+package com.skyerzz.hypixellib.util.network;
 
 /**
  * Created by sky on 12-6-2017.
