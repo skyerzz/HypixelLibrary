@@ -1,7 +1,7 @@
 package com.skyerzz.hypixellib.util.network.collectibles;
 
 import com.skyerzz.hypixellib.util.minecraft.MobType;
-import com.skyerzz.hypixellib.util.network.collectibles.mysteryvault.MysteryBoxType;
+import com.skyerzz.hypixellib.util.network.collectibles.mysteryvault.ObtainType;
 import com.skyerzz.hypixellib.util.network.collectibles.mysteryvault.Rarity;
 
 import java.util.ArrayList;
@@ -16,29 +16,29 @@ public enum Morph {
     CHICKEN("Chicken Morph", "lay eggs", 35, Rarity.EPIC, MobType.CHICKEN),
     SPIDER("Spider Morph", "shoot webs", 50, Rarity.EPIC, MobType.SPIDER),
     SHEEP("Sheep Morph", "Rainbow Sheep Mode", 50, Rarity.EPIC, MobType.SHEEP),
-    SKELETON("Skeleton Morph", "shoot arrows", -1, Rarity.EPIC, MobType.SKELETON, MysteryBoxType.HALLOWEEN),
-    GRINCH("Grinch", "throw coal", -1, Rarity.EPIC, MobType.HUMANENTITY, MysteryBoxType.CHRISTMAS),
+    SKELETON("Skeleton Morph", "shoot arrows", -1, Rarity.EPIC, MobType.SKELETON, ObtainType.HALLOWEEN_MYSTERY_BOX),
+    GRINCH("Grinch", "throw coal", -1, Rarity.EPIC, MobType.HUMANENTITY, ObtainType.CHRISTMAS_MYSTERY_BOX),
     CREEPER("Creeper Morph",  "explode to knock nearby players away", 95, Rarity.LEGENDARY, MobType.CREEPER),
     BLAZE("Blaze Morph", "fireballs", 125, Rarity.LEGENDARY, MobType.BLAZE),
     ZOMBIE("Zombie Morph", "infect other players and turn them into a zombie", 105, Rarity.LEGENDARY, MobType.ZOMBIE),
-    IRON_GOLEM("Iron Golem Morph",  "launch other players in the air", -1, Rarity.LEGENDARY, MobType.GOLEM, MysteryBoxType.CRAFTED_MYSTERY_BOX_ONE),
-    WITCH("Witch Morph", "throw special potions", -1, Rarity.LEGENDARY, MobType.WITCH, MysteryBoxType.HALLOWEEN),
-    SNOWMAN("Snowman Morph", "throw snowballs", -1, Rarity.LEGENDARY, MobType.SNOWMAN, MysteryBoxType.CHRISTMAS),
-    GUARDIAN("Guardian Morph", "shoot lasers", -1, Rarity.LEGENDARY, MobType.GUARDIAN, MysteryBoxType.CRAFTED_MYSTERY_BOX_TWO);
+    IRON_GOLEM("Iron Golem Morph",  "launch other players in the air", -1, Rarity.LEGENDARY, MobType.GOLEM, ObtainType.CRAFTED_MYSTERY_BOX_ONE),
+    WITCH("Witch Morph", "throw special potions", -1, Rarity.LEGENDARY, MobType.WITCH, ObtainType.HALLOWEEN_MYSTERY_BOX),
+    SNOW_MORPH("Snowman Morph", "throw snowballs", -1, Rarity.LEGENDARY, MobType.SNOWMAN, ObtainType.CHRISTMAS_MYSTERY_BOX),
+    GUARDIAN("Guardian Morph", "shoot lasers", -1, Rarity.LEGENDARY, MobType.GUARDIAN, ObtainType.CRAFTED_MYSTERY_BOX_TWO);
 
 
 
     private String displayName, lore;
     private Rarity rarity;
     private int cost;
-    private MysteryBoxType type;
+    private ObtainType type;
     private MobType mobType;
 
     Morph(String displayName, String lore, int cost, Rarity rarity, MobType type){
-        this(displayName, lore, cost, rarity, type, null);
+        this(displayName, lore, cost, rarity, type, ObtainType.DEFAULT_MYSTERY_BOX);
     }
 
-    Morph(String displayName, String lore, int cost, Rarity rarity, MobType mobType, MysteryBoxType type){
+    Morph(String displayName, String lore, int cost, Rarity rarity, MobType mobType, ObtainType type){
         this.displayName = displayName;
         this.rarity = rarity;
         this.lore = lore;
@@ -66,5 +66,14 @@ public enum Morph {
             list.add(item.name());
         }
         return list;
+    }
+
+
+    public static Morph getFromString(String morph){
+        morph = morph.toUpperCase().replace("MORPH_", "");
+        if(mapping.contains(morph)){
+            return Morph.valueOf(morph);
+        }
+        return null;
     }
 }
