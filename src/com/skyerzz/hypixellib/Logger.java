@@ -10,8 +10,8 @@ public class Logger {
 
     private static final String prefix = "[HypixelAPI] ";
 
-    private static boolean logInfo = true, logWarn = true, logError = true;
-    private static int totalInfos = 0, totalWarns = 0, totalErrors = 0;
+    private static boolean logInfo = true, logWarn = true, logError = true, logSkippedValues = false;
+    private static int totalInfos = 0, totalWarns = 0, totalErrors = 0, totalSkips = 0;
 
     public Logger(){
 
@@ -35,6 +35,13 @@ public class Logger {
         totalErrors++;
         if(logError) {
             System.out.println(prefix + "[ERROR] " + s);
+        }
+    }
+
+    public static void logSkippedValue(String s){
+        totalSkips++;
+        if(logSkippedValues){
+            System.out.print(prefix + "[Skipped Value] " + s);
         }
     }
 
