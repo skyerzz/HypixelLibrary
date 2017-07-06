@@ -34,7 +34,7 @@ public class CurrencyConverter {
 
             case PAINTBALL:
             case VAMPIREZ:
-            case TNT_GAMES:
+            case TNTGAMES:
                 return 2500*multiplier;
 
         }
