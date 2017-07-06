@@ -25,7 +25,7 @@ public enum HumanPerk {
     LOOT_DROPS(         "Loot Drops",       2500,  3, Rank.NONE),
     BASIC_SWAG(         "Basic Swag",       3750,  10, Rank.NONE),
     ADVANCED_SWAG(      "Advanced Swag",    6250,  10, Rank.NONE),
-    EXPERT_SWAG(        "Expert Swag",      12500, 10, Rank.NONE);
+    EXPERT_SWAG(        "Expert Swag",      12500, 10, Rank.NONE); //todo check new values for max shop
 
 
     private String displayName;

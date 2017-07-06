@@ -1209,6 +1209,10 @@ public class PlayerSkywarsStats extends PlayerGameStats {
                 this.unlockedPrefixes.add(key);
                 continue;
             }
+            if(key.contains("TROPHY_MASTERS_")){
+                //legacy. never actually existed in-game.
+                continue;
+            }
             //</editor-fold>
 
             switch(key){

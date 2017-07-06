@@ -90,7 +90,7 @@ public class SmashClass {
 
     private boolean setValue(String key, JsonElement value){
         if(key.contains("FRIEND") && key.contains("NORMAL")){
-            Logger.logInfo("Skipping value " + key + " , not known what it is.");
+            //todo find out what this is
             return true;
         }
         switch(key){

@@ -212,7 +212,7 @@ public enum Hero {
         new SmashAbility(
                 "SPOODER_BUDDIES",
                 "Spooder Buddies",
-                "Press [3] to call in your buddies. After they've landed on the ground they will chase enemy players and show them who's the boss.", //fixonline remove ","  after ground
+                "Press [3] to call in your buddies. After they've landed on the ground they will chase enemy players and show them who's the boss.",
                 "As a MELEE hero, hitting an enemy with your melee attacks will instantly reduce your Smash Ability's cooldown by 3 seconds.", //fixonline melee > hybrid
                 "Picking up the Smash Crystal that occasionally appears during a match will instantly reset your Smash Ability's cooldown."
         ),
