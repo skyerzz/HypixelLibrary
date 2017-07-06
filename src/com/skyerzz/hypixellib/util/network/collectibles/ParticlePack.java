@@ -17,7 +17,7 @@ public enum ParticlePack {
     HAPPY_VILLAGER("Happy Villager Particle Pack", null, Rank.MVP_PLUS),
     ANGRY_VILLAGER("Angry Villager Particle Pack", null, Rank.MVP_PLUS),
     ENCHANTMENT("Enchantment Table Particle Pack", null, Rank.MVP_PLUS);
-    ;
+
 
     private String name,lore;
     private Rank rankRequirement;
@@ -50,5 +50,13 @@ public enum ParticlePack {
             list.add(item.name());
         }
         return list;
+    }
+
+    public static ParticlePack getFromString(String particlePack){
+        particlePack = particlePack.toUpperCase();
+        if(mapping.contains(particlePack)){
+            return ParticlePack.valueOf(particlePack);
+        }
+        return null;
     }
 }

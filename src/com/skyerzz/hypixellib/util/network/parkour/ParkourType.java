@@ -9,12 +9,15 @@ public enum ParkourType {
 
     ARCADEGAMES,
     ARENA,
-    BLITZLOBBY,
+    BLITZLOBBY, //new lobby
+    BLITZ, //old blitz lobby (2015)
     COPSNCRIMS,
     MAINLOBBY,
     MEGAWALLS,
+    OVERHAUL, //plancke got this stat in 2014...
     PAINTBALL,
     QUAKECRAFT,
+    SC, //DeprecatedNether, assuming dev value for Skyclash
     TNT,
     THEWALLSLOBBY,
     CHRISTMAS,

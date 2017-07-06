@@ -33,6 +33,7 @@ public enum MobType {
     WOLF("Wolf", true, false),
     HORSE("Horse", true, false),
     DONKEY("Donkey", true, false),
+    MULE("Mule", true, false),
     VILLAGER("Villager", true, false),
     BAT("Bat", true, false),
     GOLEM("Golem", true, true),

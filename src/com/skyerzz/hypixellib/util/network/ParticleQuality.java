@@ -7,6 +7,9 @@ import java.util.ArrayList;
  */
 public enum ParticleQuality {
     OFF,
+    LOW,
+    MEDIUM,
+    HIGH,
     EXTREME;
 
 

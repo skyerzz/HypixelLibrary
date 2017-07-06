@@ -11,7 +11,7 @@ import java.util.Map;
  */
 public class NetworkSettings {
 
-    private boolean bloodVisibility, chatAlerts, chatVisibility, lobbySpeed, petVisibility, playerVisibility, autoSpawnPet, lobbyProtection, allowPartyRequests;
+    private boolean bloodVisibility, chatAlerts, chatVisibility, lobbySpeed, petVisibility, playerVisibility, autoSpawnPet, lobbyProtection, allowPartyRequests, allowFriendRequests, allowGuildRequests, legacyCompass, newsPopup;
 
     public NetworkSettings(JsonObject json){
         initialize(json);
@@ -59,6 +59,18 @@ public class NetworkSettings {
                 return true;
             case "ALLOWPARTYREQUESTS":
                 this.allowPartyRequests = e.getAsBoolean();
+                return true;
+            case "ALLOWFRIENDREQUESTS":
+                this.allowFriendRequests = e.getAsBoolean();
+                return true;
+            case "ALLOWGUILDREQUESTS":
+                this.allowGuildRequests = e.getAsBoolean();
+                return true;
+            case "LEGACYCOMPASS":
+                this.legacyCompass = e.getAsBoolean();
+                return true;
+            case "NEWSPOPUP":
+                this.newsPopup = e.getAsBoolean();
                 return true;
         }
         return false;

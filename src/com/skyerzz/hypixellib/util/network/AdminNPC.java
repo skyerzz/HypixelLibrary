@@ -31,6 +31,7 @@ public enum AdminNPC {
     NINJACHARLIET(null),
     NITROHOLIC(null),
     NOXYD(null),
+    ORANGEMARSHALL(null),
     PIXELBAKER(null),
     PLANCKE(null),
     PXLPANDA(null),
@@ -41,13 +42,14 @@ public enum AdminNPC {
     SPHAX(null),
     TACTFUL(null),
     THORLON(null),
+    TRUDAN(null), //legacy? plancke's stats.
     TYRON(null),
     VINNY8BALL(null),
     VLADTOBEHERE(null),
     XAEL(null),
     ZANFLANGO(null),
     ZEROERRORS(null),
-    ZUMULUS(null),;//todo get all currencyPackages & chat
+    ZUMULUS(null);//todo get all currencyPackages & chat
 
     private CurrencyPackage currencyPackage;
 

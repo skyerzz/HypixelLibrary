@@ -20,11 +20,18 @@ public class MVPPlusColor {
 
     public enum PlusColor{
         RED("Red", 0), //todo finish this
-        AQUA("Aqua", 0),
-        WHITE("Wite", 0),
-        GOLD("Gold", 0),
-        BLACK("Black", 0),
-        DARK_PURPLE("Dark Purple", 0);
+        GOLD("Gold", 35),
+        GREEN("Green", 45),
+        YELLOW("Yellow", 55),
+        LIGHT_PURPLE("Purple", 65),
+        WHITE("White", 75),
+        BLUE("Blue", 85),
+        DARK_GREEN("Dark Green", 95),
+        DARK_RED("Dark Red", 150),
+        DARK_AQUA("Dark Aqua", 150),
+        DARK_PURPLE("Dark Purple", 200),
+        DARK_GRAY("Dark Gray", 200),
+        BLACK("Black", 250);
 
         private int unlockedLevel;
         private String display;
@@ -58,6 +65,14 @@ public class MVPPlusColor {
          */
         public String getDisplayString(){
             return display;
+        }
+
+        public static PlusColor getFromString(String color){
+            color = color.toUpperCase().trim().replace("RANKCOLOR_", "");
+            if(mapping.contains(color)){
+                return PlusColor.valueOf(color);
+            }
+            return null;
         }
     }
 }
