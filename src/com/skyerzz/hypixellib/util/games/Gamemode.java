@@ -12,7 +12,7 @@ public enum Gamemode {
     BLITZ("Blitz Survival Games"),
     WALLS("The Walls"),
     MEGA_WALLS("Mega Walls"),
-    TNT_GAMES("Tnt Games"),
+    TNTGAMES("Tnt Games"),
     VAMPIREZ("VampireZ"),
     PAINTBALL("Paintball"),
     QUAKECRAFT("Quakecraft"),
