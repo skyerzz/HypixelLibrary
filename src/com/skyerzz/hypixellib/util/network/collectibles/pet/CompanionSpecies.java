@@ -1,6 +1,6 @@
 package com.skyerzz.hypixellib.util.network.collectibles.pet;
 
-import com.skyerzz.hypixellib.util.network.collectibles.mysteryvault.MysteryBoxType;
+import com.skyerzz.hypixellib.util.network.collectibles.mysteryvault.ObtainType;
 
 import java.util.ArrayList;
 
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public enum CompanionSpecies {
     PENGUIN("Penguin", "He's migrating all the way from the North Pole to your friends list! Collect this cute little Penguin companion today.", true),
     TURTLE("Turtle", "Need someone to help you come out of your shell? Slow and steady always wins the race with this Turtle companion!", true),
-    BLACK_PUG("Black Pug", "Yelping, whimpering, howling away in the middle of night... and that's just your friends when they see your cool canine friend! Take this Black Pug companion for a walk today.", MysteryBoxType.CRAFTED_MYSTERY_BOX_TWO, false),
+    BLACK_PUG("Black Pug", "Yelping, whimpering, howling away in the middle of night... and that's just your friends when they see your cool canine friend! Take this Black Pug companion for a walk today.", ObtainType.CRAFTED_MYSTERY_BOX_TWO, false),
     DUCK("Duck", "Looking for an Egg-cellent companion? This quacking little friend can't be beak! Become birds of a feather with this dashing Duck companion!", true),
     FROG("Frog", "He was once a beautiful human prince, transformed by an old witch's curse... or at least that's what he tells people. This friendly Frog companion is just a hop, skip and jump away!", true),
     SLOTH("Sloth", "Neeeeeed aaaaaa friennnnnnnnd? Hypixel's favourite animal arrives in the form of this cute Sloth companion!", true),
@@ -29,16 +29,16 @@ public enum CompanionSpecies {
 
     private boolean buyableOnStore;
 
-    private MysteryBoxType mysteryBoxType;
+    private ObtainType obtainType;
 
     CompanionSpecies(String name, String lore, boolean buyableOnStore){
        this(name, lore, null, buyableOnStore);
     }
 
-    CompanionSpecies(String name, String lore, MysteryBoxType boxType, boolean buyableOnStore){
+    CompanionSpecies(String name, String lore, ObtainType boxType, boolean buyableOnStore){
         this.name = name;
         this.lore = lore;
-        this.mysteryBoxType = boxType;
+        this.obtainType = boxType;
         this.buyableOnStore = buyableOnStore;
     }
 
@@ -53,11 +53,20 @@ public enum CompanionSpecies {
         return list;
     }
 
+
+    public static CompanionSpecies getFromString(String pet){
+        pet = pet.toUpperCase().replace("PET_", "");
+        if(mapping.contains(pet)){
+            return CompanionSpecies.valueOf(pet);
+        }
+        return null;
+    }
+
     public String getName(){ return name;}
 
     public String getLore(){ return lore;}
 
     public boolean isBuyableOnStore(){ return buyableOnStore;}
 
-    public MysteryBoxType getMysteryBoxType(){ return mysteryBoxType; }
+    public ObtainType getObtainType(){ return obtainType; }
 }

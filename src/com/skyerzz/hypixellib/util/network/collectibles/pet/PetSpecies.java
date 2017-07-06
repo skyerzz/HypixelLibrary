@@ -2,7 +2,7 @@ package com.skyerzz.hypixellib.util.network.collectibles.pet;
 
 import com.skyerzz.hypixellib.util.minecraft.MobType;
 import com.skyerzz.hypixellib.util.network.Rank;
-import com.skyerzz.hypixellib.util.network.collectibles.mysteryvault.MysteryBoxType;
+import com.skyerzz.hypixellib.util.network.collectibles.mysteryvault.ObtainType;
 import com.skyerzz.hypixellib.util.network.collectibles.mysteryvault.Rarity;
 
 import java.util.ArrayList;
@@ -36,12 +36,12 @@ public enum PetSpecies {
     SPIDER("Spider", 42, MobType.SPIDER, Rank.NONE, Rarity.EPIC),
     CAVE_SPIDER("Cave Spider", 27, MobType.CAVE_SPIDER, Rank.NONE, Rarity.RARE),
 
-    RABBIT_BLACK("Rabbit: Black", 22, MobType.RABBIT, Rank.NONE, Rarity.RARE),
-    RABBIT_BLACK_AND_WHITE("Rabbit: Black & White", 45, MobType.RABBIT, Rank.NONE, Rarity.EPIC),
-    RABBIT_BROWN("Rabbit: Brown", 22, MobType.RABBIT, Rank.NONE, Rarity.RARE),
-    RABBIT_GOLD("Rabbit: Gold", 45, MobType.RABBIT, Rank.NONE, Rarity.EPIC),
-    RABBIT_SALT_AND_PEPPER("Rabbit: Salt & Pepper", 45, MobType.RABBIT, Rank.NONE, Rarity.EPIC),
-    RABBIT_WHITE("Rabbit: White", 22, MobType.RABBIT, Rank.NONE, Rarity.RARE),
+    BLACK_RABBIT("Rabbit: Black", 22, MobType.RABBIT, Rank.NONE, Rarity.RARE),
+    BLACK_WHITE_RABBIT("Rabbit: Black & White", 45, MobType.RABBIT, Rank.NONE, Rarity.EPIC),
+    BROWN_RABBIT("Rabbit: Brown", 22, MobType.RABBIT, Rank.NONE, Rarity.RARE),
+    GOLD_RABBIT("Rabbit: Gold", 45, MobType.RABBIT, Rank.NONE, Rarity.EPIC),
+    SALT_PEPPER_RABBIT("Rabbit: Salt & Pepper", 45, MobType.RABBIT, Rank.NONE, Rarity.EPIC),
+    WHITE_RABBIT("Rabbit: White", 22, MobType.RABBIT, Rank.NONE, Rarity.RARE),
 
     VILLAGER_BLACKSMITH("Villager: Blacksmith", 22, MobType.VILLAGER, Rank.NONE, Rarity.RARE),
     VILLAGER_BLACKSMITH_BABY("Villager: Blacksmith (Baby)", 55, MobType.VILLAGER, Rank.NONE, Rarity.EPIC),
@@ -53,18 +53,18 @@ public enum PetSpecies {
     VILLAGER_LIBRARIAN_BABY("Villager: Librarian (Baby)", 55, MobType.VILLAGER, Rank.NONE, Rarity.EPIC),
     VILLAGER_PRIEST("Villager: Priest", 22, MobType.VILLAGER, Rank.NONE, Rarity.RARE),
     VILLAGER_PRIEST_BABY("Villager: Priest (Baby)", 55, MobType.VILLAGER, Rank.NONE, Rarity.EPIC),
-    VILLAGER_ZOMBIE("Villager: Zombie", 52, MobType.ZOMBIE, Rank.NONE, Rarity.EPIC),
-    WITCH("Witch", -1, MobType.WITCH, Rank.NONE, Rarity.EPIC, MysteryBoxType.HALLOWEEN),
+    ZOMBIE_VILLAGER("Villager: Zombie", 52, MobType.ZOMBIE, Rank.NONE, Rarity.EPIC),
+    WITCH("Witch", -1, MobType.WITCH, Rank.NONE, Rarity.EPIC, ObtainType.HALLOWEEN_MYSTERY_BOX),
 
-    RED_LITTLE_HELPER("Red Little Helper", -1, null, Rank.NONE, Rarity.EPIC, MysteryBoxType.CHRISTMAS),
-    GREEN_LITTLE_HELPER("Green Little Helper", -1, null, Rank.NONE, Rarity.EPIC, MysteryBoxType.CHRISTMAS),
-    SNOWMAN("Snowman", -1, null, Rank.NONE, Rarity.EPIC, MysteryBoxType.CHRISTMAS),
+    RED_HELPER("Red Little Helper", -1, null, Rank.NONE, Rarity.EPIC, ObtainType.CHRISTMAS_MYSTERY_BOX),
+    GREEN_HELPER("Green Little Helper", -1, null, Rank.NONE, Rarity.EPIC, ObtainType.CHRISTMAS_MYSTERY_BOX),
+    SNOWMAN("Snowman", -1, null, Rank.NONE, Rarity.EPIC, ObtainType.CHRISTMAS_MYSTERY_BOX),
 
     IRON_GOLEM("Golem", 200, MobType.GOLEM, Rank.NONE, Rarity.LEGENDARY),
     ENDERMAN("Enderman", 150, MobType.ENDERMAN, Rank.NONE, Rarity.LEGENDARY),
     BLAZE("Blaze", -1, MobType.BLAZE, null, Rarity.LEGENDARY),
-    HEROBRINE("Herobrine", -1, MobType.HUMANENTITY, Rank.NONE, Rarity.LEGENDARY, MysteryBoxType.CRAFTED_MYSTERY_BOX_ONE),
-    ENDERMITE("Endermite", -1, MobType.ENDERMITE, Rank.NONE, Rarity.LEGENDARY, MysteryBoxType.CRAFTED_MYSTERY_BOX_TWO),
+    HEROBRINE("Herobrine", -1, MobType.HUMANENTITY, Rank.NONE, Rarity.LEGENDARY, ObtainType.CRAFTED_MYSTERY_BOX_ONE),
+    ENDERMITE("Endermite", -1, MobType.ENDERMITE, Rank.NONE, Rarity.LEGENDARY, ObtainType.CRAFTED_MYSTERY_BOX_TWO),
 
     COW("Cow", 10, MobType.COW, Rank.NONE, Rarity.COMMON),
     COW_BABY("Cow (Baby)", 30, MobType.COW, Rank.NONE, Rarity.RARE),
@@ -72,22 +72,24 @@ public enum PetSpecies {
     MOOSHROOM_BABY("Mooshroom (Baby)", 90, MobType.MOOSHROOM, Rank.NONE, Rarity.LEGENDARY),
 
     CREEPER("Creeper", 52, MobType.CREEPER, Rank.NONE, Rarity.EPIC),
-    POWERED_CREEPER("Powered Creeper", -1, MobType.CREEPER, Rank.NONE, Rarity.LEGENDARY, MysteryBoxType.CRAFTED_MYSTERY_BOX_ONE),
+    CREEPER_POWERED("Powered Creeper", -1, MobType.CREEPER, Rank.NONE, Rarity.LEGENDARY, ObtainType.CRAFTED_MYSTERY_BOX_ONE),
 
     HORSE_BLACK("Horse: Black", 42, MobType.HORSE, Rank.NONE, Rarity.EPIC),
     HORSE_BROWN("Horse: Brown", 15, MobType.HORSE, Rank.NONE, Rarity.COMMON),
     HORSE_CHESTNUT("Horse: Chestnut", 25, MobType.HORSE, Rank.NONE, Rarity.RARE),
     HORSE_CREAMY("Horse: Creamy", 25, MobType.HORSE, Rank.NONE, Rarity.RARE),
     HORSE_DARK_BROWN("Horse: Dark Brown", 25, MobType.HORSE, Rank.NONE, Rarity.RARE),
-    HORSE_GRAY("Horse: Gray", 25, MobType.HORSE, Rank.NONE, Rarity.RARE),
+    HORSE_GREY("Horse: Gray", 25, MobType.HORSE, Rank.NONE, Rarity.RARE),
     HORSE_WHITE("Horse: White", 42, MobType.HORSE, Rank.NONE, Rarity.EPIC),
-    HORSE_BROWN_BABY("Horse: Brown (Baby)", 30, MobType.HORSE, Rank.NONE, Rarity.RARE),
+    BROWN_HORSE_BABY("Horse: Brown (Baby)", 30, MobType.HORSE, Rank.NONE, Rarity.RARE),
     HORSE_CHESTNUT_BABY("Horse: Chestnut (Baby)", 55, MobType.HORSE, Rank.NONE, Rarity.EPIC),
     HORSE_CREAMY_BABY("Horse: Creamy (Baby)", 55, MobType.HORSE, Rank.NONE, Rarity.EPIC),
     HORSE_DARK_BROWN_BABY("Horse: Dark Brown (Baby)", 55, MobType.HORSE, Rank.NONE, Rarity.EPIC),
     HORSE_GRAY_BABY("Horse: Gray (Baby)", 55, MobType.HORSE, Rank.NONE, Rarity.EPIC),
-    UNDEAD_HORSE("Undead Horse", 63, MobType.HORSE, Rank.NONE, Rarity.EPIC),
-    SKELETON_HORSE("Skeleton Horse", -1, MobType.HORSE, Rank.NONE, Rarity.LEGENDARY, MysteryBoxType.HALLOWEEN),
+    HORSE_UNDEAD("Undead Horse", 63, MobType.HORSE, Rank.NONE, Rarity.EPIC),
+    HORSE_SKELETON("Skeleton Horse", -1, MobType.HORSE, Rank.NONE, Rarity.LEGENDARY, ObtainType.HALLOWEEN_MYSTERY_BOX),
+    MULE("Mule", 22, MobType.MULE, Rank.NONE, Rarity.RARE),
+    DONKEY("Donkey", 27, MobType.DONKEY, Rank.NONE, Rarity.RARE),
 
     PIG("Pig", 10, MobType.PIG, Rank.NONE, Rarity.COMMON),
     PIG_BABY("Pig (Baby)", 30, MobType.PIG, Rank.NONE, Rarity.RARE),
@@ -126,7 +128,7 @@ public enum PetSpecies {
     SHEEP_WHITE_BABY("Sheep: White (Baby)", 30, MobType.SHEEP, Rank.NONE, Rarity.RARE),
     SHEEP_YELLOW("Sheep: Yellow", 20, MobType.SHEEP, Rank.NONE, Rarity.RARE),
     SHEEP_YELLOW_BABY("Sheep: Yellow (Baby)", 55, MobType.SHEEP, Rank.NONE, Rarity.EPIC),
-    SHEEP_RAINBOW("Sheep: Rainbow", -1, MobType.SHEEP, Rank.NONE, Rarity.LEGENDARY, MysteryBoxType.SUMMER),
+    SHEEP_RAINBOW("Sheep: Rainbow", -1, MobType.SHEEP, Rank.NONE, Rarity.LEGENDARY, ObtainType.SUMMER_MYSTERY_BOX),
 
     SLIME_BIG("Slime (Big)", 100, MobType.SLIME, Rank.NONE, Rarity.LEGENDARY),
     SLIME_SMALL("Slime (Small)", 63, MobType.SLIME, Rank.NONE, Rarity.EPIC),
@@ -146,14 +148,14 @@ public enum PetSpecies {
     private MobType mobType;
     private Rank rankRequirement;
     private Rarity rarity;
-    private MysteryBoxType type;
+    private ObtainType type;
 
     PetSpecies(String displayName, int mysteryDust, MobType mobType, Rank rankRequirement, Rarity rarity){
         this(displayName, mysteryDust, mobType, rankRequirement, rarity, null);
 
     }
 
-    PetSpecies(String displayName, int mysteryDust, MobType mobType, Rank rankRequirement, Rarity rarity, MysteryBoxType type){
+    PetSpecies(String displayName, int mysteryDust, MobType mobType, Rank rankRequirement, Rarity rarity, ObtainType type){
         this.displayName = displayName;
         this.mysteryDust = mysteryDust;
         this.mobType = mobType;
@@ -171,6 +173,14 @@ public enum PetSpecies {
             list.add(item.name());
         }
         return list;
+    }
+
+    public static PetSpecies getFromString(String pet){
+        pet = pet.toUpperCase().replace("PET_", "").replace("LEGACY_", ""); //pet for pet_ starters, legacy cause some users have that somehow?
+        if(mapping.contains(pet)){
+            return PetSpecies.valueOf(pet);
+        }
+        return null;
     }
 
     public String getDisplayName(){
