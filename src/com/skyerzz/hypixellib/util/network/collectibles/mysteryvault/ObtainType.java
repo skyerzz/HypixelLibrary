@@ -1,0 +1,31 @@
+package com.skyerzz.hypixellib.util.network.collectibles.mysteryvault;
+
+/**
+ * Created by sky on 13-6-2017.
+ */
+public enum ObtainType {
+    DEFAULT_MYSTERY_BOX,
+    HALLOWEEN_MYSTERY_BOX,
+    SUMMER_MYSTERY_BOX,
+    CHRISTMAS_MYSTERY_BOX,
+    CRAFTED_MYSTERY_BOX_ONE,
+    CRAFTED_MYSTERY_BOX_TWO,
+    CRAFTED_MYSTERY_BOX_THREE,
+
+    REWARD_CARD,
+
+    RANK_UPGRADE,
+
+    MCPROHOSTING_DEAL,
+
+    SKYWARS_RANKED,
+
+    TWENTY_FIVE_GIFTS_SENT,
+    FIFTY_GIFTS_SENT,
+
+    LEVEL_ONE_HUNDERD,
+
+    SPECIAL_WEBSTORE_ITEM,
+
+    LEGACY_UNOBTAINABLE;
+}
