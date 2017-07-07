@@ -7,6 +7,7 @@ import java.util.ArrayList;
  */
 public enum Rank {
     NONE("default"),
+    NORMAL("(legacy) default"), //legacy default rank?
     VIP("[VIP]"),
     VIP_PLUS("[VIP+]"),
     MVP("[MVP]"),

@@ -8,24 +8,25 @@ import java.util.ArrayList;
 public enum Gamemode {
     ARCADEGAMES("Arcade Games"),
     ARENA("Arena Brawl"),
-    COPS_AND_CRIMS("Cops 'n Crims"),
-    BLITZ("Blitz Survival Games"),
+    MCGO("Cops 'n Crims"),
+    SURVIVAL_GAMES("Blitz Survival Games"),
     WALLS("The Walls"),
     MEGA_WALLS("Mega Walls"),
     TNTGAMES("Tnt Games"),
     VAMPIREZ("VampireZ"),
     PAINTBALL("Paintball"),
     QUAKECRAFT("Quakecraft"),
-    CRAZY_WALLS("Crazy Walls"),
+    WALLS3("Crazy Walls"),
     UHC("UHC"),
     WARLORDS("Warlords"),
     SKYWARS("Skywars"),
     TURBO_KART_RACERS("Turbo Kart Racers"),
-    SMASH_HEROES("Smash Heroes"),
+    SUPER_SMASH("Smash Heroes"),
     SPEED_UHC("Speed UHC"),
     SKYCLASH("Skyclash"),
     BEDWARS("Bedwars"),
-    PROTOTYPE("Prototype Lobby");
+    PROTOTYPE("Prototype Lobby"),
+    LEGACY("Leggacy Lobby");
 
     private String displayName;
 

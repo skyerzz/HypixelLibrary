@@ -22,14 +22,14 @@ public class CurrencyConverter {
             case UHC:
             case WARLORDS:
             case SKYWARS:
-            case SMASH_HEROES:
+            case SUPER_SMASH:
                 return 500*multiplier;
 
-            case COPS_AND_CRIMS:
-            case BLITZ:
+            case MCGO:
+            case SURVIVAL_GAMES:
             case QUAKECRAFT:
             case ARENA:
-            case CRAZY_WALLS:
+            case WALLS3:
                 return 750*multiplier;
 
             case PAINTBALL:

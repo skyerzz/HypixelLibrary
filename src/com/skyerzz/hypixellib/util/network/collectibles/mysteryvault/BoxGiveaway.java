@@ -7,7 +7,8 @@ import java.util.ArrayList;
  */
 public enum BoxGiveaway {
     SOMETEST1("N/A - probably Agent doing stuff"),
-    AGENTPARTY("N/A - probably Agent doing stuff.");
+    AGENTPARTY("N/A - probably Agent doing stuff."),
+    SOMETEST3("N/A - probable Agent doing stuff.");
 
     private String obtainManner;
 

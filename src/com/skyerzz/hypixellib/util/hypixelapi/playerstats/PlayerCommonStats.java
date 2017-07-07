@@ -43,7 +43,7 @@ public class PlayerCommonStats extends PlayerGameStats implements ILevel{
     private String _id, displayName, mostRecentlyThankedName, mostRecentlyTippedName, playerName, mcVersionRP;
     private UUID mostRecentlyThankedUUID, mostRecentlyTippedUUID, playerUUID;
     private int specSpeed, adsenseTokens, totalRewards, totalDailyRewards, rewardStreak, rewardScore, rewardHighScore, vanityConvertedBoxToday, vanityCraftedBoxToday;
-    private long lastPetJourney, mvpPlusColorUnlocked, vanityFirstConvertedBox,vanityFirstCraftedBox, lastAdsenseTime, lastClaimedReward, quickjoinTimestamp, flashingSalePopup;
+    private long lastPetJourney, vanityFirstConvertedBox,vanityFirstCraftedBox, lastAdsenseTime, lastClaimedReward, quickjoinTimestamp, flashingSalePopup;
     private int quickJoinUses, flashingNewsPoppedUp, flashingNewsOpens, flashingSaleOpens, flashingSaleClicks, flashingSalePoppedUp, fortuneBuff;
 
     private String prefix;
@@ -61,7 +61,7 @@ public class PlayerCommonStats extends PlayerGameStats implements ILevel{
     private long firstLogin, lastlogin, lastLogout; //todo make into date available through getter
 
     private boolean mainLobbyTutorialCompleted, spectatorNightVision, newMainTutorial, silence, showTipHolograms, showTNTRunHolograms, showTNTTagActionbarInfo, fly, combatTracker, autoSpawnPet, beamLink;
-    private boolean showWizardsActionbarInfo, showWizardsCooldownNotifications;
+    private boolean showWizardsActionbarInfo, showWizardsCooldownNotifications, autoDetectLanguage;
 
     private ArrayList<Integer> claimedLevelRewards = new ArrayList<>();
     private ArrayList<AdminNPC> foundAdminNPCs = new ArrayList<>();
@@ -92,6 +92,9 @@ public class PlayerCommonStats extends PlayerGameStats implements ILevel{
     /**THIS IS NOT THAT spectators are(n't) visible as ghosts when you die, gotta ask plancke. todo ask plancke*/
     private boolean spectatorsInvisible;
 
+    /**Spectator Stats, Assumingly.*/
+    private boolean specSpectatorsInvisible, specAlwaysFlying;
+
     /**See /guild join invites? todo figure this out.*/
     private boolean seeRequests;
 
@@ -99,7 +102,9 @@ public class PlayerCommonStats extends PlayerGameStats implements ILevel{
     private boolean notifications;
 
     /**translation notifications*/
-    private boolean translationMessageFirstLogin, translationMessageFirstLoginDutch, translationMessageFirstLoginEnglish, translationMessageFirstLoginGerman;
+    private boolean translationMessageFirstLogin, translationMessageFirstLoginDutch, translationMessageFirstLoginEnglish, translationMessageFirstLoginGerman, translationMessageFirstLoginFrench;
+
+    /**Spectator settings*/
 
     /**the network update book version*/
     private String networkUpdateBookVersion;
@@ -183,6 +188,9 @@ public class PlayerCommonStats extends PlayerGameStats implements ILevel{
             case "PREFIX":
                 this.prefix = value.getAsString();
                 return true;
+            case "AUTODETECTLANGUAGE":
+                this.autoDetectLanguage = value.getAsBoolean();
+                return true;
             case "PUNCHBYPASSFREQ":
                 this.punchBypassFreq = value.getAsBoolean();
                 return true;
@@ -222,6 +230,9 @@ public class PlayerCommonStats extends PlayerGameStats implements ILevel{
             case "TRANSLATIONMSGFIRSTLOGINGERMAN":
                 this.translationMessageFirstLoginGerman = value.getAsBoolean();
                 return true;
+            case "TRANSLATIONMSGFIRSTLOGINFRENCH":
+                this.translationMessageFirstLoginFrench = value.getAsBoolean();
+                return true;
             case "BEAMLINK":
                 this.beamLink = value.getAsBoolean();
                 return true;
@@ -231,7 +242,7 @@ public class PlayerCommonStats extends PlayerGameStats implements ILevel{
             case "PETACTIVE":
                 this.petActive = value.getAsBoolean();
                 return true;
-            case "SPECTATORS_INVISIBLE":
+            case "SPECTATORS_INVISIBLE": //todo is lagacy?
                 this.spectatorsInvisible = value.getAsBoolean();
                 return true;
             case "TOURNAMENTTOKENS":
@@ -321,6 +332,11 @@ public class PlayerCommonStats extends PlayerGameStats implements ILevel{
             case "SPEC_SPEED":
                 this.specSpeed = value.getAsInt();
                 return true;
+            case "SPEC_SPECTATORS_INVISIBLE":
+                this.specSpectatorsInvisible = value.getAsBoolean();
+                return true;
+            case "SPEC_ALWAYS_FLYING":
+                this.specAlwaysFlying = value.getAsBoolean();
             case "SANTA_FINISHED":
                 this.finishedXmas2016SantaQuest = value.getAsBoolean();
                 return true;
@@ -341,9 +357,6 @@ public class PlayerCommonStats extends PlayerGameStats implements ILevel{
                 return true;
             case "VANITYFIRSTCONVERTEDBOX":
                 this.vanityFirstConvertedBox = value.getAsLong();
-                return true;
-            case "LEVELUP_MVP_PLUS":
-                this.mvpPlusColorUnlocked = value.getAsLong();
                 return true;
             case "SILENCE":
                 this.silence = value.getAsBoolean();
@@ -456,14 +469,21 @@ public class PlayerCommonStats extends PlayerGameStats implements ILevel{
             //</editor-fold>
 
             //values that are not important for anyone!
+            case "PLOTRESETS": //probably legacy for housing plot resets. only certain staff has this value
             case "SENDCERBERUSMESSAGES":
             case "DISABLESENDALL":
+            case "BUILDTEAM":
                 //you dont need to know what these mean ;)
             case "TODO":
             case "PETUPDATE":
                 //blame plancke for having this value. no idea what it does. probably dated late 2015
             case "ELITE":
                 //elite team? assuming legacy.
+            case "LEVELUP_VIP":
+            case "LEVELUP_VIP_PLUS":
+            case "LEVELUP_MVP":
+            case "LEVELUP_MVP_PLUS":
+                //unknown, probably legacy.
                 Logger.logSkippedValue("[PlayerAPI.Common.initialize] " + key);
                 return true;
 
@@ -476,6 +496,16 @@ public class PlayerCommonStats extends PlayerGameStats implements ILevel{
             case "NORMAL_LOW_GRAVITY":
             case "NORMAL_NOURISHMENT":
             case "INSANE_NO_MERCY":
+            case "NORMAL_MONSTER_TAMER":
+            case "INSANE_SWIMMING_CHAMPION":
+            case "INSANE_KNOWLEDGE":
+            case "NORMAL_MEDICINE":
+            case "NORMAL_MASTER_BREWER":
+            case "NORMAL_COLD_BLOOD":
+            case "INSANE_NOTORIETY":
+            case "NORMAL_BOW_FLEX":
+            case "NORMAL_ARROW_RECOVERY":
+            case "INSANE_BOW_FLEX":
                 //speedUHC?
             case "COINS":
                 //no idea.
@@ -484,8 +514,12 @@ public class PlayerCommonStats extends PlayerGameStats implements ILevel{
                 //blame codename.
                 Logger.logSkippedValue("[PlayerAPI.Common.initialize] " + key);
                 return true;
+            case "HYPIXEL_TUTORIAL_TUTORIAL": //legacy tutorial value.
+            case "MAINTUT2": //legacy tutorial value.
+            case "MAINTUT1": //legacy tutorial value.
+            case "DISABLETIPMESSAGES": //most likely a slipped warlords value.
             case "VOTESMISSED": //no idea. something with the website voting system i think? probably legacy, only in Hypixel's stats.
-            case "GADGET":
+            case "GADGET": //replaced by CurrentGadget i believe.
             case "CUSTOMFILTER": //blame crypt for having a great custom filter
             case "CHATALERTS": //replaced by NetworkSetting.chatAlerts
             case "GORE": //replaced by NetworkSetting.Bloodvisibility
@@ -734,6 +768,9 @@ public class PlayerCommonStats extends PlayerGameStats implements ILevel{
             return true;
         }
         if(key.contains("PRESENT_FIND_")){
+            if(key.contains("_2016")){ //idk how these got here, blame Megalation & deprecatedNether.
+                return true;
+            }
             String present = key.replace("PRESENT_FIND_", "");
             if(value.getAsBoolean() && Xmas2015.mapping.contains(present)){
                 this.foundXmas2015Presents.add(Xmas2015.valueOf(present));
@@ -794,11 +831,14 @@ public class PlayerCommonStats extends PlayerGameStats implements ILevel{
 
             //some legacy values/values that arent used.
             switch(temp.toUpperCase()){
-                case "CLOAK_8.0":
+                case "CLOAK_8.0": //only hypixel has the cloak values.
                 case "CLOAK_7.0":
                 case "CLOAK_3.0":
                 case "CLOAK_1.0":
                 case "PET_POWERED_CREEPER": //changed to "creeper_powered"
+                case "DISGUISE_IRON_GOLEM"://todo check if actually legacy.
+                case "TRANSFORMATION_BLAZE": // see below
+                case "TRANSFORMATION_PIG"://only hypixel seems to have these 2.
                     //only hypixel has these
                     Logger.logSkippedValue("[HypixelAPI.Common.Vanity] Skipping Legacy value: " + temp);
                     continue;
@@ -911,6 +951,11 @@ public class PlayerCommonStats extends PlayerGameStats implements ILevel{
     private void getPetStats(JsonObject json){
         for (Map.Entry<String, JsonElement> e : json.entrySet()) {
             String key = e.getKey().toUpperCase();
+            switch(key){
+                case "HORSE_BROWN_BABY"://legacy, replaced by BROWN_HORSE_BABY
+                    Logger.logSkippedValue("[HypixelAPI.Common.PetStat] Skipping Legacy value: " + key);
+                    continue;
+            }
             if(PetSpecies.mapping.contains(key)){
                 PetSpecies species = PetSpecies.valueOf(key);
                 int experience = -1;
@@ -1060,10 +1105,6 @@ public class PlayerCommonStats extends PlayerGameStats implements ILevel{
 
     public long getLastPetJourney() {
         return lastPetJourney;
-    }
-
-    public long getMvpPlusColorUnlocked() {
-        return mvpPlusColorUnlocked;
     }
 
     public long getVanityFirstConvertedBox() {

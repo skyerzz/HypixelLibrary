@@ -21,7 +21,7 @@ public enum CompanionSpecies {
     GORRILA("Gorilla", "You can ask him why he beats his chest, you can ask him why he loves bananas, but whatever you do... DON't ask him where he got those glasses! Meet the real king of the jungle with this garish Gorilla companion.", true),
     PANDA("Panda", "He may not know Kung Fu, but give this little guy a bamboo stick and he'll be your friend for life. Grin and bear it with this lazy Panda companion!", true),
     ELEPHANT("Elephant", "They say an elephant never forgets... to follow you around the Hypixel Lobby! Pack up your trunk and join the herd with this tiny Elephant companion.", true),
-    MAGIC_DOG("Magic Dog", "What time is it? Time to stretch your legs and go for a walk with this adventurous Magic Dog companion!", true),
+    JACK_DOG("Magic Dog", "What time is it? Time to stretch your legs and go for a walk with this adventurous Magic Dog companion!", true), //checked with smoothmusic
     GIFTERINO("Gifterino", "These little guys tend to follow the most generous person ever, and that person is you!", false);
 
 
@@ -32,7 +32,7 @@ public enum CompanionSpecies {
     private ObtainType obtainType;
 
     CompanionSpecies(String name, String lore, boolean buyableOnStore){
-       this(name, lore, null, buyableOnStore);
+       this(name, lore, ObtainType.SPECIAL_WEBSTORE_ITEM, buyableOnStore);
     }
 
     CompanionSpecies(String name, String lore, ObtainType boxType, boolean buyableOnStore){

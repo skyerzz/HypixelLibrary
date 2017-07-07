@@ -8,7 +8,8 @@ import java.util.ArrayList;
 public enum Chat {
     ALL("all", 'a'),
     PARTY("party", 'p'),
-    GUILD("guild", 'g');
+    GUILD("guild", 'g'),
+    PM("Private Message", ' '); //no character for that.
 
     private String name;
     private char code;

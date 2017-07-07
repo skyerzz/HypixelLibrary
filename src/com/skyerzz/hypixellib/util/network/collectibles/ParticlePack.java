@@ -54,6 +54,10 @@ public enum ParticlePack {
 
     public static ParticlePack getFromString(String particlePack){
         particlePack = particlePack.toUpperCase();
+        if(particlePack.equals("ENCHANTMENT_TABLE")){
+            //legacy value for some people
+            return ParticlePack.ENCHANTMENT;
+        }
         if(mapping.contains(particlePack)){
             return ParticlePack.valueOf(particlePack);
         }
