@@ -15,6 +15,9 @@ public class FriendAPI extends AbstractAPIReply {
     }
 
     public JsonArray getFriends(){
+        if(json == null  || json.get("records") == null || json.get("records").isJsonNull()){
+            return null;
+        }
         return this.json.get("records").getAsJsonArray();
     }
 }
